@@ -215,7 +215,7 @@ public class UltraColorPlugin extends SimplePlugin {
 	}
 
 	public String getPluginCreator() {
-		return "UltimateGamer200";
+		return "UltimateGamer200 (Ultimation)";
 	}
 
 	/**
