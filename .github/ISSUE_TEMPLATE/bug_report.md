@@ -1,8 +1,8 @@
 ---
 name: Bug report
 about: Report something not working as intended.
-title: ''
-labels: ''
+title: Minecraft Version | Bug
+labels: bug
 assignees: ''
 
 ---
