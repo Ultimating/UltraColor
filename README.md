@@ -8,7 +8,7 @@
 
 Join MineAcademy to learn Java and plugin development and get a 25€ discount!
 
-## IMPORTANT: Starting on March 15th at midnight central time, this plugin will no longer actively receive updates. This could change before/after this date, but that's unlikely. For more information/reasoning, please see this [here](https://docs.google.com/document/d/1BXdOsQdvIeQCgBGsSJV0EkSn9jh67ZInoutuYd5i-3A/edit?usp=sharing).
+## IMPORTANT: As of March 15th midnight central time, this plugin no longer actively receives updates. This could change at anypoint, but that's unlikely. For more information/reasoning, please see this [here](https://docs.google.com/document/d/1BXdOsQdvIeQCgBGsSJV0EkSn9jh67ZInoutuYd5i-3A/edit?usp=sharing).
 
 # UltraColor
 UltraColor is a free chat and name color plugin offering support from 1.8 through 1.17! Some features include:
