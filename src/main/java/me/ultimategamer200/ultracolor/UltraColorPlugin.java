@@ -99,8 +99,8 @@ public class UltraColorPlugin extends SimplePlugin {
 				final boolean changeDisplayName = yamlConfiguration.getBoolean("change-displayname");
 
 				if (changeDisplayName && Settings.Color_Settings.NAME_COLORS) {
-					Common.log("Detected change-displayname set to 'true' in EssentialsX config.yml file!");
-					Common.log("Please set this option to 'false' if you want name coloring functionality!");
+					Common.log("Detected change-displayname set to 'true' in EssentialsX config.yml file!",
+							"Please set this option to 'false' if you want name coloring functionality!");
 				}
 			} else {
 				final File cmiConfig = new File(CMI.getPlugin(CMI.class).getDataFolder() + File.separator + "config.yml");
@@ -108,8 +108,8 @@ public class UltraColorPlugin extends SimplePlugin {
 				final boolean changeDisplayName = yamlConfiguration.getBoolean("DisplayName.Change");
 
 				if (changeDisplayName && Settings.Color_Settings.NAME_COLORS) {
-					Common.log("Detected DisplayName.Change option set to 'true' in CMI config.yml file!");
-					Common.log("Please set this option to 'false' if you want name coloring functionality!");
+					Common.log("Detected DisplayName.Change option set to 'true' in CMI config.yml file!",
+							"Please set this option to 'false' if you want name coloring functionality!");
 				}
 			}
 		}
