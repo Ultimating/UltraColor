@@ -1,0 +1,21 @@
+#
+# This is the file your server opens to find the main class
+# of your plugin and its information. We automatically replace
+# many variables here from your pom.xml file.
+#
+# See https://www.spigotmc.org/wiki/plugin-yml/ for more
+# information .
+#
+# NB: Please do not register commands here, these are done
+# directly in our plugin using Foundation :)
+#
+name: ${project.name}
+version: ${project.version}
+main: ${main.class}
+author: UltimateGamer200
+website: https://www.spigotmc.org/resources/ultracolor.85332/
+description: Chat and name color plugin featuring color selection via GUI menus.
+softdepend: [ Essentials, CMI, PlaceholderAPI, NashornPlus, NBTAPI ]
+api-version: 1.13
+libraries:
+  - org.openjdk.nashorn:nashorn-core:15.3

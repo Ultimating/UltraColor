@@ -1,0 +1,700 @@
+#
+# _ _ _ _ _____ _
+# | | | | | | / __ \ | |
+# | | | | | | _ _ __ __ _ | / \ / ___ | | ___ _ __
+# | | | | | __ | '__ / _` | | / _ \ | | / _ \ | '__ |
+# | | _ | | | | _ | | | (_ | | \ __ / \ (_) | | (_) | |
+# \ ___ / | _ | \ __ | _ | \ __, _ | \ ____ / \ ___ / | _ | \ ___ / | _ |
+#
+# Archivo de mensajes - Inglés
+#
+# IMPORTANTE: Para todas las opciones de ranuras, el rango está entre 0 y 53. Al configurar qué botones de ranuras aparecerán en el
+# menú, asegúrese de que no se repitan para ese menú en particular. Consulte la configuración predeterminada en Wiki para ver ejemplos.
+#
+
+Menu_Titles:
+  Color_Selection: "&7¡Seleccione un tipo de color!"
+  Chat_Color_Selection: "&7¡Seleccione un color de chat!"
+  Name_Color_Selection: "&7¡Seleccione un color de nombre!"
+  Menu_Information: "&fInformación del menú"
+
+# Mensajes para comandos.
+# {plugin_name} = Nombre del complemento UltraColor.
+# {plugin_version} = La versión actual de UltraColor que estás usando.
+Commands:
+  Reload_Success: "&2{plugin_name} {plugin_version} se ha vuelto a cargar correctamente."
+
+# Personaliza el menú GUI que se abre con / color aquí
+Main_GUI_Customization:
+  Info_Message: "Elija cambiar su chat o el color del nombre."
+  # ¿Deberíamos permitir que el botón de información se muestre en la GUI DE SELECCIÓN DE COLOR PRINCIPAL?
+  Info_Button_Enabled: true
+  # El tamaño del menú principal de la GUI. Debe ser un múltiplo de 9.
+  # El valor máximo es 54.
+  # Ej: 9, 18, 27, 36, etc.
+  Size: 27
+  Info_Button_Slot: 18
+
+  Chat_Color_Selection:
+    Name: "Menú de colores de chat"
+    Lore:
+      - "&8---------------------------"
+      - "&7¡Haz clic para abrir la selección de colores de chat!"
+      - "&8---------------------------"
+    # El tamaño del menú GUI (el valor máximo es 54).
+    Size: 54
+    Slot: 10
+    # Los jugadores de mensajes verán si no tienen permiso para un color / formato de chat específico.
+    Error_Message: "&cPermiso insuficiente. ¡Notifique a un administrador!"
+    # El mensaje que los jugadores verán cuando pasen el cursor sobre la estrella inferior del menú.
+    Info_Message: "Haga clic en un color para usarlo como su color de chat."
+    # ¿Deberíamos permitir que el botón de información se muestre en la GUI DE SELECCIÓN DE COLOR DEL CHAT?
+    Info_Button_Enabled: true
+
+  Name_Color_Selection:
+    Name: "Menú de color de nombre"
+    Lore:
+      - "&8---------------------------"
+      - "¡Haga clic para abrir la selección del color del nombre!"
+      - "&8---------------------------"
+    # El tamaño del menú GUI (el valor máximo es 54).
+    Size: 54
+    Slot: 16
+    # Los reproductores de mensajes verán si no tienen permiso para un color / formato de nombre específico.
+    Error_Message: "&cPermiso insuficiente. ¡Notifique a un administrador!"
+    # El mensaje que los jugadores verán cuando pasen el cursor sobre la estrella inferior del menú.
+    Info_Message: "Haga clic en un color para usarlo como su nombre de visualización."
+    # ¿Deberíamos permitir que el botón de información se muestre en la GUI DE SELECCIÓN DE COLOR DE NOMBRE?
+    Info_Button_Enabled: true
+
+  Gradient_Color_Selection:
+    Name: "Menú degradado"
+    Lore:
+      - "&8---------------------------"
+      - "&7¡Haga clic para abrir la selección de colores degradados!"
+      - "&8---------------------------"
+    Slot: 12
+
+  Hex_Color_Selection:
+    Name: "Selección de color hexadecimal"
+    Lore:
+      - "&8---------------------------"
+      - "&7¡Seleccione un color hexadecimal mediante el mensaje de chat!"
+      - "&8---------------------------"
+    Slot: 14
+
+# Puede personalizar los nombres de color y las tradiciones para la selección de colores del chat en el menú de selección de colores aquí.
+# Puede usar {color_preview} para mostrar una vista previa del color del chat.
+Chat_Color_Selection_Customization:
+  Black:
+    Name: "&0Negro"
+    Lore:
+      - "&8---------------------------"
+      - "&7¡Haz clic para seleccionar el color negro!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 10
+    Success_Message: "&7¡El color del chat cambió correctamente a &0negro &7!"
+
+  Dark_Blue:
+    Name: "&1Azul oscuro"
+    Lore:
+      - "&8---------------------------"
+      - "&7¡Haga clic para seleccionar el color azul oscuro!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 11
+    Success_Message: "&7¡El color del chat cambió con éxito a &1azul oscuro &7!"
+
+  Dark_Green:
+    Name: "&2Verde oscuro"
+    Lore:
+      - "&8---------------------------"
+      - "&7¡Haz clic para seleccionar el color verde oscuro!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 12
+    Success_Message: "&7El color del chat cambió correctamente a &2verde oscuro&7!"
+
+  Dark_Aqua:
+    Name: "&3Agua Oscuro"
+    Lore:
+      - "&8---------------------------"
+      - "&7¡Haz clic para seleccionar el color agua oscuro!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 13
+    Success_Message: "&7El color del chat cambió correctamente a &3agua oscuro&7!"
+
+  Dark_Red:
+    Name: "&4Rojo Oscuro"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar oscuro rojo color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 14
+    Success_Message: "&7El color del chat cambió correctamente a &4rojo oscuro&7!"
+
+  Dark_Purple:
+    Name: "&5Morado Oscuro"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar oscuro morado color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 15
+    Success_Message: "&7El color del chat cambió correctamente a &5morado oscuro&7!"
+
+  Orange:
+    Name: "&6Naranja"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar naranja color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 16
+    Success_Message: "&7El color del chat cambió correctamente a &6naranja&7!"
+
+  Gray:
+    Name: "&7Gris"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar gris color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 19
+    Success_Message: "&7El color del chat cambió correctamente a &7gris&7!"
+
+  Dark_Gray:
+    Name: "&8Gris Oscuro"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar gris oscuro color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 20
+    Success_Message: "&7El color del chat cambió correctamente a &8gris oscuro&7!"
+
+  Blue:
+    Name: "&9Azul"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar azul color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 21
+    Success_Message: "&7El color del chat cambió correctamente a &9azul&7!"
+
+  Green:
+    Name: "&aVerde"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar verde color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 22
+    Success_Message: "&7El color del chat cambió correctamente a &averde&7!"
+
+  Aqua:
+    Name: "&bAgua"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar agua color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 23
+    Success_Message: "&7El color del chat cambió correctamente a &bagua&7!"
+
+  Red:
+    Name: "&cRojo"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar rojo color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 24
+    Success_Message: "&7El color del chat cambió correctamente a &crojo&7!"
+
+  Light_Purple:
+    Name: "&dMorado claro"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar morado claro color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 25
+    Success_Message: "&7El color del chat cambió correctamente a &dmorado claro&7!"
+
+  Yellow:
+    Name: "&eAmarillo"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar amarillo color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 28
+    Success_Message: "&7El color del chat cambió correctamente a &eamarillo&7!"
+
+  White:
+    Name: "&fBlanco"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Blanco color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 29
+    Success_Message: "&7El color del chat cambió correctamente a &fblanco&7!"
+
+  Rainbow:
+    Name: "&cArco iris"
+    Lore:
+      - "&8---------------------------"
+      - "Haga clic para seleccionar el color del arco iris"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 30
+    # %rainbow_colors% = ¡Marcador de posición para mostrar "colores del arco iris" en colores del arco iris!
+    Success_Message: "%rainbow_colors% &7seleccionado con éxito!"
+
+  Magic:
+    Name: "&fFormato mágico &kt"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar mágico formato!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 46
+    Success_Message: "&7El formato de chat se cambió correctamente a &kformato mágico&7!"
+
+  Bold:
+    Name: "&lNegrita &fFormato"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Negrita Formato!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 47
+    Success_Message: "&7El formato de chat se cambió correctamente a &lformato negrita&7!"
+
+  Italic:
+    Name: "&f&oCursiva &fFormato"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Cursiva Formato!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 48
+    Success_Message: "&7El formato de chat se cambió correctamente a &oformato cursiva&7!"
+
+  Underline:
+    Name: "&f&nSubrayar &fFormato"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Underline Formato!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 49
+    Success_Message: "&7El formato de chat se cambió correctamente a &nsubrayar&7!"
+
+  Strikethrough:
+    Name: "&f&mTachado &fFormato"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Tachado Formato!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 50
+    Success_Message: "&7El formato de chat se cambió correctamente a &mtachado&7!"
+
+  Reset_Format_Button:
+    Name: "&c&lRESTABLECER FORMATO"
+    Lore:
+      - "&8---------------------------"
+      - "Restablezca solo su formato de chat."
+      - "&8---------------------------"
+    Slot: 51
+    Success_Message: "¡Has restablecido tu formato de chat!"
+    Error_Message: "¡No tienes ningún formato de chat seleccionado!"
+
+  Back_Button:
+    Name: "&e&lESPALDA"
+    Lore:
+      - "&8---------------------------"
+      - "Vuelve al menú anterior"
+      - "&8---------------------------"
+    Slot: 32
+
+  Reset_Button:
+    Name: "&4&lREINICIAR"
+    Lore:
+      - "&8---------------------------"
+      - "Restablece el color y el formato de tu chat."
+      - "&8---------------------------"
+    Slot: 33
+    Success_Message: "¡Has restablecido el color y el formato de tu chat!"
+    Error_Message: "¡No has seleccionado ningún color de chat!"
+
+# Puede personalizar los nombres de color y lores para la selección de color de nombre en el menú de selección de color aquí.
+# Puede usar {color_preview} para mostrar una vista previa de cómo se ve el color del nombre.
+Name_Color_Selection_Customization:
+  Black:
+    Name: "&0Negro"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Negro color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 10
+    Success_Message: "&7El color del nombre cambió correctamente a &0Negro&7!"
+
+  Dark_Blue:
+    Name: "&1Azul Oscuro"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Azul Oscuro color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 11
+    Success_Message: "&7El color del nombre cambió correctamente a &1Azul Oscuro&7!"
+
+  Dark_Green:
+    Name: "&2Verde Oscuro"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Verde Oscuro color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 12
+    Success_Message: "&7El color del nombre cambió correctamente a &2Verde Oscuro&7!"
+
+  Dark_Aqua:
+    Name: "&3Agua Oscuro"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Agua Oscuro color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 13
+    Success_Message: "&7El color del nombre cambió correctamente a &3Agua Oscuro&7!"
+
+  Dark_Red:
+    Name: "&4Rojo Oscuro"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Rojo Oscuro color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 14
+    Success_Message: "&7El color del nombre cambió correctamente a &4Rojo Oscuro&7!"
+
+  Dark_Purple:
+    Name: "&5Morado Oscuro"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Morado Oscuro color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 15
+    Success_Message: "&7El color del nombre cambió correctamente a &5Morado Oscuro&7!"
+
+  Orange:
+    Name: "&6Naranja"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Naranja color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 16
+    Success_Message: "&7El color del nombre cambió correctamente a &6Naranja&7!"
+
+  Gray:
+    Name: "&7Gris"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Gris color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 19
+    Success_Message: "&7El color del nombre cambió correctamente a &7Gris&7!"
+
+  Dark_Gray:
+    Name: "&8Gris Oscuro"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Gris Oscuro color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 20
+    Success_Message: "&7El color del nombre cambió correctamente a &8Gris Oscuro&7!"
+
+  Blue:
+    Name: "&9Azul"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Azul color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 21
+    Success_Message: "&7El color del nombre cambió correctamente a &9azul&7!"
+
+  Green:
+    Name: "&aVerde"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Verde color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 22
+    Success_Message: "&7El color del nombre cambió correctamente a &averde&7!"
+
+  Aqua:
+    Name: "&bAgua"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Agua color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 23
+    Success_Message: "&7El color del nombre cambió correctamente a &bagua&7!"
+
+  Red:
+    Name: "&cRojo"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Red color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 24
+    Success_Message: "&7El color del nombre cambió correctamente a &crojo&7!"
+
+  Light_Purple:
+    Name: "&dMorado claro"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar morado claro color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 25
+    Success_Message: "&7El color del nombre cambió correctamente a &dmorado claro&7!"
+
+  Yellow:
+    Name: "&eAmarillo"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Amarillo color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 28
+    Success_Message: "&7El color del nombre cambió correctamente a &eamarillo&7!"
+
+  White:
+    Name: "&fBlanco"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Blanco color!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 29
+    Success_Message: "&7El color del nombre cambió correctamente a &fblanco&7!"
+
+  Magic:
+    Name: "&fFormato mágico &kt"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Magic format!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 46
+    Success_Message: "&7El formato de nombre se cambió correctamente a &kFormato mágico&7!"
+
+  Bold:
+    Name: "&lNegrita &fFormato"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar &lNegrita &fFormato!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 47
+    Success_Message: "&7El formato de nombre se cambió correctamente a &lnegerita&7!"
+
+  Italic:
+    Name: "&f&oCursiva &fFormato"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Cursiva Formato!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 48
+    Success_Message: "&7El formato de nombre se cambió correctamente a &ocursiva&7!"
+
+  Underline:
+    Name: "&f&nSubrayar &fFormato"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Subrayar Formato!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 49
+    Success_Message: "&7El formato de nombre se cambió correctamente a &nsubrayar&7!"
+
+  Strikethrough:
+    Name: "&f&mTachado &fFormat"
+    Lore:
+      - "&8---------------------------"
+      - "&7Clic para seleccionar Tachado format!"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 50
+    Success_Message: "&7El formato de nombre se cambió correctamente a &mtachado&7!"
+
+  Reset_Format_Button:
+    Name: "&c&lRESTABLECER FORMATO"
+    Lore:
+      - "&8---------------------------"
+      - "Restablece solo el formato de tu nombre."
+      - "&8---------------------------"
+    Slot: 51
+    Success_Message: "¡Has restablecido el formato de tu nombre!"
+    Error_Message: "¡No tiene ningún formato de nombre seleccionado!"
+
+  Rainbow:
+    Name: "&cArco iris"
+    Lore:
+      - "&8---------------------------"
+      - "Haga clic para seleccionar el color del arco iris"
+      - "&eVista previa de Color: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 30
+    # %rainbow_colors% = ¡Marcador de posición para mostrar "colores del arco iris" en colores del arco iris!
+    Success_Message: "%rainbow_colors% &7seleccionado con éxito!"
+
+  Back_Button:
+    Name: "&e&lESPALDA"
+    Lore:
+      - "&8---------------------------"
+      - "Vuelve al menú anterior"
+      - "&8---------------------------"
+    Slot: 51
+
+  Reset_Button:
+    Name: "&4&lREINICIAR"
+    Lore:
+      - "&8---------------------------"
+      - "Restablece el color y el formato de tu nombre."
+      - "&8---------------------------"
+    Slot: 52
+    Success_Message: "¡Ha restablecido el color y el formato de su nombre!"
+    Error_Message: "¡No ha seleccionado ningún color de nombre!"
+
+# Puede personalizar los nombres de los colores de degradado, las tradiciones, las ranuras y los mensajes aquí.
+Gradient_Color_Selection_Customization:
+  Menu_Title: "&6Selección de degradado"
+  Name_Menu_Title: "&6Degradado &eNombre Selección"
+  Name_Menu_Item_Slot: 10
+  Chat_Menu_Item_Slot: 16
+  Chat_Menu_Title: "&6Degradado &eCharla Selección"
+  Chat_Menu_Lore: "¡Haz clic para seleccionar un gradiente de chat!"
+  Name_Menu_Lore: "Haga clic para seleccionar un gradiente de nombre."
+  Info_Message: "¡Haga clic para seleccionar un degradado!"
+  Error_Message: "¡Permiso insuficiente! ¡Notifique a un administrador!"
+  Unsupported_Version_Message: "¡Este comando solo funciona en versiones 1.16+!"
+  Invalid_Gradient_Message: "¡Los colores degradados deben comenzar con un # y seguir un código de 6 caracteres!"
+  Disabled_Message: "%type% ¡el degradado está deshabilitado en el archivo de configuración! Alerte a un administrador si esto no es intencionado."
+  Info_Button_Enabled: true
+  Main_Menu_Size: 27
+
+  Chat:
+    Chat_Gradient_Menu_Size: 9
+    Chat_Gradient_Next_Page_Slot: 50
+    Chat_Gradient_Previous_Page_Slot: 48
+    Chat_Custom_Gradient_Slot: 0
+    Chat_Reset_Gradient_Slot: 1
+
+  Name:
+    Name_Gradient_Menu_Size: 9
+    Name_Gradient_Next_Page_Slot: 50
+    Name_Gradient_Previous_Page_Slot: 48
+    Name_Custom_Gradient_Slot: 0
+    Name_Reset_Gradient_Slot: 1
+
+  Reset_Gradient:
+    Name: "&4&lREINICIAR"
+    Lore:
+      - "&8---------------------------"
+      - "&7Reiniciar your Degradado!"
+      - "&8---------------------------"
+    Success_Message: "Degradado Reiniciar exitosamente!"
+    Error_Message: "¡No ha seleccionado ningún degradado!"
+
+  Custom_Gradient:
+    Name: "&aGradiente &bpersonalizado"
+    Lore:
+      - "&8---------------------------"
+      - "&7¡Crea tu propio degradado con dos colores hexagonales!"
+      - "&8---------------------------"
+    # El prefijo que mostrará el indicador de gradiente.
+    Prompt_Prefix: "&7[&eGradiente personalizado&7]"
+    # El mensaje que aparecerá cuando un jugador seleccione por primera vez la opción de degradado personalizado.
+    First_Color_Prompt: " ¿Cuál es tu primer color hexadecimal? Puede escribir exit en cualquier momento para cancelar."
+    # El mensaje que aparecerá después de que un jugador ingrese su primer color hexadecimal desde el primer mensaje.
+    Second_Color_Prompt: " ¿Cuál es tu segundo color hexadecimal?"
+    Format_Prompt: " ¿Le gustaría un formato para ir con su hexadecimal? Seleccione &e&lbold, &e&oitalic, &e&nunderline, &e&mstrikethrough, &emagic&7. Si no quieres uno, escribe &enone&7."
+    Success_Message: "¡Gradiente personalizado aplicado con éxito!"
+
+  Return:
+    Enabled: true
+    Name: "&cRegreso"
+    Lore:
+      - ""
+      - "&7Regrese a la GUI anterior."
+    Slot: 2
+
+# ¡Personalización para mensajes de apodos!
+Nicknames:
+  Nickname_Already_Taken_Message: "¡Ese apodo ya lo ha tomado otra persona!"
+  Nickname_Command_Success_Message: "Apodo establecido en %nick% &7exitosamente para &e%player%!"
+  Real_Name_Message: "Nombre real de %nick%&7: &e%player%"
+  Nickname_Not_Found_Message: "Apodo, %nick%, ¡no pudo ser encontrado!"
+
+# ¡Aquí puedes personalizar los mensajes para los comandos de color hexadecimal!
+# %hex_color% = El marcador de posición para mostrar el color hexadecimal que seleccionó el jugador.
+Hex_Colors:
+  Prompt_Prefix: "&8[&#88afdbColor Hexadecimal&8] &7"
+  First_Prompt: "¿Qué tipo de color hexadecimal le gustaría establecer? Disponible: &e%hex_color_types%"
+  Second_Prompt: "Ingrese el código hexadecimal que desea con o sin el # al principio."
+  Format_Prompt: "¿Le gustaría un formato para ir con su hexadecimal? Seleccione &e&lbold, &e&oitalic, &e&nunderline, &e&mstrikethrough, &emagic&7. Si no quieres uno, escribe &enone&7."
+  Hex_Color_Unsupported_Message: "&cEste comando solo funciona para 1.16+"
+  Hex_Color_Success_Message: "&7Color hexagonal establecido oficialmente en %hex_color%&7!"
+  Disabled_Type_Message: "%type% hexadecimal está deshabilitado en el archivo de configuración! Alerte a un administrador si esto no es intencionado."
+  Hex_Color_Error_Message: "El color hexagonal debe ser un código de 6 caracteres con / sin el # al inicio."
+  Hex_Color_Not_Allowed_Message: "&cEste color hexadecimal no está permitido."
+  Hex_Color_Whitelist_Empty: "&c¡La lista blanca hexadecimal está vacía! ¡Notifique a un administrador!"
+  Invalid_Hex_Color_Message: "&cHexadecimal no válido! ¡Asegúrese de que tenga un # al principio y un código de 6 dígitos a continuación!"
+  Hex_Color_Removed_From_Whitelist: "Maleficio, %hex_color%, &cremoto &aexitosamente&7!"
+  Hex_Color_Added_To_Whitelist: "Maleficio, %hex_color%, &aadicional &7exitosamente! ¡Siéntase libre de modificarlo en el archivo allowed-hexes.yml!"
+  Hex_Color_Not_Found_On_Whitelist: "¡Ese hexágono no está en la lista de ciertos hexágonos permitidos! Compruebe el archivo allowed-hexes.yml."
+  Hex_Color_Already_Added_To_Whitelist: "¡Este hex ya está en la lista de ciertos hexes permitidos!"
+
+# Otros mensajes que no pertenecen a las categorías anteriores.
+# %player% = El marcador de posición para obtener el nombre de usuario de un jugador.
+# %new_gradient% = El marcador de posición para obtener el gradiente de un nuevo jugador.
+# %gradient_type% = El marcador de posición para obtener el tipo de degradado seleccionado.
+# %new_chat_color% = El marcador de posición para obtener el nuevo color de chat de un jugador.
+# %new_name_color% = El marcador de posición para obtener el nuevo color del nombre de un jugador.
+# %new_chat_format% = El marcador de posición para obtener el nuevo formato de chat de un jugador.
+# %new_name_format% = El marcador de posición para obtener el nuevo formato de nombre de un jugador.
+Other:
+  No_Permission: "&6Permiso insuficiente ({permission})."
+  Admin_Set_Gradient_Color_Success: "&7¡Tus colores degradados han sido establecidos por un administrador! Tu %gradient_type% gradiente es ahora %new_gradient%!"
+  Admin_Reset_Color_Command_Success: "&aColores para %player% se han restablecido con éxito!"
+  Admin_Force_Chat_Color_Success: "Color de chat establecido en %new_chat_color% &7por %player%!"
+  Admin_Force_Name_Color_Success: "Color del nombre establecido en %new_name_color% &7por %player%!"
+  Admin_Force_Chat_Format_Success: "Formato de chat establecido en %new_chat_format% &7por %player%!"
+  Admin_Force_Name_Format_Success: "Formato de nombre establecido en %new_name_format% &7por %player%!"
+  Player_Reset_Color_Command_Success: "&7¡Un administrador ha restablecido sus selecciones de color!"
+  Reset_Color_Command_Error: "&7%player% no tiene chat ni color de nombre!"
+  Unable_To_Select_Format: "¡No puede seleccionar este formato porque está deshabilitado o porque no tiene permiso para ello! Notifique a un administrador si se trata de un error."
+
+# ¡No toque esto o este archivo podría romperse!
+Version: 1

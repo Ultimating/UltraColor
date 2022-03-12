@@ -1,0 +1,215 @@
+#
+# _   _ _ _             _____       _
+#| | | | | |           /  __ \     | |
+#| | | | | |_ _ __ __ _| /  \/ ___ | | ___  _ __
+#| | | | | __| '__/ _` | |    / _ \| |/ _ \| '__|
+#| |_| | | |_| | | (_| | \__/\ (_) | | (_) | |
+# \___/|_|\__|_|  \__,_|\____/\___/|_|\___/|_|
+#
+# Main Configuration
+
+# Configure what items you want to display for Chat Colors in the Chat Color Selection Menu.
+Chat_Color_Items:
+  Black: BLACK_DYE
+  Dark_Blue: BLUE_DYE
+  Dark_Green: GREEN_DYE
+  Dark_Aqua: CYAN_DYE
+  Dark_Red: RED_DYE
+  Dark_Purple: PURPLE_DYE
+  Orange: ORANGE_DYE
+  Gray: GRAY_DYE
+  Dark_Gray: GRAY_DYE
+  Blue: BLUE_DYE
+  Green: LIME_DYE
+  Aqua: LIGHT_BLUE_DYE
+  Red: RED_DYE
+  Light_Purple: MAGENTA_DYE
+  Yellow: YELLOW_DYE
+  White: BONE_MEAL
+  Magic_Format: GREEN_CARPET
+  Bold_Format: GREEN_CARPET
+  Italic_Format: GREEN_CARPET
+  Underline_Format: GREEN_CARPET
+  Strikethrough_Format: GREEN_CARPET
+  Reset_Format: GUNPOWDER
+
+# Configure what items you want to display for Name Colors in the Name Color Selection Menu.
+Name_Color_Items:
+  Black: BLACK_WOOL
+  Dark_Blue: BLUE_WOOL
+  Dark_Green: GREEN_WOOL
+  Dark_Aqua: CYAN_WOOL
+  Dark_Red: RED_WOOL
+  Dark_Purple: PURPLE_WOOL
+  Orange: ORANGE_WOOL
+  Gray: GRAY_WOOL
+  Dark_Gray: GRAY_WOOL
+  Blue: BLUE_WOOL
+  Green: LIME_WOOL
+  Aqua: LIGHT_BLUE_WOOL
+  Red: RED_WOOL
+  Light_Purple: MAGENTA_WOOL
+  Yellow: YELLOW_WOOL
+  White: WHITE_WOOL
+  Magic_Format: GREEN_CARPET
+  Bold_Format: GREEN_CARPET
+  Italic_Format: GREEN_CARPET
+  Underline_Format: GREEN_CARPET
+  Strikethrough_Format: GREEN_CARPET
+  Reset_Format: GUNPOWDER
+
+# Configure what items you want to display for Gradient Colors in the Gradient Color Selection Menu.
+Gradient_Color_Items:
+  Reset: FEATHER
+  Custom: FIREWORK_ROCKET
+  Fill: GRAY_STAINED_GLASS_PANE
+  Chat: INK_SAC # The item to display for Chat Gradient Menu.
+  Name: NAME_TAG # The item to display for Name Gradient Menu.
+  Return: OAK_DOOR # The item to display the return back button.
+
+# Other options you may configure.
+Other:
+  # Enable or Disable the back button in GUI menus
+  Back_Button_Enable: true
+
+  # Enable or Disable nicknames. Note that this requires a server reboot when changed to take effect as this will remove some commands.
+  Nicknames_Enable: true
+
+  # Purges current nicknames IF `Nicknames_Enable` is set to `false`. This option just requires a plugin reload.
+  # NICKNAMES WILL PURGE FOR NICKED PLAYERS WHEN THEY NEXT TIME LOG IN WHEN THIS OPTION IS ACTIVE. CHANGE THIS WITH CAUTION!
+  Purge_Nicknames: false
+
+  # The maximum amount of characters there can be in a nickname. If this limit is changed, previous nicknames that don't meet
+  # the new character limit won't be purged.
+  Nickname_Character_Limit: 20
+
+  # The item displayed for the hex color button in /color GUI.
+  Hex_Color_Item: FLOWER_POT
+
+  # The item displayed for the back button in GUI menus
+  Back_Button_Item: BARRIER
+
+  # The item displayed for the reset button in GUI menus
+  Reset_Button_Item: FEATHER
+
+  # The item to display the info button in menus if enabled.
+  Info_Button_Item: NETHER_STAR
+
+# Enable, disable, or manage color functionality here.
+Color_Settings:
+  Name_Colors: true
+  Chat_Colors: true
+
+  # Should we allow name rainbow colors?
+  Name_Rainbow_Colors: true
+  Chat_Rainbow_Colors: true # Very similar to the above option.
+  Chat_Hex_Colors: true # ONLY WORKS ON 1.16+ AND REQUIRES A REBOOT ON CHANGE!
+  Name_Hex_Colors: true # SIMILAR TO OPTION ABOVE!
+
+  Name_Gradient_Colors: true # ONLY WORKS ON 1.16+ AND REQUIRES A REBOOT ON CHANGE!
+  Chat_Gradient_Colors: true # SIMILAR TO THE OPTION ABOVE!
+  Chat_Fill_Button: GRAY_STAINED_GLASS_PANE
+  Chat_Color_Button: INK_SAC # The chat color item to display in the main color selection GUI.
+  Name_Fill_Button: GRAY_STAINED_GLASS_PANE
+  Name_Color_Button: NAME_TAG # The name color item to display in the main color selection GUI.
+
+  # Hex colors players may use both via the /hexcolor command for both names and chat.
+  Allow_Only_Certain_Hex_Colors: false
+
+  # Enable/Disable certain name colors here.
+  Name_Color_Settings:
+    Black_Color_Enabled: true
+    Dark_Blue_Color_Enabled: true
+    Dark_Green_Color_Enabled: true
+    Dark_Aqua_Color_Enabled: true
+    Dark_Red_Color_Enabled: true
+    Dark_Purple_Color_Enabled: true
+    Orange_Color_Enabled: true
+    Gray_Color_Enabled: true
+    Dark_Gray_Color_Enabled: true
+    Blue_Color_Enabled: true
+    Green_Color_Enabled: true
+    Aqua_Color_Enabled: true
+    Red_Color_Enabled: true
+    Light_Purple_Color_Enabled: true
+    Yellow_Color_Enabled: true
+    White_Color_Enabled: true
+
+  Name_Formats:
+    Bold_Format_Enabled: true
+    Magic_Format_Enabled: true
+    Italic_Format_Enabled: true
+    Underline_Format_Enabled: true
+    Strikethrough_Format_Enabled: true
+
+  # Enable/Disable certain chat colors here.
+  Chat_Color_Settings:
+    Black_Color_Enabled: true
+    Dark_Blue_Color_Enabled: true
+    Dark_Green_Color_Enabled: true
+    Dark_Aqua_Color_Enabled: true
+    Dark_Red_Color_Enabled: true
+    Dark_Purple_Color_Enabled: true
+    Orange_Color_Enabled: true
+    Gray_Color_Enabled: true
+    Dark_Gray_Color_Enabled: true
+    Blue_Color_Enabled: true
+    Green_Color_Enabled: true
+    Aqua_Color_Enabled: true
+    Red_Color_Enabled: true
+    Light_Purple_Color_Enabled: true
+    Yellow_Color_Enabled: true
+    White_Color_Enabled: true
+
+  Chat_Formats:
+    Bold_Format_Enabled: true
+    Magic_Format_Enabled: true
+    Italic_Format_Enabled: true
+    Underline_Format_Enabled: true
+    Strikethrough_Format_Enabled: true
+
+# Manage the MySQL integration feature here!
+# REQUIRES A SERVER REBOOT WHEN CHANGED!
+Database:
+  Enabled: false
+  Host: "mycooldatabase.com"
+  Port: 3306
+  Database: "ucolor_database"
+  User: "ucolor_database"
+  Pass: "uC0l0rbyUltIm@tI0n"
+  # When a player goes inactive, how many days do we wait since their data was last updated before we purge it?
+  Expiry_Days: 120
+
+Other_Prefixes:
+  Success_Prefix: "&8&l[&2&l✔&8&l]&7 "
+  Error_Prefix: "&8&l[&4&l✕&8&l]&c "
+
+# Enable or disable plugin update notifications in console.
+Notify_Updates: true
+
+# Main plugin prefix
+Prefix: "&7[&bUltra&3Color&7] "
+
+# The language used for the messages.yml file
+# en = English, es = Spanish, it = Italian, de = German, French = fr
+Locale: 'en'
+
+# The aliases you may use for the main command. For example, /ucolor ?.
+Command_Aliases: [ ultracolor, ucolor ]
+
+# Advanced: Changes the priority of the event we use to format the chat. No need to touch unless needed.
+# This option is useful in case another chat plugin overrides UltraColor.
+# Higher means the event will be executed later, monitor is the highest.
+# Supported values: LOWEST, LOW, NORMAL, HIGH, HIGHEST, MONITOR
+# To know what each priority means, refer to this https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/EventPriority.html
+# DO NOT USE THE RELOAD COMMAND WHEN CHANGED! REBOOT YOUR SERVER!
+Chat_Listener_Priority: NORMAL
+
+# Debug certain parts of the plugin. Really useful for bug finding!
+# Put the part/s you want to debug inside the brackets while keeping the part in quotation marks.
+# Eg. Debug: ["mysql"]
+# Available: mysql
+Debug: [ ]
+
+# Please do not touch this section! File will break if you do!
+Version: 1
