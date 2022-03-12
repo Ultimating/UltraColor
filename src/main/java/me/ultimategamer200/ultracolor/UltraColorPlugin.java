@@ -219,7 +219,7 @@ public class UltraColorPlugin extends SimplePlugin {
 	}
 
 	/**
-	 * Gets the UltraColor Spigot resource to check updates for.
+	 * Gets the UltraColor Spigot resource to check updates for by its ID number.
 	 */
 	@Override
 	public SpigotUpdater getUpdateCheck() {
