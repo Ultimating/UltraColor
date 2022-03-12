@@ -38,7 +38,7 @@ import java.util.List;
 
 /**
  * The main plugin instance. This class extends SimplePlugin rather than JavaPlugin because we use the Foundation library!
- * This library allows developers to cut time spent on coding by at least 1/10th, saving time on making products everyone can
+ * This library allows developers to cut time spent on coding by at least a 10th, saving time on making products everyone can
  * enjoy!
  */
 public class UltraColorPlugin extends SimplePlugin {
