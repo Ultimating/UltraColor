@@ -13,11 +13,11 @@
 
 This Product uses the Foundation library software developed by MineAcademy.org. This license enforces the terms listed under **TERMS AND CONDITIONS** and below this line.
 
-If you decide to use the Foundation library mentioned above in your modified or private versions, which is highly recommended to save time on coding, you are also bound to its terms. These terms can be found at https://github.com/kangarko/Foundation#important-licencing-information.
+If you decide to use the Foundation library mentioned above in your privately modified versions, which is highly recommended to save time on coding, you are also bound to its terms. These terms can be found at https://github.com/kangarko/Foundation#important-licencing-information.
 
 The Licensor doesn't claim any parts of the Foundation library as their own in the Product. All credit goes to MineAcademy.org.
 
-You are not allowed to redistribute or republish full, partial, or modified versions of UltraColor pubically elsewhere (eg. placing the code into a premium plugin). You can however modify the source code and use a modified version of UltraColor on your own server or network.
+You are not allowed to redistribute or republish full, partial, or modified versions of UltraColor pubically elsewhere (eg. placing the code into a premium plugin). You can however modify the plugin's source code and use a modified version of UltraColor on your own server or network.
 
 The Licensor also reserves all rights to modify this license and the terms of the license with or without notifications. While you may be notified of any changes, it is your responsibility to check back with this license at any point in time.
 
