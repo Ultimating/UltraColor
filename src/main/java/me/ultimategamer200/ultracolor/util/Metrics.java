@@ -28,7 +28,6 @@ import java.util.zip.GZIPOutputStream;
  */
 public class Metrics {
 	private final Plugin plugin;
-
 	private final MetricsBase metricsBase;
 
 	/**

@@ -16,6 +16,7 @@ import me.ultimategamer200.ultracolor.settings.Settings;
 import me.ultimategamer200.ultracolor.subcommands.UltraColorCommandGroup;
 import me.ultimategamer200.ultracolor.util.Filter;
 import me.ultimategamer200.ultracolor.util.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.mineacademy.fo.Common;
@@ -43,7 +44,7 @@ import java.util.List;
  */
 public class UltraColorPlugin extends SimplePlugin {
 	/**
-	 * The main command group. DO NOT REMOVE.
+	 * The main command group.
 	 */
 	private final SimpleCommandGroup mainCommandGroup = new UltraColorCommandGroup();
 
@@ -66,6 +67,11 @@ public class UltraColorPlugin extends SimplePlugin {
 			}
 		}
 
+		if (!Bukkit.getVersion().contains("Paper") && !Bukkit.getVersion().equals("Spigot")) {
+			Common.logFramed("WARNING: You are using software that isn't Spigot/Paper! If you experience issues, please test on Spigot/Paper first.",
+					"Otherwise, you will not get support.");
+		}
+
 		Common.log(Common.consoleLineSmooth());
 		Common.log(" _   _ _ _             _____       _            \n" +
 				"| | | | | |           /  __ \\     | |           \n" +
@@ -74,7 +80,6 @@ public class UltraColorPlugin extends SimplePlugin {
 				"| |_| | | |_| | | (_| | \\__/\\ (_) | | (_) | |   \n" +
 				" \\___/|_|\\__|_|  \\__,_|\\____/\\___/|_|\\___/|_| ");
 		Common.log("Plugin loaded successfully!");
-		Common.log("Made by: " + getPluginCreator());
 
 		// Registers plugin commands and listeners.
 		registerCommands();
@@ -143,6 +148,9 @@ public class UltraColorPlugin extends SimplePlugin {
 		}
 	}
 
+	/**
+	 * Registers the plugin's listeners.
+	 */
 	private void registerEvents() {
 		registerEvents(new PlayerListener());
 		registerEvents(ChatListener.getInstance());
@@ -204,6 +212,9 @@ public class UltraColorPlugin extends SimplePlugin {
 		PlayerCache.clearAllData();
 	}
 
+	/**
+	 * Called when the server shuts down.
+	 */
 	@Override
 	protected void onPluginStop() {
 		if (Settings.Database.ENABLED && UltraColorDatabase.getInstance().isLoaded()) {
@@ -214,10 +225,6 @@ public class UltraColorPlugin extends SimplePlugin {
 		}
 	}
 
-	public String getPluginCreator() {
-		return "UltimateGamer200 (Ultimation)";
-	}
-
 	/**
 	 * Gets the UltraColor Spigot resource to check updates for by its ID number.
 	 */
@@ -226,21 +233,33 @@ public class UltraColorPlugin extends SimplePlugin {
 		return new SpigotUpdater(85332);
 	}
 
+	/**
+	 * What year was the plugin first released?
+	 */
 	@Override
 	public int getFoundedYear() {
 		return 2020;
 	}
 
+	/**
+	 * What is the oldest version this plugin will accept?
+	 */
 	@Override
 	public MinecraftVersion.V getMinimumVersion() {
 		return MinecraftVersion.V.v1_8;
 	}
 
+	/**
+	 * What is the newest version this plugin will accept?
+	 */
 	@Override
 	public MinecraftVersion.V getMaximumVersion() {
 		return MinecraftVersion.V.v1_18;
 	}
 
+	/**
+	 * Gets the main command group. Cannot use a @Getter for the variable otherwise the plugin would disable.
+	 */
 	@Override
 	public SimpleCommandGroup getMainCommand() {
 		return mainCommandGroup;

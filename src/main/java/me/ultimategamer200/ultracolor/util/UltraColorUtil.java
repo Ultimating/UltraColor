@@ -23,19 +23,11 @@ public class UltraColorUtil {
 	 * Takes the chat color identifier provided and returns a color code based on that identifier.
 	 *
 	 * @param format the name color identifier
-	 * @return the chat color format
+	 * @return the chat color format as a string
 	 */
 	public String nameFormatToString(final ChatColor format) {
-		if (format.equals(ChatColor.MAGIC))
-			return "§k";
-		if (format.equals(ChatColor.BOLD))
-			return "§l";
-		if (format.equals(ChatColor.ITALIC))
-			return "§o";
-		if (format.equals(ChatColor.UNDERLINE))
-			return "§n";
-		if (format.equals(ChatColor.STRIKETHROUGH))
-			return "§m";
+		if (format.isFormat())
+			return "§" + format.getChar();
 		return "";
 	}
 
@@ -43,19 +35,11 @@ public class UltraColorUtil {
 	 * Takes the chat color identifier provided and returns a color code based on that identifier.
 	 *
 	 * @param format the name color identifier
-	 * @return the chat color format
+	 * @return the chat color format as a string
 	 */
 	public String chatFormatToString(final CompChatColor format) {
-		if (format.equals(CompChatColor.MAGIC))
-			return "§k";
-		if (format.equals(CompChatColor.BOLD))
-			return "§l";
-		if (format.equals(CompChatColor.ITALIC))
-			return "§o";
-		if (format.equals(CompChatColor.UNDERLINE))
-			return "§n";
-		if (format.equals(CompChatColor.STRIKETHROUGH))
-			return "§m";
+		if (CompChatColor.getDecorations().contains(format))
+			return "§" + format.getCode();
 		return "";
 	}
 
@@ -63,44 +47,14 @@ public class UltraColorUtil {
 	 * Takes the name/chat color identifier provided and returns a color code based on that identifier.
 	 *
 	 * @param nameOrChatColor the name color identifier
-	 * @return the name/chat color format
+	 * @return the name/chat color format as a string
 	 */
 	public String nameAndChatColorToString(final CompChatColor nameOrChatColor) {
-		if (nameOrChatColor.equals(CompChatColor.BLACK))
-			return "§0";
-		if (nameOrChatColor.equals(CompChatColor.DARK_BLUE))
-			return "§1";
-		if (nameOrChatColor.equals(CompChatColor.DARK_GREEN))
-			return "§2";
-		if (nameOrChatColor.equals(CompChatColor.DARK_AQUA))
-			return "§3";
-		if (nameOrChatColor.equals(CompChatColor.DARK_RED))
-			return "§4";
-		if (nameOrChatColor.equals(CompChatColor.DARK_PURPLE))
-			return "§5";
-		if (nameOrChatColor.equals(CompChatColor.GOLD))
-			return "§6";
-		if (nameOrChatColor.equals(CompChatColor.GRAY))
-			return "§7";
-		if (nameOrChatColor.equals(CompChatColor.DARK_GRAY))
-			return "§8";
-		if (nameOrChatColor.equals(CompChatColor.BLUE))
-			return "§9";
-		if (nameOrChatColor.equals(CompChatColor.GREEN))
-			return "§a";
-		if (nameOrChatColor.equals(CompChatColor.AQUA))
-			return "§b";
-		if (nameOrChatColor.equals(CompChatColor.RED))
-			return "§c";
-		if (nameOrChatColor.equals(CompChatColor.LIGHT_PURPLE))
-			return "§d";
-		if (nameOrChatColor.equals(CompChatColor.YELLOW))
-			return "§e";
-		if (nameOrChatColor.equals(CompChatColor.WHITE))
-			return "§f";
+		// This condition takes into account if the color is a hex or gradient.
+		// If this is false, the color is a regular color that's neither a hex nor gradient.
 		if (nameOrChatColor.toString().contains("§"))
 			return nameOrChatColor.toString();
-		return "";
+		return "§" + nameOrChatColor.getCode();
 	}
 
 	/**
@@ -248,18 +202,8 @@ public class UltraColorUtil {
 				CompChatColor.GREEN, CompChatColor.BLUE, CompChatColor.LIGHT_PURPLE};
 		String formatCode = "";
 
-		if (formatEnabled) {
-			if (format.equalsIgnoreCase("bold"))
-				formatCode = "§l";
-			else if (format.equalsIgnoreCase("italic"))
-				formatCode = "§o";
-			else if (format.equalsIgnoreCase("magic"))
-				formatCode = "§k";
-			else if (format.equalsIgnoreCase("strikethrough"))
-				formatCode = "§m";
-			else if (format.equalsIgnoreCase("underline"))
-				formatCode = "§n";
-		}
+		if (formatEnabled)
+			formatCode = nameFormatToString(getNameFormatToChatColor(format));
 
 		for (int i = 0; i < stringSize; i++) {
 			result.append(rainbowColors[colorCount % rainbowColors.length]).append(formatEnabled ? formatCode : "")
@@ -324,16 +268,12 @@ public class UltraColorUtil {
 	 * @return the ChatColor of the specified format.
 	 */
 	public ChatColor getNameFormatToChatColor(final String selectedFormat) {
-		if (selectedFormat.equalsIgnoreCase("bold"))
-			return ChatColor.BOLD;
-		if (selectedFormat.equalsIgnoreCase("magic"))
-			return ChatColor.MAGIC;
-		if (selectedFormat.equalsIgnoreCase("underline"))
-			return ChatColor.UNDERLINE;
-		if (selectedFormat.equalsIgnoreCase("italic"))
-			return ChatColor.ITALIC;
-		if (selectedFormat.equalsIgnoreCase("strikethrough"))
-			return ChatColor.STRIKETHROUGH;
+		for (final ChatColor color : ChatColor.values()) {
+			if (!color.isFormat())
+				continue;
+			if (color.name().equalsIgnoreCase(selectedFormat))
+				return color;
+		}
 
 		return null;
 	}

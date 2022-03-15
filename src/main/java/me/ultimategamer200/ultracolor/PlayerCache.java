@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 @Getter
 public final class PlayerCache extends YamlSectionConfig {
 	/**
-	 * A special map that works with the data.db file, but never changes the file. It's an ExpiringMap to keep it fresh and clean.
+	 * A special map that works with the data.db file, but never changes the file at all. It's an ExpiringMap to keep it fresh and clean.
 	 */
 	public static final ExpiringMap<UUID, PlayerCache> cacheMap = ExpiringMap.builder().expiration(30, TimeUnit.MINUTES).build();
 
@@ -95,7 +95,7 @@ public final class PlayerCache extends YamlSectionConfig {
 
 	// Creates a new data section for the player if they don't exist.
 	private PlayerCache(final UUID uuid) {
-		// This will prepend this cache with the players unique id just like you use pathPrefix in SimpleSettings
+		// This will prepend this cache with the players unique id just like you use pathPrefix in the Settings class.
 		super(uuid.toString());
 
 		this.uuid = uuid;
@@ -207,7 +207,7 @@ public final class PlayerCache extends YamlSectionConfig {
 	}
 
 	/**
-	 * Gets the cache by UUID (Not recommended using unless necessary!)
+	 * Gets the cache by UUID (Not recommended calling this method unless it's necessary!)
 	 */
 	public static PlayerCache fromUUID(final UUID uuid) {
 		synchronized (cacheMap) {

@@ -23,7 +23,7 @@ import java.util.logging.LogRecord;
 public final class Filter {
 
 	/**
-	 * Start filtering the console - call this from your plugin in onStart (onEnable)
+	 * Start filtering the console - call this from the plugin in onStart (onEnable)
 	 */
 	public static void inject() {
 		// Set filter for System out

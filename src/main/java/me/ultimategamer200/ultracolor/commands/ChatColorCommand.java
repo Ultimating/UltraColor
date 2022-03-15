@@ -16,7 +16,9 @@ public class ChatColorCommand extends SimpleCommand {
 
 	@Override
 	protected void onCommand() {
+		// Checks if the sender is a console, and if so, deny the command from being run.
 		checkConsole();
+
 		final Player player = getPlayer();
 		new ColorSelectionMenu.ChatColorSelectionMenu().displayTo(player);
 	}

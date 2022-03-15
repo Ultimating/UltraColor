@@ -97,7 +97,7 @@ public class PreDefinedGradientMenu extends Menu {
 		}
 
 		/**
-		 * @see org.mineacademy.fo.menu.MenuPagged#convertToItemStack(Object)
+		 * Converts each pre-defined gradient into an itemstack to be clicked on.
 		 */
 		@Override
 		protected ItemStack convertToItemStack(PreDefinedGradient gradient) {
@@ -107,7 +107,7 @@ public class PreDefinedGradientMenu extends Menu {
 		}
 
 		/**
-		 * @see org.mineacademy.fo.menu.MenuPagged#onPageClick(Player, Object, ClickType)
+		 * Ran when a pre-gradient is clicked on.
 		 */
 		@Override
 		protected void onPageClick(Player player, PreDefinedGradient gradient, ClickType clickType) {
