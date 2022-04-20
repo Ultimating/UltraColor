@@ -230,7 +230,9 @@ public class UltraColorPlugin extends SimplePlugin {
 	 */
 	@Override
 	public SpigotUpdater getUpdateCheck() {
-		return new SpigotUpdater(85332);
+		if (Settings.NOTIFY_UPDATES)
+			return new SpigotUpdater(85332);
+		return null;
 	}
 
 	/**
