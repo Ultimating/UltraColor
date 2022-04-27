@@ -1,10 +1,11 @@
+<!--- Commented out since enrollment for this program is closed.
 <p align="center">
   Do you want to build your own plugins with features unique to only your server?
   
   <a href="https://bit.ly/3lZiAsT">
     <img src="https://i.imgur.com/OJuN0qP.png" />
   </a>
-</p>
+</p> --->
 
 Join MineAcademy to learn Java and plugin development and get a 25€ discount!
 
