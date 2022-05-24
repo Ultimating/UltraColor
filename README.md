@@ -1,3 +1,4 @@
+<!--- Commented out since enrollment for this program is closed.
 <p align="center">
   Do you want to build your own plugins with features unique to only your server?
   
@@ -6,7 +7,7 @@
   </a>
 </p>
 
-Join MineAcademy to learn Java and plugin development and get a 25€ discount!
+Join MineAcademy to learn Java and plugin development and get a 25€ discount!--->
 
 ## IMPORTANT: As of March 15th midnight central time, this plugin no longer actively receives updates. This means no new features will be added unless its essential for the plugin. Minor/critical bug fixes or improvements will be prioritzed, along with updates to new Minecraft versions. This could change at anypoint, but that's unlikely. For more information/reasoning, please see this [here](https://docs.google.com/document/d/1BXdOsQdvIeQCgBGsSJV0EkSn9jh67ZInoutuYd5i-3A/edit?usp=sharing).
 
