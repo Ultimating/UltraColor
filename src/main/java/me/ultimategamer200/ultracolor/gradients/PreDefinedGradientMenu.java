@@ -15,7 +15,6 @@ import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.menu.Menu;
 import org.mineacademy.fo.menu.MenuPagged;
 import org.mineacademy.fo.menu.button.Button;
-import org.mineacademy.fo.menu.model.ItemCreator;
 import org.mineacademy.fo.remain.CompChatColor;
 
 import java.util.ArrayList;
@@ -51,9 +50,8 @@ public class PreDefinedGradientMenu extends Menu {
 				// Gets the item to display in the menu for this button.
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Gradient_Color_Menu_Items.CUSTOM_ITEM,
-							Localization.Gradient_Color_Selection_Custom.CUSTOM_NAME,
-							Localization.Gradient_Color_Selection_Custom.CUSTOM_LORE).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Gradient_Color_Menu_Items.CUSTOM_ITEM, Localization.Gradient_Color_Selection_Custom.CUSTOM_NAME,
+							Localization.Gradient_Color_Selection_Custom.CUSTOM_LORE);
 				}
 			};
 
@@ -89,9 +87,8 @@ public class PreDefinedGradientMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Gradient_Color_Menu_Items.RESET_ITEM,
-							Localization.Gradient_Color_Selection_Reset.RESET_NAME,
-							Localization.Gradient_Color_Selection_Reset.RESET_LORE).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Gradient_Color_Menu_Items.RESET_ITEM, Localization.Gradient_Color_Selection_Reset.RESET_NAME,
+							Localization.Gradient_Color_Selection_Reset.RESET_LORE);
 				}
 			};
 		}
@@ -102,8 +99,8 @@ public class PreDefinedGradientMenu extends Menu {
 		@Override
 		protected ItemStack convertToItemStack(PreDefinedGradient gradient) {
 			final PreDefinedGradientSettings settings = gradient.getSettings();
-			return ItemCreator.of(settings.getMenuItem(), settings.getDisplayName(), UltraColorUtil
-					.modifyColorLoreWithPreview(settings.getMenuLore(), "gradient", settings.getHexColors())).build().make();
+			return UltraColorUtil.makeMenuItem(settings.getMenuItem(), settings.getDisplayName(), UltraColorUtil
+					.modifyColorLoreWithPreview(settings.getMenuLore(), "gradient", settings.getHexColors()));
 		}
 
 		/**
@@ -200,9 +197,9 @@ public class PreDefinedGradientMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Gradient_Color_Menu_Items.CUSTOM_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Gradient_Color_Menu_Items.CUSTOM_ITEM,
 							Localization.Gradient_Color_Selection_Custom.CUSTOM_NAME,
-							Localization.Gradient_Color_Selection_Custom.CUSTOM_LORE).build().make();
+							Localization.Gradient_Color_Selection_Custom.CUSTOM_LORE);
 				}
 			};
 
@@ -223,9 +220,8 @@ public class PreDefinedGradientMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Gradient_Color_Menu_Items.RESET_ITEM,
-							Localization.Gradient_Color_Selection_Reset.RESET_NAME,
-							Localization.Gradient_Color_Selection_Reset.RESET_LORE).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Gradient_Color_Menu_Items.RESET_ITEM, Localization.Gradient_Color_Selection_Reset.RESET_NAME,
+							Localization.Gradient_Color_Selection_Reset.RESET_LORE);
 				}
 			};
 		}
@@ -233,8 +229,8 @@ public class PreDefinedGradientMenu extends Menu {
 		@Override
 		protected ItemStack convertToItemStack(PreDefinedGradient gradient) {
 			final PreDefinedGradientSettings settings = gradient.getSettings();
-			return ItemCreator.of(settings.getMenuItem(), settings.getDisplayName(), UltraColorUtil
-					.modifyColorLoreWithPreview(settings.getMenuLore(), "gradient", settings.getHexColors())).build().make();
+			return UltraColorUtil.makeMenuItem(settings.getMenuItem(), settings.getDisplayName(), UltraColorUtil
+					.modifyColorLoreWithPreview(settings.getMenuLore(), "gradient", settings.getHexColors()));
 		}
 
 		@Override
@@ -244,10 +240,8 @@ public class PreDefinedGradientMenu extends Menu {
 
 			if (player.hasPermission(settings.getPermission()) || player.hasPermission(UltraColorPermissions.Color.CHAT_GRADIENTS
 					.replace("{gradient-color}", "*"))) {
-				final String hex1 = settings.getHexColors().get(0);
-				final String hex2 = settings.getHexColors().get(1);
-				pCache.setChatCustomGradient1(CompChatColor.of(hex1));
-				pCache.setChatCustomGradient2(CompChatColor.of(hex2));
+				pCache.setChatCustomGradient1(CompChatColor.of(settings.getHexColors().get(0)));
+				pCache.setChatCustomGradient2(CompChatColor.of(settings.getHexColors().get(1)));
 				pCache.setChatColor(null);
 				tellSuccess(settings.getSuccessMessage());
 			} else

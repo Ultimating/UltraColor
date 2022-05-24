@@ -7,6 +7,9 @@
 # \___/|_|\__|_|  \__,_|\____/\___/|_|\___/|_|
 #
 # Main Configuration
+# To input Player Heads, please use the syntax: "PLAYER_HEAD:<textures.minecraft.net link here without the arrow signs>".
+# Eg. "PLAYER_HEAD:https://textures.minecraft.net/texture/15645e08a035ef527fb1f4cbbaea5734ab12a475d8028983a277685adc58a9e0"
+# For reference on what heads to use, please visit https://minecraft-heads.com/.
 
 # Configure what items you want to display for Chat Colors in the Chat Color Selection Menu.
 Chat_Color_Items:
@@ -32,6 +35,7 @@ Chat_Color_Items:
   Underline_Format: GREEN_CARPET
   Strikethrough_Format: GREEN_CARPET
   Reset_Format: GUNPOWDER
+  Rainbow: "PLAYER_HEAD:https://textures.minecraft.net/texture/b87fd23a78369bd3875da8896f150c4af9f23374e048e30913900e3fdd77859a"
 
 # Configure what items you want to display for Name Colors in the Name Color Selection Menu.
 Name_Color_Items:
@@ -57,6 +61,7 @@ Name_Color_Items:
   Underline_Format: GREEN_CARPET
   Strikethrough_Format: GREEN_CARPET
   Reset_Format: GUNPOWDER
+  Rainbow: "PLAYER_HEAD:https://textures.minecraft.net/texture/b87fd23a78369bd3875da8896f150c4af9f23374e048e30913900e3fdd77859a"
 
 # Configure what items you want to display for Gradient Colors in the Gradient Color Selection Menu.
 Gradient_Color_Items:
@@ -65,7 +70,7 @@ Gradient_Color_Items:
   Fill: GRAY_STAINED_GLASS_PANE
   Chat: INK_SAC # The item to display for Chat Gradient Menu.
   Name: NAME_TAG # The item to display for Name Gradient Menu.
-  Return: OAK_DOOR # The item to display the return back button.
+  Return: OAK_DOOR # The item to display the return back button. This DOES NOT support heads due to how the menu system this plugin uses works.
 
 # Other options you may configure.
 Other:
@@ -89,10 +94,11 @@ Other:
   # The item displayed for the back button in GUI menus
   Back_Button_Item: BARRIER
 
-  # The item displayed for the reset button in GUI menus
+  # The item displayed for the reset button in GUI menus.
   Reset_Button_Item: FEATHER
 
   # The item to display the info button in menus if enabled.
+  # This DOES NOT support heads due to how the menu system this plugin uses works.
   Info_Button_Item: NETHER_STAR
 
 # Enable, disable, or manage color functionality here.

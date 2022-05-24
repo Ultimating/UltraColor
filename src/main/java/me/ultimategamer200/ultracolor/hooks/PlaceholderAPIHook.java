@@ -36,7 +36,7 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 
 		if (identifier.equals("chat_color")) {
 			if (pCache.getChatCustomGradient1() != null && pCache.getChatCustomGradient2() != null)
-				return pCache.getChatCustomGradient1() + pCache.getChatCustomGradient2().toString();
+				return pCache.getChatCustomGradient1().toString() + pCache.getChatCustomGradient2();
 
 			if (pCache.getChatColor() != null || pCache.getChatFormat() != null)
 				if (pCache.getChatColor() != null && pCache.getChatFormat() == null)

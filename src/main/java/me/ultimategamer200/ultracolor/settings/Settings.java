@@ -15,126 +15,130 @@ public class Settings extends SimpleSettings {
 	}
 
 	public static class Chat_Color_Menu_Items {
-		public static CompMaterial BLACK_ITEM;
-		public static CompMaterial DARK_BLUE_ITEM;
-		public static CompMaterial DARK_GREEN_ITEM;
-		public static CompMaterial DARK_AQUA_ITEM;
-		public static CompMaterial DARK_RED_ITEM;
-		public static CompMaterial DARK_PURPLE_ITEM;
-		public static CompMaterial ORANGE_ITEM;
-		public static CompMaterial GRAY_ITEM;
-		public static CompMaterial DARK_GRAY_ITEM;
-		public static CompMaterial BLUE_ITEM;
-		public static CompMaterial GREEN_ITEM;
-		public static CompMaterial AQUA_ITEM;
-		public static CompMaterial RED_ITEM;
-		public static CompMaterial LIGHT_PURPLE_ITEM;
-		public static CompMaterial YELLOW_ITEM;
-		public static CompMaterial WHITE_ITEM;
-		public static CompMaterial MAGIC_ITEM;
-		public static CompMaterial BOLD_ITEM;
-		public static CompMaterial ITALIC_ITEM;
-		public static CompMaterial UNDERLINE_ITEM;
-		public static CompMaterial STRIKETHROUGH_ITEM;
-		public static CompMaterial FORMAT_RESET_ITEM;
+		public static String BLACK_ITEM;
+		public static String DARK_BLUE_ITEM;
+		public static String DARK_GREEN_ITEM;
+		public static String DARK_AQUA_ITEM;
+		public static String DARK_RED_ITEM;
+		public static String DARK_PURPLE_ITEM;
+		public static String ORANGE_ITEM;
+		public static String GRAY_ITEM;
+		public static String DARK_GRAY_ITEM;
+		public static String BLUE_ITEM;
+		public static String GREEN_ITEM;
+		public static String AQUA_ITEM;
+		public static String RED_ITEM;
+		public static String LIGHT_PURPLE_ITEM;
+		public static String YELLOW_ITEM;
+		public static String WHITE_ITEM;
+		public static String MAGIC_ITEM;
+		public static String BOLD_ITEM;
+		public static String ITALIC_ITEM;
+		public static String UNDERLINE_ITEM;
+		public static String STRIKETHROUGH_ITEM;
+		public static String FORMAT_RESET_ITEM;
+		public static String RAINBOW_ITEM;
 
 		private static void init() {
 			pathPrefix("Chat_Color_Items");
 
-			BLACK_ITEM = getMaterial("Black");
-			DARK_BLUE_ITEM = getMaterial("Dark_Blue");
-			DARK_GREEN_ITEM = getMaterial("Dark_Green");
-			DARK_AQUA_ITEM = getMaterial("Dark_Aqua");
-			DARK_RED_ITEM = getMaterial("Dark_Red");
-			DARK_PURPLE_ITEM = getMaterial("Dark_Purple");
-			ORANGE_ITEM = getMaterial("Orange");
-			GRAY_ITEM = getMaterial("Gray");
-			DARK_GRAY_ITEM = getMaterial("Dark_Gray");
-			BLUE_ITEM = getMaterial("Blue");
-			GREEN_ITEM = getMaterial("Green");
-			AQUA_ITEM = getMaterial("Aqua");
-			RED_ITEM = getMaterial("Red");
-			LIGHT_PURPLE_ITEM = getMaterial("Light_Purple");
-			YELLOW_ITEM = getMaterial("Yellow");
-			WHITE_ITEM = getMaterial("White");
-			MAGIC_ITEM = getMaterial("Magic_Format");
-			BOLD_ITEM = getMaterial("Bold_Format");
-			ITALIC_ITEM = getMaterial("Italic_Format");
-			UNDERLINE_ITEM = getMaterial("Underline_Format");
-			STRIKETHROUGH_ITEM = getMaterial("Strikethrough_Format");
-			FORMAT_RESET_ITEM = getMaterial("Reset_Format");
+			BLACK_ITEM = getString("Black");
+			DARK_BLUE_ITEM = getString("Dark_Blue");
+			DARK_GREEN_ITEM = getString("Dark_Green");
+			DARK_AQUA_ITEM = getString("Dark_Aqua");
+			DARK_RED_ITEM = getString("Dark_Red");
+			DARK_PURPLE_ITEM = getString("Dark_Purple");
+			ORANGE_ITEM = getString("Orange");
+			GRAY_ITEM = getString("Gray");
+			DARK_GRAY_ITEM = getString("Dark_Gray");
+			BLUE_ITEM = getString("Blue");
+			GREEN_ITEM = getString("Green");
+			AQUA_ITEM = getString("Aqua");
+			RED_ITEM = getString("Red");
+			LIGHT_PURPLE_ITEM = getString("Light_Purple");
+			YELLOW_ITEM = getString("Yellow");
+			WHITE_ITEM = getString("White");
+			MAGIC_ITEM = getString("Magic_Format");
+			BOLD_ITEM = getString("Bold_Format");
+			ITALIC_ITEM = getString("Italic_Format");
+			UNDERLINE_ITEM = getString("Underline_Format");
+			STRIKETHROUGH_ITEM = getString("Strikethrough_Format");
+			FORMAT_RESET_ITEM = getString("Reset_Format");
+			RAINBOW_ITEM = getString("Rainbow");
 		}
 	}
 
 	public static class Name_Color_Menu_Items {
-		public static CompMaterial BLACK_ITEM;
-		public static CompMaterial DARK_BLUE_ITEM;
-		public static CompMaterial DARK_GREEN_ITEM;
-		public static CompMaterial DARK_AQUA_ITEM;
-		public static CompMaterial DARK_RED_ITEM;
-		public static CompMaterial DARK_PURPLE_ITEM;
-		public static CompMaterial ORANGE_ITEM;
-		public static CompMaterial GRAY_ITEM;
-		public static CompMaterial DARK_GRAY_ITEM;
-		public static CompMaterial BLUE_ITEM;
-		public static CompMaterial GREEN_ITEM;
-		public static CompMaterial AQUA_ITEM;
-		public static CompMaterial RED_ITEM;
-		public static CompMaterial LIGHT_PURPLE_ITEM;
-		public static CompMaterial YELLOW_ITEM;
-		public static CompMaterial WHITE_ITEM;
-		public static CompMaterial MAGIC_ITEM;
-		public static CompMaterial BOLD_ITEM;
-		public static CompMaterial ITALIC_ITEM;
-		public static CompMaterial UNDERLINE_ITEM;
-		public static CompMaterial STRIKETHROUGH_ITEM;
-		public static CompMaterial FORMAT_RESET_ITEM;
+		public static String BLACK_ITEM;
+		public static String DARK_BLUE_ITEM;
+		public static String DARK_GREEN_ITEM;
+		public static String DARK_AQUA_ITEM;
+		public static String DARK_RED_ITEM;
+		public static String DARK_PURPLE_ITEM;
+		public static String ORANGE_ITEM;
+		public static String GRAY_ITEM;
+		public static String DARK_GRAY_ITEM;
+		public static String BLUE_ITEM;
+		public static String GREEN_ITEM;
+		public static String AQUA_ITEM;
+		public static String RED_ITEM;
+		public static String LIGHT_PURPLE_ITEM;
+		public static String YELLOW_ITEM;
+		public static String WHITE_ITEM;
+		public static String MAGIC_ITEM;
+		public static String BOLD_ITEM;
+		public static String ITALIC_ITEM;
+		public static String UNDERLINE_ITEM;
+		public static String STRIKETHROUGH_ITEM;
+		public static String FORMAT_RESET_ITEM;
+		public static String RAINBOW_ITEM;
 
 		private static void init() {
 			pathPrefix("Name_Color_Items");
 
-			BLACK_ITEM = getMaterial("Black");
-			DARK_BLUE_ITEM = getMaterial("Dark_Blue");
-			DARK_GREEN_ITEM = getMaterial("Dark_Green");
-			DARK_AQUA_ITEM = getMaterial("Dark_Aqua");
-			DARK_RED_ITEM = getMaterial("Dark_Red");
-			DARK_PURPLE_ITEM = getMaterial("Dark_Purple");
-			ORANGE_ITEM = getMaterial("Orange");
-			GRAY_ITEM = getMaterial("Gray");
-			DARK_GRAY_ITEM = getMaterial("Dark_Gray");
-			BLUE_ITEM = getMaterial("Blue");
-			GREEN_ITEM = getMaterial("Green");
-			AQUA_ITEM = getMaterial("Aqua");
-			RED_ITEM = getMaterial("Red");
-			LIGHT_PURPLE_ITEM = getMaterial("Light_Purple");
-			YELLOW_ITEM = getMaterial("Yellow");
-			WHITE_ITEM = getMaterial("White");
-			MAGIC_ITEM = getMaterial("Magic_Format");
-			BOLD_ITEM = getMaterial("Bold_Format");
-			ITALIC_ITEM = getMaterial("Italic_Format");
-			UNDERLINE_ITEM = getMaterial("Underline_Format");
-			STRIKETHROUGH_ITEM = getMaterial("Strikethrough_Format");
-			FORMAT_RESET_ITEM = getMaterial("Reset_Format");
+			BLACK_ITEM = getString("Black");
+			DARK_BLUE_ITEM = getString("Dark_Blue");
+			DARK_GREEN_ITEM = getString("Dark_Green");
+			DARK_AQUA_ITEM = getString("Dark_Aqua");
+			DARK_RED_ITEM = getString("Dark_Red");
+			DARK_PURPLE_ITEM = getString("Dark_Purple");
+			ORANGE_ITEM = getString("Orange");
+			GRAY_ITEM = getString("Gray");
+			DARK_GRAY_ITEM = getString("Dark_Gray");
+			BLUE_ITEM = getString("Blue");
+			GREEN_ITEM = getString("Green");
+			AQUA_ITEM = getString("Aqua");
+			RED_ITEM = getString("Red");
+			LIGHT_PURPLE_ITEM = getString("Light_Purple");
+			YELLOW_ITEM = getString("Yellow");
+			WHITE_ITEM = getString("White");
+			MAGIC_ITEM = getString("Magic_Format");
+			BOLD_ITEM = getString("Bold_Format");
+			ITALIC_ITEM = getString("Italic_Format");
+			UNDERLINE_ITEM = getString("Underline_Format");
+			STRIKETHROUGH_ITEM = getString("Strikethrough_Format");
+			FORMAT_RESET_ITEM = getString("Reset_Format");
+			RAINBOW_ITEM = getString("Rainbow");
 		}
 	}
 
 	public static class Gradient_Color_Menu_Items {
-		public static CompMaterial CHAT_ITEM;
-		public static CompMaterial NAME_ITEM;
-		public static CompMaterial RESET_ITEM;
-		public static CompMaterial CUSTOM_ITEM;
-		public static CompMaterial FILL_ITEM;
+		public static String CHAT_ITEM;
+		public static String NAME_ITEM;
+		public static String RESET_ITEM;
+		public static String CUSTOM_ITEM;
+		public static String FILL_ITEM;
 		public static CompMaterial RETURN_ITEM;
 
 		private static void init() {
 			pathPrefix("Gradient_Color_Items");
 
-			RESET_ITEM = getMaterial("Reset");
-			CUSTOM_ITEM = getMaterial("Custom");
-			FILL_ITEM = getMaterial("Fill");
+			RESET_ITEM = getString("Reset");
+			CUSTOM_ITEM = getString("Custom");
+			FILL_ITEM = getString("Fill");
 
-			CHAT_ITEM = getMaterial("Chat");
-			NAME_ITEM = getMaterial("Name");
+			CHAT_ITEM = getString("Chat");
+			NAME_ITEM = getString("Name");
 			RETURN_ITEM = getMaterial("Return");
 		}
 	}
@@ -149,10 +153,10 @@ public class Settings extends SimpleSettings {
 		public static Boolean CHAT_GRADIENT_COLORS;
 		public static Boolean NAME_GRADIENT_COLORS;
 		public static Boolean ALLOW_ONLY_CERTAIN_HEX_COLORS;
-		public static CompMaterial CHAT_FILL_BUTTON;
-		public static CompMaterial NAME_FILL_BUTTON;
-		public static CompMaterial CHAT_COLOR_BUTTON;
-		public static CompMaterial NAME_COLOR_BUTTON;
+		public static String CHAT_FILL_BUTTON;
+		public static String NAME_FILL_BUTTON;
+		public static String CHAT_COLOR_BUTTON;
+		public static String NAME_COLOR_BUTTON;
 
 		private static void init() {
 			pathPrefix("Color_Settings");
@@ -167,12 +171,12 @@ public class Settings extends SimpleSettings {
 			NAME_GRADIENT_COLORS = getBoolean("Name_Gradient_Colors");
 			CHAT_GRADIENT_COLORS = getBoolean("Chat_Gradient_Colors");
 
-			CHAT_FILL_BUTTON = getMaterial("Chat_Fill_Button");
-			NAME_FILL_BUTTON = getMaterial("Name_Fill_Button");
+			CHAT_FILL_BUTTON = getString("Chat_Fill_Button");
+			NAME_FILL_BUTTON = getString("Name_Fill_Button");
 			ALLOW_ONLY_CERTAIN_HEX_COLORS = getBoolean("Allow_Only_Certain_Hex_Colors");
 
-			CHAT_COLOR_BUTTON = getMaterial("Chat_Color_Button");
-			NAME_COLOR_BUTTON = getMaterial("Name_Color_Button");
+			CHAT_COLOR_BUTTON = getString("Chat_Color_Button");
+			NAME_COLOR_BUTTON = getString("Name_Color_Button");
 		}
 
 		public static void setAllowOnlyCertainHexColors(final Boolean allowOnlyCertainHexColors) {
@@ -323,9 +327,9 @@ public class Settings extends SimpleSettings {
 		public static Boolean NICKNAMES_ENABLE;
 		public static Boolean PURGE_NICKNAMES;
 		public static Integer NICKNAME_CHARACTER_LIMIT;
-		public static CompMaterial HEX_COLOR_ITEM;
-		public static CompMaterial BACK_BUTTON_ITEM;
-		public static CompMaterial RESET_BUTTON_ITEM;
+		public static String HEX_COLOR_ITEM;
+		public static String BACK_BUTTON_ITEM;
+		public static String RESET_BUTTON_ITEM;
 		public static CompMaterial INFO_ITEM;
 
 		private static void init() {
@@ -335,9 +339,9 @@ public class Settings extends SimpleSettings {
 			NICKNAMES_ENABLE = getBoolean("Nicknames_Enable");
 			PURGE_NICKNAMES = getBoolean("Purge_Nicknames");
 			NICKNAME_CHARACTER_LIMIT = getInteger("Nickname_Character_Limit");
-			HEX_COLOR_ITEM = getMaterial("Hex_Color_Item");
-			BACK_BUTTON_ITEM = getMaterial("Back_Button_Item");
-			RESET_BUTTON_ITEM = getMaterial("Reset_Button_Item");
+			HEX_COLOR_ITEM = getString("Hex_Color_Item");
+			BACK_BUTTON_ITEM = getString("Back_Button_Item");
+			RESET_BUTTON_ITEM = getString("Reset_Button_Item");
 			INFO_ITEM = getMaterial("Info_Button_Item");
 		}
 	}

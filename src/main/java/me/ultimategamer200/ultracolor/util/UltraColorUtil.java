@@ -6,7 +6,10 @@ import me.ultimategamer200.ultracolor.settings.Settings;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.mineacademy.fo.ChatUtil;
+import org.mineacademy.fo.menu.model.ItemCreator;
+import org.mineacademy.fo.menu.model.SkullCreator;
 import org.mineacademy.fo.remain.CompChatColor;
 
 import java.util.ArrayList;
@@ -245,6 +248,24 @@ public class UltraColorUtil {
 		}
 
 		return modifiedLore;
+	}
+
+	/**
+	 * A convenient method for making a menu item that allows support of custom player heads.
+	 *
+	 * @param material the material ID as a string
+	 * @param name     the name for the item.
+	 * @param lore     the lore for the item.
+	 * @return an ItemStack of the specified material, name, and lore.
+	 */
+	public ItemStack makeMenuItem(final String material, final String name, final List<String> lore) {
+		if (material.startsWith("PLAYER_HEAD:")) {
+			final String textureLink = material.substring(12);
+			final ItemStack head = SkullCreator.itemFromUrl(textureLink);
+			return ItemCreator.of(head).name(name).lores(lore).build().make();
+		}
+
+		return ItemCreator.of(material, name, lore).build().make();
 	}
 
 	/**

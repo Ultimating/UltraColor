@@ -119,12 +119,6 @@ public class UltraColorPlugin extends SimplePlugin {
 			}
 		}
 
-		if (Localization.Gradient_Color_Selection_Return.ENABLED) {
-			ButtonReturnBack.setMaterial(Settings.Gradient_Color_Menu_Items.RETURN_ITEM);
-			ButtonReturnBack.setTitle(Localization.Gradient_Color_Selection_Return.CUSTOM_NAME);
-			ButtonReturnBack.setLore(Localization.Gradient_Color_Selection_Return.CUSTOM_LORE);
-		}
-
 		Common.log(Common.consoleLineSmooth());
 	}
 

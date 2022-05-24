@@ -15,7 +15,6 @@ import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.menu.Menu;
 import org.mineacademy.fo.menu.button.Button;
 import org.mineacademy.fo.menu.model.ItemCreator;
-import org.mineacademy.fo.menu.model.SkullCreator;
 import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.CompMaterial;
 import org.mineacademy.fo.remain.Remain;
@@ -213,10 +212,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.BLACK_ITEM,
-							Localization.Chat_Color_Selection_Customization_Black.BLACK_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Black.BLACK_LORE,
-									"§0", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.BLACK_ITEM, Localization
+							.Chat_Color_Selection_Customization_Black.BLACK_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization
+							.Chat_Color_Selection_Customization_Black.BLACK_LORE, "§0", null));
 				}
 			};
 
@@ -234,10 +232,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.DARK_BLUE_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.DARK_BLUE_ITEM,
 							Localization.Chat_Color_Selection_Customization_Dark_Blue.DARK_BLUE_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Dark_Blue.DARK_BLUE_LORE,
-									"§1", null)).build().make();
+									"§1", null));
 				}
 			};
 
@@ -255,10 +253,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.DARK_GREEN_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.DARK_GREEN_ITEM,
 							Localization.Chat_Color_Selection_Customization_Dark_Green.DARK_GREEN_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Dark_Green.DARK_GREEN_LORE,
-									"§2", null)).build().make();
+									"§2", null));
 				}
 			};
 
@@ -276,10 +274,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.DARK_AQUA_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.DARK_AQUA_ITEM,
 							Localization.Chat_Color_Selection_Customization_Dark_Aqua.DARK_AQUA_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Dark_Aqua.DARK_AQUA_LORE,
-									"§3", null)).build().make();
+									"§3", null));
 				}
 			};
 
@@ -297,10 +295,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.DARK_RED_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.DARK_RED_ITEM,
 							Localization.Chat_Color_Selection_Customization_Dark_Red.DARK_RED_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Dark_Red.DARK_RED_LORE,
-									"§4", null)).build().make();
+									"§4", null));
 				}
 			};
 
@@ -318,10 +316,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.DARK_PURPLE_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.DARK_PURPLE_ITEM,
 							Localization.Chat_Color_Selection_Customization_Dark_Purple.DARK_PURPLE_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Dark_Purple.DARK_PURPLE_LORE,
-									"§5", null)).build().make();
+									"§5", null));
 				}
 			};
 
@@ -339,10 +337,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.ORANGE_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.ORANGE_ITEM,
 							Localization.Chat_Color_Selection_Customization_Orange.ORANGE_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Orange.ORANGE_LORE,
-									"§6", null)).build().make();
+									"§6", null));
 				}
 			};
 
@@ -360,10 +358,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.GRAY_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.GRAY_ITEM,
 							Localization.Chat_Color_Selection_Customization_Gray.GRAY_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Gray.GRAY_LORE,
-									"§7", null)).build().make();
+									"§7", null));
 				}
 			};
 
@@ -381,10 +379,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.DARK_GRAY_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.DARK_GRAY_ITEM,
 							Localization.Chat_Color_Selection_Customization_Dark_Gray.DARK_GRAY_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Dark_Gray.DARK_GRAY_LORE,
-									"§8", null)).build().make();
+									"§8", null));
 				}
 			};
 
@@ -402,10 +400,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.BLUE_ITEM,
-							Localization.Chat_Color_Selection_Customization_Blue.BLUE_NAME,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.BLUE_ITEM, Localization.Chat_Color_Selection_Customization_Blue.BLUE_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Blue.BLUE_LORE,
-									"§9", null)).build().make();
+									"§9", null));
 				}
 			};
 
@@ -424,10 +421,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.GREEN_ITEM,
-							Localization.Chat_Color_Selection_Customization_Green.GREEN_NAME,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.GREEN_ITEM, Localization.Chat_Color_Selection_Customization_Green.GREEN_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Green.GREEN_LORE,
-									"§a", null)).build().make();
+									"§a", null));
 				}
 			};
 
@@ -445,10 +441,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.AQUA_ITEM,
-							Localization.Chat_Color_Selection_Customization_Aqua.AQUA_NAME,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.AQUA_ITEM, Localization.Chat_Color_Selection_Customization_Aqua.AQUA_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Aqua.AQUA_LORE,
-									"§b", null)).build().make();
+									"§b", null));
 				}
 			};
 
@@ -466,10 +461,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.RED_ITEM,
-							Localization.Chat_Color_Selection_Customization_Red.RED_NAME,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.RED_ITEM, Localization.Chat_Color_Selection_Customization_Red.RED_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Red.RED_LORE,
-									"§c", null)).build().make();
+									"§c", null));
 				}
 			};
 
@@ -488,10 +482,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.LIGHT_PURPLE_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.LIGHT_PURPLE_ITEM,
 							Localization.Chat_Color_Selection_Customization_Light_Purple.LIGHT_PURPLE_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Light_Purple.LIGHT_PURPLE_LORE,
-									"§d", null)).build().make();
+									"§d", null));
 				}
 			};
 
@@ -509,10 +503,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.YELLOW_ITEM,
-							Localization.Chat_Color_Selection_Customization_Yellow.YELLOW_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Yellow.YELLOW_LORE,
-									"§e", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.YELLOW_ITEM, Localization.Chat_Color_Selection_Customization_Yellow
+							.YELLOW_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Yellow.YELLOW_LORE,
+							"§e", null));
 				}
 			};
 
@@ -530,10 +523,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.WHITE_ITEM,
-							Localization.Chat_Color_Selection_Customization_White.WHITE_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_White.WHITE_LORE,
-									"§f", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.WHITE_ITEM, Localization.Chat_Color_Selection_Customization_White
+							.WHITE_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_White.WHITE_LORE,
+							"§f", null));
 				}
 			};
 
@@ -551,10 +543,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.MAGIC_ITEM,
-							Localization.Chat_Color_Selection_Customization_Magic.MAGIC_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Magic.MAGIC_LORE,
-									"§k", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.MAGIC_ITEM, Localization.Chat_Color_Selection_Customization_Magic
+							.MAGIC_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Magic.MAGIC_LORE,
+							"§k", null));
 				}
 			};
 
@@ -572,10 +563,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.BOLD_ITEM,
-							Localization.Chat_Color_Selection_Customization_Bold.BOLD_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Bold.BOLD_LORE,
-									"§l", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.BOLD_ITEM, Localization.Chat_Color_Selection_Customization_Bold
+							.BOLD_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Bold.BOLD_LORE,
+							"§l", null));
 				}
 			};
 
@@ -593,10 +583,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.ITALIC_ITEM,
-							Localization.Chat_Color_Selection_Customization_Italic.ITALIC_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Italic.ITALIC_LORE,
-									"§o", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.ITALIC_ITEM, Localization.Chat_Color_Selection_Customization_Italic
+							.ITALIC_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Italic.ITALIC_LORE,
+							"§o", null));
 				}
 			};
 
@@ -614,10 +603,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.UNDERLINE_ITEM,
-							Localization.Chat_Color_Selection_Customization_Underline.UNDERLINE_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Underline.UNDERLINE_LORE,
-									"§n", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.UNDERLINE_ITEM, Localization.Chat_Color_Selection_Customization_Underline
+							.UNDERLINE_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Underline.UNDERLINE_LORE,
+							"§n", null));
 				}
 			};
 
@@ -635,10 +623,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.STRIKETHROUGH_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.STRIKETHROUGH_ITEM,
 							Localization.Chat_Color_Selection_Customization_Strikethrough.STRIKETHROUGH_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Strikethrough.STRIKETHROUGH_LORE,
-									"§m", null)).build().make();
+									"§m", null));
 				}
 			};
 
@@ -657,9 +645,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Chat_Color_Menu_Items.FORMAT_RESET_ITEM,
-							Localization.Chat_Format_Reset_Button.RESET_NAME, Localization.Chat_Format_Reset_Button
-									.RESET_LORE).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.FORMAT_RESET_ITEM, Localization.Chat_Format_Reset_Button.RESET_NAME,
+							Localization.Chat_Format_Reset_Button.RESET_LORE);
 				}
 			};
 
@@ -690,15 +677,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					final String base64 = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzA3Y2U0MzczNGNiZWZiYjNkYTAzZjlhYzFmMDFhM2RmNDU2Y2VlMjMxNTUwYmQyZGQ0MjU4NTU5NGY5In19fQ==";
-					final ItemStack rainbowSkull = SkullCreator.itemFromBase64(base64);
-
-					return ItemCreator.of(CompMaterial.fromMaterial(CompMaterial.PLAYER_HEAD.getMaterial()),
-									Localization.Chat_Color_Selection_Customization_Rainbow.RAINBOW_NAME,
-									UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Rainbow.RAINBOW_LORE,
-											"rainbow", null))
-							.meta(rainbowSkull.getItemMeta())
-							.build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Chat_Color_Menu_Items.RAINBOW_ITEM, Localization.Chat_Color_Selection_Customization_Rainbow
+							.RAINBOW_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Chat_Color_Selection_Customization_Rainbow.RAINBOW_LORE,
+							"rainbow", null));
 				}
 			};
 
@@ -715,9 +696,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Other.BACK_BUTTON_ITEM,
-							Localization.Chat_Back_Button.BACK_NAME,
-							Localization.Chat_Back_Button.BACK_LORE).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Other.BACK_BUTTON_ITEM, Localization.Chat_Back_Button.BACK_NAME,
+							Localization.Chat_Back_Button.BACK_LORE);
 				}
 			};
 
@@ -740,9 +720,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Other.RESET_BUTTON_ITEM,
-							Localization.Chat_Reset_Button.RESET_NAME,
-							Localization.Chat_Reset_Button.RESET_LORE).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Other.RESET_BUTTON_ITEM, Localization.Chat_Reset_Button.RESET_NAME,
+							Localization.Chat_Reset_Button.RESET_LORE);
 				}
 			};
 
@@ -822,7 +801,6 @@ public class ColorSelectionMenu extends Menu {
 				return backButton.getItem();
 			if (slot == Localization.Chat_Reset_Button.MENU_SLOT)
 				return resetButton.getItem();
-
 			return emptyButton.getItem();
 		}
 	}
@@ -883,10 +861,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.BLACK_ITEM,
-							Localization.Name_Color_Selection_Customization_Black.BLACK_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Black.BLACK_LORE,
-									"&0", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.BLACK_ITEM, Localization.Name_Color_Selection_Customization_Black.BLACK_NAME,
+							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Black.BLACK_LORE, "&0", null));
 				}
 			};
 
@@ -905,10 +881,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.DARK_BLUE_ITEM,
-							Localization.Name_Color_Selection_Customization_Dark_Blue.DARK_BLUE_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Dark_Blue.DARK_BLUE_LORE,
-									"&1", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.DARK_BLUE_ITEM, Localization.Name_Color_Selection_Customization_Dark_Blue
+							.DARK_BLUE_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Dark_Blue.DARK_BLUE_LORE,
+							"&1", null));
 				}
 			};
 
@@ -927,10 +902,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.DARK_GREEN_ITEM,
-							Localization.Name_Color_Selection_Customization_Dark_Green.DARK_GREEN_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Dark_Green.DARK_GREEN_LORE,
-									"&2", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.DARK_GREEN_ITEM, Localization.Name_Color_Selection_Customization_Dark_Green
+							.DARK_GREEN_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Dark_Green.DARK_GREEN_LORE,
+							"&2", null));
 				}
 			};
 
@@ -949,10 +923,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.DARK_AQUA_ITEM,
-							Localization.Name_Color_Selection_Customization_Dark_Aqua.DARK_AQUA_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Dark_Aqua.DARK_AQUA_LORE,
-									"&3", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.DARK_AQUA_ITEM, Localization.Name_Color_Selection_Customization_Dark_Aqua
+							.DARK_AQUA_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Dark_Aqua.DARK_AQUA_LORE,
+							"&3", null));
 				}
 			};
 
@@ -971,10 +944,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.DARK_RED_ITEM,
-							Localization.Name_Color_Selection_Customization_Dark_Red.DARK_RED_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Dark_Red.DARK_RED_LORE,
-									"&4", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.DARK_RED_ITEM, Localization.Name_Color_Selection_Customization_Dark_Red
+							.DARK_RED_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Dark_Red.DARK_RED_LORE,
+							"&4", null));
 				}
 			};
 
@@ -993,10 +965,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.DARK_PURPLE_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.DARK_PURPLE_ITEM,
 							Localization.Name_Color_Selection_Customization_Dark_Purple.DARK_PURPLE_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Dark_Purple.DARK_PURPLE_LORE,
-									"&5", null)).build().make();
+									"&5", null));
 				}
 			};
 
@@ -1015,10 +987,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.ORANGE_ITEM,
-							Localization.Name_Color_Selection_Customization_Orange.ORANGE_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Orange.ORANGE_LORE,
-									"&6", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.ORANGE_ITEM, Localization.Name_Color_Selection_Customization_Orange
+							.ORANGE_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Orange.ORANGE_LORE,
+							"&6", null));
 				}
 			};
 
@@ -1037,10 +1008,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.GRAY_ITEM,
-							Localization.Name_Color_Selection_Customization_Gray.GRAY_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Gray.GRAY_LORE,
-									"&7", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.GRAY_ITEM, Localization.Name_Color_Selection_Customization_Gray.GRAY_NAME,
+							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Gray.GRAY_LORE, "&7", null));
 				}
 			};
 
@@ -1059,10 +1028,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.DARK_GRAY_ITEM,
-							Localization.Name_Color_Selection_Customization_Dark_Gray.DARK_GRAY_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Dark_Gray.DARK_GRAY_LORE,
-									"&8", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.DARK_GRAY_ITEM, Localization.Name_Color_Selection_Customization_Dark_Gray
+							.DARK_GRAY_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Dark_Gray.DARK_GRAY_LORE,
+							"&8", null));
 				}
 			};
 
@@ -1081,10 +1049,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.BLUE_ITEM,
-							Localization.Name_Color_Selection_Customization_Blue.BLUE_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Blue.BLUE_LORE,
-									"&9", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.BLUE_ITEM, Localization.Name_Color_Selection_Customization_Blue.BLUE_NAME,
+							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Blue.BLUE_LORE, "&9", null));
 				}
 			};
 
@@ -1103,10 +1069,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.GREEN_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.GREEN_ITEM,
 							Localization.Name_Color_Selection_Customization_Green.GREEN_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Green.GREEN_LORE,
-									"&a", null)).build().make();
+									"&a", null));
 				}
 			};
 
@@ -1125,10 +1091,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.AQUA_ITEM,
-							Localization.Name_Color_Selection_Customization_Aqua.AQUA_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Aqua.AQUA_LORE,
-									"&b", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.AQUA_ITEM, Localization.Name_Color_Selection_Customization_Aqua.AQUA_NAME,
+							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Aqua.AQUA_LORE, "&b", null));
 				}
 			};
 
@@ -1147,10 +1111,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.RED_ITEM,
-							Localization.Name_Color_Selection_Customization_Red.RED_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Red.RED_LORE,
-									"&c", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.RED_ITEM, Localization.Name_Color_Selection_Customization_Red.RED_NAME,
+							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Red.RED_LORE, "&c", null));
 				}
 			};
 
@@ -1169,10 +1131,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.LIGHT_PURPLE_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.LIGHT_PURPLE_ITEM,
 							Localization.Name_Color_Selection_Customization_Light_Purple.LIGHT_PURPLE_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Light_Purple.LIGHT_PURPLE_LORE,
-									"&d", null)).build().make();
+									"&d", null));
 				}
 			};
 
@@ -1191,10 +1153,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.YELLOW_ITEM,
-							Localization.Name_Color_Selection_Customization_Yellow.YELLOW_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Yellow.YELLOW_LORE,
-									"&e", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.YELLOW_ITEM, Localization.Name_Color_Selection_Customization_Yellow
+							.YELLOW_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Yellow.YELLOW_LORE,
+							"&e", null));
 				}
 			};
 
@@ -1213,10 +1174,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.WHITE_ITEM,
-							Localization.Name_Color_Selection_Customization_White.WHITE_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_White.WHITE_LORE,
-									"&f", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.WHITE_ITEM, Localization.Name_Color_Selection_Customization_White.WHITE_NAME,
+							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_White.WHITE_LORE, "&f", null));
 				}
 			};
 
@@ -1239,10 +1198,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.MAGIC_ITEM,
-							Localization.Name_Color_Selection_Customization_Magic.MAGIC_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Magic.MAGIC_LORE,
-									"&k", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.MAGIC_ITEM, Localization.Name_Color_Selection_Customization_Magic.MAGIC_NAME,
+							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Magic.MAGIC_LORE, "&k", null));
 				}
 			};
 
@@ -1264,10 +1221,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.BOLD_ITEM,
-							Localization.Name_Color_Selection_Customization_Bold.BOLD_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Bold.BOLD_LORE,
-									"&l", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.BOLD_ITEM, Localization.Name_Color_Selection_Customization_Bold.BOLD_NAME,
+							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Bold.BOLD_LORE, "&l", null));
 				}
 			};
 
@@ -1290,10 +1245,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.ITALIC_ITEM,
-							Localization.Name_Color_Selection_Customization_Italic.ITALIC_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Italic.ITALIC_LORE,
-									"&o", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.ITALIC_ITEM, Localization.Name_Color_Selection_Customization_Italic
+							.ITALIC_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Italic.ITALIC_LORE,
+							"&o", null));
 				}
 			};
 
@@ -1316,10 +1270,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.UNDERLINE_ITEM,
-							Localization.Name_Color_Selection_Customization_Underline.UNDERLINE_NAME,
-							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Underline.UNDERLINE_LORE,
-									"&n", null)).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.UNDERLINE_ITEM, Localization.Name_Color_Selection_Customization_Underline
+							.UNDERLINE_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Underline.UNDERLINE_LORE,
+							"&n", null));
 				}
 			};
 
@@ -1342,10 +1295,10 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.STRIKETHROUGH_ITEM,
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.STRIKETHROUGH_ITEM,
 							Localization.Name_Color_Selection_Customization_Strikethrough.STRIKETHROUGH_NAME,
 							UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Strikethrough.STRIKETHROUGH_LORE,
-									"&m", null)).build().make();
+									"&m", null));
 				}
 			};
 
@@ -1378,9 +1331,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Name_Color_Menu_Items.FORMAT_RESET_ITEM,
-							Localization.Name_Format_Reset_Button.RESET_NAME, Localization.Name_Format_Reset_Button
-									.RESET_LORE).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.FORMAT_RESET_ITEM, Localization.Name_Format_Reset_Button.RESET_NAME,
+							Localization.Name_Format_Reset_Button.RESET_LORE);
 				}
 			};
 
@@ -1419,15 +1371,9 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					final String base64 = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzA3Y2U0MzczNGNiZWZiYjNkYTAzZjlhYzFmMDFhM2RmNDU2Y2VlMjMxNTUwYmQyZGQ0MjU4NTU5NGY5In19fQ==";
-					final ItemStack rainbowSkull = SkullCreator.itemFromBase64(base64);
-
-					return ItemCreator.of(CompMaterial.fromMaterial(CompMaterial.PLAYER_HEAD.getMaterial()),
-									Localization.Name_Color_Selection_Customization_Rainbow.RAINBOW_NAME,
-									UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Rainbow.RAINBOW_LORE,
-											"rainbow", null))
-							.meta(rainbowSkull.getItemMeta())
-							.build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Name_Color_Menu_Items.RAINBOW_ITEM, Localization.Name_Color_Selection_Customization_Rainbow
+							.RAINBOW_NAME, UltraColorUtil.modifyColorLoreWithPreview(Localization.Name_Color_Selection_Customization_Rainbow.RAINBOW_LORE,
+							"rainbow", null));
 				}
 			};
 
@@ -1444,9 +1390,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Other.BACK_BUTTON_ITEM,
-							Localization.Name_Back_Button.BACK_NAME,
-							Localization.Name_Back_Button.BACK_LORE).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Other.BACK_BUTTON_ITEM, Localization.Name_Back_Button.BACK_NAME,
+							Localization.Name_Back_Button.BACK_LORE);
 				}
 			};
 
@@ -1479,9 +1424,8 @@ public class ColorSelectionMenu extends Menu {
 
 				@Override
 				public ItemStack getItem() {
-					return ItemCreator.of(Settings.Other.RESET_BUTTON_ITEM,
-							Localization.Name_Reset_Button.RESET_NAME,
-							Localization.Name_Reset_Button.RESET_LORE).build().make();
+					return UltraColorUtil.makeMenuItem(Settings.Other.RESET_BUTTON_ITEM, Localization.Name_Reset_Button.RESET_NAME,
+							Localization.Name_Reset_Button.RESET_LORE);
 				}
 			};
 
@@ -1561,7 +1505,6 @@ public class ColorSelectionMenu extends Menu {
 				return backButton.getItem();
 			if (slot == Localization.Name_Reset_Button.MENU_SLOT)
 				return resetButton.getItem();
-
 			return emptyButton.getItem();
 		}
 	}

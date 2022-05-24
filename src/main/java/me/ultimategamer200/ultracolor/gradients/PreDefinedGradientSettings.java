@@ -39,7 +39,7 @@ public class PreDefinedGradientSettings extends YamlConfig {
 	/**
 	 * The item the gradient will display in the gradient menu.
 	 */
-	private CompMaterial menuItem;
+	private String menuItem;
 
 	/**
 	 * The lore the menu item will display.
@@ -73,7 +73,7 @@ public class PreDefinedGradientSettings extends YamlConfig {
 		this.hexColors = getStringList("Hex_Colors");
 		this.permission = getString("Permission", "ultracolor.gradients." + gradient.getName());
 		this.displayName = getString("Menu_Display_Name", gradient.getName() + " Gradient");
-		this.menuItem = getMaterial("Menu_Item");
+		this.menuItem = getString("Menu_Item", CompMaterial.PAPER.toString());
 		this.menuLore = getStringList("Menu_Lore");
 		this.successMessage = getString("Success_Message");
 		this.errorMessage = getString("Error_Message");
@@ -109,7 +109,7 @@ public class PreDefinedGradientSettings extends YamlConfig {
 	}
 
 	public void setMenuItem(final CompMaterial menuItem) {
-		this.menuItem = menuItem;
+		this.menuItem = menuItem.toString();
 		save("Menu_Item", menuItem);
 	}
 
