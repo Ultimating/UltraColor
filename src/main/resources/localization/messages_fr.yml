@@ -692,8 +692,8 @@ Other:
   Admin_Force_Name_Color_Success: "Couleur du nom définie sur %new_name_color% &7pour %player%!"
   Admin_Force_Chat_Format_Success: "Format de chat défini sur %new_chat_format% &7pour %player%!"
   Admin_Force_Name_Format_Success: "Format de nom défini sur %new_name_format% &7pour %player%!"
-  Player_Reset_Color_Command_Success: "&7Vos sélections de couleurs ont été réinitialisées par un administrateur!"
-  Reset_Color_Command_Error: "&7%player% n'a pas de chat ni de couleur de nom!"
+  Player_Reset_Color_Command_Success: "&7Vos sélections de couleurs %type% ont été réinitialisées par un administrateur !"
+  Reset_Color_Command_Error: "&7%player% n'a pas la couleur sélectionnée !"
   Unable_To_Select_Format: "Vous ne pouvez pas sélectionner ce format, soit parce qu'il est désactivé, soit parce que vous n'en avez pas la permission ! Avertissez un administrateur s'il s'agit d'une erreur."
 
 # Veuillez ne pas y toucher ou ce fichier risque de se casser!

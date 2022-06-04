@@ -15,7 +15,6 @@ import me.ultimategamer200.ultracolor.settings.Localization;
 import me.ultimategamer200.ultracolor.settings.Settings;
 import me.ultimategamer200.ultracolor.subcommands.UltraColorCommandGroup;
 import me.ultimategamer200.ultracolor.util.Filter;
-import me.ultimategamer200.ultracolor.util.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -88,14 +87,6 @@ public class UltraColorPlugin extends SimplePlugin {
 		// Uses a prefix when using Common.tell() methods.
 		Common.ADD_TELL_PREFIX = true;
 
-		// Adds bStats to UltraColor on startup
-		final Metrics metrics = new Metrics(this, 9266);
-		final File mainConfig = new File(UltraColorPlugin.getPlugin(UltraColorPlugin.class).getDataFolder() + File.separator + "settings.yml");
-		final YamlConfiguration yamlMainConfig = YamlConfiguration.loadConfiguration(mainConfig);
-
-		metrics.addCustomChart(new Metrics.SimplePie("used_locale", () -> yamlMainConfig.getString("Locale")));
-		metrics.addCustomChart(new Metrics.SimplePie("notify_updates", () -> String.valueOf(yamlMainConfig.getBoolean("Notify_Updates"))));
-
 		// Checks if change-displayname is false in Essentials and/or CMI.
 		if (HookManager.isEssentialsLoaded() || HookManager.isCMILoaded()) {
 			if (HookManager.isEssentialsLoaded()) {
@@ -132,14 +123,10 @@ public class UltraColorPlugin extends SimplePlugin {
 			registerCommand(new RealNameCommand());
 		}
 
-		if (Settings.Color_Settings.CHAT_HEX_COLORS || Settings.Color_Settings.NAME_HEX_COLORS) {
-			if (Remain.hasHexColors())
-				registerCommand(new HexColorCommand());
-		}
-		if (Settings.Color_Settings.CHAT_GRADIENT_COLORS || Settings.Color_Settings.NAME_GRADIENT_COLORS) {
-			if (Remain.hasHexColors())
-				registerCommand(new GradientCommand());
-		}
+		if (Settings.Color_Settings.CHAT_HEX_COLORS || Settings.Color_Settings.NAME_HEX_COLORS)
+			if (Remain.hasHexColors()) registerCommand(new HexColorCommand());
+		if (Settings.Color_Settings.CHAT_GRADIENT_COLORS || Settings.Color_Settings.NAME_GRADIENT_COLORS)
+			if (Remain.hasHexColors()) registerCommand(new GradientCommand());
 	}
 
 	/**
@@ -229,12 +216,17 @@ public class UltraColorPlugin extends SimplePlugin {
 		return null;
 	}
 
+	@Override
+	public int getMetricsPluginId() {
+		return 9266;
+	}
+
 	/**
 	 * What year was the plugin first released?
 	 */
 	@Override
 	public int getFoundedYear() {
-		return 2020;
+		return 2020; // 10.30.2020
 	}
 
 	/**

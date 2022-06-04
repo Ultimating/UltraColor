@@ -692,8 +692,8 @@ Other:
   Admin_Force_Name_Color_Success: "Name color set to %new_name_color% &7for %player%!"
   Admin_Force_Chat_Format_Success: "Chat format set to %new_chat_format% &7for %player%!"
   Admin_Force_Name_Format_Success: "Name format set to %new_name_format% &7for %player%!"
-  Player_Reset_Color_Command_Success: "&7Your color selections have been reset by an admin!"
-  Reset_Color_Command_Error: "&7%player% does not have a chat nor a name color!"
+  Player_Reset_Color_Command_Success: "&7Your %type% color selections have been reset by an admin!"
+  Reset_Color_Command_Error: "&7%player% does not have the selected color!"
   Unable_To_Select_Format: "You cannot select this format either because it is disabled or you don't have permission for it! Notify an admin if this is an error."
 
 # Please do not touch this or this file may break!
