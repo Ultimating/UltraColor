@@ -119,6 +119,7 @@ public class PreDefinedGradientMenu extends Menu {
 				pCache.setCustomGradient2(CompChatColor.of(hex2));
 				pCache.setNameColor(null);
 				String newDisplayName;
+				if (pCache.isNameRainbowColors()) pCache.setNameRainbowColors(false);
 
 				if (pCache.getNameFormat() == null)
 					newDisplayName = ChatUtil.generateGradient(player.getName(), CompChatColor.of(hex1), CompChatColor.of(hex2));
@@ -159,8 +160,7 @@ public class PreDefinedGradientMenu extends Menu {
 				return customNameGradientButton.getItem();
 			if (slot == Localization.Gradient_Color_Selection_Name.NAME_RESET_GRADIENT_SLOT)
 				return resetButton.getItem();
-			if (slot == Localization.Gradient_Color_Selection_Name.NEXT_PAGE_SLOT)
-				return formNextButton().getItem();
+			if (slot == Localization.Gradient_Color_Selection_Name.NEXT_PAGE_SLOT) return formNextButton().getItem();
 			if (slot == Localization.Gradient_Color_Selection_Name.PREVIOUS_PAGE_SLOT)
 				return formPreviousButton().getItem();
 			return super.getItemAt(slot);
@@ -243,6 +243,7 @@ public class PreDefinedGradientMenu extends Menu {
 				pCache.setChatCustomGradient1(CompChatColor.of(settings.getHexColors().get(0)));
 				pCache.setChatCustomGradient2(CompChatColor.of(settings.getHexColors().get(1)));
 				pCache.setChatColor(null);
+				if (pCache.isChatRainbowColors()) pCache.setChatRainbowColors(false);
 				tellSuccess(settings.getSuccessMessage());
 			} else
 				tellError(settings.getErrorMessage());
@@ -260,8 +261,7 @@ public class PreDefinedGradientMenu extends Menu {
 				return customChatGradientButton.getItem();
 			if (slot == Localization.Gradient_Color_Selection_Chat.CHAT_RESET_GRADIENT_SLOT)
 				return resetButton.getItem();
-			if (slot == Localization.Gradient_Color_Selection_Chat.NEXT_PAGE_SLOT)
-				return formNextButton().getItem();
+			if (slot == Localization.Gradient_Color_Selection_Chat.NEXT_PAGE_SLOT) return formNextButton().getItem();
 			if (slot == Localization.Gradient_Color_Selection_Chat.PREVIOUS_PAGE_SLOT)
 				return formPreviousButton().getItem();
 			return super.getItemAt(slot);

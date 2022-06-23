@@ -41,18 +41,21 @@ public class AllowedHexesData extends YamlConfig {
 	 * Loads the settings options to be used in the file.
 	 */
 	@Override
-	protected void onLoadFinish() {
+	protected void onLoad() {
 		this.allowedHexes = getList("Allowed_Hexes", AllowedHex.class, this);
+	}
+
+	@Override
+	protected void onSave() {
+		this.set("Allowed_Hexes", allowedHexes);
 	}
 
 	/**
 	 * Finds the allowed hex by the hex color.
 	 */
 	public AllowedHex findAllowedHex(final String hex) {
-		for (final AllowedHex allowedHex : allowedHexes) {
-			if (allowedHex.getHex().equalsIgnoreCase(hex))
-				return allowedHex;
-		}
+		for (final AllowedHex allowedHex : allowedHexes)
+			if (allowedHex.getHex().equalsIgnoreCase(hex)) return allowedHex;
 		return null;
 	}
 
@@ -61,15 +64,9 @@ public class AllowedHexesData extends YamlConfig {
 	 */
 	public void toggleAllowedHex(final String hex, final String type, final String permission) {
 		final AllowedHex allowedHex = findAllowedHex(hex);
-
-		if (allowedHex != null) {
-			allowedHexes.remove(allowedHex);
-			save("Allowed_Hexes", allowedHexes);
-			return;
-		}
-
-		allowedHexes.add(new AllowedHex(this, type, hex, permission));
-		save("Allowed_Hexes", allowedHexes);
+		if (allowedHex != null) allowedHexes.remove(allowedHex);
+		else allowedHexes.add(new AllowedHex(this, type, hex, permission));
+		save();
 	}
 
 	/**
@@ -137,9 +134,7 @@ public class AllowedHexesData extends YamlConfig {
 		 */
 		@Override
 		public SerializedMap serialize() {
-			return SerializedMap.ofArray("Type", type,
-					"Hex", hex,
-					"Permission", permission);
+			return SerializedMap.ofArray("Type", type, "Hex", hex, "Permission", permission);
 		}
 	}
 }

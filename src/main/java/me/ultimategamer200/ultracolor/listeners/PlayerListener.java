@@ -11,9 +11,11 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.server.ServerCommandEvent;
 import org.mineacademy.fo.Common;
+import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.model.SpigotUpdater;
 
-public class PlayerListener implements Listener {
+@AutoRegister
+public final class PlayerListener implements Listener {
 	@EventHandler
 	public void onJoin(final PlayerJoinEvent event) {
 		final Player player = event.getPlayer();

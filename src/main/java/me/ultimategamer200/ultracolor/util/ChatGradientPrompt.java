@@ -74,8 +74,7 @@ public class ChatGradientPrompt extends SimpleConversation {
 
 		@Override
 		protected boolean isInputValid(ConversationContext context, String input) {
-			if (input.length() == 6)
-				return true;
+			if (input.length() == 6) return true;
 			return input.length() == 7 && input.startsWith("#");
 		}
 
@@ -119,10 +118,8 @@ public class ChatGradientPrompt extends SimpleConversation {
 			conversationContext.setSessionData(GradientSelections.FORMAT, input);
 			final PlayerCache pCache = PlayerCache.fromPlayer(getPlayer(conversationContext));
 
-			if (!input.equalsIgnoreCase("none"))
-				pCache.setChatFormat(UltraColorUtil.getFormatToCompChatColor(input));
-			else
-				pCache.setChatFormat(null);
+			if (!input.equalsIgnoreCase("none")) pCache.setChatFormat(UltraColorUtil.getFormatToCompChatColor(input));
+			else pCache.setChatFormat(null);
 
 			pCache.setChatColor(null);
 			pCache.setChatRainbowColors(false);

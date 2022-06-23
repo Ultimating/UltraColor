@@ -1,13 +1,12 @@
 package me.ultimategamer200.ultracolor.util;
 
-import org.mineacademy.fo.annotation.Permission;
-import org.mineacademy.fo.annotation.PermissionGroup;
-import org.mineacademy.fo.constants.FoPermissions;
+import org.mineacademy.fo.command.annotation.Permission;
+import org.mineacademy.fo.command.annotation.PermissionGroup;
 
 /**
  * Storage of permissions within the plugin. Useful to not type in the same permission strings over and over again.
  */
-public final class UltraColorPermissions extends FoPermissions {
+public final class UltraColorPermissions {
 	// Non sub-commands
 	@Permission("Opens the main color selection GUI.")
 	public static final String COLOR = "ultracolor.gui";
@@ -17,6 +16,8 @@ public final class UltraColorPermissions extends FoPermissions {
 	public static final String NAME_COLOR = "ultracolor.namecolor";
 	@Permission("Opens the gradient selection GUI.")
 	public static final String GRADIENT_COLOR = "ultracolor.command.gradientcolor";
+	@Permission("Notifies in-game if there's an update.")
+	public static final String NOTIFY_UPDATE = "ultracolor.notify.update";
 
 	@PermissionGroup("Execute plugin commands.")
 	public static final class Command {

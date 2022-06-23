@@ -4,11 +4,10 @@ import lombok.Getter;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.collection.expiringmap.ExpiringMap;
 import org.mineacademy.fo.constants.FoConstants;
 import org.mineacademy.fo.remain.CompChatColor;
-import org.mineacademy.fo.settings.YamlSectionConfig;
+import org.mineacademy.fo.settings.YamlConfig;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -17,11 +16,12 @@ import java.util.concurrent.TimeUnit;
  * This class stores player data inside the plugin's data.db file.
  */
 @Getter
-public final class PlayerCache extends YamlSectionConfig {
+public final class PlayerCache extends YamlConfig {
 	/**
 	 * A special map that works with the data.db file, but never changes the file at all. It's an ExpiringMap to keep it fresh and clean.
 	 */
-	public static final ExpiringMap<UUID, PlayerCache> cacheMap = ExpiringMap.builder().expiration(30, TimeUnit.MINUTES).build();
+	public static final ExpiringMap<UUID, PlayerCache> cacheMap = ExpiringMap.builder().variableExpiration()
+			.expiration(30, TimeUnit.MINUTES).build();
 
 	/**
 	 * The UUID of the player this data belongs to.
@@ -96,14 +96,14 @@ public final class PlayerCache extends YamlSectionConfig {
 	// Creates a new data section for the player if they don't exist.
 	private PlayerCache(final UUID uuid) {
 		// This will prepend this cache with the players unique id just like you use pathPrefix in the Settings class.
-		super(uuid.toString());
+		this.setPathPrefix(uuid.toString());
 
 		this.uuid = uuid;
 		loadConfiguration(NO_DEFAULT, FoConstants.File.DATA);
 	}
 
 	@Override
-	protected void onLoadFinish() {
+	protected void onLoad() {
 		this.playerName = getString("Player_Name");
 		this.chatColor = get("Chat_Color", CompChatColor.class);
 		this.nameColor = get("Name_Color", CompChatColor.class);
@@ -121,71 +121,71 @@ public final class PlayerCache extends YamlSectionConfig {
 
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
-		this.save("Player_Name", playerName);
+		this.save();
 	}
 
 	public void setChatColor(final CompChatColor chatColor) {
 		this.chatColor = chatColor;
-		this.save("Chat_Color", chatColor);
+		this.save();
 	}
 
 	public void setNameColor(final CompChatColor nameColor) {
 		this.nameColor = nameColor;
-		this.save("Name_Color", nameColor);
+		this.save();
 	}
 
 	public void setNameFormat(final ChatColor nameFormat) {
 		this.nameFormat = nameFormat;
-		this.save("Name_Format", nameFormat);
+		this.save();
 	}
 
 	public void setChatFormat(final CompChatColor chatFormat) {
 		this.chatFormat = chatFormat;
-		this.save("Chat_Format", chatFormat);
+		this.save();
 	}
 
 	public CompChatColor setCustomGradient1(final CompChatColor gradients) {
 		this.customGradient1 = gradients;
 
-		this.save("First_Custom_Gradient", gradients);
+		this.save();
 		return gradients;
 	}
 
 	public CompChatColor setCustomGradient2(final CompChatColor gradients) {
 		this.customGradient2 = gradients;
 
-		this.save("Second_Custom_Gradient", gradients);
+		this.save();
 		return gradients;
 	}
 
 	public void setChatCustomGradient1(final CompChatColor gradients) {
 		this.chatCustomGradient1 = gradients;
-		this.save("Chat_First_Custom_Gradient", gradients);
+		this.save();
 	}
 
 	public void setChatCustomGradient2(final CompChatColor gradients) {
 		this.chatCustomGradient2 = gradients;
-		this.save("Chat_Second_Custom_Gradient", gradients);
+		this.save();
 	}
 
 	public void setNickName(final String nickName) {
 		this.nickName = nickName;
-		this.save("Nickname", nickName);
+		this.save();
 	}
 
 	public void setColoredNickName(final String coloredNickName) {
 		this.coloredNickName = coloredNickName;
-		this.save("Colored_Nickname", coloredNickName);
+		this.save();
 	}
 
 	public void setChatRainbowColors(boolean chatRainbowColors) {
 		this.chatRainbowColors = chatRainbowColors;
-		this.save("Chat_Rainbow_Colors", chatRainbowColors);
+		this.save();
 	}
 
 	public void setNameRainbowColors(boolean nameRainbowColors) {
 		this.nameRainbowColors = nameRainbowColors;
-		this.save("Name_Rainbow_Colors", nameRainbowColors);
+		this.save();
 	}
 
 	// --------------------------------------------------------------------------------------------------------------
@@ -227,24 +227,20 @@ public final class PlayerCache extends YamlSectionConfig {
 		cacheMap.clear();
 	}
 
-	/**
-	 * Serializes all player data to save them easily.
-	 */
 	@Override
-	public SerializedMap serialize() {
-		return SerializedMap.ofArray(
-				"Player_Name", this.playerName,
-				"Chat_Color", this.chatColor,
-				"Name_Color", this.nameColor,
-				"Name_Format", this.nameFormat,
-				"Chat_Format", this.chatFormat,
-				"First_Custom_Gradient", this.customGradient1,
-				"Second_Custom_Gradient", this.customGradient2,
-				"Chat_First_Custom_Gradient", this.chatCustomGradient1,
-				"Chat_Second_Custom_Gradient", this.chatCustomGradient2,
-				"Nickname", this.nickName,
-				"Colored_Nickname", this.coloredNickName,
-				"Chat_Rainbow_Colors", this.chatRainbowColors,
-				"Name_Rainbow_Colors", this.nameRainbowColors);
+	protected void onSave() {
+		this.set("Player_Name", this.playerName);
+		this.set("Chat_Color", this.chatColor);
+		this.set("Name_Color", this.nameColor);
+		this.set("Name_Format", this.nameFormat);
+		this.set("Chat_Format", this.chatFormat);
+		this.set("First_Custom_Gradient", this.customGradient1);
+		this.set("Second_Custom_Gradient", this.customGradient2);
+		this.set("Chat_First_Custom_Gradient", this.chatCustomGradient1);
+		this.set("Chat_Second_Custom_Gradient", this.chatCustomGradient2);
+		this.set("Nickname", this.nickName);
+		this.set("Colored_Nickname", this.coloredNickName);
+		this.set("Chat_Rainbow_Colors", this.chatRainbowColors);
+		this.set("Name_Rainbow_Colors", this.nameRainbowColors);
 	}
 }

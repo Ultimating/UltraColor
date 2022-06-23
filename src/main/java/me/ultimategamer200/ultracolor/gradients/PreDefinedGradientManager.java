@@ -56,8 +56,7 @@ public class PreDefinedGradientManager {
 		madeGradient.getSettings().setSuccessMessage("Selected " + gradient + " Gradient successfully!");
 		madeGradient.getSettings().setErrorMessage("Insufficient permission!");
 
-		for (final String hex : hexes)
-			madeGradient.getSettings().toggleHexColor(hex);
+		for (final String hex : hexes) madeGradient.getSettings().toggleHexColor(hex);
 
 		Common.log("[+] Loaded " + madeGradient.getName() + " gradient successfully!");
 	}
@@ -71,7 +70,7 @@ public class PreDefinedGradientManager {
 		final List<PreDefinedGradient> gradients = getLoadedPreDefinedGradients();
 		Valid.checkBoolean(gradients.contains(preDefinedGradient), "Cannot find " + preDefinedGradient.getName() + " gradient!");
 		loadedPreDefinedGradients.remove(preDefinedGradient);
-		preDefinedGradient.getSettings().delete();
+		preDefinedGradient.getSettings().deleteFile();
 		Common.log("[-] Unloaded " + preDefinedGradient.getName() + " successfully!");
 	}
 
@@ -82,8 +81,7 @@ public class PreDefinedGradientManager {
 	 */
 	public PreDefinedGradient findPreDefinedGradientByName(final String name) {
 		for (final PreDefinedGradient gradient : getLoadedPreDefinedGradients())
-			if (gradient.getName().equalsIgnoreCase(name))
-				return gradient;
+			if (gradient.getName().equalsIgnoreCase(name)) return gradient;
 		return null;
 	}
 

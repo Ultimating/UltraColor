@@ -35,8 +35,7 @@ public class ListNicknamesCommand extends SimpleSubCommand {
 
 		if (mode.equalsIgnoreCase("local")) {
 			for (final PlayerCache pCache : pCaches) {
-				if (pCache.getColoredNickName().equalsIgnoreCase("none"))
-					continue;
+				if (pCache.getColoredNickName().equalsIgnoreCase("none")) continue;
 
 				final OfflinePlayer player = Bukkit.getOfflinePlayer(pCache.getPlayerName());
 				realNamesAndNicks.put(player.getName(), pCache.getColoredNickName());

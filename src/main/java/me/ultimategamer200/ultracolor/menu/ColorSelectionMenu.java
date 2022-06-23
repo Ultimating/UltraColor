@@ -50,7 +50,6 @@ public class ColorSelectionMenu extends Menu {
 
 	public ColorSelectionMenu() {
 		setTitle(Localization.Menu_Titles.COLOR_SELECTION_MENU_TITLE);
-		setInfo(Localization.Main_GUI_Customization.INFO_MESSAGE);
 		setSize(Localization.Main_GUI_Customization.MENU_SIZE);
 
 		chatColorButton = new Button() {
@@ -66,9 +65,9 @@ public class ColorSelectionMenu extends Menu {
 
 			@Override
 			public ItemStack getItem() {
-				return ItemCreator.of(Settings.Color_Settings.CHAT_COLOR_BUTTON,
+				return ItemCreator.of(CompMaterial.valueOf(Settings.Color_Settings.CHAT_COLOR_BUTTON),
 						Localization.Main_GUI_Customization_Chat_Color_Selection.CHAT_COLOR_NAME,
-						Localization.Main_GUI_Customization_Chat_Color_Selection.CHAT_COLOR_LORE).build().make();
+						Localization.Main_GUI_Customization_Chat_Color_Selection.CHAT_COLOR_LORE).make();
 			}
 		};
 		nameColorButton = new Button() {
@@ -84,9 +83,9 @@ public class ColorSelectionMenu extends Menu {
 
 			@Override
 			public ItemStack getItem() {
-				return ItemCreator.of(Settings.Color_Settings.NAME_COLOR_BUTTON,
+				return ItemCreator.of(CompMaterial.valueOf(Settings.Color_Settings.NAME_COLOR_BUTTON),
 						Localization.Main_GUI_Customization_Name_Color_Selection.NAME_COLOR_NAME,
-						Localization.Main_GUI_Customization_Name_Color_Selection.NAME_COLOR_LORE).build().make();
+						Localization.Main_GUI_Customization_Name_Color_Selection.NAME_COLOR_LORE).make();
 			}
 		};
 
@@ -104,7 +103,7 @@ public class ColorSelectionMenu extends Menu {
 			@Override
 			public ItemStack getItem() {
 				return ItemCreator.of(CompMaterial.BEACON, Localization.Main_GUI_Customization_Gradient_Selection.MENU_NAME,
-						Localization.Main_GUI_Customization_Gradient_Selection.GRADIENT_COLOR_LORE).build().make();
+						Localization.Main_GUI_Customization_Gradient_Selection.GRADIENT_COLOR_LORE).make();
 			}
 		};
 
@@ -121,12 +120,12 @@ public class ColorSelectionMenu extends Menu {
 
 			@Override
 			public ItemStack getItem() {
-				return ItemCreator.of(Settings.Other.HEX_COLOR_ITEM, Localization.Main_GUI_Customization_Hex_Selection.MENU_NAME,
-						Localization.Main_GUI_Customization_Hex_Selection.HEX_COLOR_LORE).build().make();
+				return ItemCreator.of(CompMaterial.valueOf(Settings.Other.HEX_COLOR_ITEM), Localization.Main_GUI_Customization_Hex_Selection.MENU_NAME,
+						Localization.Main_GUI_Customization_Hex_Selection.HEX_COLOR_LORE).make();
 			}
 		};
 
-		emptyButton = Button.makeDummy(ItemCreator.of(Settings.Color_Settings.CHAT_FILL_BUTTON, " "));
+		emptyButton = Button.makeDummy(ItemCreator.of(CompMaterial.valueOf(Settings.Color_Settings.CHAT_FILL_BUTTON), " "));
 	}
 
 	@Override
@@ -155,6 +154,11 @@ public class ColorSelectionMenu extends Menu {
 		}
 
 		return emptyButton.getItem();
+	}
+
+	@Override
+	protected String[] getInfo() {
+		return new String[]{Localization.Main_GUI_Customization.INFO_MESSAGE};
 	}
 
 	public static final class ChatColorSelectionMenu extends Menu {
@@ -196,7 +200,6 @@ public class ColorSelectionMenu extends Menu {
 		public ChatColorSelectionMenu() {
 			setTitle(Localization.Menu_Titles.CHAT_COLOR_SELECTION_MENU_TITLE);
 			setSize(Localization.Main_GUI_Customization_Chat_Color_Selection.MENU_SIZE);
-			setInfo(Localization.Main_GUI_Customization_Chat_Color_Selection.MENU_INFO);
 
 			blackButton = new Button() {
 				@Override
@@ -725,7 +728,7 @@ public class ColorSelectionMenu extends Menu {
 				}
 			};
 
-			emptyButton = Button.makeDummy(ItemCreator.of(Settings.Color_Settings.CHAT_FILL_BUTTON, " "));
+			emptyButton = Button.makeDummy(ItemCreator.of(CompMaterial.valueOf(Settings.Color_Settings.CHAT_FILL_BUTTON), " "));
 		}
 
 		@Override
@@ -803,6 +806,11 @@ public class ColorSelectionMenu extends Menu {
 				return resetButton.getItem();
 			return emptyButton.getItem();
 		}
+
+		@Override
+		protected String[] getInfo() {
+			return new String[]{Localization.Main_GUI_Customization_Chat_Color_Selection.MENU_INFO};
+		}
 	}
 
 	public static final class NameColorSelectionMenu extends Menu {
@@ -844,7 +852,6 @@ public class ColorSelectionMenu extends Menu {
 		public NameColorSelectionMenu() {
 			setTitle(Localization.Menu_Titles.NAME_COLOR_SELECTION_MENU_TITLE);
 			setSize(Localization.Main_GUI_Customization_Name_Color_Selection.MENU_SIZE);
-			setInfo(Localization.Main_GUI_Customization_Name_Color_Selection.MENU_INFO);
 
 			blackButton = new Button() {
 				@Override
@@ -1429,7 +1436,7 @@ public class ColorSelectionMenu extends Menu {
 				}
 			};
 
-			emptyButton = Button.makeDummy(ItemCreator.of(Settings.Color_Settings.NAME_FILL_BUTTON, " "));
+			emptyButton = Button.makeDummy(ItemCreator.of(CompMaterial.valueOf(Settings.Color_Settings.NAME_FILL_BUTTON), " "));
 		}
 
 		@Override
@@ -1506,6 +1513,11 @@ public class ColorSelectionMenu extends Menu {
 			if (slot == Localization.Name_Reset_Button.MENU_SLOT)
 				return resetButton.getItem();
 			return emptyButton.getItem();
+		}
+
+		@Override
+		protected String[] getInfo() {
+			return new String[]{Localization.Main_GUI_Customization_Name_Color_Selection.MENU_INFO};
 		}
 	}
 }

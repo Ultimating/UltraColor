@@ -10,13 +10,15 @@ import me.ultimategamer200.ultracolor.util.UltraColorUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.mineacademy.fo.ChatUtil;
+import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.event.SimpleListener;
 import org.mineacademy.fo.remain.CompChatColor;
 
 /**
  * This listener listens to specifically the AsyncPlayerChatEvent.
  */
-public class ChatListener extends SimpleListener<AsyncPlayerChatEvent> {
+@AutoRegister
+public final class ChatListener extends SimpleListener<AsyncPlayerChatEvent> {
 	/**
 	 * The singleton instance
 	 */
@@ -24,7 +26,7 @@ public class ChatListener extends SimpleListener<AsyncPlayerChatEvent> {
 	private static final ChatListener instance = new ChatListener();
 
 	// Creates the listener.
-	public ChatListener() {
+	private ChatListener() {
 		super(AsyncPlayerChatEvent.class, Settings.CHAT_LISTENER_PRIORITY, true);
 	}
 

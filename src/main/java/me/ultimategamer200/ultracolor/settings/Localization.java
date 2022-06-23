@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * The class that manages a player's message file. Each section is divided by their own subclass with options as variables.
  */
-public class Localization extends SimpleLocalization {
+public final class Localization extends SimpleLocalization {
 	/**
 	 * Probably best to leave this as is unless a 2.0 version of the plugin is to come out.
 	 */
@@ -23,7 +23,7 @@ public class Localization extends SimpleLocalization {
 		public static String MENU_INFORMATION_TITLE;
 
 		private static void init() {
-			pathPrefix("Menu_Titles");
+			setPathPrefix("Menu_Titles");
 
 			COLOR_SELECTION_MENU_TITLE = getString("Color_Selection");
 			CHAT_COLOR_SELECTION_MENU_TITLE = getString("Chat_Color_Selection");
@@ -39,7 +39,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer INFO_BUTTON_SLOT;
 
 		private static void init() {
-			pathPrefix("Main_GUI_Customization");
+			setPathPrefix("Main_GUI_Customization");
 			INFO_MESSAGE = getString("Info_Message");
 			ALLOW_INFO_BUTTON = getBoolean("Info_Button_Enabled");
 			MENU_SIZE = getInteger("Size");
@@ -57,7 +57,7 @@ public class Localization extends SimpleLocalization {
 		public static Boolean ALLOW_INFO_BUTTON;
 
 		private static void init() {
-			pathPrefix("Main_GUI_Customization.Chat_Color_Selection");
+			setPathPrefix("Main_GUI_Customization.Chat_Color_Selection");
 			CHAT_COLOR_NAME = getString("Name");
 			CHAT_COLOR_LORE = getStringList("Lore");
 			MENU_SIZE = getInteger("Size");
@@ -78,7 +78,7 @@ public class Localization extends SimpleLocalization {
 		public static Boolean ALLOW_INFO_BUTTON;
 
 		private static void init() {
-			pathPrefix("Main_GUI_Customization.Name_Color_Selection");
+			setPathPrefix("Main_GUI_Customization.Name_Color_Selection");
 			NAME_COLOR_NAME = getString("Name");
 			NAME_COLOR_LORE = getStringList("Lore");
 			MENU_SIZE = getInteger("Size");
@@ -95,7 +95,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Main_GUI_Customization.Gradient_Color_Selection");
+			setPathPrefix("Main_GUI_Customization.Gradient_Color_Selection");
 
 			MENU_NAME = getString("Name");
 			GRADIENT_COLOR_LORE = getStringList("Lore");
@@ -109,7 +109,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Main_GUI_Customization.Hex_Color_Selection");
+			setPathPrefix("Main_GUI_Customization.Hex_Color_Selection");
 
 			MENU_NAME = getString("Name");
 			HEX_COLOR_LORE = getStringList("Lore");
@@ -119,7 +119,7 @@ public class Localization extends SimpleLocalization {
 
 	public static class Commands {
 		private static void init() {
-			pathPrefix("Commands");
+			setPathPrefix("Commands");
 		}
 	}
 
@@ -130,7 +130,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Black");
+			setPathPrefix("Chat_Color_Selection_Customization.Black");
 			BLACK_NAME = getString("Name");
 			BLACK_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -145,7 +145,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Dark_Blue");
+			setPathPrefix("Chat_Color_Selection_Customization.Dark_Blue");
 			DARK_BLUE_NAME = getString("Name");
 			DARK_BLUE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -160,7 +160,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Dark_Green");
+			setPathPrefix("Chat_Color_Selection_Customization.Dark_Green");
 			DARK_GREEN_NAME = getString("Name");
 			DARK_GREEN_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -175,7 +175,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Dark_Aqua");
+			setPathPrefix("Chat_Color_Selection_Customization.Dark_Aqua");
 			DARK_AQUA_NAME = getString("Name");
 			DARK_AQUA_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -190,7 +190,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Dark_Red");
+			setPathPrefix("Chat_Color_Selection_Customization.Dark_Red");
 			DARK_RED_NAME = getString("Name");
 			DARK_RED_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -205,7 +205,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Dark_Purple");
+			setPathPrefix("Chat_Color_Selection_Customization.Dark_Purple");
 			DARK_PURPLE_NAME = getString("Name");
 			DARK_PURPLE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -220,7 +220,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Orange");
+			setPathPrefix("Chat_Color_Selection_Customization.Orange");
 			ORANGE_NAME = getString("Name");
 			ORANGE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -235,7 +235,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Gray");
+			setPathPrefix("Chat_Color_Selection_Customization.Gray");
 			GRAY_NAME = getString("Name");
 			GRAY_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -250,7 +250,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Dark_Gray");
+			setPathPrefix("Chat_Color_Selection_Customization.Dark_Gray");
 			DARK_GRAY_NAME = getString("Name");
 			DARK_GRAY_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -265,7 +265,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Blue");
+			setPathPrefix("Chat_Color_Selection_Customization.Blue");
 			BLUE_NAME = getString("Name");
 			BLUE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -280,7 +280,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Green");
+			setPathPrefix("Chat_Color_Selection_Customization.Green");
 			GREEN_NAME = getString("Name");
 			GREEN_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -295,7 +295,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Aqua");
+			setPathPrefix("Chat_Color_Selection_Customization.Aqua");
 			AQUA_NAME = getString("Name");
 			AQUA_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -310,7 +310,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Red");
+			setPathPrefix("Chat_Color_Selection_Customization.Red");
 			RED_NAME = getString("Name");
 			RED_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -325,7 +325,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Light_Purple");
+			setPathPrefix("Chat_Color_Selection_Customization.Light_Purple");
 			LIGHT_PURPLE_NAME = getString("Name");
 			LIGHT_PURPLE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -340,7 +340,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Yellow");
+			setPathPrefix("Chat_Color_Selection_Customization.Yellow");
 			YELLOW_NAME = getString("Name");
 			YELLOW_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -355,7 +355,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.White");
+			setPathPrefix("Chat_Color_Selection_Customization.White");
 			WHITE_NAME = getString("Name");
 			WHITE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -370,7 +370,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Magic");
+			setPathPrefix("Chat_Color_Selection_Customization.Magic");
 			MAGIC_NAME = getString("Name");
 			MAGIC_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -385,7 +385,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Bold");
+			setPathPrefix("Chat_Color_Selection_Customization.Bold");
 			BOLD_NAME = getString("Name");
 			BOLD_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -400,7 +400,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Italic");
+			setPathPrefix("Chat_Color_Selection_Customization.Italic");
 			ITALIC_NAME = getString("Name");
 			ITALIC_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -415,7 +415,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Underline");
+			setPathPrefix("Chat_Color_Selection_Customization.Underline");
 			UNDERLINE_NAME = getString("Name");
 			UNDERLINE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -430,7 +430,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Strikethrough");
+			setPathPrefix("Chat_Color_Selection_Customization.Strikethrough");
 			STRIKETHROUGH_NAME = getString("Name");
 			STRIKETHROUGH_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -445,7 +445,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Rainbow");
+			setPathPrefix("Chat_Color_Selection_Customization.Rainbow");
 			RAINBOW_NAME = getString("Name");
 			RAINBOW_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -459,7 +459,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Back_Button");
+			setPathPrefix("Chat_Color_Selection_Customization.Back_Button");
 
 			BACK_NAME = getString("Name");
 			BACK_LORE = getStringList("Lore");
@@ -475,7 +475,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Reset_Button");
+			setPathPrefix("Chat_Color_Selection_Customization.Reset_Button");
 
 			RESET_NAME = getString("Name");
 			RESET_LORE = getStringList("Lore");
@@ -493,7 +493,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Selection_Customization.Reset_Format_Button");
+			setPathPrefix("Chat_Color_Selection_Customization.Reset_Format_Button");
 
 			RESET_NAME = getString("Name");
 			RESET_LORE = getStringList("Lore");
@@ -510,7 +510,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Black");
+			setPathPrefix("Name_Color_Selection_Customization.Black");
 			BLACK_NAME = getString("Name");
 			BLACK_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -525,7 +525,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Dark_Blue");
+			setPathPrefix("Name_Color_Selection_Customization.Dark_Blue");
 			DARK_BLUE_NAME = getString("Name");
 			DARK_BLUE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -540,7 +540,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Dark_Green");
+			setPathPrefix("Name_Color_Selection_Customization.Dark_Green");
 			DARK_GREEN_NAME = getString("Name");
 			DARK_GREEN_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -555,7 +555,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Dark_Aqua");
+			setPathPrefix("Name_Color_Selection_Customization.Dark_Aqua");
 			DARK_AQUA_NAME = getString("Name");
 			DARK_AQUA_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -570,7 +570,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Dark_Red");
+			setPathPrefix("Name_Color_Selection_Customization.Dark_Red");
 			DARK_RED_NAME = getString("Name");
 			DARK_RED_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -585,7 +585,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Dark_Purple");
+			setPathPrefix("Name_Color_Selection_Customization.Dark_Purple");
 			DARK_PURPLE_NAME = getString("Name");
 			DARK_PURPLE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -600,7 +600,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Orange");
+			setPathPrefix("Name_Color_Selection_Customization.Orange");
 			ORANGE_NAME = getString("Name");
 			ORANGE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -615,7 +615,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Gray");
+			setPathPrefix("Name_Color_Selection_Customization.Gray");
 			GRAY_NAME = getString("Name");
 			GRAY_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -630,7 +630,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Dark_Gray");
+			setPathPrefix("Name_Color_Selection_Customization.Dark_Gray");
 			DARK_GRAY_NAME = getString("Name");
 			DARK_GRAY_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -645,7 +645,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Blue");
+			setPathPrefix("Name_Color_Selection_Customization.Blue");
 			BLUE_NAME = getString("Name");
 			BLUE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -660,7 +660,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Green");
+			setPathPrefix("Name_Color_Selection_Customization.Green");
 			GREEN_NAME = getString("Name");
 			GREEN_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -675,7 +675,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Aqua");
+			setPathPrefix("Name_Color_Selection_Customization.Aqua");
 			AQUA_NAME = getString("Name");
 			AQUA_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -690,7 +690,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Red");
+			setPathPrefix("Name_Color_Selection_Customization.Red");
 			RED_NAME = getString("Name");
 			RED_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -705,7 +705,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Light_Purple");
+			setPathPrefix("Name_Color_Selection_Customization.Light_Purple");
 			LIGHT_PURPLE_NAME = getString("Name");
 			LIGHT_PURPLE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -720,7 +720,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Yellow");
+			setPathPrefix("Name_Color_Selection_Customization.Yellow");
 			YELLOW_NAME = getString("Name");
 			YELLOW_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -735,7 +735,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.White");
+			setPathPrefix("Name_Color_Selection_Customization.White");
 			WHITE_NAME = getString("Name");
 			WHITE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -750,7 +750,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Magic");
+			setPathPrefix("Name_Color_Selection_Customization.Magic");
 			MAGIC_NAME = getString("Name");
 			MAGIC_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -765,7 +765,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Bold");
+			setPathPrefix("Name_Color_Selection_Customization.Bold");
 			BOLD_NAME = getString("Name");
 			BOLD_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -780,7 +780,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Italic");
+			setPathPrefix("Name_Color_Selection_Customization.Italic");
 			ITALIC_NAME = getString("Name");
 			ITALIC_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -795,7 +795,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Underline");
+			setPathPrefix("Name_Color_Selection_Customization.Underline");
 			UNDERLINE_NAME = getString("Name");
 			UNDERLINE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -810,7 +810,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Strikethrough");
+			setPathPrefix("Name_Color_Selection_Customization.Strikethrough");
 			STRIKETHROUGH_NAME = getString("Name");
 			STRIKETHROUGH_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -825,7 +825,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Rainbow");
+			setPathPrefix("Name_Color_Selection_Customization.Rainbow");
 			RAINBOW_NAME = getString("Name");
 			RAINBOW_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
@@ -839,7 +839,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Back_Button");
+			setPathPrefix("Name_Color_Selection_Customization.Back_Button");
 
 			BACK_NAME = getString("Name");
 			BACK_LORE = getStringList("Lore");
@@ -855,7 +855,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Reset_Button");
+			setPathPrefix("Name_Color_Selection_Customization.Reset_Button");
 
 			RESET_NAME = getString("Name");
 			RESET_LORE = getStringList("Lore");
@@ -873,7 +873,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Name_Color_Selection_Customization.Reset_Format_Button");
+			setPathPrefix("Name_Color_Selection_Customization.Reset_Format_Button");
 
 			RESET_NAME = getString("Name");
 			RESET_LORE = getStringList("Lore");
@@ -900,7 +900,7 @@ public class Localization extends SimpleLocalization {
 		public static Boolean ALLOW_INFO_BUTTON;
 
 		private static void init() {
-			pathPrefix("Gradient_Color_Selection_Customization");
+			setPathPrefix("Gradient_Color_Selection_Customization");
 
 			MAIN_MENU_SIZE = getInteger("Main_Menu_Size");
 			MENU_TITLE = getString("Menu_Title");
@@ -928,7 +928,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer PREVIOUS_PAGE_SLOT;
 
 		private static void init() {
-			pathPrefix("Gradient_Color_Selection_Customization.Chat");
+			setPathPrefix("Gradient_Color_Selection_Customization.Chat");
 
 			CHAT_CUSTOM_GRADIENT_SLOT = getInteger("Chat_Custom_Gradient_Slot");
 			CHAT_RESET_GRADIENT_SLOT = getInteger("Chat_Reset_Gradient_Slot");
@@ -946,7 +946,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer PREVIOUS_PAGE_SLOT;
 
 		private static void init() {
-			pathPrefix("Gradient_Color_Selection_Customization.Name");
+			setPathPrefix("Gradient_Color_Selection_Customization.Name");
 
 			NAME_CUSTOM_GRADIENT_SLOT = getInteger("Name_Custom_Gradient_Slot");
 			NAME_RESET_GRADIENT_SLOT = getInteger("Name_Reset_Gradient_Slot");
@@ -963,7 +963,7 @@ public class Localization extends SimpleLocalization {
 		public static String ERROR_MESSAGE;
 
 		private static void init() {
-			pathPrefix("Gradient_Color_Selection_Customization.Reset_Gradient");
+			setPathPrefix("Gradient_Color_Selection_Customization.Reset_Gradient");
 
 			RESET_NAME = getString("Name");
 			RESET_LORE = getStringList("Lore");
@@ -982,7 +982,7 @@ public class Localization extends SimpleLocalization {
 		public static String FORMAT_PROMPT;
 
 		private static void init() {
-			pathPrefix("Gradient_Color_Selection_Customization.Custom_Gradient");
+			setPathPrefix("Gradient_Color_Selection_Customization.Custom_Gradient");
 
 			CUSTOM_NAME = getString("Name");
 			CUSTOM_LORE = getStringList("Lore");
@@ -1001,7 +1001,7 @@ public class Localization extends SimpleLocalization {
 		public static Integer MENU_SLOT;
 
 		private static void init() {
-			pathPrefix("Gradient_Color_Selection_Customization.Return");
+			setPathPrefix("Gradient_Color_Selection_Customization.Return");
 
 			ENABLED = getBoolean("Enabled");
 			CUSTOM_NAME = getString("Name");
@@ -1017,7 +1017,7 @@ public class Localization extends SimpleLocalization {
 		public static String NICKNAME_NOT_BE_FOUND_MESSAGE;
 
 		private static void init() {
-			pathPrefix("Nicknames");
+			setPathPrefix("Nicknames");
 
 			NICKNAME_ALREADY_TAKEN_MESSAGE = getString("Nickname_Already_Taken_Message");
 			NICKNAME_COMMAND_SUCCESSFUL_MESSAGE = getString("Nickname_Command_Success_Message");
@@ -1048,7 +1048,7 @@ public class Localization extends SimpleLocalization {
 		public static String HEX_COLOR_ALREADY_ADDED_TO_WHITELIST;
 
 		private static void init() {
-			pathPrefix("Hex_Colors");
+			setPathPrefix("Hex_Colors");
 
 			HEX_PROMPT_PREFIX = getString("Prompt_Prefix");
 			FIRST_PROMPT = getString("First_Prompt");
@@ -1085,7 +1085,7 @@ public class Localization extends SimpleLocalization {
 		public static String UNABLE_TO_SELECT_FORMAT_MESSAGE;
 
 		private static void init() {
-			pathPrefix("Other");
+			setPathPrefix("Other");
 
 			NO_PERMISSION = getString("No_Permission");
 			ADMIN_SET_GRADIENT_COLOR_SUCCESS_MESSAGE = getString("Admin_Set_Gradient_Color_Success");

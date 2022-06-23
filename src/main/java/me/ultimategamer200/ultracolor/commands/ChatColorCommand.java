@@ -4,9 +4,15 @@ import me.ultimategamer200.ultracolor.menu.ColorSelectionMenu;
 import me.ultimategamer200.ultracolor.settings.Localization;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
 import org.bukkit.entity.Player;
+import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.command.SimpleCommand;
 
-public class ChatColorCommand extends SimpleCommand {
+/**
+ * The @AutoRegister tag allows automatic registration of this command without having to call the command on startup and
+ * mentioning it in the plugin.yml file.
+ */
+@AutoRegister
+public final class ChatColorCommand extends SimpleCommand {
 	public ChatColorCommand() {
 		super("chatcolor|cc");
 		setPermission(UltraColorPermissions.CHAT_COLOR);

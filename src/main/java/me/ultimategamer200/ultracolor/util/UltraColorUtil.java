@@ -11,6 +11,7 @@ import org.mineacademy.fo.ChatUtil;
 import org.mineacademy.fo.menu.model.ItemCreator;
 import org.mineacademy.fo.menu.model.SkullCreator;
 import org.mineacademy.fo.remain.CompChatColor;
+import org.mineacademy.fo.remain.CompMaterial;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -29,8 +30,7 @@ public class UltraColorUtil {
 	 * @return the chat color format as a string
 	 */
 	public String nameFormatToString(final ChatColor format) {
-		if (format.isFormat())
-			return "§" + format.getChar();
+		if (format.isFormat()) return "§" + format.getChar();
 		return "";
 	}
 
@@ -262,10 +262,10 @@ public class UltraColorUtil {
 		if (material.startsWith("PLAYER_HEAD:")) {
 			final String textureLink = material.substring(12);
 			final ItemStack head = SkullCreator.itemFromUrl(textureLink);
-			return ItemCreator.of(head).name(name).lores(lore).build().make();
+			return ItemCreator.of(head).name(name).lore(lore).make();
 		}
 
-		return ItemCreator.of(material, name, lore).build().make();
+		return ItemCreator.of(CompMaterial.valueOf(material), name, lore).make();
 	}
 
 	/**
@@ -276,9 +276,7 @@ public class UltraColorUtil {
 	 */
 	public CompChatColor getFormatToCompChatColor(final String selectedFormat) {
 		for (final CompChatColor decoration : CompChatColor.getDecorations())
-			if (decoration.toReadableString().equalsIgnoreCase(selectedFormat))
-				return decoration;
-
+			if (decoration.getName().equalsIgnoreCase(selectedFormat)) return decoration;
 		return null;
 	}
 

@@ -25,6 +25,10 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 	@Getter
 	private static final UltraColorDatabase instance = new UltraColorDatabase();
 
+	private UltraColorDatabase() {
+		addVariable("table", "UltraColor");
+	}
+
 	/**
 	 * Communicates to the server to load data from the database and save it to its UltraColor data.db file.
 	 */
@@ -45,19 +49,13 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 		final Boolean chatRainbowColors = map.getBoolean("Chat_Rainbow_Colors", false);
 		final Boolean nameRainbowColors = map.getBoolean("Name_Rainbow_Colors", false);
 
-		if (chatColor != null)
-			Common.runLater(() -> data.setChatColor(chatColor));
-		if (chatFormat != null)
-			Common.runLater(() -> data.setChatFormat(chatFormat));
-		if (nameColor != null)
-			Common.runLater(() -> data.setNameColor(nameColor));
-		if (chatFormat != null)
-			Common.runLater(() -> data.setNameFormat(nameFormat));
+		if (chatColor != null) Common.runLater(() -> data.setChatColor(chatColor));
+		if (chatFormat != null) Common.runLater(() -> data.setChatFormat(chatFormat));
+		if (nameColor != null) Common.runLater(() -> data.setNameColor(nameColor));
+		if (nameFormat != null) Common.runLater(() -> data.setNameFormat(nameFormat));
 
-		if (firstCustomGradient != null)
-			Common.runLater(() -> data.setCustomGradient1(firstCustomGradient));
-		if (secondCustomGradient != null)
-			Common.runLater(() -> data.setCustomGradient2(secondCustomGradient));
+		if (firstCustomGradient != null) Common.runLater(() -> data.setCustomGradient1(firstCustomGradient));
+		if (secondCustomGradient != null) Common.runLater(() -> data.setCustomGradient2(secondCustomGradient));
 
 		if (firstChatCustomGradient != null)
 			Common.runLater(() -> data.setChatCustomGradient1(firstChatCustomGradient));

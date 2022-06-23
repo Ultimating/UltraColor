@@ -1,7 +1,11 @@
 package me.ultimategamer200.ultracolor.subcommands;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import me.ultimategamer200.ultracolor.settings.Settings;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
+import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.command.PermsCommand;
 import org.mineacademy.fo.command.SimpleCommandGroup;
@@ -10,10 +14,14 @@ import org.mineacademy.fo.remain.Remain;
 /**
  * The main command group that registers all subcommands with the /ucolor command.
  */
-public class UltraColorCommandGroup extends SimpleCommandGroup {
+@AutoRegister
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class UltraColorCommandGroup extends SimpleCommandGroup {
+	@Getter
+	private static final UltraColorCommandGroup instance = new UltraColorCommandGroup();
+
 	@Override
 	protected void registerSubcommands() {
-		registerSubcommand(new ReloadCommand());
 		registerSubcommand(new ResetColorCommand());
 		registerSubcommand(new SetNameColorCommand());
 		registerSubcommand(new SetChatColorCommand());
@@ -24,8 +32,10 @@ public class UltraColorCommandGroup extends SimpleCommandGroup {
 		permsCommand.setPermission("ultracolor.command.permissions");
 		registerSubcommand(permsCommand);
 
-		if (Settings.Other.NICKNAMES_ENABLE)
-			registerSubcommand(new ListNicknamesCommand());
+		org.mineacademy.fo.command.ReloadCommand reloadCommand = new org.mineacademy.fo.command.ReloadCommand();
+		reloadCommand.setPermission(UltraColorPermissions.Command.RELOAD);
+		registerSubcommand(reloadCommand);
+		if (Settings.Other.NICKNAMES_ENABLE) registerSubcommand(new ListNicknamesCommand());
 
 		if (Remain.hasHexColors()) {
 			if (Settings.Color_Settings.NAME_GRADIENT_COLORS || Settings.Color_Settings.CHAT_GRADIENT_COLORS) {

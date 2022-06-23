@@ -21,7 +21,6 @@ public class GradientMenu extends Menu {
 
 	public GradientMenu() {
 		setTitle(Localization.Gradient_Color_Selection.MENU_TITLE);
-		setInfo(Localization.Gradient_Color_Selection.INFO_MESSAGE);
 		setSize(Localization.Gradient_Color_Selection.MAIN_MENU_SIZE);
 
 		gradientChatButton = new ButtonMenu(new PreDefinedGradientMenu.PreDefinedChatGradientsMenu(this),
@@ -47,5 +46,10 @@ public class GradientMenu extends Menu {
 		if (slot == Localization.Gradient_Color_Selection.NAME_MENU_ITEM_SLOT && Settings.Color_Settings.NAME_GRADIENT_COLORS)
 			return gradientNameButton.getItem();
 		return fillButton.getItem();
+	}
+
+	@Override
+	protected String[] getInfo() {
+		return new String[]{Localization.Gradient_Color_Selection.INFO_MESSAGE};
 	}
 }

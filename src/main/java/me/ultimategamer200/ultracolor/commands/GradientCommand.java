@@ -17,9 +17,7 @@ public class GradientCommand extends SimpleCommand {
 		checkConsole();
 
 		// Is the SERVER running on at least 1.16?
-		if (MinecraftVersion.atLeast(MinecraftVersion.V.v1_16))
-			new GradientMenu().displayTo(getPlayer());
-		else
-			tellError(Localization.Gradient_Color_Selection.UNSUPPORTED_VERSION_MESSAGE);
+		if (MinecraftVersion.atLeast(MinecraftVersion.V.v1_16)) new GradientMenu().displayTo(getPlayer());
+		else tellError(Localization.Gradient_Color_Selection.UNSUPPORTED_VERSION_MESSAGE);
 	}
 }

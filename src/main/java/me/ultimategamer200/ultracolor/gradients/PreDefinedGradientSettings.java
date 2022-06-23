@@ -68,7 +68,7 @@ public class PreDefinedGradientSettings extends YamlConfig {
 	 * Loads the settings options to be used in the file.
 	 */
 	@Override
-	protected void onLoadFinish() {
+	protected void onLoad() {
 		this.type = getString("Type", "both");
 		this.hexColors = getStringList("Hex_Colors");
 		this.permission = getString("Permission", "ultracolor.gradients." + gradient.getName());
@@ -79,52 +79,59 @@ public class PreDefinedGradientSettings extends YamlConfig {
 		this.errorMessage = getString("Error_Message");
 	}
 
+	@Override
+	protected void onSave() {
+		this.set("Type", type);
+		this.set("Hex_Colors", hexColors);
+		this.set("Permission", permission);
+		this.set("Menu_Display_Name", displayName);
+		this.set("Menu_Item", menuItem);
+		this.set("Menu_Lore", menuLore);
+		this.set("Success_Message", successMessage);
+		this.set("Error_Message", errorMessage);
+	}
+
 	public void setType(final String type) {
 		Valid.checkBoolean(type.equalsIgnoreCase("chat") || type.equalsIgnoreCase("name")
 						|| type.equalsIgnoreCase("both"),
 				"The gradient type must be chat, name, or both, not " + type + "!");
 		this.type = type;
-		save("Type", type);
+		save();
 	}
 
 	public void toggleHexColor(final String hexColor) {
-		if (this.hexColors.contains(hexColor)) {
-			this.hexColors.remove(hexColor);
-			save("Hex_Colors", this.hexColors);
-			return;
-		}
-
-		this.hexColors.add(hexColor);
-		save("Hex_Colors", this.hexColors);
+		if (this.hexColors.contains(hexColor)) this.hexColors.remove(hexColor);
+		else this.hexColors.add(hexColor);
+		save();
 	}
 
 	public void setPermission(final String permission) {
 		this.permission = permission;
-		save("Permission", permission);
+		save();
 	}
 
 	public void setDisplayName(final String displayName) {
 		this.displayName = displayName;
-		save("Menu_Display_Name", displayName);
+		save();
 	}
 
 	public void setMenuItem(final CompMaterial menuItem) {
 		this.menuItem = menuItem.toString();
-		save("Menu_Item", menuItem);
+		save();
 	}
 
 	public void setMenuLore(final List<String> menuLore) {
 		this.menuLore = menuLore;
-		save("Menu_Lore", menuLore);
+		save();
 	}
 
 	public void setSuccessMessage(final String successMessage) {
 		this.successMessage = successMessage;
-		save("Success_Message", successMessage);
+		save();
 	}
 
 	public void setErrorMessage(final String errorMessage) {
 		this.errorMessage = errorMessage;
-		save("Error_Message", errorMessage);
+		save();
 	}
 }

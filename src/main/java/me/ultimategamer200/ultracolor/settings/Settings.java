@@ -40,7 +40,7 @@ public class Settings extends SimpleSettings {
 		public static String RAINBOW_ITEM;
 
 		private static void init() {
-			pathPrefix("Chat_Color_Items");
+			setPathPrefix("Chat_Color_Items");
 
 			BLACK_ITEM = getString("Black");
 			DARK_BLUE_ITEM = getString("Dark_Blue");
@@ -94,7 +94,7 @@ public class Settings extends SimpleSettings {
 		public static String RAINBOW_ITEM;
 
 		private static void init() {
-			pathPrefix("Name_Color_Items");
+			setPathPrefix("Name_Color_Items");
 
 			BLACK_ITEM = getString("Black");
 			DARK_BLUE_ITEM = getString("Dark_Blue");
@@ -131,7 +131,7 @@ public class Settings extends SimpleSettings {
 		public static CompMaterial RETURN_ITEM;
 
 		private static void init() {
-			pathPrefix("Gradient_Color_Items");
+			setPathPrefix("Gradient_Color_Items");
 
 			RESET_ITEM = getString("Reset");
 			CUSTOM_ITEM = getString("Custom");
@@ -159,7 +159,7 @@ public class Settings extends SimpleSettings {
 		public static String NAME_COLOR_BUTTON;
 
 		private static void init() {
-			pathPrefix("Color_Settings");
+			setPathPrefix("Color_Settings");
 
 			NAME_COLORS = getBoolean("Name_Colors");
 			CHAT_COLORS = getBoolean("Chat_Colors");
@@ -192,7 +192,7 @@ public class Settings extends SimpleSettings {
 		public static Boolean STRIKETHROUGH_FORMAT;
 
 		private static void init() {
-			pathPrefix("Color_Settings.Name_Formats");
+			setPathPrefix("Color_Settings.Name_Formats");
 
 			BOLD_FORMAT = getBoolean("Bold_Format_Enabled");
 			MAGIC_FORMAT = getBoolean("Magic_Format_Enabled");
@@ -210,7 +210,7 @@ public class Settings extends SimpleSettings {
 		public static Boolean STRIKETHROUGH_FORMAT;
 
 		private static void init() {
-			pathPrefix("Color_Settings.Chat_Formats");
+			setPathPrefix("Color_Settings.Chat_Formats");
 
 			BOLD_FORMAT = getBoolean("Bold_Format_Enabled");
 			MAGIC_FORMAT = getBoolean("Magic_Format_Enabled");
@@ -239,7 +239,7 @@ public class Settings extends SimpleSettings {
 		public static Boolean WHITE_COLOR_ENABLED;
 
 		private static void init() {
-			pathPrefix("Color_Settings.Chat_Color_Settings");
+			setPathPrefix("Color_Settings.Chat_Color_Settings");
 
 			BLACK_COLOR_ENABLED = getBoolean("Black_Color_Enabled");
 			DARK_BLUE_COLOR_ENABLED = getBoolean("Dark_Blue_Color_Enabled");
@@ -279,7 +279,7 @@ public class Settings extends SimpleSettings {
 		public static Boolean WHITE_COLOR_ENABLED;
 
 		private static void init() {
-			pathPrefix("Color_Settings.Name_Color_Settings");
+			setPathPrefix("Color_Settings.Name_Color_Settings");
 
 			BLACK_COLOR_ENABLED = getBoolean("Black_Color_Enabled");
 			DARK_BLUE_COLOR_ENABLED = getBoolean("Dark_Blue_Color_Enabled");
@@ -310,7 +310,7 @@ public class Settings extends SimpleSettings {
 		public static Integer EXPIRY_DAYS;
 
 		private static void init() {
-			pathPrefix("Database");
+			setPathPrefix("Database");
 
 			ENABLED = getBoolean("Enabled");
 			HOST = getString("Host");
@@ -333,7 +333,7 @@ public class Settings extends SimpleSettings {
 		public static CompMaterial INFO_ITEM;
 
 		private static void init() {
-			pathPrefix("Other");
+			setPathPrefix("Other");
 
 			BACK_BUTTON_ENABLE = getBoolean("Back_Button_Enable");
 			NICKNAMES_ENABLE = getBoolean("Nicknames_Enable");
@@ -351,7 +351,7 @@ public class Settings extends SimpleSettings {
 		public static String ERROR_PREFIX;
 
 		private static void init() {
-			pathPrefix("Other_Prefixes");
+			setPathPrefix("Other_Prefixes");
 
 			SUCCESS_PREFIX = getString("Success_Prefix");
 			ERROR_PREFIX = getString("Error_Prefix");
@@ -362,7 +362,7 @@ public class Settings extends SimpleSettings {
 	public static EventPriority CHAT_LISTENER_PRIORITY;
 
 	private static void init() {
-		pathPrefix(null);
+		setPathPrefix(null);
 
 		NOTIFY_UPDATES = getBoolean("Notify_Updates");
 		CHAT_LISTENER_PRIORITY = get("Chat_Listener_Priority", EventPriority.class);

@@ -2,7 +2,6 @@ package me.ultimategamer200.ultracolor.subcommands;
 
 import lombok.Setter;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.FileUtil;
 import org.mineacademy.fo.MinecraftVersion;
@@ -11,6 +10,7 @@ import org.mineacademy.fo.command.SimpleSubCommand;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import org.mineacademy.fo.remain.Remain;
 import org.mineacademy.fo.settings.SimpleLocalization;
+import org.mineacademy.fo.settings.YamlConfig;
 
 import java.io.File;
 import java.io.IOException;
@@ -71,9 +71,7 @@ public class DebugCommand extends SimpleSubCommand {
 				"Players Online: " + Remain.getOnlinePlayers().size(),
 				"Plugins: " + Common.join(Bukkit.getPluginManager().getPlugins(), ", ", plugin -> plugin.getDescription().getFullName()));
 
-		if (debugLines != null)
-			debugLines.accept(lines);
-
+		if (debugLines != null) debugLines.accept(lines);
 		FileUtil.write("debug/general.txt", lines);
 	}
 
@@ -91,14 +89,12 @@ public class DebugCommand extends SimpleSubCommand {
 
 				// Strip sensitive keys from .YML files
 				if (file.getName().endsWith(".yml")) {
-					final FileConfiguration config = FileUtil.loadConfigurationStrict(file);
-					final FileConfiguration copyConfig = FileUtil.loadConfigurationStrict(copy);
+					final YamlConfig config = YamlConfig.fromFile(file);
+					final YamlConfig copyConfig = YamlConfig.fromFile(copy);
 
 					for (final Map.Entry<String, Object> entry : config.getValues(true).entrySet()) {
 						final String key = entry.getKey();
-
-						if (!key.contains("Database"))
-							copyConfig.set(key, entry.getValue());
+						if (!key.contains("Database")) copyConfig.set(key, entry.getValue());
 					}
 
 					copyConfig.save(copy);

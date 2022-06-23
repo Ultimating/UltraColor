@@ -4,9 +4,11 @@ import me.ultimategamer200.ultracolor.menu.ColorSelectionMenu;
 import me.ultimategamer200.ultracolor.settings.Localization;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
 import org.bukkit.entity.Player;
+import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.command.SimpleCommand;
 
-public class NameColorCommand extends SimpleCommand {
+@AutoRegister
+public final class NameColorCommand extends SimpleCommand {
 	public NameColorCommand() {
 		super("namecolor|nc");
 		setPermission(UltraColorPermissions.NAME_COLOR);

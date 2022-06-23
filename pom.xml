@@ -7,14 +7,14 @@
     <groupId>me.ultimategamer200.ultracolor</groupId>
     <artifactId>ultracolor</artifactId>
     <name>UltraColor</name>
-    <version>1.5.7</version>
+    <version>1.5.8</version>
 
     <properties>
         <!-- The full path to your plugin's main class, so that Spigot can find and load it -->
         <main.class>me.ultimategamer200.ultracolor.UltraColorPlugin</main.class>
 
         <!-- Find latest version here: https://github.com/kangarko/Foundation/releases -->
-        <foundation.version>5.13.1</foundation.version>
+        <foundation.version>6.0.1</foundation.version>
         <foundation.path>com.github.kangarko</foundation.path>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -46,14 +46,6 @@
             <version>${foundation.version}</version>
             <scope>compile</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-spring-cloud-config-client</artifactId>
@@ -71,7 +63,7 @@
 
                 <!-- Change version to the latest one from
                      https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
-                <version>3.8.1</version>
+                <version>3.10.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -84,7 +76,7 @@
                 <!-- Change version to the latest one from
                      https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin
                      -->
-                <version>3.2.4</version>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <phase>package</phase>

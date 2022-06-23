@@ -3,17 +3,17 @@ package me.ultimategamer200.ultracolor;
 import com.Zrips.CMI.CMI;
 import com.earth2me.essentials.Essentials;
 import lombok.SneakyThrows;
-import me.ultimategamer200.ultracolor.commands.*;
+import me.ultimategamer200.ultracolor.commands.GradientCommand;
+import me.ultimategamer200.ultracolor.commands.HexColorCommand;
+import me.ultimategamer200.ultracolor.commands.NicknameCommand;
+import me.ultimategamer200.ultracolor.commands.RealNameCommand;
 import me.ultimategamer200.ultracolor.gradients.PreDefinedGradientManager;
 import me.ultimategamer200.ultracolor.hooks.PlaceholderAPIHook;
-import me.ultimategamer200.ultracolor.listeners.ChatListener;
 import me.ultimategamer200.ultracolor.listeners.DatabaseListener;
-import me.ultimategamer200.ultracolor.listeners.PlayerListener;
 import me.ultimategamer200.ultracolor.mysql.UltraColorDatabase;
 import me.ultimategamer200.ultracolor.settings.AllowedHexesData;
 import me.ultimategamer200.ultracolor.settings.Localization;
 import me.ultimategamer200.ultracolor.settings.Settings;
-import me.ultimategamer200.ultracolor.subcommands.UltraColorCommandGroup;
 import me.ultimategamer200.ultracolor.util.Filter;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -22,7 +22,6 @@ import org.mineacademy.fo.Common;
 import org.mineacademy.fo.FileUtil;
 import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.MinecraftVersion;
-import org.mineacademy.fo.command.SimpleCommandGroup;
 import org.mineacademy.fo.debug.LagCatcher;
 import org.mineacademy.fo.menu.button.Button;
 import org.mineacademy.fo.menu.button.ButtonReturnBack;
@@ -30,11 +29,8 @@ import org.mineacademy.fo.model.HookManager;
 import org.mineacademy.fo.model.SpigotUpdater;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import org.mineacademy.fo.remain.Remain;
-import org.mineacademy.fo.settings.YamlStaticConfig;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * The main plugin instance. This class extends SimplePlugin rather than JavaPlugin because we use the Foundation library!
@@ -42,11 +38,6 @@ import java.util.List;
  * enjoy!
  */
 public class UltraColorPlugin extends SimplePlugin {
-	/**
-	 * The main command group.
-	 */
-	private final SimpleCommandGroup mainCommandGroup = new UltraColorCommandGroup();
-
 	@SneakyThrows
 	@Override
 	protected void onPluginStart() {
@@ -71,6 +62,16 @@ public class UltraColorPlugin extends SimplePlugin {
 					"Otherwise, you will not get support.");
 		}
 
+		// Database Registration
+		if (Settings.Database.ENABLED) {
+			LagCatcher.start("mysql");
+			final String databaseURL = "jdbc:mysql://{host}/{database}?autoReconnect=true&useSSL=false";
+			UltraColorDatabase.getInstance().connect(databaseURL.replace("{host}", Settings.Database.HOST + ":" + Settings.Database.PORT)
+					.replace("{database}", Settings.Database.DATABASE), Settings.Database.USER, Settings.Database.PASS);
+			LagCatcher.end("mysql", 0, "Connection to MySQL established. Took {time} ms.");
+			registerEvents(new DatabaseListener());
+		}
+
 		Common.log(Common.consoleLineSmooth());
 		Common.log(" _   _ _ _             _____       _            \n" +
 				"| | | | | |           /  __ \\     | |           \n" +
@@ -80,12 +81,11 @@ public class UltraColorPlugin extends SimplePlugin {
 				" \\___/|_|\\__|_|  \\__,_|\\____/\\___/|_|\\___/|_| ");
 		Common.log("Plugin loaded successfully!");
 
-		// Registers plugin commands and listeners.
-		registerCommands();
-		registerEvents();
+		// Registers optional plugin commands.
+		registerOptionalCommands();
 
 		// Uses a prefix when using Common.tell() methods.
-		Common.ADD_TELL_PREFIX = true;
+		Common.setTellPrefix(Settings.PLUGIN_PREFIX);
 
 		// Checks if change-displayname is false in Essentials and/or CMI.
 		if (HookManager.isEssentialsLoaded() || HookManager.isCMILoaded()) {
@@ -113,11 +113,11 @@ public class UltraColorPlugin extends SimplePlugin {
 		Common.log(Common.consoleLineSmooth());
 	}
 
-	private void registerCommands() {
-		registerCommand(new ColorCommand());
-		registerCommand(new ChatColorCommand());
-		registerCommand(new NameColorCommand());
-
+	/**
+	 * Commands that require a settings option to be enabled and/or a certain Minecraft version or newer are registered
+	 * here instead of using @AutoRegister to make code optimized.
+	 */
+	private void registerOptionalCommands() {
 		if (Settings.Other.NICKNAMES_ENABLE) {
 			registerCommand(new NicknameCommand());
 			registerCommand(new RealNameCommand());
@@ -129,24 +129,6 @@ public class UltraColorPlugin extends SimplePlugin {
 			if (Remain.hasHexColors()) registerCommand(new GradientCommand());
 	}
 
-	/**
-	 * Registers the plugin's listeners.
-	 */
-	private void registerEvents() {
-		registerEvents(new PlayerListener());
-		registerEvents(ChatListener.getInstance());
-
-		// Database Registration
-		if (Settings.Database.ENABLED) {
-			LagCatcher.start("mysql");
-			final String databaseURL = "jdbc:mysql://{host}/{database}?autoReconnect=true&useSSL=false";
-			UltraColorDatabase.getInstance().connect(databaseURL.replace("{host}", Settings.Database.HOST + ":" + Settings.Database.PORT)
-					.replace("{database}", Settings.Database.DATABASE), Settings.Database.USER, Settings.Database.PASS, "UltraColor");
-			LagCatcher.end("mysql", 0, "Connection to MySQL established. Took {time} ms.");
-			registerEvents(new DatabaseListener());
-		}
-	}
-
 	// This method is called when you start the plugin AND when you reload it
 	@Override
 	protected void onReloadablesStart() {
@@ -154,10 +136,8 @@ public class UltraColorPlugin extends SimplePlugin {
 		Messenger.setErrorPrefix(Settings.Other_Prefixes.ERROR_PREFIX);
 
 		// Loads pre-defined gradients if gradients are enabled and server is 1.16+
-		if (Settings.Color_Settings.CHAT_GRADIENT_COLORS || Settings.Color_Settings.NAME_GRADIENT_COLORS) {
-			if (Remain.hasHexColors())
-				PreDefinedGradientManager.loadPreDefinedGradients();
-		}
+		if (Settings.Color_Settings.CHAT_GRADIENT_COLORS || Settings.Color_Settings.NAME_GRADIENT_COLORS)
+			if (Remain.hasHexColors()) PreDefinedGradientManager.loadPreDefinedGradients();
 
 		if (Localization.Main_GUI_Customization_Chat_Color_Selection.ALLOW_INFO_BUTTON || Localization.Main_GUI_Customization_Name_Color_Selection.ALLOW_INFO_BUTTON
 				|| Localization.Gradient_Color_Selection.ALLOW_INFO_BUTTON || Localization.Main_GUI_Customization.ALLOW_INFO_BUTTON) {
@@ -211,8 +191,7 @@ public class UltraColorPlugin extends SimplePlugin {
 	 */
 	@Override
 	public SpigotUpdater getUpdateCheck() {
-		if (Settings.NOTIFY_UPDATES)
-			return new SpigotUpdater(85332);
+		if (Settings.NOTIFY_UPDATES) return new SpigotUpdater(85332);
 		return null;
 	}
 
@@ -243,19 +222,5 @@ public class UltraColorPlugin extends SimplePlugin {
 	@Override
 	public MinecraftVersion.V getMaximumVersion() {
 		return MinecraftVersion.V.v1_18;
-	}
-
-	/**
-	 * Gets the main command group. Cannot use a @Getter for the variable otherwise the plugin would disable.
-	 */
-	@Override
-	public SimpleCommandGroup getMainCommand() {
-		return mainCommandGroup;
-	}
-
-	// Automatically load classes extending YamlStaticConfig
-	@Override
-	public List<Class<? extends YamlStaticConfig>> getSettings() {
-		return Arrays.asList(Settings.class, Localization.class);
 	}
 }
