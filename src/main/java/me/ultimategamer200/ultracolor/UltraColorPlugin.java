@@ -221,6 +221,6 @@ public class UltraColorPlugin extends SimplePlugin {
 	 */
 	@Override
 	public MinecraftVersion.V getMaximumVersion() {
-		return MinecraftVersion.V.v1_18;
+		return MinecraftVersion.V.v1_19;
 	}
 }
