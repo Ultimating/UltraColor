@@ -1,0 +1,698 @@
+#
+# _   _ _ _             _____       _
+#| | | | | |           /  __ \     | |
+#| | | | | |_ _ __ __ _| /  \/ ___ | | ___  _ __
+#| | | | | __| '__/ _` | |    / _ \| |/ _ \| '__|
+#| |_| | | |_| | | (_| | \__/\ (_) | | (_) | |
+# \___/|_|\__|_|  \__,_|\____/\___/|_|\___/|_|
+#
+# Berichten Bestand - Nederlands
+#
+# BELANGRIJK: Voor alle slotopties, ligt het berijk tussen 0 - 35. Bij het configureren van welke slots-knoppen vershijnen in de
+# menu, zorg ervoor dat ze zich niet herhalen voor dat specifieke menu. Zie standaardconfiguratie op de Wiki voor voorbeelden.
+#
+
+Menu_Titles:
+  Color_Selection: "&7Selecteer een kleur type!"
+  Chat_Color_Selection: "&7Selecteer een chat kleur!"
+  Name_Color_Selection: "&7Selecteer een naam kleur!"
+  Menu_Information: "&fMenu Informatie"
+
+# Berichten voor opdracten.
+# UltraColor = UltraColor plugin naam.
+# {plugin_version} = De huidige versie van UltraColor die u gebruikt.
+Commands:
+  Reload_Success: "&2UltraColor {plugin_version} is succesvol herladen."
+
+# Pas het GUI-menu aan dat hier wordt geopend met /color
+Main_GUI_Customization:
+  Info_Message: "Kies ervoor om je chat- of naamkleur te wijzigen."
+  # Moeten we toestaan dat de info-knop wordt weergeven in de GUI voor MAIN COLOR SELECTION GUI?
+  Info_Button_Enabled: true
+  # De grootte van het hoofdmenu van de GUI. Dit moet een veelvoud van 9 zijn.
+  # De maximale waarde is 54.
+  # Ex: 9, 18, 27, 36, enz.
+  Size: 27
+  Info_Button_Slot: 18
+
+  Chat_Color_Selection:
+    Name: "Chat kleur menu"
+    Lore:
+      - "&8---------------------------"
+      - "&7klik om chat kleurselectie te openen!"
+      - "&8---------------------------"
+    # De grootte van het GUI-menu (max. waarde is 54).
+    Size: 54
+    Slot: 10
+    # Het bericht spelers zullen zien als ze geen toestemming hebben voor een specifieke chatkleur/-indeling.
+    Error_Message: "&cOnvoldoende toestemming. Breng een administratief medewerker op de hoogte!"
+    # Het bericht dat spelers te zien krijgen als ze met de muis over de infoknop in het menu gaan.
+    Info_Message: "Klik op een kleur om deze als je chatkleur te gebruiken."
+    # Moeten we toestaan dat de info-knop wordt weergegeven in de GUI voor CHAT COLOR SELECTION??
+    Info_Button_Enabled: true
+
+  Name_Color_Selection:
+    Name: "Naam kleur menu"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om naam kleurselectie te openen!"
+      - "&8---------------------------"
+    # De grootte van het GUI-menu (max. waarde is 54).
+    Size: 54
+    Slot: 16
+    # Het bericht spelers zullen zien of ze geen toestemming hebben voor een specifieke naamkleur/-indeling.
+    Error_Message: "&cOnvoldoende toestemming. Breng een administratief medewerker op de hoogte!"
+    # Het bericht dat spelers te zien krijgen als ze met de muis over de infoknop in het menu gaan.
+    Info_Message: "Klik op een kleur om deze als weergavenaam te gebruiken."
+    # Moeten we toestaan dat de info-knop wordt weergegeven in de GUI NAME COLOR SELECTION?
+    Info_Button_Enabled: true
+  
+  Gradient_Color_Selection:
+    Name: "Verloopmenu"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om de kleurverloopselectie te openen!"
+      - "&8---------------------------"
+    Slot: 12
+
+  Hex_Color_Selection:
+    Name: "Hex kleurselectie"
+    Lore:
+      - "&8---------------------------"
+      - "&7Selecteer een hex kleur via chatprompt!"
+      - "&8---------------------------"
+    Slot: 14
+
+# You can customize the color names and lores for chat color selection in the Color Selection Menu here.
+# You can use {color_preview} to display a preview of what the chat color looks like.
+Chat_Color_Selection_Customization:
+  Black:
+    Name: "&0Zwart"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Zwarte kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 10
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &0Zwart&7!"
+
+  Dark_Blue:
+    Name: "&1Donkerblauw"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Donkerblauwe kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 11
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &lDonker Blauw&7!"
+
+  Dark_Green:
+    Name: "&2Donkergroen"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om de donkergroene kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 12
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &2Donker Groen&7!"
+
+  Dark_Aqua:
+    Name: "&3Donker Aqua"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om de kleur Donker Aqua te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 13
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &3Donker Aqua&7!"
+
+  Dark_Red:
+    Name: "&4Donker Rood"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Donkerrode kleur te selecteren!"
+      - "&eColor Preview: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 14
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &4Donker Rood&7!"
+
+  Dark_Purple:
+    Name: "&5Donker Paars"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Donkerpaarse kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 15
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &5Donker Paars&7!"
+
+  Orange:
+    Name: "&6Oranje"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Oranje kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 16
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &6Oranje&7!"
+
+  Gray:
+    Name: "&7Grijs"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Grijze kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 19
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &7Grijs&7!"
+
+  Dark_Gray:
+    Name: "&8Donker Grijs"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Donkergrijze kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 20
+    Success_Message: "&7Chatkleur succesvoll gewijzigd in &8Donker Grijs&7!"
+
+  Blue:
+    Name: "&9Blauw"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Blauwe kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 21
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &9Blauw&7!"
+
+  Green:
+    Name: "&aGroen"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om te selecteren Groene kleur!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 22
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &aGroen&7!"
+
+  Aqua:
+    Name: "&bAqua"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Aqua kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 23
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &bAqua&7!"
+
+  Red:
+    Name: "&cRood"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Rode kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 24
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &cRood&7!"
+
+  Light_Purple:
+    Name: "&dLicht Paars"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om de Lichtpaarse kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 25
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &dLicht Paars&7!"
+
+  Yellow:
+    Name: "&eGeel"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Gele kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 28
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &eGeel&7!"
+
+  White:
+    Name: "&fWit"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Witte kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 29
+    Success_Message: "&7Chatkleur succesvol gewijzigd in &fWit&7!"
+
+  Rainbow:
+    Name: "&cRegenboog"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om de regenboogkleur te selecteren"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 30
+    # %rainbow_colors% = Tijdelijke aanduiding om "Regenboogkleuren" in regenboogkleuren weer te geve!
+    Success_Message: "%rainbow_colors% &7succesvol geselecteerd!"
+
+  Magic:
+    Name: "&fMagisch Formaat &kt"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om het Magisch-formaat te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 46
+    Success_Message: "&7Chat-formaat succesvol gewijzigd in &kMagisch Formaat&7!"
+
+  Bold:
+    Name: "&lVet &fFormaat"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Vet formaat te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 47
+    Success_Message: "&7Chat-formaat succesvol gewijzigd in &lVet&7!"
+
+  Italic:
+    Name: "&f&oCursief &fFormaat"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Cursief formaat te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 48
+    Success_Message: "&7Chat-formaat succesvol gewijzigd in &oCursief&7!"
+
+  Underline:
+    Name: "&f&nOnderstreep &fFormaat"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Onderstrepen formaat te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 49
+    Success_Message: "&7Chat-formaat succesvol gewijzigd in &nOnderstreep&7!"
+
+  Strikethrough:
+    Name: "&f&mDoorstreep &fFormaat"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om het Doorstreep formaat te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 50
+    Success_Message: "&7Chat-formaat succesvol gewijzigd in &mDoorstreep&7!"
+
+  Reset_Format_Button:
+    Name: "&c&lFORMAAT RESETTEN"
+    Lore:
+      - "&8---------------------------"
+      - "Alleen je chat-formaat resetten."
+      - "&8---------------------------"
+    Slot: 51
+    Success_Message: "Je hebt je chatformaat opnieuw ingesteld!"
+    Error_Message: "Je hebt geen chatformaat geselecteerd!"
+
+  Back_Button:
+    Name: "&e&lTERUG"
+    Lore:
+      - "&8---------------------------"
+      - "Terug naar het vorige menu."
+      - "&8---------------------------"
+    Slot: 32
+
+  Reset_Button:
+    Name: "&4&lRESET"
+    Lore:
+      - "&8---------------------------"
+      - "Reset je chatkleur en -formaat."
+      - "&8---------------------------"
+    Slot: 33
+    Success_Message: "Je hebt je chatkleur en -indeling opnieuw ingesteld!"
+    Error_Message: "Je hebt geen chatkleur geselecteerd!"
+
+# U kunt de kleurnamen en lores voor naamkleurselectie aanpassen in het Kleurselectiemenu hier.
+# Je kunt {color_preview} gebruiken om een voorbeeld weer te geven van hoe de naamkleur eruit ziet.
+Name_Color_Selection_Customization:
+  Black:
+    Name: "&0Zwart"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Zwarte kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 10
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &0Zwart&7!"
+
+  Dark_Blue:
+    Name: "&1Donkerblauw"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Donkerblauwe kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 11
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &lDonker Blauw&7!"
+
+  Dark_Green:
+    Name: "&2Donkergroen"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om de donkergroene kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 12
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &2Donker Groen&7!"
+
+  Dark_Aqua:
+    Name: "&3Donker Aqua"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om de kleur Donker Aqua te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 13
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &3Donker Aqua&7!"
+
+  Dark_Red:
+    Name: "&4Donker Rood"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Donkerrode kleur te selecteren!"
+      - "&eColor Preview: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 14
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &4Donker Rood&7!"
+
+  Dark_Purple:
+    Name: "&5Donker Paars"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Donkerpaarse kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 15
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &5Donker Paars&7!"
+
+  Orange:
+    Name: "&6Oranje"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Oranje kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 16
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &6Oranje&7!"
+
+  Gray:
+    Name: "&7Grijs"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Grijze kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 19
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &7Grijs&7!"
+
+  Dark_Gray:
+    Name: "&8Donker Grijs"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Donkergrijze kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 20
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &8Donker Grijs&7!"
+
+  Blue:
+    Name: "&9Blauw"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Blauwe kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 21
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &9Blauw&7!"
+
+  Green:
+    Name: "&aGroen"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om te selecteren Groene kleur!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 22
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &aGroen&7!"
+
+  Aqua:
+    Name: "&bAqua"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Aqua kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 23
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &bAqua&7!"
+
+  Red:
+    Name: "&cRood"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Rode kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 24
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &cRood&7!"
+
+  Light_Purple:
+    Name: "&dLicht Paars"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om de Lichtpaarse kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 25
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &dLicht Paars&7!"
+
+  Yellow:
+    Name: "&eGeel"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Gele kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 28
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &eGeel&7!"
+
+  White:
+    Name: "&fWit"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Witte kleur te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 29
+    Success_Message: "&7Naamkleur succesvol gewijzigd in &fWit&7!"
+
+  Magic:
+    Name: "&fMagisch Formaat &kt"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om het Magisch-formaat te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 46
+    Success_Message: "&7Naamformaat succesvol gewijzigd in &kMagisch Formaat&7!"
+
+  Bold:
+    Name: "&lVet &fFormaat"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Vet formaat te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 47
+    Success_Message: "&7Naamformaat succesvol gewijzigd in &lVet&7!"
+
+  Italic:
+    Name: "&f&oCursief &fFormaat"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Cursief formaat te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 48
+    Success_Message: "&7Naamformaat succesvol gewijzigd in &oCursief&7!"
+
+  Underline:
+    Name: "&f&nOnderstreep &fFormaat"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om Onderstrepen formaat te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 49
+    Success_Message: "&7Naamformaat succesvol gewijzigd in &nOnderstreep&7!"
+
+  Strikethrough:
+    Name: "&f&mDoorstreep &fFormaat"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om het Doorstreep formaat te selecteren!"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 50
+    Success_Message: "&7Naamformaat succesvol gewijzigd in &mDoorstreep&7!"
+
+  Reset_Format_Button:
+    Name: "&c&lFORMAAT RESETTEN"
+    Lore:
+      - "&8---------------------------"
+      - "Alleen je chat-formaat resetten."
+      - "&8---------------------------"
+    Slot: 51
+    Success_Message: "Je hebt je Naamformaat opnieuw ingesteld!"
+    Error_Message: "Je hebt geen Naamformaat geselecteerd!"
+
+  Rainbow:
+    Name: "&cRegenboog"
+    Lore:
+      - "&8---------------------------"
+      - "&7Klik om de regenboogkleur te selecteren"
+      - "&eKleurvoorbeeld: &b{color_preview}"
+      - "&8---------------------------"
+    Slot: 30
+    # %rainbow_colors% = Tijdelijke aanduiding om "Regenboogkleuren" in regenboogkleuren weer te geven!
+    Success_Message: "%rainbow_colors% &7succesvol geselecteerd!"
+
+  Back_Button:
+    Name: "&e&lTERUG"
+    Lore:
+      - "&8---------------------------"
+      - "Terug naar het vorige menu."
+      - "&8---------------------------"
+    Slot: 32
+
+  Reset_Button:
+    Name: "&4&lRESET"
+    Lore:
+      - "&8---------------------------"
+      - "Reset je naam kleur en formaat."
+      - "&8---------------------------"
+    Slot: 33
+    Success_Message: "Je hebt de kleur en het formaat van je naam opnieuw ingesteld!"
+    Error_Message: "Je hebt geen naamkleur geselecteerd!"
+
+# U kunt hier de namen van de kleurverloop, lores, slots en berichten aanpassen.
+Gradient_Color_Selection_Customization:
+  Menu_Title: "&6Gradient &eSelectie"
+  Name_Menu_Title: "&6Gradient &eNaam Selectie"
+  Name_Menu_Item_Slot: 10
+  Chat_Menu_Item_Slot: 16
+  Chat_Menu_Title: "&6Gradient &eChat Selectie"
+  Chat_Menu_Lore: "Klik om een chatverloop te selecteren!"
+  Name_Menu_Lore: "Klik om een naamverloop te selecteren!"
+  Info_Message: "Klik om een verloop te selecteren!"
+  Error_Message: "Onvoldoende toestemming. Breng een administratief medewerker op de hoogte!"
+  Unsupported_Version_Message: "Deze opdracht werkt alleen voor 1.16+ versies!"
+  Invalid_Gradient_Message: "Verloopkleuren moeten beginnen met een # en een code van 6 tekens volgen!"
+  Disabled_Message: "%type% verloop is uitgeschakeld in het instellingenbestand! Waarschuw een administratief medewerker als dit onbedoeld is."
+  Info_Button_Enabled: true
+  Main_Menu_Size: 27
+
+  Chat:
+    Chat_Gradient_Next_Page_Slot: 50
+    Chat_Gradient_Previous_Page_Slot: 48
+    Chat_Custom_Gradient_Slot: 0
+    Chat_Reset_Gradient_Slot: 1
+
+  Name:
+    Name_Gradient_Next_Page_Slot: 50
+    Name_Gradient_Previous_Page_Slot: 48
+    Name_Custom_Gradient_Slot: 0
+    Name_Reset_Gradient_Slot: 1
+
+  Reset_Gradient:
+    Name: "&4&lRESET"
+    Lore:
+      - "&8---------------------------"
+      - "&7Reset je verloop!"
+      - "&8---------------------------"
+    Success_Message: "Verloop reset succesvol!"
+    Error_Message: "Je hebt geen verloop geselecteerd!"
+
+  Custom_Gradient:
+    Name: "&aAangepast &bVerloop"
+    Lore:
+      - "&8---------------------------"
+      - "&7Maak je eigen verloop met twee hex-kleuren!"
+      - "&8---------------------------"
+    # Het voorvoegsel dat de gradiëntprompt wordt weergegeven:.
+    Prompt_Prefix: "&7[&eAangepast Verloop&7]"
+    # Het bericht dat verschijnt wanneer een speler voor het eerst de aangepaste verloopoptie selecteert.
+    First_Color_Prompt: " Wat is je eerste hex kleur? U kunt op elk moment exit typen om te annuleren."
+    # Het bericht dat verschijnt nadat een speler zijn eerste hex-kleur heeft ingevoerd vanaf de eerste prompt.
+    Second_Color_Prompt: " Wat is je tweede hex kleur??"
+    Format_Prompt: " Wil je een formaat dat bij je hex past? &eVerkrijgbaar: &7{format_options}"
+    Success_Message: "Aangepast verloop succesvol toegepast!"
+
+  Return:
+    Enabled: true
+    Name: "&cTerugkeren"
+    Lore:
+      - ""
+      - "&7Terug naar vorige GUI."
+    Slot: 2
+
+# Aanpassing voor bijnaam berichten!
+Nicknames:
+  Nickname_Already_Taken_Message: "Die bijnaam is al door iemand anders genomen!"
+  Nickname_Command_Success_Message: "Bijnaam ingesteld op%nick% &7succesvol voor &e%player%!"
+  Real_Name_Message: "Echte naam van %nick%&7: &e%player%"
+  Nickname_Not_Found_Message: "Bijnaam, %nick%, kon niet gevonden worden!"
+
+# U kunt de berichten voor hex kleuropdrachten hier aanpassen!
+# %hex_color% = De tijdelijke aanduiding om de hex kleur weer te geven die de speler heeft geselecteerd.
+Hex_Colors:
+  Prompt_Prefix: "&8[&#88afdbHex kleur&8] &7"
+  First_Prompt: "Welk type hex kleur wilt u instellen? Verkrijgbaar: &e%hex_color_types%"
+  Second_Prompt: "Voer de gewenste hexadecimale code in, met of zonder # aan het begin."
+  Format_Prompt: "Wil je een formaat dat bij je hex past? Selecteer &e&lbold, &e&oitalic, &e&nunderline, &e&mstrikethrough, &emagic&7. Als je er geen wilt, typ dan, type &enone&7."
+  Hex_Color_Unsupported_Message: "&cDeze opdracht werkt alleen voor: 1.16+"
+  Hex_Color_Success_Message: "&7Hex kleur officieel ingesteld op %hex_color%&7!"
+  Disabled_Type_Message: "%type% hex is uitgeschakeld in het instellingenbestand! Waarschuw een administratief medewerker als dit onbedoeld is."
+  Hex_Color_Error_Message: "Hex-kleur moet een code van 6 tekens zijn met/zonder de # aan het begin."
+  Hex_Color_Not_Allowed_Message: "&cDeze hex kleur is niet toegestaan."
+  Hex_Color_Whitelist_Empty: "&cDe hex-witte lijst is leeg! Waarschuw een administratief medewerker!"
+  Invalid_Hex_Color_Message: "&cOngeldige hex! Zorg ervoor dat er een # aan het begin staat en een 6-cijferige code erna!"
+  Hex_Color_Removed_From_Whitelist: "Hex, %hex_color%, &csuccesvol &averwijdert&7!"
+  Hex_Color_Added_To_Whitelist: "Hex, %hex_color%, &atoegevoegd &7succesvol! Voel je vrij om het aan te passen in het allow-hexes.yml bestand!"
+  Hex_Color_Not_Found_On_Whitelist: "Die hex staat niet in de lijst met toegestane bepaalde hexen! Controleer het bestand allow-hexes.yml."
+  Hex_Color_Already_Added_To_Whitelist: "Deze hex staat al in de lijst met toegestane bepaalde hexen!"
+
+# Andere berichten die niet tot de bovenstaande categorieën behoren.
+# %player% = De tijdelijke aanduiding om de gebruikersnaam van een speler te krijgen.
+# %new_gradient% = De tijdelijke aanduiding om het verloop van een nieuwe speler te krijgen.
+# %gradient_type% = De tijdelijke aanduiding om het geselecteerde verlooptype te krijgen.
+# %new_chat_color% = De tijdelijke aanduiding om de nieuwe chatkleur van een speler te krijgen.
+# %new_name_color% = De tijdelijke aanduiding om de nieuwe naamkleur van een speler te krijgen.
+# %new_chat_format% = De tijdelijke aanduiding voor het nieuwe chatformaat van een speler.
+# %new_name_format% = De tijdelijke aanduiding om het nieuwe naamformaat van een speler te krijgen.
+Other:
+  No_Permission: "&6Onvoldoende toestemming ({permission})."
+  Admin_Set_Gradient_Color_Success: "&7Je verloopkleuren zijn ingesteld door een administratief medewerker! Uw %gradient_type% verloop is nu %new_gradient%!"
+  Admin_Reset_Color_Command_Success: "&aKleuren voor %player% zijn met succes gereset!"
+  Admin_Force_Chat_Color_Success: "Chatkleur ingesteld op %new_chat_color% &7voor %player%!"
+  Admin_Force_Name_Color_Success: "Naamkleur ingesteld op %new_name_color% &7voor %player%!"
+  Admin_Force_Chat_Format_Success: "Chat-indeling ingesteld op %new_chat_format% &7voor %player%!"
+  Admin_Force_Name_Format_Success: "Naamformaat ingesteld op %new_name_format% &7voor %player%!"
+  Player_Reset_Color_Command_Success: "&7Uw %type% kleurselecties zijn gereset door een administratief medewerker!"
+  Reset_Color_Command_Error: "&7%player% heeft niet de geselecteerde kleur!"
+  Unable_To_Select_Format: "Je kunt dit formaat ook niet selecteren omdat het is uitgeschakeld of omdat je er geen toestemming voor hebt! Breng een administratief medewerker op de hoogte als dit een fout is."
+
+# Raak dit niet aan, anders kan dit bestand breken!
+Version: 1

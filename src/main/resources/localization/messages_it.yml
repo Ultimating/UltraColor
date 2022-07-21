@@ -605,14 +605,12 @@ Gradient_Color_Selection_Customization:
   Main_Menu_Size: 27
 
   Chat:
-    Chat_Gradient_Menu_Size: 9
     Chat_Gradient_Next_Page_Slot: 50
     Chat_Gradient_Previous_Page_Slot: 48
     Chat_Custom_Gradient_Slot: 0
     Chat_Reset_Gradient_Slot: 1
 
   Name:
-    Name_Gradient_Menu_Size: 9
     Name_Gradient_Next_Page_Slot: 50
     Name_Gradient_Previous_Page_Slot: 48
     Name_Custom_Gradient_Slot: 0
@@ -639,7 +637,7 @@ Gradient_Color_Selection_Customization:
     First_Color_Prompt: " Qual è il tuo primo colore esadecimale? Puoi digitare exit in qualsiasi momento per annullare."
     # Il messaggio che apparirà dopo che un giocatore immette il suo primo colore esadecimale dal primo prompt.
     Second_Color_Prompt: " Qual è il tuo secondo colore esadecimale?"
-    Format_Prompt: " Vorresti un formato da abbinare al tuo esadecimale? Selezionare &e&lbold, &e&oitalic, &e&nunderline, &e&mstrikethrough, &emagic&7. Se non ne vuoi uno, digita &enone&7."
+    Format_Prompt: " Vorresti un formato da abbinare al tuo esadecimale? &eA disposizione: &7{format_options}"
     Success_Message: "Gradiente personalizzato applicato con successo!"
 
   Return:

@@ -35,7 +35,6 @@ public class PreDefinedGradientMenu extends Menu {
 		public PreDefinedNameGradientsMenu(final Menu parent) {
 			super(parent, addPreDefinedGradients("name"));
 			setTitle(Localization.Gradient_Color_Selection.NAME_MENU_TITLE);
-			setSize(Localization.Gradient_Color_Selection_Name.NAME_MENU_SIZE);
 
 			customNameGradientButton = new Button() {
 				@Override
@@ -183,7 +182,6 @@ public class PreDefinedGradientMenu extends Menu {
 		public PreDefinedChatGradientsMenu(final Menu parent) {
 			super(parent, addPreDefinedGradients("chat"));
 			setTitle(Localization.Gradient_Color_Selection.CHAT_MENU_TITLE);
-			setSize(Localization.Gradient_Color_Selection_Chat.CHAT_MENU_SIZE);
 
 			customChatGradientButton = new Button() {
 				@Override

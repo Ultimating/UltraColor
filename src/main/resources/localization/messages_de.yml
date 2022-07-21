@@ -605,14 +605,12 @@ Gradient_Color_Selection_Customization:
   Main_Menu_Size: 27
 
   Chat:
-    Chat_Gradient_Menu_Size: 9
     Chat_Gradient_Next_Page_Slot: 50
     Chat_Gradient_Previous_Page_Slot: 48
     Chat_Custom_Gradient_Slot: 0
     Chat_Reset_Gradient_Slot: 1
 
   Name:
-    Name_Gradient_Menu_Size: 9
     Name_Gradient_Next_Page_Slot: 50
     Name_Gradient_Previous_Page_Slot: 48
     Name_Custom_Gradient_Slot: 0
@@ -639,7 +637,7 @@ Gradient_Color_Selection_Customization:
     First_Color_Prompt: " Was ist deine erste Hex-Farbe? Sie können exit jederzeit eingeben, um den Vorgang abzubrechen."
     # Die Meldung, die angezeigt wird, nachdem ein Spieler ab der ersten Eingabeaufforderung seine erste Hex-Farbe eingegeben hat.
     Second_Color_Prompt: " Was ist deine zweite Hex-Farbe?"
-    Format_Prompt: " Möchten Sie ein Format, das zu Ihrem Hex passt? Wählen &e&lbold, &e&oitalic, &e&nunderline, &e&mstrikethrough, &emagic&7. Wenn Sie keine möchten, geben Sie ein &enone&7."
+    Format_Prompt: " Möchten Sie ein Format, das zu Ihrem Hex passt? &eVerfügbar: &7{format_options}"
     Success_Message: "Benutzerdefinierter Farbverlauf erfolgreich angewendet!"
 
   Return:

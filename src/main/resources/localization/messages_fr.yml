@@ -605,14 +605,12 @@ Gradient_Color_Selection_Customization:
   Main_Menu_Size: 27
 
   Chat:
-    Chat_Gradient_Menu_Size: 9
     Chat_Gradient_Next_Page_Slot: 50
     Chat_Gradient_Previous_Page_Slot: 48
     Chat_Custom_Gradient_Slot: 0
     Chat_Reset_Gradient_Slot: 1
 
   Name:
-    Name_Gradient_Menu_Size: 9
     Name_Gradient_Next_Page_Slot: 50
     Name_Gradient_Previous_Page_Slot: 48
     Name_Custom_Gradient_Slot: 0
@@ -639,7 +637,7 @@ Gradient_Color_Selection_Customization:
     First_Color_Prompt: " Quelle est votre première couleur hexagonale? Vous pouvez taper exit à tout moment pour annuler."
     # Le message qui apparaîtra après qu'un joueur entre sa première couleur hexadécimale à partir de la première invite.
     Second_Color_Prompt: " Quelle est votre deuxième couleur hexagonale?"
-    Format_Prompt: " Souhaitez-vous un format pour aller avec votre hexagone ? Sélectionner &e&lbold, &e&oitalic, &e&nunderline, &e&mstrikethrough, &emagic&7. Si vous n'en voulez pas, tapez &enone&7."
+    Format_Prompt: " Souhaitez-vous un format pour aller avec votre hexagone ? &eDisponible: &7{format_options}"
     Success_Message: "Pente personnalisé appliqué avec succès!"
 
   Return:

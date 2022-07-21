@@ -41,8 +41,7 @@ public class UltraColorUtil {
 	 * @return the chat color format as a string
 	 */
 	public String chatFormatToString(final CompChatColor format) {
-		if (CompChatColor.getDecorations().contains(format))
-			return "§" + format.getCode();
+		if (CompChatColor.getDecorations().contains(format)) return "§" + format.getCode();
 		return "";
 	}
 
@@ -55,8 +54,7 @@ public class UltraColorUtil {
 	public String nameAndChatColorToString(final CompChatColor nameOrChatColor) {
 		// This condition takes into account if the color is a hex or gradient.
 		// If this is false, the color is a regular color that's neither a hex nor gradient.
-		if (nameOrChatColor.toString().contains("§"))
-			return nameOrChatColor.toString();
+		if (nameOrChatColor.toString().contains("§")) return nameOrChatColor.toString();
 		return "§" + nameOrChatColor.getCode();
 	}
 
@@ -71,14 +69,12 @@ public class UltraColorUtil {
 
 		if (!pCache.getNickName().equalsIgnoreCase("None"))
 			displayName = convertStringToRainbow(pCache.getNickName(), formatEnabled, format);
-		else
-			displayName = convertStringToRainbow(player.getName(), formatEnabled, format);
+		else displayName = convertStringToRainbow(player.getName(), formatEnabled, format);
 
 		player.setDisplayName(displayName);
-		PlayerCache.fromPlayer(player).setNameRainbowColors(true);
+		pCache.setNameRainbowColors(true);
 
-		if (formatEnabled)
-			PlayerCache.fromPlayer(player).setNameFormat(UltraColorUtil.getNameFormatToChatColor(format));
+		if (formatEnabled) pCache.setNameFormat(UltraColorUtil.getNameFormatToChatColor(format));
 	}
 
 	/**
@@ -91,8 +87,7 @@ public class UltraColorUtil {
 		final PlayerCache pCache = PlayerCache.fromOfflinePlayer(player);
 		pCache.setChatColor(color);
 
-		if (pCache.isChatRainbowColors())
-			pCache.setChatRainbowColors(false);
+		if (pCache.isChatRainbowColors()) pCache.setChatRainbowColors(false);
 
 		if (pCache.getCustomGradient1() != null || pCache.getChatCustomGradient2() != null) {
 			pCache.setChatCustomGradient1(null);
@@ -111,8 +106,7 @@ public class UltraColorUtil {
 
 		if (pCache.getCustomGradient1() != null || pCache.getChatCustomGradient2() != null)
 			applyFormatToGradient(player, "chat", getNameFormatToChatColor(format.getName()));
-		else
-			pCache.setChatFormat(format);
+		else pCache.setChatFormat(format);
 	}
 
 	/**
@@ -125,10 +119,8 @@ public class UltraColorUtil {
 	public void applyNameColor(final Player player, final CompChatColor color, final ChatColor format) {
 		final PlayerCache pCache = PlayerCache.fromPlayer(player);
 
-		if (color != null)
-			pCache.setNameColor(color);
-		if (format != null)
-			pCache.setNameFormat(format);
+		if (color != null) pCache.setNameColor(color);
+		if (format != null) pCache.setNameFormat(format);
 
 		if (pCache.getCustomGradient1() != null || pCache.getCustomGradient2() != null) {
 			if (pCache.getNameFormat() == null) {
@@ -211,8 +203,7 @@ public class UltraColorUtil {
 		for (int i = 0; i < stringSize; i++) {
 			result.append(rainbowColors[colorCount % rainbowColors.length]).append(formatEnabled ? formatCode : "")
 					.append(message.charAt(i));
-			if (!Character.isWhitespace(message.charAt(i)))
-				colorCount++;
+			if (!Character.isWhitespace(message.charAt(i))) colorCount++;
 		}
 
 		return result.toString();
@@ -288,10 +279,8 @@ public class UltraColorUtil {
 	 */
 	public ChatColor getNameFormatToChatColor(final String selectedFormat) {
 		for (final ChatColor color : ChatColor.values()) {
-			if (!color.isFormat())
-				continue;
-			if (color.name().equalsIgnoreCase(selectedFormat))
-				return color;
+			if (!color.isFormat()) continue;
+			if (color.name().equalsIgnoreCase(selectedFormat)) return color;
 		}
 
 		return null;
@@ -304,8 +293,7 @@ public class UltraColorUtil {
 		final Set<String> nickNames = new HashSet<>();
 
 		for (final PlayerCache pCache : PlayerCache.cacheMap.values())
-			if (!pCache.getNickName().equalsIgnoreCase("none"))
-				nickNames.add(pCache.getNickName());
+			if (!pCache.getNickName().equalsIgnoreCase("none")) nickNames.add(pCache.getNickName());
 
 		return nickNames;
 	}
@@ -316,54 +304,20 @@ public class UltraColorUtil {
 	public boolean isColorSelectedAbleToBeSet(final String type, final String color, final Player player) {
 		String permissionStarter;
 
-		if (type.equalsIgnoreCase("name"))
-			permissionStarter = UltraColorPermissions.NAME_COLOR;
-		else
-			permissionStarter = UltraColorPermissions.CHAT_COLOR;
+		if (type.equalsIgnoreCase("name")) permissionStarter = UltraColorPermissions.NAME_COLOR;
+		else permissionStarter = UltraColorPermissions.CHAT_COLOR;
 
 		if (player.hasPermission(permissionStarter + ".*") || color.equalsIgnoreCase("none"))
 			return true;
 
 		if (type.equalsIgnoreCase("name")) {
-			if (!isNameColorEnabled(color))
-				return false;
-		} else if (type.equalsIgnoreCase("chat")) {
-			if (!isChatColorEnabled(color))
-				return false;
-		}
+			if (!isNameColorEnabled(color)) return false;
+		} else if (type.equalsIgnoreCase("chat"))
+			if (!isChatColorEnabled(color)) return false;
 
-		if (color.equalsIgnoreCase("black"))
-			return player.hasPermission(permissionStarter + ".0");
-		else if (color.equalsIgnoreCase("dark_blue"))
-			return player.hasPermission(permissionStarter + ".1");
-		else if (color.equalsIgnoreCase("dark_green"))
-			return player.hasPermission(permissionStarter + ".2");
-		else if (color.equalsIgnoreCase("dark_aqua"))
-			return player.hasPermission(permissionStarter + ".3");
-		else if (color.equalsIgnoreCase("dark_red"))
-			return player.hasPermission(permissionStarter + ".4");
-		else if (color.equalsIgnoreCase("dark_purple"))
-			return player.hasPermission(permissionStarter + ".5");
-		else if (color.equalsIgnoreCase("orange"))
-			return player.hasPermission(permissionStarter + ".6");
-		else if (color.equalsIgnoreCase("gray"))
-			return player.hasPermission(permissionStarter + ".7");
-		else if (color.equalsIgnoreCase("dark_gray"))
-			return player.hasPermission(permissionStarter + ".8");
-		else if (color.equalsIgnoreCase("blue"))
-			return player.hasPermission(permissionStarter + ".9");
-		else if (color.equalsIgnoreCase("green"))
-			return player.hasPermission(permissionStarter + ".a");
-		else if (color.equalsIgnoreCase("aqua"))
-			return player.hasPermission(permissionStarter + ".b");
-		else if (color.equalsIgnoreCase("red"))
-			return player.hasPermission(permissionStarter + ".c");
-		else if (color.equalsIgnoreCase("light_purple"))
-			return player.hasPermission(permissionStarter + ".d");
-		else if (color.equalsIgnoreCase("yellow"))
-			return player.hasPermission(permissionStarter + ".e");
-		else if (color.equalsIgnoreCase("white"))
-			return player.hasPermission(permissionStarter + ".7");
+		for (final CompChatColor compChatColor : CompChatColor.getColors())
+			if (player.hasPermission(permissionStarter + "." + compChatColor.getCode())) return true;
+
 		return player.hasPermission(permissionStarter + ".r");
 	}
 
@@ -373,31 +327,18 @@ public class UltraColorUtil {
 	public boolean isFormatSelectedAbleToBeSet(final String type, final String format, final Player player) {
 		String permissionStarter;
 
-		if (type.equalsIgnoreCase("name"))
-			permissionStarter = UltraColorPermissions.Color.NAME_FORMAT;
-		else
-			permissionStarter = UltraColorPermissions.Color.CHAT_FORMAT;
+		if (type.equalsIgnoreCase("name")) permissionStarter = UltraColorPermissions.Color.NAME_FORMAT;
+		else permissionStarter = UltraColorPermissions.Color.CHAT_FORMAT;
 
 		if (player.hasPermission(permissionStarter + ".*") || format.equalsIgnoreCase("none"))
 			return true;
 
 		if (type.equalsIgnoreCase("name")) {
-			if (!isNameFormatEnabled(format))
-				return false;
-		} else if (type.equalsIgnoreCase("chat")) {
-			if (!isChatFormatEnabled(format))
-				return false;
-		}
+			if (!isNameFormatEnabled(format)) return false;
+		} else if (type.equalsIgnoreCase("chat"))
+			if (!isChatFormatEnabled(format)) return false;
 
-		if (format.equalsIgnoreCase("bold"))
-			return player.hasPermission(permissionStarter + ".l");
-		else if (format.equalsIgnoreCase("italic"))
-			return player.hasPermission(permissionStarter + ".o");
-		else if (format.equalsIgnoreCase("underline"))
-			return player.hasPermission(permissionStarter + ".n");
-		else if (format.equalsIgnoreCase("strikethrough"))
-			return player.hasPermission(permissionStarter + ".m");
-		return player.hasPermission(permissionStarter + ".k");
+		return player.hasPermission(permissionStarter + "." + getFormatToCompChatColor(format).getCode());
 	}
 
 	/**
@@ -518,6 +459,15 @@ public class UltraColorUtil {
 			return color.equalsIgnoreCase("none");
 	}
 
+	public boolean isAtLeastOneFormatEnabled(final String formatType) {
+		for (final CompChatColor color : CompChatColor.getDecorations()) {
+			if (formatType.equalsIgnoreCase("name")) {
+				if (isNameFormatEnabled(color.getName())) return true;
+			} else if (isChatFormatEnabled(color.getName())) return true;
+		}
+		return false;
+	}
+
 	/**
 	 * Is the specified hex valid?
 	 */
@@ -531,9 +481,7 @@ public class UltraColorUtil {
 	 * @return If one of the hexes is not valid, return false. Otherwise, return true.
 	 */
 	public boolean areHexesValid(final List<String> hexes) {
-		for (final String hex : hexes)
-			if (!isHexValid(hex))
-				return false;
+		for (final String hex : hexes) if (!isHexValid(hex)) return false;
 		return true;
 	}
 
@@ -566,8 +514,7 @@ public class UltraColorUtil {
 				return ChatUtil.generateGradient(player.getName(), pCache.getCustomGradient1(), pCache.getCustomGradient2());
 			}
 
-			if (pCache.getNameFormat() != null)
-				return nameFormatToString(pCache.getNameFormat()) + player.getName();
+			if (pCache.getNameFormat() != null) return nameFormatToString(pCache.getNameFormat()) + player.getName();
 		}
 
 		return player.getName();

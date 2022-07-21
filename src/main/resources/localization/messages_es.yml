@@ -605,14 +605,12 @@ Gradient_Color_Selection_Customization:
   Main_Menu_Size: 27
 
   Chat:
-    Chat_Gradient_Menu_Size: 9
     Chat_Gradient_Next_Page_Slot: 50
     Chat_Gradient_Previous_Page_Slot: 48
     Chat_Custom_Gradient_Slot: 0
     Chat_Reset_Gradient_Slot: 1
 
   Name:
-    Name_Gradient_Menu_Size: 9
     Name_Gradient_Next_Page_Slot: 50
     Name_Gradient_Previous_Page_Slot: 48
     Name_Custom_Gradient_Slot: 0
@@ -639,7 +637,7 @@ Gradient_Color_Selection_Customization:
     First_Color_Prompt: " ¿Cuál es tu primer color hexadecimal? Puede escribir exit en cualquier momento para cancelar."
     # El mensaje que aparecerá después de que un jugador ingrese su primer color hexadecimal desde el primer mensaje.
     Second_Color_Prompt: " ¿Cuál es tu segundo color hexadecimal?"
-    Format_Prompt: " ¿Le gustaría un formato para ir con su hexadecimal? Seleccione &e&lbold, &e&oitalic, &e&nunderline, &e&mstrikethrough, &emagic&7. Si no quieres uno, escribe &enone&7."
+    Format_Prompt: " ¿Le gustaría un formato para ir con su hexadecimal? &eDisponible: &7{format_options}"
     Success_Message: "¡Gradiente personalizado aplicado con éxito!"
 
   Return:

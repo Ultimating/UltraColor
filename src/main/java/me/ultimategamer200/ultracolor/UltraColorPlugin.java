@@ -109,7 +109,7 @@ public class UltraColorPlugin extends SimplePlugin {
 				}
 			}
 		}
-
+		
 		Common.log(Common.consoleLineSmooth());
 	}
 

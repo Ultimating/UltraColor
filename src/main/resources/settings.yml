@@ -197,7 +197,7 @@ Notify_Updates: true
 Prefix: "&7[&bUltra&3Color&7] "
 
 # The language used for the messages.yml file
-# en = English, es = Spanish, it = Italian, de = German, French = fr
+# en = English, es = Spanish, it = Italian, de = German, French = fr, nl = Dutch
 Locale: 'en'
 
 # The aliases you may use for the main command. For example, /ucolor ?.
