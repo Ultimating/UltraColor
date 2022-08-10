@@ -17,7 +17,6 @@ import me.ultimategamer200.ultracolor.settings.Settings;
 import me.ultimategamer200.ultracolor.util.Filter;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.FileUtil;
 import org.mineacademy.fo.Messenger;
@@ -109,7 +108,7 @@ public class UltraColorPlugin extends SimplePlugin {
 				}
 			}
 		}
-		
+
 		Common.log(Common.consoleLineSmooth());
 	}
 
@@ -178,12 +177,8 @@ public class UltraColorPlugin extends SimplePlugin {
 	 */
 	@Override
 	protected void onPluginStop() {
-		if (Settings.Database.ENABLED && UltraColorDatabase.getInstance().isLoaded()) {
-			Common.runLaterAsync(10, () -> {
-				for (final Player player : Remain.getOnlinePlayers())
-					UltraColorDatabase.getInstance().save(player.getName(), player.getUniqueId(), PlayerCache.fromPlayer(player));
-			});
-		}
+		if (Settings.Database.ENABLED && UltraColorDatabase.getInstance().isLoaded())
+			UltraColorDatabase.getInstance().saveOnlinePlayers();
 	}
 
 	/**

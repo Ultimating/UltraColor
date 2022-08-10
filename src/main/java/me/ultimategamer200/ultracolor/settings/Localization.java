@@ -928,6 +928,7 @@ public final class Localization extends SimpleLocalization {
 	public static class Gradient_Color_Selection_Chat {
 		public static Integer CHAT_CUSTOM_GRADIENT_SLOT;
 		public static Integer CHAT_RESET_GRADIENT_SLOT;
+		public static Integer CHAT_MENU_SIZE;
 		public static Integer NEXT_PAGE_SLOT;
 		public static Integer PREVIOUS_PAGE_SLOT;
 
@@ -936,6 +937,7 @@ public final class Localization extends SimpleLocalization {
 
 			CHAT_CUSTOM_GRADIENT_SLOT = getInteger("Chat_Custom_Gradient_Slot");
 			CHAT_RESET_GRADIENT_SLOT = getInteger("Chat_Reset_Gradient_Slot");
+			CHAT_MENU_SIZE = getInteger("Chat_Gradient_Menu_Size");
 			NEXT_PAGE_SLOT = getInteger("Chat_Gradient_Next_Page_Slot");
 			PREVIOUS_PAGE_SLOT = getInteger("Chat_Gradient_Previous_Page_Slot");
 		}
@@ -944,6 +946,7 @@ public final class Localization extends SimpleLocalization {
 	public static class Gradient_Color_Selection_Name {
 		public static Integer NAME_CUSTOM_GRADIENT_SLOT;
 		public static Integer NAME_RESET_GRADIENT_SLOT;
+		public static Integer NAME_MENU_SIZE;
 		public static Integer NEXT_PAGE_SLOT;
 		public static Integer PREVIOUS_PAGE_SLOT;
 
@@ -952,6 +955,7 @@ public final class Localization extends SimpleLocalization {
 
 			NAME_CUSTOM_GRADIENT_SLOT = getInteger("Name_Custom_Gradient_Slot");
 			NAME_RESET_GRADIENT_SLOT = getInteger("Name_Reset_Gradient_Slot");
+			NAME_MENU_SIZE = getInteger("Name_Gradient_Menu_Size");
 			NEXT_PAGE_SLOT = getInteger("Name_Gradient_Next_Page_Slot");
 			PREVIOUS_PAGE_SLOT = getInteger("Name_Gradient_Previous_Page_Slot");
 		}

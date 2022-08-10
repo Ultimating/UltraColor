@@ -130,9 +130,12 @@ public class HexColorPrompt extends SimpleConversation {
 		@Override
 		protected Prompt acceptValidatedInput(@NotNull ConversationContext conversationContext, @NotNull String input) {
 			final PlayerCache pCache = PlayerCache.fromPlayer(getPlayer(conversationContext));
+
 			pCache.setChatFormat(null);
 			pCache.setNameFormat(null);
+
 			final String hex = conversationContext.getSessionData(Selections.HEX_COLOR).toString();
+			final CompChatColor hexColor = CompChatColor.of(hex);
 			boolean addFormat = false;
 			ChatColor format = null;
 
@@ -146,12 +149,12 @@ public class HexColorPrompt extends SimpleConversation {
 			}
 
 			if (type.equalsIgnoreCase("chat")) {
-				pCache.setChatColor(CompChatColor.of(hex));
+				pCache.setChatColor(hexColor);
 				pCache.setChatRainbowColors(false);
 				pCache.setChatCustomGradient1(null);
 				pCache.setChatCustomGradient2(null);
 			} else {
-				pCache.setNameColor(CompChatColor.of(hex));
+				pCache.setNameColor(hexColor);
 				pCache.setNameRainbowColors(false);
 				pCache.setCustomGradient1(null);
 				pCache.setCustomGradient2(null);
@@ -167,12 +170,8 @@ public class HexColorPrompt extends SimpleConversation {
 				getPlayer(conversationContext).setDisplayName(UltraColorUtil.getPlayerNameInColor(getPlayer(conversationContext)));
 			}
 
-			final String hexDisplay;
-
-			if (addFormat)
-				hexDisplay = CompChatColor.of(hex) + UltraColorUtil.nameFormatToString(format) + "this";
-			else
-				hexDisplay = CompChatColor.of(hex) + "this";
+			String hexDisplay = hexColor + "this";
+			if (addFormat) hexDisplay = hexColor + UltraColorUtil.nameFormatToString(format) + "this";
 
 			Messenger.success(getPlayer(conversationContext), Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace(
 					"%hex_color%", hexDisplay));

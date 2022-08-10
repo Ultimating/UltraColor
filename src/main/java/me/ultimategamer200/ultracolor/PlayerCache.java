@@ -4,6 +4,7 @@ import lombok.Getter;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.collection.expiringmap.ExpiringMap;
 import org.mineacademy.fo.constants.FoConstants;
 import org.mineacademy.fo.remain.CompChatColor;
@@ -242,5 +243,35 @@ public final class PlayerCache extends YamlConfig {
 		this.set("Colored_Nickname", this.coloredNickName);
 		this.set("Chat_Rainbow_Colors", this.chatRainbowColors);
 		this.set("Name_Rainbow_Colors", this.nameRainbowColors);
+	}
+
+	@Override
+	public SerializedMap saveToMap() {
+		// Map to save to the database.
+		final SerializedMap map = new SerializedMap();
+
+		map.putIf("UUID", this.uuid);
+		map.putIf("Name", this.playerName);
+
+		// Make a new map for data in the "Data" column because each key in the SerializedMap named "map" is to be a
+		// column in the database.
+		SerializedMap dataMap = new SerializedMap();
+
+		dataMap.putIf("Chat_Color", this.chatColor);
+		dataMap.putIf("Name_Color", this.nameColor);
+		dataMap.putIf("Name_Format", this.nameFormat);
+		dataMap.putIf("Chat_Format", this.chatFormat);
+		dataMap.putIf("First_Custom_Gradient", this.customGradient1);
+		dataMap.putIf("Second_Custom_Gradient", this.customGradient2);
+		dataMap.putIf("Chat_First_Custom_Gradient", this.chatCustomGradient1);
+		dataMap.putIf("Chat_Second_Custom_Gradient", this.chatCustomGradient2);
+		dataMap.putIf("Nickname", this.nickName);
+		dataMap.putIf("Colored_Nickname", this.coloredNickName);
+		dataMap.putIf("Chat_Rainbow_Colors", this.chatRainbowColors);
+		dataMap.putIf("Name_Rainbow_Colors", this.nameRainbowColors);
+
+		// Adds the Data column to the saved map.
+		map.put("Data", dataMap);
+		return map;
 	}
 }

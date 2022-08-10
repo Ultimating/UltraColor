@@ -7,14 +7,14 @@
     <groupId>me.ultimategamer200.ultracolor</groupId>
     <artifactId>ultracolor</artifactId>
     <name>UltraColor</name>
-    <version>1.5.9</version>
+    <version>1.5.9.1</version>
 
     <properties>
         <!-- The full path to your plugin's main class, so that Spigot can find and load it -->
         <main.class>me.ultimategamer200.ultracolor.UltraColorPlugin</main.class>
 
         <!-- Find latest version here: https://github.com/kangarko/Foundation/releases -->
-        <foundation.version>6.0.4</foundation.version>
+        <foundation.version>6.0.8</foundation.version>
         <foundation.path>com.github.kangarko</foundation.path>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -50,6 +50,12 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-spring-cloud-config-client</artifactId>
             <version>2.17.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.19.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

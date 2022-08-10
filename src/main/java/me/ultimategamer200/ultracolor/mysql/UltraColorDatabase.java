@@ -6,13 +6,17 @@ import me.ultimategamer200.ultracolor.settings.Settings;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.database.SimpleFlatDatabase;
 import org.mineacademy.fo.remain.CompChatColor;
+import org.mineacademy.fo.remain.Remain;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -25,8 +29,10 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 	@Getter
 	private static final UltraColorDatabase instance = new UltraColorDatabase();
 
+	private final String tableName = "UltraColor";
+
 	private UltraColorDatabase() {
-		addVariable("table", "UltraColor");
+		addVariable("table", this.tableName);
 	}
 
 	/**
@@ -100,6 +106,19 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 		map.put("Nickname", data.getNickName());
 		map.put("Colored_Nickname", data.getColoredNickName());
 		return map;
+	}
+
+	/**
+	 * Saves all online players to the database.
+	 */
+	public void saveOnlinePlayers() {
+		final List<SerializedMap> maps = new ArrayList<>();
+
+		// Adds all online players to a serialized map to save all together to a database.
+		for (final Player player : Remain.getOnlinePlayers()) maps.add(PlayerCache.fromPlayer(player).saveToMap());
+
+		// Only save all online players if the database is loaded and run the process asynchronously.
+		if (this.isLoaded()) Common.runLaterAsync(() -> this.insertBatch(this.tableName, maps));
 	}
 
 	/**
