@@ -187,9 +187,6 @@ Database:
   # When a player goes inactive, how many days do we wait since their data was last updated before we purge it?
   Expiry_Days: 120
 
-  # Every x time specified here, we'll save online players to the MySQL database if updating is needed.
-  Save_Task_Interval: "2 minutes"
-
 Other_Prefixes:
   Success_Prefix: "&8&l[&2&l✔&8&l]&7 "
   Error_Prefix: "&8&l[&4&l✕&8&l]&c "

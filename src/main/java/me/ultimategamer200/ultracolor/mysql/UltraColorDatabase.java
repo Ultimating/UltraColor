@@ -122,35 +122,6 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 		}
 	}
 
-	public boolean isUpdateForPlayerNeeded(final UUID uuid) throws SQLException {
-		if (!isPlayerStored(uuid)) return true;
-
-		final PlayerCache pCache = PlayerCache.fromUUID(uuid);
-		SerializedMap data = this.onSave(pCache);
-
-		// Iterate through the data fields of the DB.
-		for (final DataField dataField : DataField.values()) {
-			final String identifier = dataField.getIdentifier();
-			final Class<?> dataFieldClass = dataField.getDataFieldClass();
-
-			Common.log("Identifier: " + identifier);
-			Common.log("Class: " + dataFieldClass);
-
-			final Object storedValue = DataField.getDataValueStored(identifier, dataFieldClass, pCache.saveToMap());
-			Common.log("Stored Value: " + storedValue);
-
-			final Object valueInDatabase = DataField.getDataValueStored(identifier, dataFieldClass, data);
-			Common.log("Value In DB: " + valueInDatabase);
-
-			if (!storedValue.equals(valueInDatabase)) {
-				Common.log("Can update.");
-				return true;
-			}
-		}
-
-		return false;
-	}
-
 	/**
 	 * Gets the stored player in the database by their UUID.
 	 *
@@ -162,7 +133,8 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 		if (!isPlayerStored(uuid))
 			return null;
 
-		ResultSet resultSet = getResultSetOfUUID(uuid);
+		ResultSet resultSet = this.query("SELECT * FROM {table} WHERE UUID= '" + uuid + "'");
+		resultSet.next();
 		return Bukkit.getOfflinePlayer(UUID.fromString(resultSet.getString("UUID")));
 	}
 
@@ -182,12 +154,6 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 		SerializedMap data = SerializedMap.fromJson(dataRaw);
 
 		return data.getString(DataField.COLORED_NICKNAME.getIdentifier(), "none");
-	}
-
-	public ResultSet getResultSetOfUUID(final UUID uuid) throws SQLException {
-		ResultSet resultSet = this.query("SELECT * FROM {table} WHERE UUID= '" + uuid + "'");
-		resultSet.next();
-		return resultSet;
 	}
 
 	/**
@@ -218,20 +184,5 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 
 		@Getter
 		private final Class<?> dataFieldClass;
-
-		public static Object getDataValueStored(final String identifier, final Class<?> dataFieldClass, final SerializedMap dataMap) {
-			final String className = dataFieldClass.getName();
-
-			if (className.equalsIgnoreCase(CompChatColor.class.getName())) {
-				return dataMap.get(identifier, CompChatColor.class).getName();
-			} else if (className.equalsIgnoreCase(String.class.getName()))
-				return dataMap.getString(identifier);
-			else if (className.equalsIgnoreCase(Boolean.class.getName()))
-				return dataMap.getBoolean(identifier);
-
-			Common.throwError(new NullPointerException(), "Invalid data field class " + className + " specified.",
-					"Data field: " + identifier);
-			return null;
-		}
 	}
 }

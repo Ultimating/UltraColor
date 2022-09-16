@@ -5,7 +5,6 @@ import me.ultimategamer200.ultracolor.mysql.UltraColorDatabase;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.collection.expiringmap.ExpiringMap;
 import org.mineacademy.fo.constants.FoConstants;
 import org.mineacademy.fo.remain.CompChatColor;
@@ -244,25 +243,5 @@ public final class PlayerCache extends YamlConfig {
 		this.set(UltraColorDatabase.DataField.COLORED_NICKNAME.getIdentifier(), this.coloredNickName);
 		this.set(UltraColorDatabase.DataField.CHAT_RAINBOW_COLORS.getIdentifier(), this.chatRainbowColors);
 		this.set(UltraColorDatabase.DataField.NAME_RAINBOW_COLORS.getIdentifier(), this.nameRainbowColors);
-	}
-
-	@Override
-	public SerializedMap saveToMap() {
-		final SerializedMap dataMap = new SerializedMap();
-
-		dataMap.putIf(UltraColorDatabase.DataField.CHAT_COLOR.getIdentifier(), this.chatColor);
-		dataMap.putIf(UltraColorDatabase.DataField.NAME_COLOR.getIdentifier(), this.nameColor);
-		dataMap.putIf(UltraColorDatabase.DataField.NAME_FORMAT.getIdentifier(), this.nameFormat);
-		dataMap.putIf(UltraColorDatabase.DataField.CHAT_FORMAT.getIdentifier(), this.chatFormat);
-		dataMap.putIf(UltraColorDatabase.DataField.FIRST_NAME_GRADIENT_HEX.getIdentifier(), this.customGradient1);
-		dataMap.putIf(UltraColorDatabase.DataField.SECOND_NAME_GRADIENT_HEX.getIdentifier(), this.customGradient2);
-		dataMap.putIf(UltraColorDatabase.DataField.FIRST_CHAT_GRADIENT_HEX.getIdentifier(), this.chatCustomGradient1);
-		dataMap.putIf(UltraColorDatabase.DataField.SECOND_NAME_GRADIENT_HEX.getIdentifier(), this.chatCustomGradient2);
-		dataMap.putIf(UltraColorDatabase.DataField.NICKNAME.getIdentifier(), this.nickName);
-		dataMap.putIf(UltraColorDatabase.DataField.COLORED_NICKNAME.getIdentifier(), this.coloredNickName);
-		dataMap.putIf(UltraColorDatabase.DataField.CHAT_RAINBOW_COLORS.getIdentifier(), this.chatRainbowColors);
-		dataMap.putIf(UltraColorDatabase.DataField.NAME_RAINBOW_COLORS.getIdentifier(), this.nameRainbowColors);
-
-		return dataMap;
 	}
 }
