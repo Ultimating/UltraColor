@@ -1,6 +1,7 @@
 package me.ultimategamer200.ultracolor;
 
 import lombok.Getter;
+import me.ultimategamer200.ultracolor.mysql.UltraColorDatabase;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -106,18 +107,18 @@ public final class PlayerCache extends YamlConfig {
 	@Override
 	protected void onLoad() {
 		this.playerName = getString("Player_Name");
-		this.chatColor = get("Chat_Color", CompChatColor.class);
-		this.nameColor = get("Name_Color", CompChatColor.class);
-		this.nameFormat = get("Name_Format", ChatColor.class);
-		this.chatFormat = get("Chat_Format", CompChatColor.class);
-		this.customGradient1 = get("First_Custom_Gradient", CompChatColor.class);
-		this.customGradient2 = get("Second_Custom_Gradient", CompChatColor.class);
-		this.chatCustomGradient1 = get("Chat_First_Custom_Gradient", CompChatColor.class);
-		this.chatCustomGradient2 = get("Chat_Second_Custom_Gradient", CompChatColor.class);
-		this.nickName = getString("Nickname", "none");
-		this.coloredNickName = getString("Colored_Nickname", "none");
-		this.chatRainbowColors = getBoolean("Chat_Rainbow_Colors", false);
-		this.nameRainbowColors = getBoolean("Name_Rainbow_Colors", false);
+		this.chatColor = get(UltraColorDatabase.DataField.CHAT_COLOR.getIdentifier(), CompChatColor.class);
+		this.nameColor = get(UltraColorDatabase.DataField.NAME_COLOR.getIdentifier(), CompChatColor.class);
+		this.nameFormat = get(UltraColorDatabase.DataField.NAME_FORMAT.getIdentifier(), ChatColor.class);
+		this.chatFormat = get(UltraColorDatabase.DataField.CHAT_FORMAT.getIdentifier(), CompChatColor.class);
+		this.customGradient1 = get(UltraColorDatabase.DataField.FIRST_NAME_GRADIENT_HEX.getIdentifier(), CompChatColor.class);
+		this.customGradient2 = get(UltraColorDatabase.DataField.SECOND_NAME_GRADIENT_HEX.getIdentifier(), CompChatColor.class);
+		this.chatCustomGradient1 = get(UltraColorDatabase.DataField.FIRST_CHAT_GRADIENT_HEX.getIdentifier(), CompChatColor.class);
+		this.chatCustomGradient2 = get(UltraColorDatabase.DataField.SECOND_CHAT_GRADIENT_HEX.getIdentifier(), CompChatColor.class);
+		this.nickName = getString(UltraColorDatabase.DataField.NICKNAME.getIdentifier(), "none");
+		this.coloredNickName = getString(UltraColorDatabase.DataField.COLORED_NICKNAME.getIdentifier(), "none");
+		this.chatRainbowColors = getBoolean(UltraColorDatabase.DataField.CHAT_RAINBOW_COLORS.getIdentifier(), false);
+		this.nameRainbowColors = getBoolean(UltraColorDatabase.DataField.NAME_RAINBOW_COLORS.getIdentifier(), false);
 	}
 
 	public void setPlayerName(String playerName) {
@@ -231,47 +232,37 @@ public final class PlayerCache extends YamlConfig {
 	@Override
 	protected void onSave() {
 		this.set("Player_Name", this.playerName);
-		this.set("Chat_Color", this.chatColor);
-		this.set("Name_Color", this.nameColor);
-		this.set("Name_Format", this.nameFormat);
-		this.set("Chat_Format", this.chatFormat);
-		this.set("First_Custom_Gradient", this.customGradient1);
-		this.set("Second_Custom_Gradient", this.customGradient2);
-		this.set("Chat_First_Custom_Gradient", this.chatCustomGradient1);
-		this.set("Chat_Second_Custom_Gradient", this.chatCustomGradient2);
-		this.set("Nickname", this.nickName);
-		this.set("Colored_Nickname", this.coloredNickName);
-		this.set("Chat_Rainbow_Colors", this.chatRainbowColors);
-		this.set("Name_Rainbow_Colors", this.nameRainbowColors);
+		this.set(UltraColorDatabase.DataField.CHAT_COLOR.getIdentifier(), this.chatColor);
+		this.set(UltraColorDatabase.DataField.NAME_COLOR.getIdentifier(), this.nameColor);
+		this.set(UltraColorDatabase.DataField.NAME_FORMAT.getIdentifier(), this.nameFormat);
+		this.set(UltraColorDatabase.DataField.CHAT_FORMAT.getIdentifier(), this.chatFormat);
+		this.set(UltraColorDatabase.DataField.FIRST_NAME_GRADIENT_HEX.getIdentifier(), this.customGradient1);
+		this.set(UltraColorDatabase.DataField.SECOND_NAME_GRADIENT_HEX.getIdentifier(), this.customGradient2);
+		this.set(UltraColorDatabase.DataField.FIRST_CHAT_GRADIENT_HEX.getIdentifier(), this.chatCustomGradient1);
+		this.set(UltraColorDatabase.DataField.SECOND_CHAT_GRADIENT_HEX.getIdentifier(), this.chatCustomGradient2);
+		this.set(UltraColorDatabase.DataField.NICKNAME.getIdentifier(), this.nickName);
+		this.set(UltraColorDatabase.DataField.COLORED_NICKNAME.getIdentifier(), this.coloredNickName);
+		this.set(UltraColorDatabase.DataField.CHAT_RAINBOW_COLORS.getIdentifier(), this.chatRainbowColors);
+		this.set(UltraColorDatabase.DataField.NAME_RAINBOW_COLORS.getIdentifier(), this.nameRainbowColors);
 	}
 
 	@Override
 	public SerializedMap saveToMap() {
-		// Map to save to the database.
-		final SerializedMap map = new SerializedMap();
+		final SerializedMap dataMap = new SerializedMap();
 
-		map.putIf("UUID", this.uuid);
-		map.putIf("Name", this.playerName);
+		dataMap.putIf(UltraColorDatabase.DataField.CHAT_COLOR.getIdentifier(), this.chatColor);
+		dataMap.putIf(UltraColorDatabase.DataField.NAME_COLOR.getIdentifier(), this.nameColor);
+		dataMap.putIf(UltraColorDatabase.DataField.NAME_FORMAT.getIdentifier(), this.nameFormat);
+		dataMap.putIf(UltraColorDatabase.DataField.CHAT_FORMAT.getIdentifier(), this.chatFormat);
+		dataMap.putIf(UltraColorDatabase.DataField.FIRST_NAME_GRADIENT_HEX.getIdentifier(), this.customGradient1);
+		dataMap.putIf(UltraColorDatabase.DataField.SECOND_NAME_GRADIENT_HEX.getIdentifier(), this.customGradient2);
+		dataMap.putIf(UltraColorDatabase.DataField.FIRST_CHAT_GRADIENT_HEX.getIdentifier(), this.chatCustomGradient1);
+		dataMap.putIf(UltraColorDatabase.DataField.SECOND_NAME_GRADIENT_HEX.getIdentifier(), this.chatCustomGradient2);
+		dataMap.putIf(UltraColorDatabase.DataField.NICKNAME.getIdentifier(), this.nickName);
+		dataMap.putIf(UltraColorDatabase.DataField.COLORED_NICKNAME.getIdentifier(), this.coloredNickName);
+		dataMap.putIf(UltraColorDatabase.DataField.CHAT_RAINBOW_COLORS.getIdentifier(), this.chatRainbowColors);
+		dataMap.putIf(UltraColorDatabase.DataField.NAME_RAINBOW_COLORS.getIdentifier(), this.nameRainbowColors);
 
-		// Make a new map for data in the "Data" column because each key in the SerializedMap named "map" is to be a
-		// column in the database.
-		SerializedMap dataMap = new SerializedMap();
-
-		dataMap.putIf("Chat_Color", this.chatColor);
-		dataMap.putIf("Name_Color", this.nameColor);
-		dataMap.putIf("Name_Format", this.nameFormat);
-		dataMap.putIf("Chat_Format", this.chatFormat);
-		dataMap.putIf("First_Custom_Gradient", this.customGradient1);
-		dataMap.putIf("Second_Custom_Gradient", this.customGradient2);
-		dataMap.putIf("Chat_First_Custom_Gradient", this.chatCustomGradient1);
-		dataMap.putIf("Chat_Second_Custom_Gradient", this.chatCustomGradient2);
-		dataMap.putIf("Nickname", this.nickName);
-		dataMap.putIf("Colored_Nickname", this.coloredNickName);
-		dataMap.putIf("Chat_Rainbow_Colors", this.chatRainbowColors);
-		dataMap.putIf("Name_Rainbow_Colors", this.nameRainbowColors);
-
-		// Adds the Data column to the saved map.
-		map.put("Data", dataMap);
-		return map;
+		return dataMap;
 	}
 }

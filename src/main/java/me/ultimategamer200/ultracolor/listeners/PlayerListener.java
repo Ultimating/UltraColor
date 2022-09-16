@@ -1,6 +1,7 @@
 package me.ultimategamer200.ultracolor.listeners;
 
 import me.ultimategamer200.ultracolor.PlayerCache;
+import me.ultimategamer200.ultracolor.mysql.UltraColorDatabase;
 import me.ultimategamer200.ultracolor.settings.Settings;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
 import me.ultimategamer200.ultracolor.util.UltraColorUtil;
@@ -21,6 +22,11 @@ public final class PlayerListener implements Listener {
 		final Player player = event.getPlayer();
 		final SpigotUpdater updater = new SpigotUpdater(85332);
 		final PlayerCache pCache = PlayerCache.fromUUID(player.getUniqueId());
+
+		if (Settings.Database.ENABLED) {
+			if (UltraColorDatabase.getInstance().isLoaded())
+				UltraColorDatabase.getInstance().load(player.getUniqueId(), pCache);
+		}
 
 		// Saves the player name for the player, so it's easy to tell what data section belongs to whom.
 		if (pCache.getPlayerName() == null)

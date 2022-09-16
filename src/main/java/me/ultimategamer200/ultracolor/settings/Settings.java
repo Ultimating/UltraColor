@@ -1,6 +1,7 @@
 package me.ultimategamer200.ultracolor.settings;
 
 import org.bukkit.event.EventPriority;
+import org.mineacademy.fo.model.SimpleTime;
 import org.mineacademy.fo.remain.CompMaterial;
 import org.mineacademy.fo.settings.SimpleSettings;
 
@@ -308,6 +309,7 @@ public class Settings extends SimpleSettings {
 		public static String PASS;
 		public static Boolean ENABLED;
 		public static Integer EXPIRY_DAYS;
+		public static SimpleTime SAVE_TASK_INTERVAL;
 
 		private static void init() {
 			setPathPrefix("Database");
@@ -319,6 +321,7 @@ public class Settings extends SimpleSettings {
 			USER = getString("User");
 			PASS = getString("Pass");
 			EXPIRY_DAYS = getInteger("Expiry_Days");
+			SAVE_TASK_INTERVAL = getTime("Save_Task_Interval");
 		}
 	}
 

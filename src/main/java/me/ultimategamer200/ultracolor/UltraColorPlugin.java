@@ -173,15 +173,6 @@ public class UltraColorPlugin extends SimplePlugin {
 	}
 
 	/**
-	 * Called when the server shuts down.
-	 */
-	@Override
-	protected void onPluginStop() {
-		if (Settings.Database.ENABLED && UltraColorDatabase.getInstance().isLoaded())
-			UltraColorDatabase.getInstance().saveOnlinePlayers();
-	}
-
-	/**
 	 * Gets the UltraColor Spigot resource to check updates for by its ID number.
 	 */
 	@Override

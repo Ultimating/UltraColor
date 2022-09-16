@@ -54,7 +54,7 @@ public class ListNicknamesCommand extends SimpleSubCommand {
 
 				final OfflinePlayer player = Bukkit.getOfflinePlayer(pCache.getPlayerName());
 
-				if (!UltraColorDatabase.getInstance().isStored(pCache.getUuid()))
+				if (!UltraColorDatabase.getInstance().isPlayerStored(pCache.getUuid()))
 					realNamesAndNicks.put(player.getName(), pCache.getColoredNickName());
 				else
 					realNamesAndNicks.put(player.getName(), UltraColorDatabase.getInstance().getStoredNick(player));
