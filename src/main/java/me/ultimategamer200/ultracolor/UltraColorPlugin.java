@@ -172,11 +172,6 @@ public class UltraColorPlugin extends SimplePlugin {
 		PlayerCache.clearAllData();
 	}
 
-	@Override
-	protected void onPluginStop() {
-		PlayerCache.cacheMap.clear();
-	}
-
 	/**
 	 * Gets the UltraColor Spigot resource to check updates for by its ID number.
 	 */

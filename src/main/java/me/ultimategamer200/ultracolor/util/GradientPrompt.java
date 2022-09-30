@@ -17,7 +17,6 @@ import org.mineacademy.fo.conversation.SimplePrompt;
 import org.mineacademy.fo.remain.CompChatColor;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class GradientPrompt extends SimpleConversation {
@@ -163,17 +162,6 @@ public class GradientPrompt extends SimpleConversation {
 		if (Settings.Color_Settings_Name_Formats.STRIKETHROUGH_FORMAT) options.add("strikethrough");
 		if (Settings.Color_Settings_Name_Formats.UNDERLINE_FORMAT) options.add("underline");
 
-		options.add("none");
-		final StringBuilder stringBuilder = new StringBuilder();
-		final Iterator<String> iterator = options.iterator();
-
-		while (iterator.hasNext()) {
-			final String option = iterator.next();
-
-			if (!iterator.hasNext()) stringBuilder.append(option + ".");
-			else stringBuilder.append(option + ", ");
-		}
-
-		return stringBuilder.toString();
+		return HexColorPrompt.FormatSelect.buildOptions(options);
 	}
 }

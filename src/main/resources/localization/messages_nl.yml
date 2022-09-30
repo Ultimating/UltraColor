@@ -663,7 +663,7 @@ Hex_Colors:
   Prompt_Prefix: "&8[&#88afdbHex kleur&8] &7"
   First_Prompt: "Welk type hex kleur wilt u instellen? Verkrijgbaar: &e%hex_color_types%"
   Second_Prompt: "Voer de gewenste hexadecimale code in, met of zonder # aan het begin."
-  Format_Prompt: "Wil je een formaat dat bij je hex past? Selecteer &e&lbold, &e&oitalic, &e&nunderline, &e&mstrikethrough, &emagic&7. Als je er geen wilt, typ dan, type &enone&7."
+  Format_Prompt: "Wil je een formaat dat bij je hex past? &eVerkrijgbaar: &7{format_options}"
   Hex_Color_Unsupported_Message: "&cDeze opdracht werkt alleen voor: 1.16+"
   Hex_Color_Success_Message: "&7Hex kleur officieel ingesteld op %hex_color%&7!"
   Disabled_Type_Message: "%type% hex is uitgeschakeld in het instellingenbestand! Waarschuw een administratief medewerker als dit onbedoeld is."

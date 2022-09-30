@@ -663,7 +663,7 @@ Hex_Colors:
   Prompt_Prefix: "&8[&#88afdbCouleurs hexagonales&8] &7"
   First_Prompt: "Quel type de couleur hexadécimale souhaitez-vous définir ? Disponible: &e%hex_color_types%"
   Second_Prompt: "Veuillez entrer le code hexadécimal que vous voulez avec ou sans le # au début."
-  Format_Prompt: "Souhaitez-vous un format pour aller avec votre hexagone ? Sélectionner &e&lbold, &e&oitalic, &e&nunderline, &e&mstrikethrough, &emagic&7. Si vous n'en voulez pas, tapez &enone&7."
+  Format_Prompt: "Souhaitez-vous un format pour aller avec votre hexagone ? &eDisponible: &7{format_options}"
   Hex_Color_Unsupported_Message: "&cCette commande ne fonctionne que pour 1.16+"
   Hex_Color_Success_Message: "&7La couleur hexadécimale est officiellement définie sur %hex_color%&7!"
   Disabled_Type_Message: "%type% hex est désactivé dans le fichier de paramètres ! Alertez un administrateur si cela n'est pas intentionnel."

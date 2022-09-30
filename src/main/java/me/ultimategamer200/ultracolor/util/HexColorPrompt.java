@@ -15,6 +15,10 @@ import org.mineacademy.fo.conversation.SimplePrefix;
 import org.mineacademy.fo.conversation.SimplePrompt;
 import org.mineacademy.fo.remain.CompChatColor;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * Executes this prompt if the player is selecting a hex color from the /color menu.
  */
@@ -111,7 +115,8 @@ public class HexColorPrompt extends SimpleConversation {
 
 		@Override
 		protected String getPrompt(ConversationContext conversationContext) {
-			return Localization.Hex_Colors.FORMAT_PROMPT;
+			final String options = this.type.equalsIgnoreCase("name") ? getAvailableNameOptions() : getAvailableChatOptions();
+			return Localization.Hex_Colors.FORMAT_PROMPT.replace("{format_options}", options);
 		}
 
 		@Override
@@ -176,6 +181,45 @@ public class HexColorPrompt extends SimpleConversation {
 			Messenger.success(getPlayer(conversationContext), Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace(
 					"%hex_color%", hexDisplay));
 			return Prompt.END_OF_CONVERSATION;
+		}
+
+		private static String getAvailableChatOptions() {
+			final List<String> options = new ArrayList<>();
+
+			if (Settings.Color_Settings_Chat_Formats.BOLD_FORMAT) options.add("bold");
+			if (Settings.Color_Settings_Chat_Formats.ITALIC_FORMAT) options.add("italic");
+			if (Settings.Color_Settings_Chat_Formats.MAGIC_FORMAT) options.add("magic");
+			if (Settings.Color_Settings_Chat_Formats.STRIKETHROUGH_FORMAT) options.add("strikethrough");
+			if (Settings.Color_Settings_Chat_Formats.UNDERLINE_FORMAT) options.add("underline");
+
+			return buildOptions(options);
+		}
+
+		private static String getAvailableNameOptions() {
+			final List<String> options = new ArrayList<>();
+
+			if (Settings.Color_Settings_Name_Formats.BOLD_FORMAT) options.add("bold");
+			if (Settings.Color_Settings_Name_Formats.ITALIC_FORMAT) options.add("italic");
+			if (Settings.Color_Settings_Name_Formats.MAGIC_FORMAT) options.add("magic");
+			if (Settings.Color_Settings_Name_Formats.STRIKETHROUGH_FORMAT) options.add("strikethrough");
+			if (Settings.Color_Settings_Name_Formats.UNDERLINE_FORMAT) options.add("underline");
+
+			return buildOptions(options);
+		}
+
+		public static String buildOptions(final List<String> options) {
+			options.add("none");
+			final StringBuilder stringBuilder = new StringBuilder();
+			final Iterator<String> iterator = options.iterator();
+
+			while (iterator.hasNext()) {
+				final String option = iterator.next();
+
+				if (!iterator.hasNext()) stringBuilder.append(option + ".");
+				else stringBuilder.append(option + ", ");
+			}
+
+			return stringBuilder.toString();
 		}
 	}
 }

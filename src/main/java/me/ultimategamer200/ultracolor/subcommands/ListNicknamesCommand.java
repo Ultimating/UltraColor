@@ -1,7 +1,6 @@
 package me.ultimategamer200.ultracolor.subcommands;
 
 import lombok.SneakyThrows;
-import me.ultimategamer200.ultracolor.DataFile;
 import me.ultimategamer200.ultracolor.PlayerCache;
 import me.ultimategamer200.ultracolor.mysql.UltraColorDatabase;
 import me.ultimategamer200.ultracolor.settings.Settings;
@@ -32,7 +31,7 @@ public class ListNicknamesCommand extends SimpleSubCommand {
 	protected void onCommand() {
 		final String mode = args[0];
 		final Map<String, String> realNamesAndNicks = new HashMap<>();
-		final List<PlayerCache> pCaches = new ArrayList<>(DataFile.getInstance().getCaches(false));
+		final List<PlayerCache> pCaches = new ArrayList<>(PlayerCache.cacheMap.values());
 
 		if (mode.equalsIgnoreCase("local")) {
 			for (final PlayerCache pCache : pCaches) {

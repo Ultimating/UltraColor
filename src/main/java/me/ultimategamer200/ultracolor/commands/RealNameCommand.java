@@ -1,6 +1,5 @@
 package me.ultimategamer200.ultracolor.commands;
 
-import me.ultimategamer200.ultracolor.DataFile;
 import me.ultimategamer200.ultracolor.PlayerCache;
 import me.ultimategamer200.ultracolor.settings.Localization;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
@@ -23,7 +22,7 @@ public class RealNameCommand extends SimpleCommand {
 		final String nick = args[0];
 		boolean hasNickNameBeenFound = false;
 
-		for (final PlayerCache pCache : DataFile.getInstance().getCaches(false)) {
+		for (final PlayerCache pCache : PlayerCache.cacheMap.values()) {
 			final String playerName = pCache.getPlayerName();
 
 			if (pCache.getNickName().equalsIgnoreCase("none"))

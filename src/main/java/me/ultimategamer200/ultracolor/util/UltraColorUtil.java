@@ -1,7 +1,6 @@
 package me.ultimategamer200.ultracolor.util;
 
 import lombok.experimental.UtilityClass;
-import me.ultimategamer200.ultracolor.DataFile;
 import me.ultimategamer200.ultracolor.PlayerCache;
 import me.ultimategamer200.ultracolor.settings.Settings;
 import org.bukkit.ChatColor;
@@ -293,7 +292,7 @@ public class UltraColorUtil {
 	public Set<String> getNickNamesUnColored() {
 		final Set<String> nickNames = new HashSet<>();
 
-		for (final PlayerCache pCache : DataFile.getInstance().getCaches(false))
+		for (final PlayerCache pCache : PlayerCache.cacheMap.values())
 			if (!pCache.getNickName().equalsIgnoreCase("none")) nickNames.add(pCache.getNickName());
 
 		return nickNames;

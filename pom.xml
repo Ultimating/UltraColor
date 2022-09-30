@@ -7,7 +7,7 @@
     <groupId>me.ultimategamer200.ultracolor</groupId>
     <artifactId>ultracolor</artifactId>
     <name>UltraColor</name>
-    <version>1.5.9.2</version>
+    <version>1.5.9.3</version>
 
     <properties>
         <!-- The full path to your plugin's main class, so that Spigot can find and load it -->

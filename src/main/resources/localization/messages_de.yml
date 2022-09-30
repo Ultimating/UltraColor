@@ -663,7 +663,7 @@ Hex_Colors:
   Prompt_Prefix: "&8[&#88afdbHex-Farbe&8] &7"
   First_Prompt: "Welche Hex-Farbe möchten Sie einstellen? Erhältlich: &e%hex_color_types%"
   Second_Prompt: "Bitte geben Sie den gewünschten Hex-Code mit oder ohne # am Anfang ein."
-  Format_Prompt: "Möchten Sie ein Format, das zu Ihrem Hex passt? Wählen &e&lbold, &e&oitalic, &e&nunderline, &e&mstrikethrough, &emagic&7. Wenn Sie keine möchten, geben Sie ein &enone&7."
+  Format_Prompt: "Möchten Sie ein Format, das zu Ihrem Hex passt? &eVerfügbar: &7{format_options}"
   Hex_Color_Unsupported_Message: "&cDieser Befehl funktioniert nur ab 1.16"
   Hex_Color_Success_Message: "&7Hex Farbe offiziell eingestellt auf %hex_color%&7!"
   Disabled_Type_Message: "%type% hex ist in der Einstellungsdatei deaktiviert! Benachrichtigen Sie einen Administrator, wenn dies unbeabsichtigt ist."

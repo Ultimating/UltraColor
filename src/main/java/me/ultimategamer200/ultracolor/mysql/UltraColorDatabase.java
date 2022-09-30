@@ -184,5 +184,20 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 
 		@Getter
 		private final Class<?> dataFieldClass;
+
+		public static Object getDataValueStored(final String identifier, final Class<?> dataFieldClass, final SerializedMap dataMap) {
+			final String className = dataFieldClass.getName();
+
+			if (className.equalsIgnoreCase(CompChatColor.class.getName())) {
+				return dataMap.get(identifier, CompChatColor.class).getName();
+			} else if (className.equalsIgnoreCase(String.class.getName()))
+				return dataMap.getString(identifier);
+			else if (className.equalsIgnoreCase(Boolean.class.getName()))
+				return dataMap.getBoolean(identifier);
+
+			Common.throwError(new NullPointerException(), "Invalid data field class " + className + " specified.",
+					"Data field: " + identifier);
+			return null;
+		}
 	}
 }
