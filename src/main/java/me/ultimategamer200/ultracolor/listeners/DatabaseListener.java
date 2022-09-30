@@ -22,8 +22,10 @@ public class DatabaseListener implements Listener {
 		final Player player = event.getPlayer();
 
 		if (Settings.Database.ENABLED) {
-			if (UltraColorDatabase.getInstance().isLoaded())
-				UltraColorDatabase.getInstance().load(player.getUniqueId(), PlayerCache.fromPlayer(player));
+			if (UltraColorDatabase.getInstance().isLoaded()) {
+				UltraColorDatabase.getInstance().load(player.getUniqueId(), PlayerCache.fromUUID(player.getUniqueId(),
+						player.getName(), true));
+			}
 		}
 	}
 

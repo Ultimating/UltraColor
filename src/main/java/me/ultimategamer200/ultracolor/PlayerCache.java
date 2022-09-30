@@ -5,6 +5,7 @@ import me.ultimategamer200.ultracolor.mysql.UltraColorDatabase;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.mineacademy.fo.Common;
 import org.mineacademy.fo.collection.expiringmap.ExpiringMap;
 import org.mineacademy.fo.constants.FoConstants;
 import org.mineacademy.fo.remain.CompChatColor;
@@ -95,16 +96,19 @@ public final class PlayerCache extends YamlConfig {
 	private boolean nameRainbowColors;
 
 	// Creates a new data section for the player if they don't exist.
-	private PlayerCache(final UUID uuid) {
+	private PlayerCache(final UUID uuid, final String playerName, final boolean loadData) {
 		// This will prepend this cache with the players unique id just like you use pathPrefix in the Settings class.
 		this.setPathPrefix(uuid.toString());
 
 		this.uuid = uuid;
-		loadConfiguration(NO_DEFAULT, FoConstants.File.DATA);
+		this.playerName = playerName;
+
+		if (loadData) this.loadConfiguration(NO_DEFAULT, FoConstants.File.DATA);
 	}
 
 	@Override
 	protected void onLoad() {
+		Common.log("Loading data");
 		this.playerName = getString("Player_Name");
 		this.chatColor = get(UltraColorDatabase.DataField.CHAT_COLOR.getIdentifier(), CompChatColor.class);
 		this.nameColor = get(UltraColorDatabase.DataField.NAME_COLOR.getIdentifier(), CompChatColor.class);
@@ -118,6 +122,8 @@ public final class PlayerCache extends YamlConfig {
 		this.coloredNickName = getString(UltraColorDatabase.DataField.COLORED_NICKNAME.getIdentifier(), "none");
 		this.chatRainbowColors = getBoolean(UltraColorDatabase.DataField.CHAT_RAINBOW_COLORS.getIdentifier(), false);
 		this.nameRainbowColors = getBoolean(UltraColorDatabase.DataField.NAME_RAINBOW_COLORS.getIdentifier(), false);
+
+		Common.log("Colored Nickname: " + this.coloredNickName);
 	}
 
 	public void setPlayerName(String playerName) {
@@ -197,30 +203,35 @@ public final class PlayerCache extends YamlConfig {
 	 * Gets the cache by online player instance.
 	 */
 	public static PlayerCache fromPlayer(final Player player) {
-		return fromUUID(player.getUniqueId());
+		return fromUUID(player.getUniqueId(), player.getName());
 	}
 
 	/**
 	 * Gets the cache of any player.
 	 */
 	public static PlayerCache fromOfflinePlayer(final OfflinePlayer player) {
-		return fromUUID(player.getUniqueId());
+		return fromUUID(player.getUniqueId(), player.getName());
 	}
 
 	/**
 	 * Gets the cache by UUID (Not recommended calling this method unless it's necessary!)
 	 */
-	public static PlayerCache fromUUID(final UUID uuid) {
-		synchronized (cacheMap) {
-			PlayerCache pCache = cacheMap.get(uuid);
+	public static PlayerCache fromUUID(final UUID uuid, final String playerName) {
+		PlayerCache pCache = cacheMap.get(uuid);
 
-			if (pCache == null) {
-				pCache = new PlayerCache(uuid);
-				cacheMap.put(uuid, pCache);
-			}
-
-			return pCache;
+		if (pCache == null) {
+			pCache = new PlayerCache(uuid, playerName, false);
+			cacheMap.put(uuid, pCache);
 		}
+
+		return pCache;
+	}
+
+	/**
+	 * Similar to above method, only this time, you can choose to load data when new player cache is formed.
+	 */
+	public static PlayerCache fromUUID(final UUID uuid, final String playerName, final boolean loadData) {
+		return new PlayerCache(uuid, playerName, loadData);
 	}
 
 	// Clears all the cache map data.

@@ -1,5 +1,6 @@
 package me.ultimategamer200.ultracolor.listeners;
 
+import me.ultimategamer200.ultracolor.DataFile;
 import me.ultimategamer200.ultracolor.PlayerCache;
 import me.ultimategamer200.ultracolor.settings.Settings;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
@@ -20,7 +21,7 @@ public final class PlayerListener implements Listener {
 	public void onJoin(final PlayerJoinEvent event) {
 		final Player player = event.getPlayer();
 		final SpigotUpdater updater = new SpigotUpdater(85332);
-		final PlayerCache pCache = PlayerCache.fromUUID(player.getUniqueId());
+		final PlayerCache pCache = PlayerCache.fromUUID(player.getUniqueId(), player.getName(), true);
 
 		// Saves the player name for the player, so it's easy to tell what data section belongs to whom.
 		if (pCache.getPlayerName() == null)
@@ -43,10 +44,10 @@ public final class PlayerListener implements Listener {
 		}
 
 		// Purge the player's nickname if nicknames are disabled, purging is enabled, and if they have one.
-		if (!Settings.Other.NICKNAMES_ENABLE && !pCache.getNickName().equalsIgnoreCase("none")) {
+		if (!Settings.Other.NICKNAMES_ENABLE && pCache.getNickName() != null) {
 			if (Settings.Other.PURGE_NICKNAMES) {
-				pCache.setNickName("none");
-				pCache.setColoredNickName("none");
+				pCache.setNickName(null);
+				pCache.setColoredNickName(null);
 				Common.runLaterAsync(10, () -> player.setDisplayName(UltraColorUtil.getPlayerNameInColor(player)));
 			}
 		}
@@ -91,7 +92,7 @@ public final class PlayerListener implements Listener {
 	private PlayerCache findNeededCacheForCommandReplacement(final String command) {
 		PlayerCache cache = null;
 
-		for (final PlayerCache pCache : PlayerCache.cacheMap.values()) {
+		for (final PlayerCache pCache : DataFile.getInstance().getCaches(false)) {
 			if (pCache.getNickName().equalsIgnoreCase("none"))
 				continue;
 
