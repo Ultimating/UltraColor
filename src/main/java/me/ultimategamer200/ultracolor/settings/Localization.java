@@ -58,6 +58,7 @@ public final class Localization extends SimpleLocalization {
 		public static Integer MENU_SIZE;
 		public static Integer MENU_SLOT;
 		public static String MENU_INFO;
+		public static String SUCCESS_MESSAGE;
 		public static String ERROR_MESSAGE;
 		public static Boolean ALLOW_INFO_BUTTON;
 
@@ -68,6 +69,7 @@ public final class Localization extends SimpleLocalization {
 			MENU_SIZE = getInteger("Size");
 			MENU_SLOT = getInteger("Slot");
 			MENU_INFO = getString("Info_Message");
+			SUCCESS_MESSAGE = getString("Success_Message");
 			ERROR_MESSAGE = getString("Error_Message");
 			ALLOW_INFO_BUTTON = getBoolean("Info_Button_Enabled");
 		}
@@ -79,6 +81,7 @@ public final class Localization extends SimpleLocalization {
 		public static Integer MENU_SIZE;
 		public static Integer MENU_SLOT;
 		public static String MENU_INFO;
+		public static String SUCCESS_MESSAGE;
 		public static String ERROR_MESSAGE;
 		public static Boolean ALLOW_INFO_BUTTON;
 
@@ -89,6 +92,7 @@ public final class Localization extends SimpleLocalization {
 			MENU_SIZE = getInteger("Size");
 			MENU_SLOT = getInteger("Slot");
 			MENU_INFO = getString("Info_Message");
+			SUCCESS_MESSAGE = getString("Success_Message");
 			ERROR_MESSAGE = getString("Error_Message");
 			ALLOW_INFO_BUTTON = getBoolean("Info_Button_Enabled");
 		}
@@ -131,7 +135,6 @@ public final class Localization extends SimpleLocalization {
 	public static class Chat_Color_Selection_Customization_Black {
 		public static String BLACK_NAME;
 		public static List<String> BLACK_LORE;
-		public static String BLACK_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -139,14 +142,12 @@ public final class Localization extends SimpleLocalization {
 			BLACK_NAME = getString("Name");
 			BLACK_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			BLACK_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Dark_Blue {
 		public static String DARK_BLUE_NAME;
 		public static List<String> DARK_BLUE_LORE;
-		public static String DARK_BLUE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -154,14 +155,12 @@ public final class Localization extends SimpleLocalization {
 			DARK_BLUE_NAME = getString("Name");
 			DARK_BLUE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			DARK_BLUE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Dark_Green {
 		public static String DARK_GREEN_NAME;
 		public static List<String> DARK_GREEN_LORE;
-		public static String DARK_GREEN_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -169,14 +168,12 @@ public final class Localization extends SimpleLocalization {
 			DARK_GREEN_NAME = getString("Name");
 			DARK_GREEN_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			DARK_GREEN_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Dark_Aqua {
 		public static String DARK_AQUA_NAME;
 		public static List<String> DARK_AQUA_LORE;
-		public static String DARK_AQUA_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -184,14 +181,12 @@ public final class Localization extends SimpleLocalization {
 			DARK_AQUA_NAME = getString("Name");
 			DARK_AQUA_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			DARK_AQUA_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Dark_Red {
 		public static String DARK_RED_NAME;
 		public static List<String> DARK_RED_LORE;
-		public static String DARK_RED_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -199,14 +194,12 @@ public final class Localization extends SimpleLocalization {
 			DARK_RED_NAME = getString("Name");
 			DARK_RED_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			DARK_RED_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Dark_Purple {
 		public static String DARK_PURPLE_NAME;
 		public static List<String> DARK_PURPLE_LORE;
-		public static String DARK_PURPLE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -214,14 +207,12 @@ public final class Localization extends SimpleLocalization {
 			DARK_PURPLE_NAME = getString("Name");
 			DARK_PURPLE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			DARK_PURPLE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Orange {
 		public static String ORANGE_NAME;
 		public static List<String> ORANGE_LORE;
-		public static String ORANGE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -229,14 +220,12 @@ public final class Localization extends SimpleLocalization {
 			ORANGE_NAME = getString("Name");
 			ORANGE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			ORANGE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Gray {
 		public static String GRAY_NAME;
 		public static List<String> GRAY_LORE;
-		public static String GRAY_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -244,14 +233,12 @@ public final class Localization extends SimpleLocalization {
 			GRAY_NAME = getString("Name");
 			GRAY_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			GRAY_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Dark_Gray {
 		public static String DARK_GRAY_NAME;
 		public static List<String> DARK_GRAY_LORE;
-		public static String DARK_GRAY_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -259,14 +246,12 @@ public final class Localization extends SimpleLocalization {
 			DARK_GRAY_NAME = getString("Name");
 			DARK_GRAY_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			DARK_GRAY_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Blue {
 		public static String BLUE_NAME;
 		public static List<String> BLUE_LORE;
-		public static String BLUE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -274,14 +259,12 @@ public final class Localization extends SimpleLocalization {
 			BLUE_NAME = getString("Name");
 			BLUE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			BLUE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Green {
 		public static String GREEN_NAME;
 		public static List<String> GREEN_LORE;
-		public static String GREEN_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -289,14 +272,12 @@ public final class Localization extends SimpleLocalization {
 			GREEN_NAME = getString("Name");
 			GREEN_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			GREEN_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Aqua {
 		public static String AQUA_NAME;
 		public static List<String> AQUA_LORE;
-		public static String AQUA_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -304,14 +285,12 @@ public final class Localization extends SimpleLocalization {
 			AQUA_NAME = getString("Name");
 			AQUA_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			AQUA_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Red {
 		public static String RED_NAME;
 		public static List<String> RED_LORE;
-		public static String RED_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -319,14 +298,12 @@ public final class Localization extends SimpleLocalization {
 			RED_NAME = getString("Name");
 			RED_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			RED_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Light_Purple {
 		public static String LIGHT_PURPLE_NAME;
 		public static List<String> LIGHT_PURPLE_LORE;
-		public static String LIGHT_PURPLE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -334,14 +311,12 @@ public final class Localization extends SimpleLocalization {
 			LIGHT_PURPLE_NAME = getString("Name");
 			LIGHT_PURPLE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			LIGHT_PURPLE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Yellow {
 		public static String YELLOW_NAME;
 		public static List<String> YELLOW_LORE;
-		public static String YELLOW_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -349,14 +324,12 @@ public final class Localization extends SimpleLocalization {
 			YELLOW_NAME = getString("Name");
 			YELLOW_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			YELLOW_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_White {
 		public static String WHITE_NAME;
 		public static List<String> WHITE_LORE;
-		public static String WHITE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -364,14 +337,12 @@ public final class Localization extends SimpleLocalization {
 			WHITE_NAME = getString("Name");
 			WHITE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			WHITE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Magic {
 		public static String MAGIC_NAME;
 		public static List<String> MAGIC_LORE;
-		public static String MAGIC_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -379,14 +350,12 @@ public final class Localization extends SimpleLocalization {
 			MAGIC_NAME = getString("Name");
 			MAGIC_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			MAGIC_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Bold {
 		public static String BOLD_NAME;
 		public static List<String> BOLD_LORE;
-		public static String BOLD_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -394,14 +363,12 @@ public final class Localization extends SimpleLocalization {
 			BOLD_NAME = getString("Name");
 			BOLD_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			BOLD_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Italic {
 		public static String ITALIC_NAME;
 		public static List<String> ITALIC_LORE;
-		public static String ITALIC_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -409,14 +376,12 @@ public final class Localization extends SimpleLocalization {
 			ITALIC_NAME = getString("Name");
 			ITALIC_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			ITALIC_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Underline {
 		public static String UNDERLINE_NAME;
 		public static List<String> UNDERLINE_LORE;
-		public static String UNDERLINE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -424,14 +389,12 @@ public final class Localization extends SimpleLocalization {
 			UNDERLINE_NAME = getString("Name");
 			UNDERLINE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			UNDERLINE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Strikethrough {
 		public static String STRIKETHROUGH_NAME;
 		public static List<String> STRIKETHROUGH_LORE;
-		public static String STRIKETHROUGH_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -439,14 +402,12 @@ public final class Localization extends SimpleLocalization {
 			STRIKETHROUGH_NAME = getString("Name");
 			STRIKETHROUGH_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			STRIKETHROUGH_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Chat_Color_Selection_Customization_Rainbow {
 		public static String RAINBOW_NAME;
 		public static List<String> RAINBOW_LORE;
-		public static String RAINBOW_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -454,7 +415,6 @@ public final class Localization extends SimpleLocalization {
 			RAINBOW_NAME = getString("Name");
 			RAINBOW_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			RAINBOW_SUCCESS = getString("Success_Message");
 		}
 	}
 
@@ -511,7 +471,6 @@ public final class Localization extends SimpleLocalization {
 	public static class Name_Color_Selection_Customization_Black {
 		public static String BLACK_NAME;
 		public static List<String> BLACK_LORE;
-		public static String BLACK_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -519,14 +478,12 @@ public final class Localization extends SimpleLocalization {
 			BLACK_NAME = getString("Name");
 			BLACK_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			BLACK_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Dark_Blue {
 		public static String DARK_BLUE_NAME;
 		public static List<String> DARK_BLUE_LORE;
-		public static String DARK_BLUE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -534,14 +491,12 @@ public final class Localization extends SimpleLocalization {
 			DARK_BLUE_NAME = getString("Name");
 			DARK_BLUE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			DARK_BLUE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Dark_Green {
 		public static String DARK_GREEN_NAME;
 		public static List<String> DARK_GREEN_LORE;
-		public static String DARK_GREEN_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -549,14 +504,12 @@ public final class Localization extends SimpleLocalization {
 			DARK_GREEN_NAME = getString("Name");
 			DARK_GREEN_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			DARK_GREEN_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Dark_Aqua {
 		public static String DARK_AQUA_NAME;
 		public static List<String> DARK_AQUA_LORE;
-		public static String DARK_AQUA_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -564,14 +517,12 @@ public final class Localization extends SimpleLocalization {
 			DARK_AQUA_NAME = getString("Name");
 			DARK_AQUA_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			DARK_AQUA_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Dark_Red {
 		public static String DARK_RED_NAME;
 		public static List<String> DARK_RED_LORE;
-		public static String DARK_RED_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -579,14 +530,12 @@ public final class Localization extends SimpleLocalization {
 			DARK_RED_NAME = getString("Name");
 			DARK_RED_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			DARK_RED_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Dark_Purple {
 		public static String DARK_PURPLE_NAME;
 		public static List<String> DARK_PURPLE_LORE;
-		public static String DARK_PURPLE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -594,14 +543,12 @@ public final class Localization extends SimpleLocalization {
 			DARK_PURPLE_NAME = getString("Name");
 			DARK_PURPLE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			DARK_PURPLE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Orange {
 		public static String ORANGE_NAME;
 		public static List<String> ORANGE_LORE;
-		public static String ORANGE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -609,14 +556,12 @@ public final class Localization extends SimpleLocalization {
 			ORANGE_NAME = getString("Name");
 			ORANGE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			ORANGE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Gray {
 		public static String GRAY_NAME;
 		public static List<String> GRAY_LORE;
-		public static String GRAY_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -624,14 +569,12 @@ public final class Localization extends SimpleLocalization {
 			GRAY_NAME = getString("Name");
 			GRAY_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			GRAY_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Dark_Gray {
 		public static String DARK_GRAY_NAME;
 		public static List<String> DARK_GRAY_LORE;
-		public static String DARK_GRAY_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -639,14 +582,12 @@ public final class Localization extends SimpleLocalization {
 			DARK_GRAY_NAME = getString("Name");
 			DARK_GRAY_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			DARK_GRAY_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Blue {
 		public static String BLUE_NAME;
 		public static List<String> BLUE_LORE;
-		public static String BLUE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -654,14 +595,12 @@ public final class Localization extends SimpleLocalization {
 			BLUE_NAME = getString("Name");
 			BLUE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			BLUE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Green {
 		public static String GREEN_NAME;
 		public static List<String> GREEN_LORE;
-		public static String GREEN_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -669,14 +608,12 @@ public final class Localization extends SimpleLocalization {
 			GREEN_NAME = getString("Name");
 			GREEN_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			GREEN_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Aqua {
 		public static String AQUA_NAME;
 		public static List<String> AQUA_LORE;
-		public static String AQUA_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -684,14 +621,12 @@ public final class Localization extends SimpleLocalization {
 			AQUA_NAME = getString("Name");
 			AQUA_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			AQUA_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Red {
 		public static String RED_NAME;
 		public static List<String> RED_LORE;
-		public static String RED_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -699,14 +634,12 @@ public final class Localization extends SimpleLocalization {
 			RED_NAME = getString("Name");
 			RED_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			RED_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Light_Purple {
 		public static String LIGHT_PURPLE_NAME;
 		public static List<String> LIGHT_PURPLE_LORE;
-		public static String LIGHT_PURPLE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -714,14 +647,12 @@ public final class Localization extends SimpleLocalization {
 			LIGHT_PURPLE_NAME = getString("Name");
 			LIGHT_PURPLE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			LIGHT_PURPLE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Yellow {
 		public static String YELLOW_NAME;
 		public static List<String> YELLOW_LORE;
-		public static String YELLOW_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -729,14 +660,12 @@ public final class Localization extends SimpleLocalization {
 			YELLOW_NAME = getString("Name");
 			YELLOW_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			YELLOW_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_White {
 		public static String WHITE_NAME;
 		public static List<String> WHITE_LORE;
-		public static String WHITE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -744,14 +673,12 @@ public final class Localization extends SimpleLocalization {
 			WHITE_NAME = getString("Name");
 			WHITE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			WHITE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Magic {
 		public static String MAGIC_NAME;
 		public static List<String> MAGIC_LORE;
-		public static String MAGIC_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -759,14 +686,12 @@ public final class Localization extends SimpleLocalization {
 			MAGIC_NAME = getString("Name");
 			MAGIC_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			MAGIC_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Bold {
 		public static String BOLD_NAME;
 		public static List<String> BOLD_LORE;
-		public static String BOLD_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -774,14 +699,12 @@ public final class Localization extends SimpleLocalization {
 			BOLD_NAME = getString("Name");
 			BOLD_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			BOLD_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Italic {
 		public static String ITALIC_NAME;
 		public static List<String> ITALIC_LORE;
-		public static String ITALIC_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -789,14 +712,12 @@ public final class Localization extends SimpleLocalization {
 			ITALIC_NAME = getString("Name");
 			ITALIC_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			ITALIC_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Underline {
 		public static String UNDERLINE_NAME;
 		public static List<String> UNDERLINE_LORE;
-		public static String UNDERLINE_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -804,14 +725,12 @@ public final class Localization extends SimpleLocalization {
 			UNDERLINE_NAME = getString("Name");
 			UNDERLINE_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			UNDERLINE_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Strikethrough {
 		public static String STRIKETHROUGH_NAME;
 		public static List<String> STRIKETHROUGH_LORE;
-		public static String STRIKETHROUGH_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -819,14 +738,12 @@ public final class Localization extends SimpleLocalization {
 			STRIKETHROUGH_NAME = getString("Name");
 			STRIKETHROUGH_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			STRIKETHROUGH_SUCCESS = getString("Success_Message");
 		}
 	}
 
 	public static class Name_Color_Selection_Customization_Rainbow {
 		public static String RAINBOW_NAME;
 		public static List<String> RAINBOW_LORE;
-		public static String RAINBOW_SUCCESS;
 		public static Integer MENU_SLOT;
 
 		private static void init() {
@@ -834,7 +751,6 @@ public final class Localization extends SimpleLocalization {
 			RAINBOW_NAME = getString("Name");
 			RAINBOW_LORE = getStringList("Lore");
 			MENU_SLOT = getInteger("Slot");
-			RAINBOW_SUCCESS = getString("Success_Message");
 		}
 	}
 

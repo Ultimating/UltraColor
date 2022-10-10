@@ -3,6 +3,7 @@ package me.ultimategamer200.ultracolor.subcommands;
 import me.ultimategamer200.ultracolor.PlayerCache;
 import me.ultimategamer200.ultracolor.settings.Localization;
 import me.ultimategamer200.ultracolor.settings.Settings;
+import me.ultimategamer200.ultracolor.util.ColorId;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
 import me.ultimategamer200.ultracolor.util.UltraColorUtil;
 import org.bukkit.Bukkit;
@@ -14,7 +15,6 @@ import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.Remain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,11 +25,6 @@ public class ForceColorCommand extends SimpleSubCommand {
 		setMinArguments(3);
 		setUsage("<name|chat> <player> <color> [format]");
 	}
-
-	final List<String> colors = Arrays.asList("black", "dark_blue", "dark_green", "dark_aqua",
-			"dark_red", "dark_purple", "orange", "gray", "dark_gray", "blue", "green", "aqua",
-			"red", "light_purple", "yellow", "white", "rainbow", "none", "reset");
-	final List<String> formats = Arrays.asList("bold", "underline", "italic", "strikethrough", "magic");
 
 	@Override
 	protected void onCommand() {
@@ -42,7 +37,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 		CompChatColor format = null;
 
 		if (args.length >= 4) {
-			if (formats.contains(args[3]))
+			if (ColorId.FormatId.getFormatIds().contains(args[3]))
 				format = UltraColorUtil.getFormatToCompChatColor(args[3]);
 			else
 				returnInvalidArgs();
@@ -50,7 +45,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 
 		Player onlinePlayer;
 
-		if (colors.contains(color) || color.startsWith("#")) {
+		if (ColorId.getColorIds().contains(color) || color.startsWith("#")) {
 			if (color.startsWith("#") && Remain.hasHexColors()) {
 				if (isHexValid) {
 					final CompChatColor hexColor = CompChatColor.of(color);
@@ -60,45 +55,18 @@ public class ForceColorCommand extends SimpleSubCommand {
 				tellError(Localization.Hex_Colors.HEX_COLOR_UNSUPPORTED_VERSION_MESSAGE);
 				returnInvalidArgs();
 			} else {
-				if (color.equalsIgnoreCase("black")) {
-					applyForcedColor(colorType, CompChatColor.BLACK, format, player);
-				} else if (color.equalsIgnoreCase("dark_blue")) {
-					applyForcedColor(colorType, CompChatColor.DARK_BLUE, format, player);
-				} else if (color.equalsIgnoreCase("dark_green")) {
-					applyForcedColor(colorType, CompChatColor.DARK_GREEN, format, player);
-				} else if (color.equalsIgnoreCase("dark_aqua")) {
-					applyForcedColor(colorType, CompChatColor.DARK_AQUA, format, player);
-				} else if (color.equalsIgnoreCase("dark_red")) {
-					applyForcedColor(colorType, CompChatColor.DARK_RED, format, player);
-				} else if (color.equalsIgnoreCase("dark_purple")) {
-					applyForcedColor(colorType, CompChatColor.DARK_PURPLE, format, player);
-				} else if (color.equalsIgnoreCase("orange")) {
-					applyForcedColor(colorType, CompChatColor.GOLD, format, player);
-				} else if (color.equalsIgnoreCase("gray")) {
-					applyForcedColor(colorType, CompChatColor.GRAY, format, player);
-				} else if (color.equalsIgnoreCase("dark_gray")) {
-					applyForcedColor(colorType, CompChatColor.DARK_GRAY, format, player);
-				} else if (color.equalsIgnoreCase("blue")) {
-					applyForcedColor(colorType, CompChatColor.BLUE, format, player);
-				} else if (color.equalsIgnoreCase("green")) {
-					applyForcedColor(colorType, CompChatColor.GREEN, format, player);
-				} else if (color.equalsIgnoreCase("aqua")) {
-					applyForcedColor(colorType, CompChatColor.AQUA, format, player);
-				} else if (color.equalsIgnoreCase("red")) {
-					applyForcedColor(colorType, CompChatColor.RED, format, player);
-				} else if (color.equalsIgnoreCase("light_purple")) {
-					applyForcedColor(colorType, CompChatColor.LIGHT_PURPLE, format, player);
-				} else if (color.equalsIgnoreCase("yellow")) {
-					applyForcedColor(colorType, CompChatColor.YELLOW, format, player);
-				} else if (color.equalsIgnoreCase("white")) {
-					applyForcedColor(colorType, CompChatColor.WHITE, format, player);
+				for (final ColorId colorId : ColorId.values()) {
+					if (color.equalsIgnoreCase(colorId.getId())) {
+						applyForcedColor(colorType, colorId.getColor(), format, player);
+						break;
+					}
 				}
 			}
 		} else
 			returnInvalidArgs();
 
 		if (colorType.equalsIgnoreCase("chat")) {
-			if (color.equalsIgnoreCase("rainbow") && Settings.Color_Settings.CHAT_RAINBOW_COLORS) {
+			if (color.equalsIgnoreCase(ColorId.RAINBOW.getId()) && Settings.Color_Settings.CHAT_RAINBOW_COLORS) {
 				if (args.length >= 4)
 					pCache.setChatFormat(format);
 				else
@@ -116,10 +84,10 @@ public class ForceColorCommand extends SimpleSubCommand {
 				pCache.setChatRainbowColors(false);
 
 				tellSuccess(Localization.Other.ADMIN_RESET_COLOR_COMMAND_SUCCESS_MESSAGE.replace("%player%", Objects.requireNonNull(player.getName())));
-			} else if (color.equalsIgnoreCase("rainbow") && !Settings.Color_Settings.CHAT_RAINBOW_COLORS)
+			} else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId()) && !Settings.Color_Settings.CHAT_RAINBOW_COLORS)
 				tellError("Rainbow colors are disabled in the settings.yml file!");
 		} else if (colorType.equalsIgnoreCase("name")) {
-			if (color.equalsIgnoreCase("rainbow") && Settings.Color_Settings.NAME_RAINBOW_COLORS) {
+			if (color.equalsIgnoreCase(ColorId.RAINBOW.getId()) && Settings.Color_Settings.NAME_RAINBOW_COLORS) {
 				applyForcedRainbow(player, colorType, format != null);
 			} else if (color.equalsIgnoreCase("none")) {
 				applyForcedColor(colorType, null, format, player);
@@ -136,7 +104,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 				}
 
 				tellSuccess(Localization.Other.ADMIN_RESET_COLOR_COMMAND_SUCCESS_MESSAGE.replace("%player%", Objects.requireNonNull(player.getName())));
-			} else if (color.equalsIgnoreCase("rainbow") && !Settings.Color_Settings.NAME_RAINBOW_COLORS)
+			} else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId()) && !Settings.Color_Settings.NAME_RAINBOW_COLORS)
 				tellError("Rainbow colors are disabled in the settings.yml file!");
 		} else
 			returnInvalidArgs();
@@ -149,9 +117,9 @@ public class ForceColorCommand extends SimpleSubCommand {
 		if (args.length == 2)
 			return completeLastWordPlayerNames();
 		if (args.length == 3)
-			return completeLastWord(colors);
+			return completeLastWord(ColorId.getColorIds());
 		if (args.length == 4)
-			return completeLastWord(formats);
+			return completeLastWord(ColorId.FormatId.getFormatIds());
 
 		return new ArrayList<>();
 	}
@@ -237,8 +205,6 @@ public class ForceColorCommand extends SimpleSubCommand {
 		final PlayerCache pCache = PlayerCache.fromOfflinePlayer(player);
 
 		if (type.equalsIgnoreCase("name")) {
-			pCache.setNameColor(null);
-			pCache.setNameRainbowColors(true);
 			Player onlinePlayer;
 
 			if (player.isOnline()) {

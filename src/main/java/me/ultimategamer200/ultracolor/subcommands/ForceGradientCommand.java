@@ -3,6 +3,7 @@ package me.ultimategamer200.ultracolor.subcommands;
 import me.ultimategamer200.ultracolor.PlayerCache;
 import me.ultimategamer200.ultracolor.settings.Localization;
 import me.ultimategamer200.ultracolor.settings.Settings;
+import me.ultimategamer200.ultracolor.util.ColorId;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
 import me.ultimategamer200.ultracolor.util.UltraColorUtil;
 import org.bukkit.Bukkit;
@@ -14,7 +15,6 @@ import org.mineacademy.fo.MinecraftVersion;
 import org.mineacademy.fo.command.SimpleSubCommand;
 import org.mineacademy.fo.remain.CompChatColor;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ForceGradientCommand extends SimpleSubCommand {
@@ -24,8 +24,6 @@ public class ForceGradientCommand extends SimpleSubCommand {
 		setUsage("<name|chat> <player> <color1> <color2> [format]");
 		setMinArguments(4);
 	}
-
-	final List<String> formats = Arrays.asList("bold", "underline", "italic", "strikethrough", "magic");
 
 	@Override
 	protected void onCommand() {
@@ -63,7 +61,7 @@ public class ForceGradientCommand extends SimpleSubCommand {
 		if (args.length == 2)
 			return completeLastWordPlayerNames();
 		if (args.length == 5)
-			return completeLastWord(formats);
+			return completeLastWord(ColorId.FormatId.getFormatIds());
 
 		return null;
 	}
@@ -111,7 +109,7 @@ public class ForceGradientCommand extends SimpleSubCommand {
 					pCache.setChatFormat(null);
 			}
 
-			if (formats.contains(format)) {
+			if (ColorId.FormatId.getFormatIds().contains(format)) {
 				if (type.equalsIgnoreCase("name"))
 					pCache.setNameFormat(UltraColorUtil.getNameFormatToChatColor(format));
 				else

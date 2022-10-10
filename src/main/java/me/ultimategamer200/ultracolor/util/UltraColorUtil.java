@@ -66,6 +66,12 @@ public class UltraColorUtil {
 	public void convertNameToRainbow(final Player player, final boolean formatEnabled, final String format) {
 		final String displayName;
 		final PlayerCache pCache = PlayerCache.fromPlayer(player);
+		pCache.setNameColor(null);
+
+		if (pCache.getCustomGradient1() != null || pCache.getCustomGradient2() != null) {
+			pCache.setCustomGradient1(null);
+			pCache.setCustomGradient2(null);
+		}
 
 		if (!pCache.getNickName().equalsIgnoreCase("None"))
 			displayName = convertStringToRainbow(pCache.getNickName(), formatEnabled, format);
@@ -75,6 +81,9 @@ public class UltraColorUtil {
 		pCache.setNameRainbowColors(true);
 
 		if (formatEnabled) pCache.setNameFormat(UltraColorUtil.getNameFormatToChatColor(format));
+
+		if (!pCache.getColoredNickName().equalsIgnoreCase("none"))
+			pCache.setColoredNickName(displayName);
 	}
 
 	/**
@@ -101,8 +110,8 @@ public class UltraColorUtil {
 	 * @param player the player to apply the format.
 	 * @param format the format to apply.
 	 */
-	public void applyChatFormat(final Player player, final CompChatColor format) {
-		final PlayerCache pCache = PlayerCache.fromPlayer(player);
+	public void applyChatFormat(final OfflinePlayer player, final CompChatColor format) {
+		final PlayerCache pCache = PlayerCache.fromOfflinePlayer(player);
 
 		if (pCache.getCustomGradient1() != null || pCache.getChatCustomGradient2() != null)
 			applyFormatToGradient(player, "chat", getNameFormatToChatColor(format.getName()));
@@ -163,17 +172,24 @@ public class UltraColorUtil {
 	 * @param type   the pre-gradient to use.
 	 * @param format the format to apply.
 	 */
-	public void applyFormatToGradient(final Player player, final String type, final ChatColor format) {
-		final PlayerCache pCache = PlayerCache.fromPlayer(player);
+	public void applyFormatToGradient(final OfflinePlayer player, final String type, final ChatColor format) {
+		final PlayerCache pCache = PlayerCache.fromOfflinePlayer(player);
 
 		if (format.isFormat()) {
 			if (type.equalsIgnoreCase("name")) {
-				if (pCache.getNickName().equalsIgnoreCase("none"))
-					player.setDisplayName(ChatUtil.generateGradient(nameFormatToString(pCache.getNameFormat()) + player.getName(),
-							pCache.getCustomGradient1(), pCache.getCustomGradient2()));
-				else {
-					player.setDisplayName(ChatUtil.generateGradient(nameFormatToString(pCache.getNameFormat())
-							+ pCache.getNickName(), pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+				if (pCache.getNickName().equalsIgnoreCase("none")) {
+					if (player.isOnline()) {
+						final Player onlinePlayer = (Player) player;
+						onlinePlayer.setDisplayName(ChatUtil.generateGradient(nameFormatToString(pCache.getNameFormat()) + player.getName(),
+								pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+					}
+				} else {
+					if (player.isOnline()) {
+						final Player onlinePlayer = (Player) player;
+						onlinePlayer.setDisplayName(ChatUtil.generateGradient(nameFormatToString(pCache.getNameFormat())
+								+ pCache.getNickName(), pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+					}
+
 					pCache.setColoredNickName(ChatUtil.generateGradient(nameFormatToString(pCache.getNameFormat())
 							+ pCache.getNickName(), pCache.getCustomGradient1(), pCache.getCustomGradient2()));
 				}
@@ -221,11 +237,11 @@ public class UltraColorUtil {
 		final List<String> modifiedLore = new ArrayList<>();
 
 		for (final String string : lore) {
-			if (string.contains("{color_preview}") && !color.equalsIgnoreCase("rainbow")
+			if (string.contains("{color_preview}") && !color.equalsIgnoreCase(ColorId.RAINBOW.getId())
 					&& !color.equalsIgnoreCase("gradient")) {
 				modifiedLore.add(string.replace("{color_preview}", color + "this"));
 				continue;
-			} else if (string.contains("{color_preview}") && color.equalsIgnoreCase("rainbow")) {
+			} else if (string.contains("{color_preview}") && color.equalsIgnoreCase(ColorId.RAINBOW.getId())) {
 				modifiedLore.add(string.replace("{color_preview}", convertStringToRainbow(
 						"this", false, "")));
 				continue;
@@ -345,39 +361,39 @@ public class UltraColorUtil {
 	 * Is the specified name color enabled?
 	 */
 	public boolean isNameColorEnabled(final String color) {
-		if (color.equalsIgnoreCase("black"))
+		if (color.equalsIgnoreCase(ColorId.BLACK.getId()))
 			return Settings.Color_Settings_Name_Colors.BLACK_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("dark_blue"))
+		else if (color.equalsIgnoreCase(ColorId.DARK_BLUE.getId()))
 			return Settings.Color_Settings_Name_Colors.DARK_BLUE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("dark_green"))
+		else if (color.equalsIgnoreCase(ColorId.DARK_GREEN.getId()))
 			return Settings.Color_Settings_Name_Colors.DARK_GREEN_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("dark_aqua"))
+		else if (color.equalsIgnoreCase(ColorId.DARK_AQUA.getId()))
 			return Settings.Color_Settings_Name_Colors.DARK_AQUA_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("dark_red"))
+		else if (color.equalsIgnoreCase(ColorId.DARK_RED.getId()))
 			return Settings.Color_Settings_Name_Colors.DARK_RED_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("dark_purple"))
+		else if (color.equalsIgnoreCase(ColorId.DARK_PURPLE.getId()))
 			return Settings.Color_Settings_Name_Colors.DARK_PURPLE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("orange"))
+		else if (color.equalsIgnoreCase(ColorId.ORANGE.getId()))
 			return Settings.Color_Settings_Name_Colors.ORANGE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("gray"))
+		else if (color.equalsIgnoreCase(ColorId.GRAY.getId()))
 			return Settings.Color_Settings_Name_Colors.DARK_GRAY_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("dark_gray"))
+		else if (color.equalsIgnoreCase(ColorId.DARK_GRAY.getId()))
 			return Settings.Color_Settings_Name_Colors.DARK_GRAY_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("blue"))
+		else if (color.equalsIgnoreCase(ColorId.BLUE.getId()))
 			return Settings.Color_Settings_Name_Colors.BLUE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("green"))
+		else if (color.equalsIgnoreCase(ColorId.GREEN.getId()))
 			return Settings.Color_Settings_Name_Colors.GREEN_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("aqua"))
+		else if (color.equalsIgnoreCase(ColorId.AQUA.getId()))
 			return Settings.Color_Settings_Name_Colors.AQUA_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("red"))
+		else if (color.equalsIgnoreCase(ColorId.RED.getId()))
 			return Settings.Color_Settings_Name_Colors.RED_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("light_purple"))
+		else if (color.equalsIgnoreCase(ColorId.LIGHT_PURPLE.getId()))
 			return Settings.Color_Settings_Name_Colors.LIGHT_PURPLE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("yellow"))
+		else if (color.equalsIgnoreCase(ColorId.YELLOW.getId()))
 			return Settings.Color_Settings_Name_Colors.WHITE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("white"))
+		else if (color.equalsIgnoreCase(ColorId.WHITE.getId()))
 			return Settings.Color_Settings_Name_Colors.WHITE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("rainbow"))
+		else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId()))
 			return Settings.Color_Settings.NAME_RAINBOW_COLORS;
 		else
 			return color.equalsIgnoreCase("none");
@@ -387,15 +403,15 @@ public class UltraColorUtil {
 	 * Is the specified name format enabled?
 	 */
 	public boolean isNameFormatEnabled(final String format) {
-		if (format.equalsIgnoreCase("bold"))
+		if (format.equalsIgnoreCase(ColorId.FormatId.BOLD.getId()))
 			return Settings.Color_Settings_Name_Formats.BOLD_FORMAT;
-		else if (format.equalsIgnoreCase("italic"))
+		else if (format.equalsIgnoreCase(ColorId.FormatId.ITALIC.getId()))
 			return Settings.Color_Settings_Name_Formats.ITALIC_FORMAT;
-		else if (format.equalsIgnoreCase("magic"))
+		else if (format.equalsIgnoreCase(ColorId.FormatId.MAGIC.getId()))
 			return Settings.Color_Settings_Name_Formats.MAGIC_FORMAT;
-		else if (format.equalsIgnoreCase("strikethrough"))
+		else if (format.equalsIgnoreCase(ColorId.FormatId.STRIKETHROUGH.getId()))
 			return Settings.Color_Settings_Name_Formats.STRIKETHROUGH_FORMAT;
-		else if (format.equalsIgnoreCase("underline"))
+		else if (format.equalsIgnoreCase(ColorId.FormatId.UNDERLINE.getId()))
 			return Settings.Color_Settings_Name_Formats.UNDERLINE_FORMAT;
 		return false;
 	}
@@ -404,15 +420,15 @@ public class UltraColorUtil {
 	 * Is the specified chat format enabled?
 	 */
 	public boolean isChatFormatEnabled(final String format) {
-		if (format.equalsIgnoreCase("bold"))
+		if (format.equalsIgnoreCase(ColorId.FormatId.BOLD.getId()))
 			return Settings.Color_Settings_Chat_Formats.BOLD_FORMAT;
-		else if (format.equalsIgnoreCase("italic"))
+		else if (format.equalsIgnoreCase(ColorId.FormatId.ITALIC.getId()))
 			return Settings.Color_Settings_Chat_Formats.ITALIC_FORMAT;
-		else if (format.equalsIgnoreCase("magic"))
+		else if (format.equalsIgnoreCase(ColorId.FormatId.MAGIC.getId()))
 			return Settings.Color_Settings_Chat_Formats.MAGIC_FORMAT;
-		else if (format.equalsIgnoreCase("strikethrough"))
+		else if (format.equalsIgnoreCase(ColorId.FormatId.STRIKETHROUGH.getId()))
 			return Settings.Color_Settings_Chat_Formats.STRIKETHROUGH_FORMAT;
-		else if (format.equalsIgnoreCase("underline"))
+		else if (format.equalsIgnoreCase(ColorId.FormatId.UNDERLINE.getId()))
 			return Settings.Color_Settings_Chat_Formats.UNDERLINE_FORMAT;
 		return false;
 	}
@@ -421,39 +437,39 @@ public class UltraColorUtil {
 	 * Is the specified chat color enabled?
 	 */
 	public boolean isChatColorEnabled(final String color) {
-		if (color.equalsIgnoreCase("black"))
+		if (color.equalsIgnoreCase(ColorId.BLACK.getId()))
 			return Settings.Color_Settings_Chat_Colors.BLACK_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("dark_blue"))
+		else if (color.equalsIgnoreCase(ColorId.DARK_BLUE.getId()))
 			return Settings.Color_Settings_Chat_Colors.DARK_BLUE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("dark_green"))
+		else if (color.equalsIgnoreCase(ColorId.DARK_GREEN.getId()))
 			return Settings.Color_Settings_Chat_Colors.DARK_GREEN_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("dark_aqua"))
+		else if (color.equalsIgnoreCase(ColorId.DARK_AQUA.getId()))
 			return Settings.Color_Settings_Chat_Colors.DARK_AQUA_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("dark_red"))
+		else if (color.equalsIgnoreCase(ColorId.DARK_RED.getId()))
 			return Settings.Color_Settings_Chat_Colors.DARK_RED_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("dark_purple"))
+		else if (color.equalsIgnoreCase(ColorId.DARK_PURPLE.getId()))
 			return Settings.Color_Settings_Chat_Colors.DARK_PURPLE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("orange"))
+		else if (color.equalsIgnoreCase(ColorId.ORANGE.getId()))
 			return Settings.Color_Settings_Chat_Colors.ORANGE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("gray"))
+		else if (color.equalsIgnoreCase(ColorId.GRAY.getId()))
 			return Settings.Color_Settings_Chat_Colors.DARK_GRAY_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("dark_gray"))
+		else if (color.equalsIgnoreCase(ColorId.DARK_GRAY.getId()))
 			return Settings.Color_Settings_Chat_Colors.DARK_GRAY_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("blue"))
+		else if (color.equalsIgnoreCase(ColorId.BLUE.getId()))
 			return Settings.Color_Settings_Chat_Colors.BLUE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("green"))
+		else if (color.equalsIgnoreCase(ColorId.GREEN.getId()))
 			return Settings.Color_Settings_Chat_Colors.GREEN_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("aqua"))
+		else if (color.equalsIgnoreCase(ColorId.AQUA.getId()))
 			return Settings.Color_Settings_Chat_Colors.AQUA_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("red"))
+		else if (color.equalsIgnoreCase(ColorId.RED.getId()))
 			return Settings.Color_Settings_Chat_Colors.RED_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("light_purple"))
+		else if (color.equalsIgnoreCase(ColorId.LIGHT_PURPLE.getId()))
 			return Settings.Color_Settings_Chat_Colors.LIGHT_PURPLE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("yellow"))
+		else if (color.equalsIgnoreCase(ColorId.YELLOW.getId()))
 			return Settings.Color_Settings_Chat_Colors.WHITE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("white"))
+		else if (color.equalsIgnoreCase(ColorId.WHITE.getId()))
 			return Settings.Color_Settings_Chat_Colors.WHITE_COLOR_ENABLED;
-		else if (color.equalsIgnoreCase("rainbow"))
+		else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId()))
 			return Settings.Color_Settings.CHAT_RAINBOW_COLORS;
 		else
 			return color.equalsIgnoreCase("none");

@@ -44,6 +44,7 @@ Main_GUI_Customization:
     # La dimensione del menu della GUI (il valore massimo è 54).
     Size: 54
     Slot: 10
+    Success_Message: "Selezionato {color}!"
     # I giocatori del messaggio vedranno se non hanno l'autorizzazione per un colore / formato di chat specifico.
     Error_Message: "&cAutorizzazione insufficiente. Si prega di avvisare un amministratore!"
     # Il messaggio che i giocatori vedranno quando passano il mouse sulla stella inferiore nel menu.
@@ -60,6 +61,7 @@ Main_GUI_Customization:
     # La dimensione del menu della GUI (il valore massimo è 54).
     Size: 54
     Slot: 16
+    Success_Message: "Selezionato {color}!"
     # I lettori di messaggi vedranno se non hanno l'autorizzazione per un colore / formato di nome specifico.
     Error_Message: "&cAutorizzazione insufficiente. Si prega di avvisare un amministratore!"
     # Il messaggio che i giocatori vedranno quando passano il mouse sulla stella inferiore nel menu.
@@ -94,7 +96,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 10
-    Success_Message: "&7Il colore della chat è cambiato con successo in &0Nero&7!"
 
   Dark_Blue:
     Name: "&1Blu scuro"
@@ -104,7 +105,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 11
-    Success_Message: "&7Il colore della chat è cambiato con successo in &1Blu scuro&7!"
 
   Dark_Green:
     Name: "&2Verde scuro"
@@ -114,7 +114,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 12
-    Success_Message: "&7Il colore della chat è cambiato con successo in &2Verde scuro&7!"
 
   Dark_Aqua:
     Name: "&3Acqua Scura"
@@ -124,7 +123,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 13
-    Success_Message: "&7Il colore della chat è cambiato con successo in &3Acqua Scura&7!"
 
   Dark_Red:
     Name: "&4Rosso scuro"
@@ -134,7 +132,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 14
-    Success_Message: "&7Il colore della chat è cambiato con successo in &4Rosso scuro&7!"
 
   Dark_Purple:
     Name: "&5Viola scuro"
@@ -144,7 +141,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 15
-    Success_Message: "&7Il colore della chat è cambiato con successo in &5Viola scuro&7!"
 
   Orange:
     Name: "&6Arancione"
@@ -154,7 +150,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 16
-    Success_Message: "&7Il colore della chat è cambiato con successo in &6Arancione&7!"
 
   Gray:
     Name: "&7Grigio"
@@ -164,7 +159,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 19
-    Success_Message: "&7Il colore della chat è cambiato con successo in &7Grigio&7!"
 
   Dark_Gray:
     Name: "&8Grigio Scuro"
@@ -174,7 +168,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 20
-    Success_Message: "&7Il colore della chat è cambiato con successo in &8Grigio Scuro&7!"
 
   Blue:
     Name: "&9Blu"
@@ -184,7 +177,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 21
-    Success_Message: "&7Il colore della chat è cambiato con successo in &9Blu&7!"
 
   Green:
     Name: "&averde"
@@ -194,7 +186,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 22
-    Success_Message: "&7Il colore della chat è cambiato con successo in &averde&7!"
 
   Aqua:
     Name: "&bacqua"
@@ -204,7 +195,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 23
-    Success_Message: "&7Il colore della chat è cambiato con successo in &bacqua&7!"
 
   Red:
     Name: "&cRosso"
@@ -214,7 +204,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 24
-    Success_Message: "&7Il colore della chat è cambiato con successo in &cRosso&7!"
 
   Light_Purple:
     Name: "&dViola Chiaro"
@@ -224,7 +213,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 25
-    Success_Message: "&7Il colore della chat è cambiato con successo in &dViola Chiaro&7!"
 
   Yellow:
     Name: "&eGiallo"
@@ -234,7 +222,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 28
-    Success_Message: "&7Il colore della chat è cambiato con successo in &eGiallo&7!"
 
   White:
     Name: "&fBianco"
@@ -244,7 +231,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 29
-    Success_Message: "&7Il colore della chat è cambiato con successo in &fBianco&7!"
 
   Rainbow:
     Name: "&cArcobaleno"
@@ -254,8 +240,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 30
-    # %rainbow_colors% = Segnaposto per visualizzare i "colori dell'arcobaleno" nei colori dell'arcobaleno!
-    Success_Message: "%rainbow_colors% &7selezionato con successo!"
 
   Magic:
     Name: "&fFormato magico &kt"
@@ -265,7 +249,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 46
-    Success_Message: "&7Formato chat modificato con successo in &kFormato magico&7!"
 
   Bold:
     Name: "&lGrassetto"
@@ -275,7 +258,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 47
-    Success_Message: "&7Formato chat modificato con successo in &lGrassetto&7!"
 
   Italic:
     Name: "&fFormato &f&ocorsivo"
@@ -285,7 +267,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 48
-    Success_Message: "&7Formato chat modificato con successo in &ocorsivo&7!"
 
   Underline:
     Name: "&fFormato &f&nsottolineato"
@@ -295,7 +276,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 49
-    Success_Message: "&7Formato chat modificato con successo in &nsottolineato&7!"
 
   Strikethrough:
     Name: "&fFormato &f&mbarrato"
@@ -305,7 +285,6 @@ Chat_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 50
-    Success_Message: "&7Formato chat modificato con successo in &mbarrato&7!"
 
   Reset_Format_Button:
     Name: "&c&lFORMATO RESET"
@@ -346,7 +325,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 10
-    Success_Message: "&7Il colore del nome è cambiato con successo in &0Nero&7!"
 
   Dark_Blue:
     Name: "&1Blu scuro"
@@ -356,7 +334,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 11
-    Success_Message: "&7Il colore del nome è cambiato con successo in &1Blu scuro&7!"
 
   Dark_Green:
     Name: "&2Verde scuro"
@@ -366,7 +343,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 12
-    Success_Message: "&7Il colore del nome è cambiato con successo in &2Verde scuro&7!"
 
   Dark_Aqua:
     Name: "&3Acqua Scura"
@@ -376,7 +352,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 13
-    Success_Message: "&7Il colore del nome è cambiato con successo in &3Acqua Scura&7!"
 
   Dark_Red:
     Name: "&4Rosso scuro"
@@ -386,7 +361,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 14
-    Success_Message: "&7Il colore del nome è cambiato con successo in &4Rosso scuro&7!"
 
   Dark_Purple:
     Name: "&5Viola scuro"
@@ -396,7 +370,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 15
-    Success_Message: "&7Il colore del nome è cambiato con successo in &5Viola scuro&7!"
 
   Orange:
     Name: "&6Arancione"
@@ -406,7 +379,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 16
-    Success_Message: "&7Il colore del nome è cambiato con successo in &6Arancione&7!"
 
   Gray:
     Name: "&7Grigio"
@@ -416,7 +388,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 19
-    Success_Message: "&7Il colore del nome è cambiato con successo in &7Grigio&7!"
 
   Dark_Gray:
     Name: "&8Grigio Scuro"
@@ -426,7 +397,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 20
-    Success_Message: "&7Il colore del nome è cambiato con successo in &8Grigio Scuro&7!"
 
   Blue:
     Name: "&9Blu"
@@ -436,7 +406,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 21
-    Success_Message: "&7Il colore del nome è cambiato con successo in &9Blu&7!"
 
   Green:
     Name: "&averde"
@@ -446,7 +415,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 22
-    Success_Message: "&7Il colore del nome è cambiato con successo in &averde&7!"
 
   Aqua:
     Name: "&bacqua"
@@ -456,7 +424,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 23
-    Success_Message: "&7Il colore del nome è cambiato con successo in &bacqua&7!"
 
   Red:
     Name: "&cRosso"
@@ -466,7 +433,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 24
-    Success_Message: "&7Il colore del nome è cambiato con successo in &cRosso&7!"
 
   Light_Purple:
     Name: "&dViola Chiaro"
@@ -476,7 +442,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 25
-    Success_Message: "&7Il colore del nome è cambiato con successo in &dViola Chiaro&7!"
 
   Yellow:
     Name: "&eGiallo"
@@ -486,7 +451,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 28
-    Success_Message: "&7Il colore del nome è cambiato con successo in &eGiallo&7!"
 
   White:
     Name: "&fBianco"
@@ -496,7 +460,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 29
-    Success_Message: "&7Il colore del nome è cambiato con successo in &fBianco&7!"
 
   Magic:
     Name: "&fFormato magico &kt"
@@ -506,7 +469,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 46
-    Success_Message: "&7Formato del nome modificato correttamente in &kFormato magico&7!"
 
   Bold:
     Name: "&lGrassetto"
@@ -516,7 +478,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 47
-    Success_Message: "&7Formato del nome modificato correttamente in &lGrassetto&7!"
 
   Italic:
     Name: "&fFormato &f&ocorsivo"
@@ -526,7 +487,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 48
-    Success_Message: "&7Formato del nome modificato correttamente in &ocorsivo&7!"
 
   Underline:
     Name: "&fFormato &f&nsottolineato"
@@ -536,7 +496,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 49
-    Success_Message: "&7Formato del nome modificato correttamente in &nsottolineato&7!"
 
   Strikethrough:
     Name: "&fFormato &f&mbarrato"
@@ -546,7 +505,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 50
-    Success_Message: "&7Formato del nome modificato correttamente in &mbarrato&7!"
 
   Reset_Format_Button:
     Name: "&c&lFORMATO RESET"
@@ -566,8 +524,6 @@ Name_Color_Selection_Customization:
       - "&eAnteprima colore: &b{color_preview}"
       - "&8---------------------------"
     Slot: 30
-    # %rainbow_colors% = Segnaposto per visualizzare i "colori dell'arcobaleno" nei colori dell'arcobaleno!
-    Success_Message: "%rainbow_colors% &7selezionato con successo!"
 
   Back_Button:
     Name: "&e&lINDIETRO"

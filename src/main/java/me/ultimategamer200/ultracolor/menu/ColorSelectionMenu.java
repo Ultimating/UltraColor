@@ -55,12 +55,14 @@ public class ColorSelectionMenu extends Menu {
 		chatColorButton = new Button() {
 			@Override
 			public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-				if (player.hasPermission(UltraColorPermissions.COLOR) || player.hasPermission(UltraColorPermissions.CHAT_COLOR)) {
-					new ChatColorSelectionMenu().displayTo(player);
-				} else {
-					tellError(Localization.Other.NO_PERMISSION.replace("{permission}", UltraColorPermissions.COLOR));
-					player.closeInventory();
-				}
+				String permission;
+
+				if (player.hasPermission(UltraColorPermissions.COLOR) || player.hasPermission(UltraColorPermissions.CHAT_COLOR))
+					permission = UltraColorPermissions.COLOR;
+				else
+					permission = UltraColorPermissions.CHAT_COLOR;
+
+				openMenu(player, new ChatColorSelectionMenu(), permission);
 			}
 
 			@Override
@@ -73,12 +75,14 @@ public class ColorSelectionMenu extends Menu {
 		nameColorButton = new Button() {
 			@Override
 			public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-				if (player.hasPermission(UltraColorPermissions.COLOR) || player.hasPermission(UltraColorPermissions.NAME_COLOR)) {
-					new NameColorSelectionMenu().displayTo(player);
-				} else {
-					tellError(Localization.Other.NO_PERMISSION.replace("{permission}", UltraColorPermissions.COLOR));
-					player.closeInventory();
-				}
+				String permission;
+
+				if (player.hasPermission(UltraColorPermissions.COLOR) || player.hasPermission(UltraColorPermissions.NAME_COLOR))
+					permission = UltraColorPermissions.COLOR;
+				else
+					permission = UltraColorPermissions.NAME_COLOR;
+
+				openMenu(player, new NameColorSelectionMenu(), permission);
 			}
 
 			@Override
@@ -92,12 +96,7 @@ public class ColorSelectionMenu extends Menu {
 		gradientButton = new Button() {
 			@Override
 			public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-				if (player.hasPermission(UltraColorPermissions.GRADIENT_COLOR)) {
-					new GradientMenu().displayTo(player);
-				} else {
-					tellError(Localization.Other.NO_PERMISSION.replace("{permission}", UltraColorPermissions.GRADIENT_COLOR));
-					player.closeInventory();
-				}
+				openMenu(player, menu, UltraColorPermissions.GRADIENT_COLOR);
 			}
 
 			@Override
@@ -126,6 +125,15 @@ public class ColorSelectionMenu extends Menu {
 		};
 
 		emptyButton = Button.makeDummy(ItemCreator.of(CompMaterial.valueOf(Settings.Color_Settings.CHAT_FILL_BUTTON), " "));
+	}
+
+	public static void openMenu(final Player player, final Menu menu, final String requiredPermission) {
+		if (player.hasPermission(requiredPermission)) {
+			menu.displayTo(player);
+		} else {
+			Messenger.error(player, Localization.Other.NO_PERMISSION.replace("{permission}", requiredPermission));
+			player.closeInventory();
+		}
 	}
 
 	@Override
@@ -204,13 +212,7 @@ public class ColorSelectionMenu extends Menu {
 			blackButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "0"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.BLACK);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Black.BLACK_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.BLACK);
 				}
 
 				@Override
@@ -224,13 +226,7 @@ public class ColorSelectionMenu extends Menu {
 			darkBlueButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "1"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.DARK_BLUE);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Dark_Blue.DARK_BLUE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.DARK_BLUE);
 				}
 
 				@Override
@@ -245,13 +241,7 @@ public class ColorSelectionMenu extends Menu {
 			darkGreenButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "2"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.DARK_GREEN);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Dark_Green.DARK_GREEN_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.DARK_GREEN);
 				}
 
 				@Override
@@ -266,13 +256,7 @@ public class ColorSelectionMenu extends Menu {
 			darkAquaButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "3"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.DARK_AQUA);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Dark_Aqua.DARK_AQUA_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.DARK_AQUA);
 				}
 
 				@Override
@@ -287,13 +271,7 @@ public class ColorSelectionMenu extends Menu {
 			darkRedButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "4"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.DARK_RED);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Dark_Red.DARK_RED_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.DARK_RED);
 				}
 
 				@Override
@@ -308,13 +286,7 @@ public class ColorSelectionMenu extends Menu {
 			darkPurpleButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "5"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.DARK_PURPLE);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Dark_Purple.DARK_PURPLE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.DARK_PURPLE);
 				}
 
 				@Override
@@ -329,13 +301,7 @@ public class ColorSelectionMenu extends Menu {
 			goldButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "6"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.GOLD);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Orange.ORANGE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.GOLD);
 				}
 
 				@Override
@@ -350,13 +316,7 @@ public class ColorSelectionMenu extends Menu {
 			grayButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "7"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.GRAY);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Gray.GRAY_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.GRAY);
 				}
 
 				@Override
@@ -371,13 +331,7 @@ public class ColorSelectionMenu extends Menu {
 			darkGrayButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "8"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.DARK_GRAY);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Dark_Gray.DARK_GRAY_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.DARK_GRAY);
 				}
 
 				@Override
@@ -392,13 +346,7 @@ public class ColorSelectionMenu extends Menu {
 			blueButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "9"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.BLUE);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Blue.BLUE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.BLUE);
 				}
 
 				@Override
@@ -412,14 +360,7 @@ public class ColorSelectionMenu extends Menu {
 			greenButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "a"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.GREEN);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Green.GREEN_SUCCESS);
-					} else {
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					}
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.GREEN);
 				}
 
 				@Override
@@ -433,13 +374,7 @@ public class ColorSelectionMenu extends Menu {
 			aquaButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "b"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.AQUA);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Aqua.AQUA_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.AQUA);
 				}
 
 				@Override
@@ -453,13 +388,7 @@ public class ColorSelectionMenu extends Menu {
 			redButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "c"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.RED);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Red.RED_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.RED);
 				}
 
 				@Override
@@ -473,14 +402,7 @@ public class ColorSelectionMenu extends Menu {
 			lightPurpleButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "d"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.LIGHT_PURPLE);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Light_Purple.LIGHT_PURPLE_SUCCESS);
-					} else {
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					}
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.LIGHT_PURPLE);
 				}
 
 				@Override
@@ -495,13 +417,7 @@ public class ColorSelectionMenu extends Menu {
 			yellowButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "e"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.YELLOW);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Yellow.YELLOW_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.YELLOW);
 				}
 
 				@Override
@@ -515,13 +431,7 @@ public class ColorSelectionMenu extends Menu {
 			whiteButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "f"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyChatColor(player, CompChatColor.WHITE);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_White.WHITE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatColor(player, CompChatColor.WHITE);
 				}
 
 				@Override
@@ -535,13 +445,7 @@ public class ColorSelectionMenu extends Menu {
 			magicFormatButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", "k"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", "*"))) {
-						UltraColorUtil.applyChatFormat(player, CompChatColor.MAGIC);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Magic.MAGIC_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatFormat(player, CompChatColor.MAGIC);
 				}
 
 				@Override
@@ -555,13 +459,7 @@ public class ColorSelectionMenu extends Menu {
 			boldFormatButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", "l"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", "*"))) {
-						UltraColorUtil.applyChatFormat(player, CompChatColor.BOLD);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Bold.BOLD_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatFormat(player, CompChatColor.BOLD);
 				}
 
 				@Override
@@ -575,13 +473,7 @@ public class ColorSelectionMenu extends Menu {
 			italicFormatButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", "o"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", "*"))) {
-						UltraColorUtil.applyChatFormat(player, CompChatColor.ITALIC);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Italic.ITALIC_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatFormat(player, CompChatColor.ITALIC);
 				}
 
 				@Override
@@ -595,13 +487,7 @@ public class ColorSelectionMenu extends Menu {
 			underlineFormatButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", "n"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", "*"))) {
-						UltraColorUtil.applyChatFormat(player, CompChatColor.UNDERLINE);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Underline.UNDERLINE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatFormat(player, CompChatColor.UNDERLINE);
 				}
 
 				@Override
@@ -615,13 +501,7 @@ public class ColorSelectionMenu extends Menu {
 			strikethroughFormatButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", "m"))
-							|| player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", "*"))) {
-						UltraColorUtil.applyChatFormat(player, CompChatColor.STRIKETHROUGH);
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Strikethrough.STRIKETHROUGH_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectChatFormat(player, CompChatColor.STRIKETHROUGH);
 				}
 
 				@Override
@@ -670,8 +550,8 @@ public class ColorSelectionMenu extends Menu {
 
 						final boolean hasFormat = pCache.getChatFormat() != null;
 
-						Messenger.success(player, Localization.Chat_Color_Selection_Customization_Rainbow.RAINBOW_SUCCESS.replace("%rainbow_colors%",
-								UltraColorUtil.convertStringToRainbow("Rainbow colors", hasFormat, hasFormat
+						Messenger.success(player, Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
+								UltraColorUtil.convertStringToRainbow("this", hasFormat, hasFormat
 										? pCache.getChatFormat().getName() : "")));
 					} else
 						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
@@ -689,12 +569,7 @@ public class ColorSelectionMenu extends Menu {
 			backButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.COLOR)) {
-						new ColorSelectionMenu().displayTo(player);
-					} else {
-						tellError(Localization.Other.NO_PERMISSION.replace("{permission}", UltraColorPermissions.COLOR));
-						player.closeInventory();
-					}
+					openMenu(player, new ColorSelectionMenu(), UltraColorPermissions.COLOR);
 				}
 
 				@Override
@@ -729,6 +604,28 @@ public class ColorSelectionMenu extends Menu {
 			};
 
 			emptyButton = Button.makeDummy(ItemCreator.of(CompMaterial.valueOf(Settings.Color_Settings.CHAT_FILL_BUTTON), " "));
+		}
+
+		private void selectChatColor(final Player player, final CompChatColor color) {
+			if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", String.valueOf(color.getCode())))
+					|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
+				UltraColorUtil.applyChatColor(player, color);
+				Messenger.success(player, Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace(
+						"{color}", UltraColorUtil.nameAndChatColorToString(color) + "this"));
+			} else
+				Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
+			player.closeInventory();
+		}
+
+		private void selectChatFormat(final Player player, final CompChatColor format) {
+			if (player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", String.valueOf(format.getCode())))
+					|| player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", "*"))) {
+				UltraColorUtil.applyChatFormat(player, format);
+				Messenger.success(player, Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace(
+						"{color}", UltraColorUtil.chatFormatToString(format) + "this"));
+			} else
+				Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
+			player.closeInventory();
 		}
 
 		@Override
@@ -856,14 +753,7 @@ public class ColorSelectionMenu extends Menu {
 			blackButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "0"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.BLACK, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Black.BLACK_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.BLACK);
 				}
 
 				@Override
@@ -876,14 +766,7 @@ public class ColorSelectionMenu extends Menu {
 			darkBlueButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "1"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.DARK_BLUE, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Dark_Blue.DARK_BLUE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.DARK_BLUE);
 				}
 
 				@Override
@@ -897,14 +780,7 @@ public class ColorSelectionMenu extends Menu {
 			darkGreenButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "2"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.DARK_GREEN, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Dark_Green.DARK_GREEN_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.DARK_GREEN);
 				}
 
 				@Override
@@ -918,14 +794,7 @@ public class ColorSelectionMenu extends Menu {
 			darkAquaButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "3"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.DARK_AQUA, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Dark_Aqua.DARK_AQUA_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.DARK_AQUA);
 				}
 
 				@Override
@@ -939,14 +808,7 @@ public class ColorSelectionMenu extends Menu {
 			darkRedButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "4"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.DARK_RED, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Dark_Red.DARK_RED_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.DARK_RED);
 				}
 
 				@Override
@@ -960,14 +822,7 @@ public class ColorSelectionMenu extends Menu {
 			darkPurpleButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "5"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.DARK_PURPLE, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Dark_Purple.DARK_PURPLE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.DARK_PURPLE);
 				}
 
 				@Override
@@ -982,14 +837,7 @@ public class ColorSelectionMenu extends Menu {
 			goldButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "6"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.GOLD, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Orange.ORANGE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.GOLD);
 				}
 
 				@Override
@@ -1003,14 +851,7 @@ public class ColorSelectionMenu extends Menu {
 			grayButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "7"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.GRAY, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Gray.GRAY_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.GRAY);
 				}
 
 				@Override
@@ -1023,14 +864,7 @@ public class ColorSelectionMenu extends Menu {
 			darkGrayButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "8"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.DARK_GRAY, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Dark_Gray.DARK_GRAY_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.DARK_GRAY);
 				}
 
 				@Override
@@ -1044,14 +878,7 @@ public class ColorSelectionMenu extends Menu {
 			blueButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "9"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.BLUE, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Blue.BLUE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.BLUE);
 				}
 
 				@Override
@@ -1064,14 +891,7 @@ public class ColorSelectionMenu extends Menu {
 			greenButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "a"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.GREEN, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Green.GREEN_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.GREEN);
 				}
 
 				@Override
@@ -1086,14 +906,7 @@ public class ColorSelectionMenu extends Menu {
 			aquaButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "b"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.AQUA, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Aqua.AQUA_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.AQUA);
 				}
 
 				@Override
@@ -1106,14 +919,7 @@ public class ColorSelectionMenu extends Menu {
 			redButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "c"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.RED, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Red.RED_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.RED);
 				}
 
 				@Override
@@ -1126,14 +932,7 @@ public class ColorSelectionMenu extends Menu {
 			lightPurpleButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "d"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.LIGHT_PURPLE, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Light_Purple.LIGHT_PURPLE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.LIGHT_PURPLE);
 				}
 
 				@Override
@@ -1148,14 +947,7 @@ public class ColorSelectionMenu extends Menu {
 			yellowButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "e"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.YELLOW, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Yellow.YELLOW_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.YELLOW);
 				}
 
 				@Override
@@ -1169,14 +961,7 @@ public class ColorSelectionMenu extends Menu {
 			whiteButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "f"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						UltraColorUtil.applyNameColor(player, CompChatColor.WHITE, null);
-						PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_White.WHITE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameColor(player, CompChatColor.WHITE);
 				}
 
 				@Override
@@ -1189,18 +974,7 @@ public class ColorSelectionMenu extends Menu {
 			magicFormatButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_FORMAT.replace("{format}", "k"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_FORMAT.replace("{format}", "*"))) {
-						UltraColorUtil.applyNameColor(player, null, ChatColor.MAGIC);
-						final PlayerCache pCache = PlayerCache.fromPlayer(player);
-
-						if (pCache.isNameRainbowColors())
-							UltraColorUtil.convertNameToRainbow(player, true, ChatColor.MAGIC.name());
-
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Magic.MAGIC_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameFormat(player, ChatColor.MAGIC);
 				}
 
 				@Override
@@ -1213,17 +987,7 @@ public class ColorSelectionMenu extends Menu {
 			boldFormatButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_FORMAT.replace("{format}", "l"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_FORMAT.replace("{format}", "*"))) {
-						UltraColorUtil.applyNameColor(player, null, ChatColor.BOLD);
-						final PlayerCache pCache = PlayerCache.fromPlayer(player);
-
-						if (pCache.isNameRainbowColors())
-							UltraColorUtil.convertNameToRainbow(player, true, ChatColor.BOLD.name());
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Bold.BOLD_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameFormat(player, ChatColor.BOLD);
 				}
 
 				@Override
@@ -1236,18 +1000,7 @@ public class ColorSelectionMenu extends Menu {
 			italicFormatButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_FORMAT.replace("{format}", "o"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_FORMAT.replace("{format}", "*"))) {
-						UltraColorUtil.applyNameColor(player, null, ChatColor.ITALIC);
-						final PlayerCache pCache = PlayerCache.fromPlayer(player);
-
-						if (pCache.isNameRainbowColors())
-							UltraColorUtil.convertNameToRainbow(player, true, ChatColor.ITALIC.name());
-
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Italic.ITALIC_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameFormat(player, ChatColor.ITALIC);
 				}
 
 				@Override
@@ -1261,18 +1014,7 @@ public class ColorSelectionMenu extends Menu {
 			underlineFormatButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_FORMAT.replace("{format}", "n"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_FORMAT.replace("{format}", "*"))) {
-						UltraColorUtil.applyNameColor(player, null, ChatColor.UNDERLINE);
-						final PlayerCache pCache = PlayerCache.fromPlayer(player);
-
-						if (pCache.isNameRainbowColors())
-							UltraColorUtil.convertNameToRainbow(player, true, ChatColor.UNDERLINE.name());
-
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Underline.UNDERLINE_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameFormat(player, ChatColor.UNDERLINE);
 				}
 
 				@Override
@@ -1286,18 +1028,7 @@ public class ColorSelectionMenu extends Menu {
 			strikethroughFormatButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.Color.NAME_FORMAT.replace("{format}", "m"))
-							|| player.hasPermission(UltraColorPermissions.Color.NAME_FORMAT.replace("{format}", "*"))) {
-						UltraColorUtil.applyNameColor(player, null, ChatColor.STRIKETHROUGH);
-						final PlayerCache pCache = PlayerCache.fromPlayer(player);
-
-						if (pCache.isNameRainbowColors())
-							UltraColorUtil.convertNameToRainbow(player, true, ChatColor.STRIKETHROUGH.name());
-
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Strikethrough.STRIKETHROUGH_SUCCESS);
-					} else
-						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
-					player.closeInventory();
+					selectNameFormat(player, ChatColor.STRIKETHROUGH);
 				}
 
 				@Override
@@ -1350,26 +1081,11 @@ public class ColorSelectionMenu extends Menu {
 
 					if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "r"))
 							|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
-						pCache.setNameRainbowColors(true);
-						pCache.setNameColor(null);
-
-						if (pCache.getCustomGradient1() != null || pCache.getCustomGradient2() != null) {
-							pCache.setCustomGradient1(null);
-							pCache.setCustomGradient2(null);
-						}
-
 						UltraColorUtil.convertNameToRainbow(player, pCache.getNameFormat() != null,
 								pCache.getNameFormat() != null ? pCache.getNameFormat().name() : "");
 
-						if (!pCache.getColoredNickName().equalsIgnoreCase("none")) {
-							pCache.setColoredNickName(UltraColorUtil.convertStringToRainbow(pCache.getNickName(),
-									pCache.getNameFormat() != null, pCache.getNameFormat() != null
-											? pCache.getNameFormat().name() : ""));
-							player.setDisplayName(PlayerCache.fromPlayer(player).getColoredNickName());
-						}
-
-						Messenger.success(player, Localization.Name_Color_Selection_Customization_Rainbow.RAINBOW_SUCCESS.replace("%rainbow_colors%",
-								UltraColorUtil.convertStringToRainbow("Rainbow colors", pCache.getNameFormat() != null,
+						Messenger.success(player, Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
+								UltraColorUtil.convertStringToRainbow("this", pCache.getNameFormat() != null,
 										pCache.getNameFormat() != null ? pCache.getNameFormat().name() : "")));
 					} else
 						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
@@ -1387,12 +1103,7 @@ public class ColorSelectionMenu extends Menu {
 			backButton = new Button() {
 				@Override
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-					if (player.hasPermission(UltraColorPermissions.COLOR)) {
-						new ColorSelectionMenu().displayTo(player);
-					} else {
-						tellError(Localization.Other.NO_PERMISSION.replace("{permission}", "ultracolor.gui"));
-						player.closeInventory();
-					}
+					openMenu(player, new ColorSelectionMenu(), UltraColorPermissions.COLOR);
 				}
 
 				@Override
@@ -1437,6 +1148,34 @@ public class ColorSelectionMenu extends Menu {
 			};
 
 			emptyButton = Button.makeDummy(ItemCreator.of(CompMaterial.valueOf(Settings.Color_Settings.NAME_FILL_BUTTON), " "));
+		}
+
+		private void selectNameColor(final Player player, final CompChatColor color) {
+			if (player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", String.valueOf(color.getCode())))
+					|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
+				UltraColorUtil.applyNameColor(player, color, null);
+				PlayerCache.fromPlayer(player).setNameRainbowColors(false);
+				Messenger.success(player, Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace(
+						"{color}", UltraColorUtil.nameAndChatColorToString(color) + "this"));
+			} else
+				Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
+			player.closeInventory();
+		}
+
+		private void selectNameFormat(final Player player, final ChatColor format) {
+			if (player.hasPermission(UltraColorPermissions.Color.NAME_FORMAT.replace("{format}", String.valueOf(format.getChar())))
+					|| player.hasPermission(UltraColorPermissions.Color.NAME_FORMAT.replace("{format}", "*"))) {
+				UltraColorUtil.applyNameColor(player, null, format);
+				final PlayerCache pCache = PlayerCache.fromPlayer(player);
+
+				if (pCache.isNameRainbowColors())
+					UltraColorUtil.convertNameToRainbow(player, true, format.name());
+
+				Messenger.success(player, Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace(
+						"{color}", UltraColorUtil.nameFormatToString(format) + "this"));
+			} else
+				Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
+			player.closeInventory();
 		}
 
 		@Override

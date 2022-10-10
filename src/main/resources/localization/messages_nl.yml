@@ -44,6 +44,7 @@ Main_GUI_Customization:
     # De grootte van het GUI-menu (max. waarde is 54).
     Size: 54
     Slot: 10
+    Success_Message: "Geselecteerd {color}!"
     # Het bericht spelers zullen zien als ze geen toestemming hebben voor een specifieke chatkleur/-indeling.
     Error_Message: "&cOnvoldoende toestemming. Breng een administratief medewerker op de hoogte!"
     # Het bericht dat spelers te zien krijgen als ze met de muis over de infoknop in het menu gaan.
@@ -60,6 +61,7 @@ Main_GUI_Customization:
     # De grootte van het GUI-menu (max. waarde is 54).
     Size: 54
     Slot: 16
+    Success_Message: "Geselecteerd {color}!"
     # Het bericht spelers zullen zien of ze geen toestemming hebben voor een specifieke naamkleur/-indeling.
     Error_Message: "&cOnvoldoende toestemming. Breng een administratief medewerker op de hoogte!"
     # Het bericht dat spelers te zien krijgen als ze met de muis over de infoknop in het menu gaan.
@@ -94,7 +96,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 10
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &0Zwart&7!"
 
   Dark_Blue:
     Name: "&1Donkerblauw"
@@ -104,7 +105,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 11
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &lDonker Blauw&7!"
 
   Dark_Green:
     Name: "&2Donkergroen"
@@ -114,7 +114,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 12
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &2Donker Groen&7!"
 
   Dark_Aqua:
     Name: "&3Donker Aqua"
@@ -124,7 +123,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 13
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &3Donker Aqua&7!"
 
   Dark_Red:
     Name: "&4Donker Rood"
@@ -134,7 +132,6 @@ Chat_Color_Selection_Customization:
       - "&eColor Preview: &b{color_preview}"
       - "&8---------------------------"
     Slot: 14
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &4Donker Rood&7!"
 
   Dark_Purple:
     Name: "&5Donker Paars"
@@ -144,7 +141,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 15
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &5Donker Paars&7!"
 
   Orange:
     Name: "&6Oranje"
@@ -154,7 +150,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 16
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &6Oranje&7!"
 
   Gray:
     Name: "&7Grijs"
@@ -164,7 +159,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 19
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &7Grijs&7!"
 
   Dark_Gray:
     Name: "&8Donker Grijs"
@@ -174,7 +168,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 20
-    Success_Message: "&7Chatkleur succesvoll gewijzigd in &8Donker Grijs&7!"
 
   Blue:
     Name: "&9Blauw"
@@ -184,7 +177,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 21
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &9Blauw&7!"
 
   Green:
     Name: "&aGroen"
@@ -194,7 +186,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 22
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &aGroen&7!"
 
   Aqua:
     Name: "&bAqua"
@@ -204,7 +195,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 23
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &bAqua&7!"
 
   Red:
     Name: "&cRood"
@@ -214,7 +204,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 24
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &cRood&7!"
 
   Light_Purple:
     Name: "&dLicht Paars"
@@ -224,7 +213,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 25
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &dLicht Paars&7!"
 
   Yellow:
     Name: "&eGeel"
@@ -234,7 +222,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 28
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &eGeel&7!"
 
   White:
     Name: "&fWit"
@@ -244,7 +231,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 29
-    Success_Message: "&7Chatkleur succesvol gewijzigd in &fWit&7!"
 
   Rainbow:
     Name: "&cRegenboog"
@@ -254,8 +240,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 30
-    # %rainbow_colors% = Tijdelijke aanduiding om "Regenboogkleuren" in regenboogkleuren weer te geve!
-    Success_Message: "%rainbow_colors% &7succesvol geselecteerd!"
 
   Magic:
     Name: "&fMagisch Formaat &kt"
@@ -265,7 +249,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 46
-    Success_Message: "&7Chat-formaat succesvol gewijzigd in &kMagisch Formaat&7!"
 
   Bold:
     Name: "&lVet &fFormaat"
@@ -275,7 +258,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 47
-    Success_Message: "&7Chat-formaat succesvol gewijzigd in &lVet&7!"
 
   Italic:
     Name: "&f&oCursief &fFormaat"
@@ -285,7 +267,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 48
-    Success_Message: "&7Chat-formaat succesvol gewijzigd in &oCursief&7!"
 
   Underline:
     Name: "&f&nOnderstreep &fFormaat"
@@ -295,7 +276,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 49
-    Success_Message: "&7Chat-formaat succesvol gewijzigd in &nOnderstreep&7!"
 
   Strikethrough:
     Name: "&f&mDoorstreep &fFormaat"
@@ -305,7 +285,6 @@ Chat_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 50
-    Success_Message: "&7Chat-formaat succesvol gewijzigd in &mDoorstreep&7!"
 
   Reset_Format_Button:
     Name: "&c&lFORMAAT RESETTEN"
@@ -346,7 +325,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 10
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &0Zwart&7!"
 
   Dark_Blue:
     Name: "&1Donkerblauw"
@@ -356,7 +334,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 11
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &lDonker Blauw&7!"
 
   Dark_Green:
     Name: "&2Donkergroen"
@@ -366,7 +343,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 12
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &2Donker Groen&7!"
 
   Dark_Aqua:
     Name: "&3Donker Aqua"
@@ -376,7 +352,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 13
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &3Donker Aqua&7!"
 
   Dark_Red:
     Name: "&4Donker Rood"
@@ -386,7 +361,6 @@ Name_Color_Selection_Customization:
       - "&eColor Preview: &b{color_preview}"
       - "&8---------------------------"
     Slot: 14
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &4Donker Rood&7!"
 
   Dark_Purple:
     Name: "&5Donker Paars"
@@ -396,7 +370,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 15
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &5Donker Paars&7!"
 
   Orange:
     Name: "&6Oranje"
@@ -406,7 +379,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 16
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &6Oranje&7!"
 
   Gray:
     Name: "&7Grijs"
@@ -416,7 +388,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 19
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &7Grijs&7!"
 
   Dark_Gray:
     Name: "&8Donker Grijs"
@@ -426,7 +397,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 20
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &8Donker Grijs&7!"
 
   Blue:
     Name: "&9Blauw"
@@ -436,7 +406,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 21
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &9Blauw&7!"
 
   Green:
     Name: "&aGroen"
@@ -446,7 +415,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 22
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &aGroen&7!"
 
   Aqua:
     Name: "&bAqua"
@@ -456,7 +424,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 23
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &bAqua&7!"
 
   Red:
     Name: "&cRood"
@@ -466,7 +433,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 24
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &cRood&7!"
 
   Light_Purple:
     Name: "&dLicht Paars"
@@ -476,7 +442,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 25
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &dLicht Paars&7!"
 
   Yellow:
     Name: "&eGeel"
@@ -486,7 +451,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 28
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &eGeel&7!"
 
   White:
     Name: "&fWit"
@@ -496,7 +460,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 29
-    Success_Message: "&7Naamkleur succesvol gewijzigd in &fWit&7!"
 
   Magic:
     Name: "&fMagisch Formaat &kt"
@@ -506,7 +469,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 46
-    Success_Message: "&7Naamformaat succesvol gewijzigd in &kMagisch Formaat&7!"
 
   Bold:
     Name: "&lVet &fFormaat"
@@ -516,7 +478,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 47
-    Success_Message: "&7Naamformaat succesvol gewijzigd in &lVet&7!"
 
   Italic:
     Name: "&f&oCursief &fFormaat"
@@ -526,7 +487,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 48
-    Success_Message: "&7Naamformaat succesvol gewijzigd in &oCursief&7!"
 
   Underline:
     Name: "&f&nOnderstreep &fFormaat"
@@ -536,7 +496,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 49
-    Success_Message: "&7Naamformaat succesvol gewijzigd in &nOnderstreep&7!"
 
   Strikethrough:
     Name: "&f&mDoorstreep &fFormaat"
@@ -546,7 +505,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 50
-    Success_Message: "&7Naamformaat succesvol gewijzigd in &mDoorstreep&7!"
 
   Reset_Format_Button:
     Name: "&c&lFORMAAT RESETTEN"
@@ -566,8 +524,6 @@ Name_Color_Selection_Customization:
       - "&eKleurvoorbeeld: &b{color_preview}"
       - "&8---------------------------"
     Slot: 30
-    # %rainbow_colors% = Tijdelijke aanduiding om "Regenboogkleuren" in regenboogkleuren weer te geven!
-    Success_Message: "%rainbow_colors% &7succesvol geselecteerd!"
 
   Back_Button:
     Name: "&e&lTERUG"

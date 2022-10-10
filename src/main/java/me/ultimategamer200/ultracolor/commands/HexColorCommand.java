@@ -4,6 +4,7 @@ import me.ultimategamer200.ultracolor.PlayerCache;
 import me.ultimategamer200.ultracolor.settings.AllowedHexesData;
 import me.ultimategamer200.ultracolor.settings.Localization;
 import me.ultimategamer200.ultracolor.settings.Settings;
+import me.ultimategamer200.ultracolor.util.ColorId;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
 import me.ultimategamer200.ultracolor.util.UltraColorUtil;
 import org.bukkit.entity.Player;
@@ -13,7 +14,6 @@ import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.Remain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class HexColorCommand extends SimpleCommand {
@@ -25,9 +25,7 @@ public class HexColorCommand extends SimpleCommand {
 		setPermissionMessage(Localization.Other.NO_PERMISSION.replace("{permission}", UltraColorPermissions.Command.HEX_COLOR));
 		setDescription("Set your hex color.");
 	}
-
-	final List<String> formats = Arrays.asList("bold", "underline", "italic", "strikethrough", "magic");
-
+	
 	@Override
 	protected void onCommand() {
 		checkConsole();
@@ -183,7 +181,7 @@ public class HexColorCommand extends SimpleCommand {
 		}
 
 		if (args.length == 3)
-			return completeLastWord(formats);
+			return completeLastWord(ColorId.FormatId.getFormatIds());
 
 		return new ArrayList<>();
 	}

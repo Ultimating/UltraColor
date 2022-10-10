@@ -111,9 +111,7 @@ public class ChatGradientPrompt extends SimpleConversation {
 
 		@Override
 		protected boolean isInputValid(ConversationContext context, String input) {
-			return input.equalsIgnoreCase("bold") || input.equalsIgnoreCase("italic")
-					|| input.equalsIgnoreCase("strikethrough") || input.equalsIgnoreCase("magic")
-					|| input.equalsIgnoreCase("underline") || input.equalsIgnoreCase("none");
+			return ColorId.FormatId.getFormatIds().contains(input.toLowerCase()) || input.equalsIgnoreCase("none");
 		}
 
 		@Override

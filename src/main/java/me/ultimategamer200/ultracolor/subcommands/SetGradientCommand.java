@@ -5,10 +5,8 @@ import me.ultimategamer200.ultracolor.gradients.PreDefinedGradient;
 import me.ultimategamer200.ultracolor.gradients.PreDefinedGradientManager;
 import me.ultimategamer200.ultracolor.settings.Localization;
 import me.ultimategamer200.ultracolor.settings.Settings;
-import me.ultimategamer200.ultracolor.util.ChatGradientPrompt;
-import me.ultimategamer200.ultracolor.util.GradientPrompt;
-import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
-import me.ultimategamer200.ultracolor.util.UltraColorUtil;
+import me.ultimategamer200.ultracolor.util.*;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.mineacademy.fo.ChatUtil;
 import org.mineacademy.fo.Messenger;
@@ -17,7 +15,6 @@ import org.mineacademy.fo.command.SimpleSubCommand;
 import org.mineacademy.fo.remain.CompChatColor;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SetGradientCommand extends SimpleSubCommand {
@@ -29,7 +26,6 @@ public class SetGradientCommand extends SimpleSubCommand {
 		setPermission(UltraColorPermissions.Command.SET_GRADIENT);
 	}
 
-	final List<String> formats = Arrays.asList("bold", "underline", "italic", "strikethrough", "magic");
 	final String INVALID_FORMAT_MESSAGE = "Invalid format.";
 
 	@Override
@@ -54,7 +50,7 @@ public class SetGradientCommand extends SimpleSubCommand {
 							pCache.setChatColor(null);
 
 							if (args.length == 3) {
-								if (formats.contains(args[2])) {
+								if (ColorId.FormatId.getFormatIds().contains(args[2])) {
 									if (!UltraColorUtil.isChatFormatEnabled(args[2])) {
 										tellError("The chat format you selected is disabled or doesn't exist! Notify an admin if this is an error.");
 										return;
@@ -66,7 +62,7 @@ public class SetGradientCommand extends SimpleSubCommand {
 									}
 
 									pCache.setChatFormat(UltraColorUtil.getFormatToCompChatColor(args[2]));
-									tellFormatSuccessMessage(args[0], args[2]);
+									tellSuccess(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE);
 								} else
 									tellError(INVALID_FORMAT_MESSAGE);
 							} else
@@ -107,7 +103,7 @@ public class SetGradientCommand extends SimpleSubCommand {
 						if (player.hasPermission(gradient.getSettings().getPermission())
 								|| player.hasPermission("ultracolor.namegradient.*")) {
 							if (args.length == 3) {
-								if (formats.contains(args[2])) {
+								if (ColorId.FormatId.getFormatIds().contains(args[2])) {
 									if (!UltraColorUtil.isNameFormatEnabled(args[2])) {
 										tellError("The name format you selected is disabled or doesn't exist! Notify an admin if this is an error.");
 										return;
@@ -118,8 +114,11 @@ public class SetGradientCommand extends SimpleSubCommand {
 										return;
 									}
 
-									pCache.setNameFormat(UltraColorUtil.getNameFormatToChatColor(args[2]));
-									tellFormatSuccessMessage(args[0], args[2]);
+									final ChatColor format = UltraColorUtil.getNameFormatToChatColor(args[2]);
+									pCache.setNameFormat(format);
+
+									tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace(
+											"{color}", UltraColorUtil.nameFormatToString(format) + "this"));
 								} else
 									tellError(INVALID_FORMAT_MESSAGE);
 							} else
@@ -187,31 +186,5 @@ public class SetGradientCommand extends SimpleSubCommand {
 			return completeLastWord(colors);
 
 		return null;
-	}
-
-	private void tellFormatSuccessMessage(final String type, final String format) {
-		if (type.equalsIgnoreCase("chat")) {
-			if (format.equalsIgnoreCase("bold")) {
-				tellSuccess(Localization.Chat_Color_Selection_Customization_Bold.BOLD_SUCCESS);
-			} else if (format.equalsIgnoreCase("italic")) {
-				tellSuccess(Localization.Chat_Color_Selection_Customization_Italic.ITALIC_SUCCESS);
-			} else if (format.equalsIgnoreCase("underline")) {
-				tellSuccess(Localization.Chat_Color_Selection_Customization_Underline.UNDERLINE_SUCCESS);
-			} else if (format.equalsIgnoreCase("strikethrough")) {
-				tellSuccess(Localization.Chat_Color_Selection_Customization_Strikethrough.STRIKETHROUGH_SUCCESS);
-			} else if (format.equalsIgnoreCase("magic"))
-				tellSuccess(Localization.Chat_Color_Selection_Customization_Magic.MAGIC_SUCCESS);
-		} else {
-			if (format.equalsIgnoreCase("bold"))
-				tellSuccess(Localization.Name_Color_Selection_Customization_Bold.BOLD_SUCCESS);
-			else if (format.equalsIgnoreCase("italic"))
-				tellSuccess(Localization.Name_Color_Selection_Customization_Italic.ITALIC_SUCCESS);
-			else if (format.equalsIgnoreCase("underline"))
-				tellSuccess(Localization.Name_Color_Selection_Customization_Underline.UNDERLINE_SUCCESS);
-			else if (format.equalsIgnoreCase("strikethrough"))
-				tellSuccess(Localization.Name_Color_Selection_Customization_Strikethrough.STRIKETHROUGH_SUCCESS);
-			else if (format.equalsIgnoreCase("magic"))
-				tellSuccess(Localization.Name_Color_Selection_Customization_Underline.UNDERLINE_SUCCESS);
-		}
 	}
 }
