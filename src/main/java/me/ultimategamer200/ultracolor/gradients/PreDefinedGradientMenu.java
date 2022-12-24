@@ -60,9 +60,8 @@ public class PreDefinedGradientMenu extends Menu {
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
 					final PlayerCache pCache = PlayerCache.fromPlayer(player);
 
-					if (pCache.getCustomGradient1() != null || pCache.getCustomGradient2() != null) {
-						pCache.setCustomGradient1(null);
-						pCache.setCustomGradient2(null);
+					if (pCache.getCustomGradientOne() != null || pCache.getCustomGradientTwo() != null) {
+						pCache.clearGradients("name");
 
 						if (!pCache.getNickName().equalsIgnoreCase("none")) {
 							if (pCache.getNameFormat() != null)
@@ -115,8 +114,8 @@ public class PreDefinedGradientMenu extends Menu {
 					.replace("{gradient-color}", "*"))) {
 				final String hex1 = settings.getHexColors().get(0);
 				final String hex2 = settings.getHexColors().get(1);
-				pCache.setCustomGradient1(CompChatColor.of(hex1));
-				pCache.setCustomGradient2(CompChatColor.of(hex2));
+				pCache.setCustomGradientOne(CompChatColor.of(hex1));
+				pCache.setCustomGradientTwo(CompChatColor.of(hex2));
 				pCache.setNameColor(null);
 				String newDisplayName;
 				if (pCache.isNameRainbowColors()) pCache.setNameRainbowColors(false);
@@ -208,9 +207,8 @@ public class PreDefinedGradientMenu extends Menu {
 				public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
 					final PlayerCache pCache = PlayerCache.fromPlayer(player);
 
-					if (pCache.getChatCustomGradient1() != null || pCache.getChatCustomGradient2() != null) {
-						pCache.setChatCustomGradient1(null);
-						pCache.setChatCustomGradient2(null);
+					if (pCache.getChatCustomGradientOne() != null || pCache.getChatCustomGradientTwo() != null) {
+						pCache.clearGradients("chat");
 						Messenger.success(player, Localization.Gradient_Color_Selection_Reset.SUCCESS_MESSAGE);
 					} else
 						Messenger.error(player, Localization.Gradient_Color_Selection_Reset.ERROR_MESSAGE);
@@ -240,8 +238,8 @@ public class PreDefinedGradientMenu extends Menu {
 
 			if (player.hasPermission(settings.getPermission()) || player.hasPermission(UltraColorPermissions.Color.CHAT_GRADIENTS
 					.replace("{gradient-color}", "*"))) {
-				pCache.setChatCustomGradient1(CompChatColor.of(settings.getHexColors().get(0)));
-				pCache.setChatCustomGradient2(CompChatColor.of(settings.getHexColors().get(1)));
+				pCache.setChatCustomGradientOne(CompChatColor.of(settings.getHexColors().get(0)));
+				pCache.setChatCustomGradientTwo(CompChatColor.of(settings.getHexColors().get(1)));
 				pCache.setChatColor(null);
 				if (pCache.isChatRainbowColors()) pCache.setChatRainbowColors(false);
 				tellSuccess(settings.getSuccessMessage());

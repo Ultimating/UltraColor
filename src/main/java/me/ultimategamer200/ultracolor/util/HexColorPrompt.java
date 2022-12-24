@@ -154,13 +154,11 @@ public class HexColorPrompt extends SimpleConversation {
 			if (type.equalsIgnoreCase("chat")) {
 				pCache.setChatColor(hexColor);
 				pCache.setChatRainbowColors(false);
-				pCache.setChatCustomGradient1(null);
-				pCache.setChatCustomGradient2(null);
+				pCache.clearGradients("chat");
 			} else {
 				pCache.setNameColor(hexColor);
 				pCache.setNameRainbowColors(false);
-				pCache.setCustomGradient1(null);
-				pCache.setCustomGradient2(null);
+				pCache.clearGradients("name");
 
 				if (!pCache.getColoredNickName().equalsIgnoreCase("none")) {
 					if (pCache.getNameFormat() != null)
@@ -213,8 +211,8 @@ public class HexColorPrompt extends SimpleConversation {
 			while (iterator.hasNext()) {
 				final String option = iterator.next();
 
-				if (!iterator.hasNext()) stringBuilder.append(option + ".");
-				else stringBuilder.append(option + ", ");
+				if (!iterator.hasNext()) stringBuilder.append(option).append(".");
+				else stringBuilder.append(option).append(", ");
 			}
 
 			return stringBuilder.toString();

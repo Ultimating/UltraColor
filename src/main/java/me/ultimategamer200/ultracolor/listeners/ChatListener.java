@@ -38,13 +38,13 @@ public final class ChatListener extends SimpleListener<AsyncPlayerChatEvent> {
 		clearNameColorsIfNoPermission(player);
 		clearChatColorsIfNoPermission(player);
 
-		if (pCache.getChatCustomGradient1() != null || pCache.getChatCustomGradient2() != null) {
-			if (pCache.getChatCustomGradient1() != null && pCache.getChatCustomGradient2() != null) {
+		if (pCache.getChatCustomGradientOne() != null || pCache.getChatCustomGradientTwo() != null) {
+			if (pCache.getChatCustomGradientOne() != null && pCache.getChatCustomGradientTwo() != null) {
 				if (pCache.getChatFormat() == null)
-					event.setMessage(ChatUtil.generateGradient(message, pCache.getChatCustomGradient1(), pCache.getChatCustomGradient2()));
+					event.setMessage(ChatUtil.generateGradient(message, pCache.getChatCustomGradientOne(), pCache.getChatCustomGradientTwo()));
 				else
 					event.setMessage(ChatUtil.generateGradient(UltraColorUtil.chatFormatToString(pCache.getChatFormat()) + message,
-							pCache.getChatCustomGradient1(), pCache.getChatCustomGradient2()));
+							pCache.getChatCustomGradientOne(), pCache.getChatCustomGradientTwo()));
 				return;
 			}
 		}
@@ -65,7 +65,7 @@ public final class ChatListener extends SimpleListener<AsyncPlayerChatEvent> {
 			return;
 		}
 
-		if (pCache.getChatFormat() != null && pCache.getChatColor() == null)
+		if (pCache.getChatFormat() != null)
 			event.setMessage(UltraColorUtil.chatFormatToString(pCache.getChatFormat()) + message);
 	}
 
@@ -99,7 +99,7 @@ public final class ChatListener extends SimpleListener<AsyncPlayerChatEvent> {
 			}
 		}
 
-		if (pCache.getCustomGradient1() != null && pCache.getCustomGradient2() != null) {
+		if (pCache.getCustomGradientOne() != null && pCache.getCustomGradientTwo() != null) {
 			if (!player.hasPermission(UltraColorPermissions.Color.NAME_GRADIENTS.replace("{gradient-color}", "*"))) {
 				for (final PreDefinedGradient gradient : PreDefinedGradientManager.getLoadedPreDefinedGradients()) {
 					if (!gradient.getSettings().getType().equalsIgnoreCase("name") && !gradient.getSettings().getType()
@@ -107,10 +107,9 @@ public final class ChatListener extends SimpleListener<AsyncPlayerChatEvent> {
 						continue;
 
 					if (!player.hasPermission(gradient.getSettings().getPermission())) {
-						if (pCache.getCustomGradient1().equals(CompChatColor.of(gradient.getSettings().getHexColors().get(0)))
-								&& pCache.getCustomGradient2().equals(CompChatColor.of(gradient.getSettings().getHexColors().get(1)))) {
-							pCache.setCustomGradient1(null);
-							pCache.setCustomGradient2(null);
+						if (pCache.getCustomGradientOne().equals(CompChatColor.of(gradient.getSettings().getHexColors().get(0)))
+								&& pCache.getCustomGradientTwo().equals(CompChatColor.of(gradient.getSettings().getHexColors().get(1)))) {
+							pCache.clearGradients("name");
 							modifyNickDueToNoColorPermission(player);
 							break;
 						}
@@ -118,9 +117,8 @@ public final class ChatListener extends SimpleListener<AsyncPlayerChatEvent> {
 				}
 
 				if (!player.hasPermission(UltraColorPermissions.Color.NAME_GRADIENTS.replace("{gradient-color}", "custom"))) {
-					if (pCache.getCustomGradient1() != null && pCache.getCustomGradient2() != null) {
-						pCache.setCustomGradient1(null);
-						pCache.setCustomGradient2(null);
+					if (pCache.getCustomGradientOne() != null && pCache.getCustomGradientTwo() != null) {
+						pCache.clearGradients("name");
 						modifyNickDueToNoColorPermission(player);
 					}
 				}
@@ -179,7 +177,7 @@ public final class ChatListener extends SimpleListener<AsyncPlayerChatEvent> {
 			}
 		}
 
-		if (pCache.getChatCustomGradient1() != null && pCache.getChatCustomGradient2() != null) {
+		if (pCache.getChatCustomGradientOne() != null && pCache.getChatCustomGradientTwo() != null) {
 			if (!player.hasPermission(UltraColorPermissions.Color.CHAT_GRADIENTS.replace("{gradient-color}", "*"))) {
 				for (final PreDefinedGradient gradient : PreDefinedGradientManager.getLoadedPreDefinedGradients()) {
 					if (!gradient.getSettings().getType().equalsIgnoreCase("chat") && !gradient.getSettings().getType()
@@ -187,20 +185,17 @@ public final class ChatListener extends SimpleListener<AsyncPlayerChatEvent> {
 						continue;
 
 					if (!player.hasPermission(gradient.getSettings().getPermission())) {
-						if (pCache.getChatCustomGradient1().equals(CompChatColor.of(gradient.getSettings().getHexColors().get(0)))
-								&& pCache.getChatCustomGradient2().equals(CompChatColor.of(gradient.getSettings().getHexColors().get(1)))) {
-							pCache.setChatCustomGradient1(null);
-							pCache.setChatCustomGradient2(null);
+						if (pCache.getChatCustomGradientOne().equals(CompChatColor.of(gradient.getSettings().getHexColors().get(0)))
+								&& pCache.getChatCustomGradientTwo().equals(CompChatColor.of(gradient.getSettings().getHexColors().get(1)))) {
+							pCache.clearGradients("chat");
 							break;
 						}
 					}
 				}
 
 				if (!player.hasPermission(UltraColorPermissions.Color.CHAT_GRADIENTS.replace("{gradient-color}", "custom"))) {
-					if (pCache.getChatCustomGradient1() != null && pCache.getChatCustomGradient2() != null) {
-						pCache.setChatCustomGradient1(null);
-						pCache.setChatCustomGradient2(null);
-					}
+					if (pCache.getChatCustomGradientOne() != null && pCache.getChatCustomGradientTwo() != null)
+						pCache.clearGradients("chat");
 				}
 			}
 		}

@@ -29,23 +29,21 @@ public class ResetColorCommand extends SimpleSubCommand {
 		boolean resetSuccess = false;
 
 		if (colorToReset.equalsIgnoreCase("chat")) {
-			if (pCache.getChatColor() != null || pCache.getChatFormat() != null || pCache.getChatCustomGradient1() != null
-					|| pCache.getChatCustomGradient2() != null || pCache.isChatRainbowColors()) {
+			if (pCache.getChatColor() != null || pCache.getChatFormat() != null || pCache.getChatCustomGradientOne() != null
+					|| pCache.getChatCustomGradientTwo() != null || pCache.isChatRainbowColors()) {
 				pCache.setChatColor(null);
 				pCache.setChatFormat(null);
-				pCache.setChatCustomGradient1(null);
-				pCache.setChatCustomGradient2(null);
+				pCache.clearGradients("chat");
 				pCache.setChatRainbowColors(false);
 				resetSuccess = true;
 			} else
 				tellError(Localization.Other.RESET_COLOR_COMMAND_ERROR_MESSAGE.replace("%player%", player.getName()));
 		} else if (colorToReset.equalsIgnoreCase("name")) {
-			if (pCache.getNameColor() != null || pCache.getNameFormat() != null || pCache.getCustomGradient1() != null
-					|| pCache.getCustomGradient2() != null || pCache.isNameRainbowColors()) {
+			if (pCache.getNameColor() != null || pCache.getNameFormat() != null || pCache.getCustomGradientOne() != null
+					|| pCache.getCustomGradientTwo() != null || pCache.isNameRainbowColors()) {
 				pCache.setNameColor(null);
 				pCache.setNameFormat(null);
-				pCache.setCustomGradient1(null);
-				pCache.setCustomGradient2(null);
+				pCache.clearGradients("name");
 				pCache.setNameRainbowColors(false);
 				resetSuccess = true;
 			} else

@@ -4,13 +4,13 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import me.ultimategamer200.ultracolor.PlayerCache;
 import me.ultimategamer200.ultracolor.settings.Settings;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.database.SimpleFlatDatabase;
 import org.mineacademy.fo.remain.CompChatColor;
+import org.mineacademy.fo.remain.Remain;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,10 +26,8 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 	@Getter
 	private static final UltraColorDatabase instance = new UltraColorDatabase();
 
-	private final String tableName = "UltraColor";
-
 	private UltraColorDatabase() {
-		addVariable("table", this.tableName);
+		addVariable("table", "UltraColor");
 	}
 
 	/**
@@ -57,13 +55,13 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 		if (nameColor != null) Common.runLater(() -> data.setNameColor(nameColor));
 		if (nameFormat != null) Common.runLater(() -> data.setNameFormat(nameFormat));
 
-		if (firstCustomGradient != null) Common.runLater(() -> data.setCustomGradient1(firstCustomGradient));
-		if (secondCustomGradient != null) Common.runLater(() -> data.setCustomGradient2(secondCustomGradient));
+		if (firstCustomGradient != null) Common.runLater(() -> data.setCustomGradientOne(firstCustomGradient));
+		if (secondCustomGradient != null) Common.runLater(() -> data.setCustomGradientTwo(secondCustomGradient));
 
 		if (firstChatCustomGradient != null)
-			Common.runLater(() -> data.setChatCustomGradient1(firstChatCustomGradient));
+			Common.runLater(() -> data.setChatCustomGradientOne(firstChatCustomGradient));
 		if (secondChatCustomGradient != null)
-			Common.runLater(() -> data.setChatCustomGradient2(secondChatCustomGradient));
+			Common.runLater(() -> data.setChatCustomGradientTwo(secondChatCustomGradient));
 
 		Common.runLater(() -> {
 			data.setChatRainbowColors(chatRainbowColors);
@@ -85,14 +83,14 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 		if (data.getChatFormat() != null) map.put(DataField.CHAT_FORMAT.getIdentifier(), data.getChatFormat());
 		if (data.getNameFormat() != null) map.put(DataField.NAME_FORMAT.getIdentifier(), data.getNameFormat());
 
-		if (data.getCustomGradient1() != null)
-			map.put(DataField.FIRST_NAME_GRADIENT_HEX.getIdentifier(), data.getCustomGradient1());
-		if (data.getCustomGradient2() != null)
-			map.put(DataField.SECOND_NAME_GRADIENT_HEX.getIdentifier(), data.getCustomGradient2());
-		if (data.getChatCustomGradient1() != null)
-			map.put(DataField.FIRST_CHAT_GRADIENT_HEX.getIdentifier(), data.getChatCustomGradient1());
-		if (data.getChatCustomGradient2() != null)
-			map.put(DataField.SECOND_CHAT_GRADIENT_HEX.getIdentifier(), data.getChatCustomGradient2());
+		if (data.getCustomGradientOne() != null)
+			map.put(DataField.FIRST_NAME_GRADIENT_HEX.getIdentifier(), data.getCustomGradientOne());
+		if (data.getCustomGradientTwo() != null)
+			map.put(DataField.SECOND_NAME_GRADIENT_HEX.getIdentifier(), data.getCustomGradientTwo());
+		if (data.getChatCustomGradientOne() != null)
+			map.put(DataField.FIRST_CHAT_GRADIENT_HEX.getIdentifier(), data.getChatCustomGradientOne());
+		if (data.getChatCustomGradientTwo() != null)
+			map.put(DataField.SECOND_CHAT_GRADIENT_HEX.getIdentifier(), data.getChatCustomGradientTwo());
 
 		map.put(DataField.CHAT_RAINBOW_COLORS.getIdentifier(), data.isChatRainbowColors());
 		map.put(DataField.NAME_RAINBOW_COLORS.getIdentifier(), data.isNameRainbowColors());
@@ -103,16 +101,12 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 
 	/**
 	 * Is the player uuid specified stored?
-	 *
-	 * @param uuid
-	 * @return
-	 * @throws SQLException
 	 */
 	public boolean isPlayerStored(final UUID uuid) throws SQLException {
 		if (uuid == null)
 			throw new NullPointerException("uuid is marked non-null but is null");
 		else {
-			ResultSet resultSet = this.query("SELECT * FROM {table} WHERE UUID= '" + uuid + "'");
+			ResultSet resultSet = selectUser(uuid);
 			if (resultSet == null)
 				return false;
 			else if (resultSet.next())
@@ -133,27 +127,29 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 		if (!isPlayerStored(uuid))
 			return null;
 
-		ResultSet resultSet = this.query("SELECT * FROM {table} WHERE UUID= '" + uuid + "'");
+		ResultSet resultSet = selectUser(uuid);
 		resultSet.next();
-		return Bukkit.getOfflinePlayer(UUID.fromString(resultSet.getString("UUID")));
+		return Remain.getOfflinePlayerByUUID(UUID.fromString(resultSet.getString("UUID")));
 	}
 
 	/**
 	 * Gets the player's nickname if stored. Otherwise, "None" would be returned.
-	 *
-	 * @param player
-	 * @return
-	 * @throws SQLException
 	 */
 	public String getStoredNick(final OfflinePlayer player) throws SQLException {
-		if (getStoredPlayerByUUID(player.getUniqueId()) == null)
+		final UUID uuid = player.getUniqueId();
+
+		if (getStoredPlayerByUUID(uuid) == null)
 			return "";
 
-		ResultSet resultSet = this.query("SELECT * FROM {table} WHERE UUID= '" + player.getUniqueId() + "'");
+		ResultSet resultSet = selectUser(uuid);
 		String dataRaw = resultSet.next() ? resultSet.getString("Data") : "{}";
 		SerializedMap data = SerializedMap.fromJson(dataRaw);
 
 		return data.getString(DataField.COLORED_NICKNAME.getIdentifier(), "none");
+	}
+
+	public ResultSet selectUser(final UUID uuid) {
+		return this.query("SELECT * FROM {table} WHERE UUID= '" + uuid + "'");
 	}
 
 	/**
@@ -184,20 +180,5 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 
 		@Getter
 		private final Class<?> dataFieldClass;
-
-		public static Object getDataValueStored(final String identifier, final Class<?> dataFieldClass, final SerializedMap dataMap) {
-			final String className = dataFieldClass.getName();
-
-			if (className.equalsIgnoreCase(CompChatColor.class.getName())) {
-				return dataMap.get(identifier, CompChatColor.class).getName();
-			} else if (className.equalsIgnoreCase(String.class.getName()))
-				return dataMap.getString(identifier);
-			else if (className.equalsIgnoreCase(Boolean.class.getName()))
-				return dataMap.getBoolean(identifier);
-
-			Common.throwError(new NullPointerException(), "Invalid data field class " + className + " specified.",
-					"Data field: " + identifier);
-			return null;
-		}
 	}
 }

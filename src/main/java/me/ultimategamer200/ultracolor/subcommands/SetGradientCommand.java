@@ -45,8 +45,8 @@ public class SetGradientCommand extends SimpleSubCommand {
 					if (UltraColorUtil.areHexesValid(gradient.getSettings().getHexColors())) {
 						if (player.hasPermission(gradient.getSettings().getPermission())
 								|| player.hasPermission("ultracolor.chatgradient.*")) {
-							pCache.setChatCustomGradient1(CompChatColor.of(gradient.getSettings().getHexColors().get(0)));
-							pCache.setChatCustomGradient2(CompChatColor.of(gradient.getSettings().getHexColors().get(1)));
+							pCache.setChatCustomGradientOne(CompChatColor.of(gradient.getSettings().getHexColors().get(0)));
+							pCache.setChatCustomGradientTwo(CompChatColor.of(gradient.getSettings().getHexColors().get(1)));
 							pCache.setChatColor(null);
 
 							if (args.length == 3) {
@@ -83,8 +83,7 @@ public class SetGradientCommand extends SimpleSubCommand {
 				}
 
 				if (color.equalsIgnoreCase("reset")) {
-					pCache.setChatCustomGradient1(null);
-					pCache.setChatCustomGradient2(null);
+					pCache.clearGradients("chat");
 					Messenger.success(player, Localization.Gradient_Color_Selection_Reset.SUCCESS_MESSAGE);
 				}
 			}
@@ -124,24 +123,24 @@ public class SetGradientCommand extends SimpleSubCommand {
 							} else
 								pCache.setNameFormat(null);
 
-							pCache.setCustomGradient1(CompChatColor.of(gradient.getSettings().getHexColors().get(0)));
-							pCache.setCustomGradient2(CompChatColor.of(gradient.getSettings().getHexColors().get(1)));
+							pCache.setCustomGradientOne(CompChatColor.of(gradient.getSettings().getHexColors().get(0)));
+							pCache.setCustomGradientTwo(CompChatColor.of(gradient.getSettings().getHexColors().get(1)));
 							pCache.setNameColor(null);
 
 							if (!pCache.getNickName().equalsIgnoreCase("none")) {
 								if (pCache.getNameFormat() != null)
 									newDisplayName = ChatUtil.generateGradient(UltraColorUtil.nameFormatToString(pCache.getNameFormat())
-											+ pCache.getNickName(), pCache.getCustomGradient1(), pCache.getCustomGradient2());
+											+ pCache.getNickName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo());
 								else
-									newDisplayName = ChatUtil.generateGradient(pCache.getNickName(), pCache.getCustomGradient1(), pCache.getCustomGradient2());
+									newDisplayName = ChatUtil.generateGradient(pCache.getNickName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo());
 
 								pCache.setColoredNickName(newDisplayName);
 							} else {
 								if (pCache.getNameFormat() != null)
 									newDisplayName = ChatUtil.generateGradient(UltraColorUtil.nameFormatToString(pCache.getNameFormat())
-											+ player.getName(), pCache.getCustomGradient1(), pCache.getCustomGradient2());
+											+ player.getName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo());
 								else
-									newDisplayName = ChatUtil.generateGradient(player.getName(), pCache.getCustomGradient1(), pCache.getCustomGradient2());
+									newDisplayName = ChatUtil.generateGradient(player.getName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo());
 							}
 
 							player.setDisplayName(newDisplayName);
@@ -160,8 +159,7 @@ public class SetGradientCommand extends SimpleSubCommand {
 				}
 
 				if (color.equalsIgnoreCase("reset")) {
-					pCache.setCustomGradient1(null);
-					pCache.setCustomGradient2(null);
+					pCache.clearGradients("name");
 
 					if (!pCache.getNickName().equalsIgnoreCase("none"))
 						newDisplayName = pCache.getNickName();

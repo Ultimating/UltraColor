@@ -25,7 +25,7 @@ public class HexColorCommand extends SimpleCommand {
 		setPermissionMessage(Localization.Other.NO_PERMISSION.replace("{permission}", UltraColorPermissions.Command.HEX_COLOR));
 		setDescription("Set your hex color.");
 	}
-	
+
 	@Override
 	protected void onCommand() {
 		checkConsole();
@@ -190,15 +190,13 @@ public class HexColorCommand extends SimpleCommand {
 		if (type.equalsIgnoreCase("name")) {
 			pCache.setNameColor(CompChatColor.of(hexColor));
 			pCache.setNameFormat(null);
-			pCache.setCustomGradient1(null);
-			pCache.setCustomGradient2(null);
 			pCache.setNameRainbowColors(false);
 		} else {
 			pCache.setChatColor(CompChatColor.of(hexColor));
 			pCache.setChatFormat(null);
-			pCache.setChatCustomGradient1(null);
-			pCache.setChatCustomGradient2(null);
 			pCache.setChatRainbowColors(false);
 		}
+
+		pCache.clearGradients(type);
 	}
 }

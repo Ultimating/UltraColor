@@ -96,7 +96,7 @@ public class ColorSelectionMenu extends Menu {
 		gradientButton = new Button() {
 			@Override
 			public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
-				openMenu(player, menu, UltraColorPermissions.GRADIENT_COLOR);
+				openMenu(player, new GradientMenu(), UltraColorPermissions.GRADIENT_COLOR);
 			}
 
 			@Override
@@ -543,10 +543,8 @@ public class ColorSelectionMenu extends Menu {
 						pCache.setChatRainbowColors(true);
 						pCache.setChatColor(null);
 
-						if (pCache.getCustomGradient1() != null || pCache.getChatCustomGradient2() != null) {
-							pCache.setChatCustomGradient1(null);
-							pCache.setChatCustomGradient2(null);
-						}
+						if (pCache.getChatCustomGradientOne() != null || pCache.getChatCustomGradientTwo() != null)
+							pCache.clearGradients("chat");
 
 						final boolean hasFormat = pCache.getChatFormat() != null;
 
@@ -1056,8 +1054,8 @@ public class ColorSelectionMenu extends Menu {
 							else
 								pCache.setColoredNickName(pCache.getNickName());
 
-							if (pCache.getCustomGradient1() != null && pCache.getCustomGradient2() != null)
-								pCache.setColoredNickName(ChatUtil.generateGradient(pCache.getNickName(), pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+							if (pCache.getCustomGradientOne() != null && pCache.getCustomGradientTwo() != null)
+								pCache.setColoredNickName(ChatUtil.generateGradient(pCache.getNickName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 						}
 
 						player.setDisplayName(UltraColorUtil.getPlayerNameInColor(player));
@@ -1124,10 +1122,8 @@ public class ColorSelectionMenu extends Menu {
 						player.setDisplayName(player.getName());
 						pCache.setNameRainbowColors(false);
 
-						if (pCache.getCustomGradient1() != null || pCache.getCustomGradient2() != null) {
-							pCache.setCustomGradient1(null);
-							pCache.setCustomGradient2(null);
-						}
+						if (pCache.getCustomGradientOne() != null || pCache.getCustomGradientTwo() != null)
+							pCache.clearGradients("name");
 
 						if (!pCache.getNickName().equalsIgnoreCase("none")) {
 							player.setDisplayName(pCache.getNickName());

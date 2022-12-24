@@ -3,7 +3,6 @@ package me.ultimategamer200.ultracolor.commands;
 import me.ultimategamer200.ultracolor.menu.ColorSelectionMenu;
 import me.ultimategamer200.ultracolor.settings.Localization;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
-import org.bukkit.entity.Player;
 import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.command.SimpleCommand;
 
@@ -25,7 +24,6 @@ public final class ChatColorCommand extends SimpleCommand {
 		// Checks if the sender is a console, and if so, deny the command from being run.
 		checkConsole();
 
-		final Player player = getPlayer();
-		new ColorSelectionMenu.ChatColorSelectionMenu().displayTo(player);
+		new ColorSelectionMenu.ChatColorSelectionMenu().displayTo(getPlayer());
 	}
 }

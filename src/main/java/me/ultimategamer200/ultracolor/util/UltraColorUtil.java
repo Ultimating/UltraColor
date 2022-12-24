@@ -68,10 +68,8 @@ public class UltraColorUtil {
 		final PlayerCache pCache = PlayerCache.fromPlayer(player);
 		pCache.setNameColor(null);
 
-		if (pCache.getCustomGradient1() != null || pCache.getCustomGradient2() != null) {
-			pCache.setCustomGradient1(null);
-			pCache.setCustomGradient2(null);
-		}
+		if (pCache.getCustomGradientOne() != null || pCache.getCustomGradientTwo() != null)
+			pCache.clearGradients("name");
 
 		if (!pCache.getNickName().equalsIgnoreCase("None"))
 			displayName = convertStringToRainbow(pCache.getNickName(), formatEnabled, format);
@@ -98,10 +96,8 @@ public class UltraColorUtil {
 
 		if (pCache.isChatRainbowColors()) pCache.setChatRainbowColors(false);
 
-		if (pCache.getCustomGradient1() != null || pCache.getChatCustomGradient2() != null) {
-			pCache.setChatCustomGradient1(null);
-			pCache.setChatCustomGradient2(null);
-		}
+		if (pCache.getCustomGradientOne() != null || pCache.getChatCustomGradientTwo() != null)
+			pCache.clearGradients("chat");
 	}
 
 	/**
@@ -113,7 +109,7 @@ public class UltraColorUtil {
 	public void applyChatFormat(final OfflinePlayer player, final CompChatColor format) {
 		final PlayerCache pCache = PlayerCache.fromOfflinePlayer(player);
 
-		if (pCache.getCustomGradient1() != null || pCache.getChatCustomGradient2() != null)
+		if (pCache.getCustomGradientOne() != null || pCache.getChatCustomGradientTwo() != null)
 			applyFormatToGradient(player, "chat", getNameFormatToChatColor(format.getName()));
 		else pCache.setChatFormat(format);
 	}
@@ -131,11 +127,10 @@ public class UltraColorUtil {
 		if (color != null) pCache.setNameColor(color);
 		if (format != null) pCache.setNameFormat(format);
 
-		if (pCache.getCustomGradient1() != null || pCache.getCustomGradient2() != null) {
-			if (pCache.getNameFormat() == null) {
-				pCache.setCustomGradient1(null);
-				pCache.setCustomGradient2(null);
-			} else {
+		if (pCache.getCustomGradientOne() != null || pCache.getCustomGradientTwo() != null) {
+			if (pCache.getNameFormat() == null)
+				pCache.clearGradients("name");
+			else {
 				applyFormatToGradient(player, "name", pCache.getNameFormat());
 				return;
 			}
@@ -181,17 +176,17 @@ public class UltraColorUtil {
 					if (player.isOnline()) {
 						final Player onlinePlayer = (Player) player;
 						onlinePlayer.setDisplayName(ChatUtil.generateGradient(nameFormatToString(pCache.getNameFormat()) + player.getName(),
-								pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+								pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 					}
 				} else {
 					if (player.isOnline()) {
 						final Player onlinePlayer = (Player) player;
 						onlinePlayer.setDisplayName(ChatUtil.generateGradient(nameFormatToString(pCache.getNameFormat())
-								+ pCache.getNickName(), pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+								+ pCache.getNickName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 					}
 
 					pCache.setColoredNickName(ChatUtil.generateGradient(nameFormatToString(pCache.getNameFormat())
-							+ pCache.getNickName(), pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+							+ pCache.getNickName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 				}
 			} else
 				pCache.setChatFormat(getFormatToCompChatColor(format.name()));
@@ -231,22 +226,22 @@ public class UltraColorUtil {
 	 * @param lore      the lore to modify.
 	 * @param color     the color to get the preview of.
 	 * @param gradients the gradient to use for the preview if the color is a gradient.
-	 * @return
 	 */
 	public List<String> modifyColorLoreWithPreview(final List<String> lore, final String color, final List<String> gradients) {
 		final List<String> modifiedLore = new ArrayList<>();
+		final String colorPreviewPlaceholder = "{color_preview}";
 
 		for (final String string : lore) {
-			if (string.contains("{color_preview}") && !color.equalsIgnoreCase(ColorId.RAINBOW.getId())
+			if (string.contains(colorPreviewPlaceholder) && !color.equalsIgnoreCase(ColorId.RAINBOW.getId())
 					&& !color.equalsIgnoreCase("gradient")) {
-				modifiedLore.add(string.replace("{color_preview}", color + "this"));
+				modifiedLore.add(string.replace(colorPreviewPlaceholder, color + "this"));
 				continue;
-			} else if (string.contains("{color_preview}") && color.equalsIgnoreCase(ColorId.RAINBOW.getId())) {
-				modifiedLore.add(string.replace("{color_preview}", convertStringToRainbow(
+			} else if (string.contains(colorPreviewPlaceholder) && color.equalsIgnoreCase(ColorId.RAINBOW.getId())) {
+				modifiedLore.add(string.replace(colorPreviewPlaceholder, convertStringToRainbow(
 						"this", false, "")));
 				continue;
-			} else if (string.contains("{color_preview}") && color.equalsIgnoreCase("gradient")) {
-				modifiedLore.add(string.replace("{color_preview}", ChatUtil.generateGradient("this",
+			} else if (string.contains(colorPreviewPlaceholder) && color.equalsIgnoreCase("gradient")) {
+				modifiedLore.add(string.replace(colorPreviewPlaceholder, ChatUtil.generateGradient("this",
 						CompChatColor.of(gradients.get(0)), CompChatColor.of(gradients.get(1)))));
 				continue;
 			}
@@ -506,6 +501,9 @@ public class UltraColorUtil {
 	 */
 	public String getPlayerNameInColor(final Player player) {
 		final PlayerCache pCache = PlayerCache.fromPlayer(player);
+		final String playerName = player.getName();
+		final ChatColor nameFormat = pCache.getNameFormat();
+		final CompChatColor nameColor = pCache.getNameColor();
 
 		if (!pCache.getColoredNickName().equalsIgnoreCase("none"))
 			return pCache.getColoredNickName();
@@ -513,26 +511,29 @@ public class UltraColorUtil {
 			return pCache.getNickName();
 
 		if (pCache.isNameRainbowColors())
-			return convertStringToRainbow(player.getName(), pCache.getNameFormat() != null, pCache.getNameFormat() != null ? pCache.getNameFormat().name() : "");
+			return convertStringToRainbow(playerName, nameFormat != null, nameFormat != null ? nameFormat.name() : "");
 
-		if (pCache.getNameColor() != null) {
-			if (pCache.getNameFormat() != null)
-				return nameAndChatColorToString(pCache.getNameColor()) + nameFormatToString(pCache.getNameFormat()) + player.getName();
+		if (nameColor != null) {
+			if (nameFormat != null)
+				return nameAndChatColorToString(nameColor) + nameFormatToString(nameFormat) + playerName;
 			else
-				return nameAndChatColorToString(pCache.getNameColor()) + player.getName();
+				return nameAndChatColorToString(nameColor) + playerName;
 		} else {
-			if (pCache.getCustomGradient1() != null && pCache.getCustomGradient2() != null) {
-				if (pCache.getNameFormat() != null) {
-					return ChatUtil.generateGradient(nameFormatToString(pCache.getNameFormat()) + player.getName(),
-							pCache.getCustomGradient1(), pCache.getCustomGradient2());
+			final CompChatColor gradientOne = pCache.getCustomGradientOne();
+			final CompChatColor gradientTwo = pCache.getCustomGradientTwo();
+
+			if (gradientOne != null && gradientTwo != null) {
+				if (nameFormat != null) {
+					return ChatUtil.generateGradient(nameFormatToString(nameFormat) + playerName,
+							gradientOne, gradientTwo);
 				}
 
-				return ChatUtil.generateGradient(player.getName(), pCache.getCustomGradient1(), pCache.getCustomGradient2());
+				return ChatUtil.generateGradient(playerName, gradientOne, gradientTwo);
 			}
 
-			if (pCache.getNameFormat() != null) return nameFormatToString(pCache.getNameFormat()) + player.getName();
+			if (nameFormat != null) return nameFormatToString(nameFormat) + playerName;
 		}
 
-		return player.getName();
+		return playerName;
 	}
 }

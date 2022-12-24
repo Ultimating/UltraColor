@@ -3,7 +3,6 @@ package me.ultimategamer200.ultracolor.commands;
 import me.ultimategamer200.ultracolor.menu.ColorSelectionMenu;
 import me.ultimategamer200.ultracolor.settings.Localization;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
-import org.bukkit.entity.Player;
 import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.command.SimpleCommand;
 
@@ -19,7 +18,6 @@ public final class ColorCommand extends SimpleCommand {
 	@Override
 	protected void onCommand() {
 		checkConsole();
-		final Player player = getPlayer();
-		new ColorSelectionMenu().displayTo(player);
+		new ColorSelectionMenu().displayTo(getPlayer());
 	}
 }

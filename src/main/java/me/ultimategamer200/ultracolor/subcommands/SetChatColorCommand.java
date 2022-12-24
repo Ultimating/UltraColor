@@ -75,8 +75,7 @@ public class SetChatColorCommand extends SimpleSubCommand {
 			}
 		} else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId())) {
 			pCache.setChatRainbowColors(true);
-			pCache.setChatCustomGradient1(null);
-			pCache.setChatCustomGradient2(null);
+			pCache.clearGradients("chat");
 
 			tellSuccess(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
 					UltraColorUtil.convertStringToRainbow("this", false, "")));

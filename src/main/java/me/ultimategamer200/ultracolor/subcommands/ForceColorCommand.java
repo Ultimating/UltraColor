@@ -79,8 +79,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 			} else if (color.equalsIgnoreCase("reset")) {
 				pCache.setChatColor(null);
 				pCache.setChatFormat(null);
-				pCache.setChatCustomGradient1(null);
-				pCache.setChatCustomGradient2(null);
+				pCache.clearGradients("chat");
 				pCache.setChatRainbowColors(false);
 
 				tellSuccess(Localization.Other.ADMIN_RESET_COLOR_COMMAND_SUCCESS_MESSAGE.replace("%player%", Objects.requireNonNull(player.getName())));
@@ -94,8 +93,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 			} else if (color.equalsIgnoreCase("reset")) {
 				pCache.setNameColor(null);
 				pCache.setNameFormat(null);
-				pCache.setCustomGradient1(null);
-				pCache.setCustomGradient2(null);
+				pCache.clearGradients("name");
 				pCache.setNameRainbowColors(false);
 
 				if (player.isOnline()) {
@@ -132,9 +130,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 			pCache.setChatColor(color);
 			pCache.setChatFormat(format);
 			pCache.setChatRainbowColors(false);
-
-			pCache.setChatCustomGradient1(null);
-			pCache.setChatCustomGradient2(null);
+			pCache.clearGradients("chat");
 
 			final String successMessage = Localization.Other.ADMIN_SET_FORCE_CHAT_COLOR_SUCCESS_MESSAGE
 					.replace("%new_chat_color%", pCache.getChatColor() + "this")
@@ -149,8 +145,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 				pCache.setNameFormat(null);
 
 			pCache.setNameRainbowColors(false);
-			pCache.setCustomGradient1(null);
-			pCache.setCustomGradient2(null);
+			pCache.clearGradients("name");
 			Player onlinePlayer;
 
 			if (!pCache.getNickName().equalsIgnoreCase("none")) {

@@ -35,8 +35,7 @@ public class ChatGradientPrompt extends SimpleConversation {
 	// An enum that stores the player prompt responses.
 	enum GradientSelections {
 		FIRST_COLOR,
-		SECOND_COLOR,
-		FORMAT
+		SECOND_COLOR
 	}
 
 	/**
@@ -136,8 +135,8 @@ public class ChatGradientPrompt extends SimpleConversation {
 
 		pCache.setChatColor(null);
 		pCache.setChatRainbowColors(false);
-		pCache.setChatCustomGradient1(CompChatColor.of(conversationContext.getSessionData(GradientSelections.FIRST_COLOR).toString()));
-		pCache.setChatCustomGradient2(CompChatColor.of(conversationContext.getSessionData(GradientSelections.SECOND_COLOR).toString()));
+		pCache.setChatCustomGradientOne(CompChatColor.of(conversationContext.getSessionData(GradientSelections.FIRST_COLOR).toString()));
+		pCache.setChatCustomGradientTwo(CompChatColor.of(conversationContext.getSessionData(GradientSelections.SECOND_COLOR).toString()));
 
 		Messenger.success(player, Localization.Gradient_Color_Selection_Custom.SUCCESS_MESSAGE);
 	}

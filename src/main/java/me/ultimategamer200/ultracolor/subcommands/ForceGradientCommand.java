@@ -77,8 +77,8 @@ public class ForceGradientCommand extends SimpleSubCommand {
 
 			pCache.setNameColor(null);
 			pCache.setNameRainbowColors(false);
-			pCache.setCustomGradient1(hex1);
-			pCache.setCustomGradient2(hex2);
+			pCache.setCustomGradientOne(hex1);
+			pCache.setCustomGradientTwo(hex2);
 		} else {
 			if (!Settings.Color_Settings.CHAT_GRADIENT_COLORS) {
 				tellError(Localization.Gradient_Color_Selection.DISABLED_MESSAGE.replace("%type%", "Chat"));
@@ -88,8 +88,8 @@ public class ForceGradientCommand extends SimpleSubCommand {
 			pCache.setChatColor(null);
 			pCache.setChatFormat(null);
 			pCache.setChatRainbowColors(false);
-			pCache.setChatCustomGradient1(hex1);
-			pCache.setChatCustomGradient2(hex2);
+			pCache.setChatCustomGradientOne(hex1);
+			pCache.setChatCustomGradientTwo(hex2);
 		}
 
 		if (args.length < 5) {
@@ -120,9 +120,9 @@ public class ForceGradientCommand extends SimpleSubCommand {
 		if (!pCache.getNickName().equalsIgnoreCase("none") && type.equalsIgnoreCase("name")) {
 			if (args.length >= 5)
 				pCache.setColoredNickName(ChatUtil.generateGradient(UltraColorUtil.nameFormatToString(pCache.getNameFormat())
-						+ pCache.getNickName(), pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+						+ pCache.getNickName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 			else
-				pCache.setColoredNickName(ChatUtil.generateGradient(pCache.getNickName(), pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+				pCache.setColoredNickName(ChatUtil.generateGradient(pCache.getNickName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 		}
 
 		if (player.isOnline()) {

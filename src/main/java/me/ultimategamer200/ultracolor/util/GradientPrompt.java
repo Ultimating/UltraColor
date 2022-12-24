@@ -126,15 +126,15 @@ public class GradientPrompt extends SimpleConversation {
 
 		pCache.setNameColor(null);
 		pCache.setNameRainbowColors(false);
-		pCache.setCustomGradient1(firstGradient);
-		pCache.setCustomGradient2(secondGradient);
+		pCache.setCustomGradientOne(firstGradient);
+		pCache.setCustomGradientTwo(secondGradient);
 		String newDisplayName;
 
 		if (pCache.getNameFormat() == null)
-			newDisplayName = ChatUtil.generateGradient(player.getName(), pCache.getCustomGradient1(), pCache.getCustomGradient2());
+			newDisplayName = ChatUtil.generateGradient(player.getName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo());
 		else {
 			newDisplayName = ChatUtil.generateGradient(UltraColorUtil.nameFormatToString(pCache.getNameFormat())
-					+ player.getName(), pCache.getCustomGradient1(), pCache.getCustomGradient2());
+					+ player.getName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo());
 		}
 
 		player.setDisplayName(newDisplayName);
@@ -142,9 +142,9 @@ public class GradientPrompt extends SimpleConversation {
 		if (!pCache.getNickName().equalsIgnoreCase("none")) {
 			if (pCache.getNameFormat() != null)
 				pCache.setColoredNickName(ChatUtil.generateGradient(UltraColorUtil.nameFormatToString(pCache.getNameFormat())
-						+ pCache.getNickName(), pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+						+ pCache.getNickName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 			else
-				pCache.setColoredNickName(ChatUtil.generateGradient(pCache.getNickName(), pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+				pCache.setColoredNickName(ChatUtil.generateGradient(pCache.getNickName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 			player.setDisplayName(pCache.getColoredNickName());
 		}
 

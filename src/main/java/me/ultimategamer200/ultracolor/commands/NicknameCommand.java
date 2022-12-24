@@ -74,10 +74,10 @@ public class NicknameCommand extends SimpleCommand {
 				if (pCache.getNameColor() != null || pCache.getNameFormat() != null) {
 					if (pCache.getNameColor() != null && pCache.getNameFormat() == null)
 						getPlayer().setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor()) + getPlayer().getName());
-					else if (pCache.getNameColor() != null && pCache.getNameFormat() != null)
+					else if (pCache.getNameColor() != null)
 						getPlayer().setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor())
 								+ UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + getPlayer().getName());
-					else if (pCache.getNameFormat() != null)
+					else
 						getPlayer().setDisplayName(UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + getPlayer().getName());
 				}
 
@@ -88,12 +88,12 @@ public class NicknameCommand extends SimpleCommand {
 						getPlayer().setDisplayName(UltraColorUtil.convertStringToRainbow(getPlayer().getName(), true, pCache.getNameFormat().name()));
 				}
 
-				if (pCache.getCustomGradient1() != null && pCache.getCustomGradient2() != null) {
+				if (pCache.getCustomGradientOne() != null && pCache.getCustomGradientTwo() != null) {
 					if (pCache.getNameFormat() != null)
 						getPlayer().setDisplayName(ChatUtil.generateGradient(UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + getPlayer().getName(),
-								pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+								pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 					else
-						getPlayer().setDisplayName(ChatUtil.generateGradient(getPlayer().getName(), pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+						getPlayer().setDisplayName(ChatUtil.generateGradient(getPlayer().getName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 				}
 			} else {
 				final OfflinePlayer player = Bukkit.getOfflinePlayer(args[1]);
@@ -106,7 +106,7 @@ public class NicknameCommand extends SimpleCommand {
 					if (player.isOnline()) {
 						if (pCache.getNameColor() != null && pCache.getNameFormat() == null)
 							player1.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor()) + player1.getName());
-						else if (pCache.getNameColor() != null && pCache.getNameFormat() != null)
+						else if (pCache.getNameColor() != null)
 							player1.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor())
 									+ UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + player1.getName());
 						else if (pCache.getNameFormat() != null)
@@ -123,13 +123,13 @@ public class NicknameCommand extends SimpleCommand {
 					}
 				}
 
-				if (pCache.getCustomGradient1() != null && pCache.getCustomGradient2() != null) {
+				if (pCache.getCustomGradientOne() != null && pCache.getCustomGradientTwo() != null) {
 					if (player.isOnline()) {
 						if (pCache.getNameFormat() != null)
 							player1.setDisplayName(ChatUtil.generateGradient(UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + player1.getName(),
-									pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+									pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 						else
-							player1.setDisplayName(ChatUtil.generateGradient(player1.getName(), pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+							player1.setDisplayName(ChatUtil.generateGradient(player1.getName(), pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 					}
 				}
 			}
@@ -145,12 +145,12 @@ public class NicknameCommand extends SimpleCommand {
 				colorNickSet = true;
 			}
 
-			if (pCache.getCustomGradient1() != null && pCache.getCustomGradient2() != null && !colorNickSet) {
+			if (pCache.getCustomGradientOne() != null && pCache.getCustomGradientTwo() != null && !colorNickSet) {
 				if (pCache.getNameFormat() != null)
 					pCache.setColoredNickName(ChatUtil.generateGradient(UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + nickName,
-							pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+							pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 				else
-					pCache.setColoredNickName(ChatUtil.generateGradient(nickName, pCache.getCustomGradient1(), pCache.getCustomGradient2()));
+					pCache.setColoredNickName(ChatUtil.generateGradient(nickName, pCache.getCustomGradientOne(), pCache.getCustomGradientTwo()));
 				colorNickSet = true;
 			}
 

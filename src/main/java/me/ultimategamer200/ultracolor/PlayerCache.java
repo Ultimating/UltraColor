@@ -57,22 +57,22 @@ public final class PlayerCache extends YamlConfig {
 	/**
 	 * The first hex color of a player's name gradient.
 	 */
-	private CompChatColor customGradient1;
+	private CompChatColor customGradientOne;
 
 	/**
 	 * The second hex color of a player's name gradient.
 	 */
-	private CompChatColor customGradient2;
+	private CompChatColor customGradientTwo;
 
 	/**
 	 * The first hex color of a player's chat gradient.
 	 */
-	private CompChatColor chatCustomGradient1;
+	private CompChatColor chatCustomGradientOne;
 
 	/**
 	 * The second hex color of a player's chat gradient.
 	 */
-	private CompChatColor chatCustomGradient2;
+	private CompChatColor chatCustomGradientTwo;
 
 	/**
 	 * The player's nickname with no color.
@@ -110,10 +110,10 @@ public final class PlayerCache extends YamlConfig {
 		this.nameColor = get(UltraColorDatabase.DataField.NAME_COLOR.getIdentifier(), CompChatColor.class);
 		this.nameFormat = get(UltraColorDatabase.DataField.NAME_FORMAT.getIdentifier(), ChatColor.class);
 		this.chatFormat = get(UltraColorDatabase.DataField.CHAT_FORMAT.getIdentifier(), CompChatColor.class);
-		this.customGradient1 = get(UltraColorDatabase.DataField.FIRST_NAME_GRADIENT_HEX.getIdentifier(), CompChatColor.class);
-		this.customGradient2 = get(UltraColorDatabase.DataField.SECOND_NAME_GRADIENT_HEX.getIdentifier(), CompChatColor.class);
-		this.chatCustomGradient1 = get(UltraColorDatabase.DataField.FIRST_CHAT_GRADIENT_HEX.getIdentifier(), CompChatColor.class);
-		this.chatCustomGradient2 = get(UltraColorDatabase.DataField.SECOND_CHAT_GRADIENT_HEX.getIdentifier(), CompChatColor.class);
+		this.customGradientOne = get(UltraColorDatabase.DataField.FIRST_NAME_GRADIENT_HEX.getIdentifier(), CompChatColor.class);
+		this.customGradientTwo = get(UltraColorDatabase.DataField.SECOND_NAME_GRADIENT_HEX.getIdentifier(), CompChatColor.class);
+		this.chatCustomGradientOne = get(UltraColorDatabase.DataField.FIRST_CHAT_GRADIENT_HEX.getIdentifier(), CompChatColor.class);
+		this.chatCustomGradientTwo = get(UltraColorDatabase.DataField.SECOND_CHAT_GRADIENT_HEX.getIdentifier(), CompChatColor.class);
 		this.nickName = getString(UltraColorDatabase.DataField.NICKNAME.getIdentifier(), "none");
 		this.coloredNickName = getString(UltraColorDatabase.DataField.COLORED_NICKNAME.getIdentifier(), "none");
 		this.chatRainbowColors = getBoolean(UltraColorDatabase.DataField.CHAT_RAINBOW_COLORS.getIdentifier(), false);
@@ -145,27 +145,35 @@ public final class PlayerCache extends YamlConfig {
 		this.save();
 	}
 
-	public CompChatColor setCustomGradient1(final CompChatColor gradients) {
-		this.customGradient1 = gradients;
-
-		this.save();
-		return gradients;
-	}
-
-	public CompChatColor setCustomGradient2(final CompChatColor gradients) {
-		this.customGradient2 = gradients;
-
-		this.save();
-		return gradients;
-	}
-
-	public void setChatCustomGradient1(final CompChatColor gradients) {
-		this.chatCustomGradient1 = gradients;
+	public void setCustomGradientOne(final CompChatColor gradients) {
+		this.customGradientOne = gradients;
 		this.save();
 	}
 
-	public void setChatCustomGradient2(final CompChatColor gradients) {
-		this.chatCustomGradient2 = gradients;
+	public void setCustomGradientTwo(final CompChatColor gradients) {
+		this.customGradientTwo = gradients;
+		this.save();
+	}
+
+	public void setChatCustomGradientOne(final CompChatColor gradients) {
+		this.chatCustomGradientOne = gradients;
+		this.save();
+	}
+
+	public void setChatCustomGradientTwo(final CompChatColor gradients) {
+		this.chatCustomGradientTwo = gradients;
+		this.save();
+	}
+
+	public void clearGradients(final String type) {
+		if (type.equalsIgnoreCase("chat")) {
+			this.chatCustomGradientOne = null;
+			this.chatCustomGradientTwo = null;
+		} else {
+			this.customGradientOne = null;
+			this.customGradientTwo = null;
+		}
+
 		this.save();
 	}
 
@@ -235,10 +243,10 @@ public final class PlayerCache extends YamlConfig {
 		this.set(UltraColorDatabase.DataField.NAME_COLOR.getIdentifier(), this.nameColor);
 		this.set(UltraColorDatabase.DataField.NAME_FORMAT.getIdentifier(), this.nameFormat);
 		this.set(UltraColorDatabase.DataField.CHAT_FORMAT.getIdentifier(), this.chatFormat);
-		this.set(UltraColorDatabase.DataField.FIRST_NAME_GRADIENT_HEX.getIdentifier(), this.customGradient1);
-		this.set(UltraColorDatabase.DataField.SECOND_NAME_GRADIENT_HEX.getIdentifier(), this.customGradient2);
-		this.set(UltraColorDatabase.DataField.FIRST_CHAT_GRADIENT_HEX.getIdentifier(), this.chatCustomGradient1);
-		this.set(UltraColorDatabase.DataField.SECOND_CHAT_GRADIENT_HEX.getIdentifier(), this.chatCustomGradient2);
+		this.set(UltraColorDatabase.DataField.FIRST_NAME_GRADIENT_HEX.getIdentifier(), this.customGradientOne);
+		this.set(UltraColorDatabase.DataField.SECOND_NAME_GRADIENT_HEX.getIdentifier(), this.customGradientTwo);
+		this.set(UltraColorDatabase.DataField.FIRST_CHAT_GRADIENT_HEX.getIdentifier(), this.chatCustomGradientOne);
+		this.set(UltraColorDatabase.DataField.SECOND_CHAT_GRADIENT_HEX.getIdentifier(), this.chatCustomGradientTwo);
 		this.set(UltraColorDatabase.DataField.NICKNAME.getIdentifier(), this.nickName);
 		this.set(UltraColorDatabase.DataField.COLORED_NICKNAME.getIdentifier(), this.coloredNickName);
 		this.set(UltraColorDatabase.DataField.CHAT_RAINBOW_COLORS.getIdentifier(), this.chatRainbowColors);

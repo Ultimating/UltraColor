@@ -18,7 +18,6 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Consumer;
 
 public class DebugCommand extends SimpleSubCommand {
@@ -92,10 +91,8 @@ public class DebugCommand extends SimpleSubCommand {
 					final YamlConfig config = YamlConfig.fromFile(file);
 					final YamlConfig copyConfig = YamlConfig.fromFile(copy);
 
-					for (final Map.Entry<String, Object> entry : config.getValues(true).entrySet()) {
-						final String key = entry.getKey();
-						if (!key.contains("Database")) copyConfig.set(key, entry.getValue());
-					}
+					for (final String key : config.getKeys(true))
+						if (!key.contains("Database")) copyConfig.set(key, config.getObject(key));
 
 					copyConfig.save(copy);
 				} else
