@@ -9,7 +9,7 @@
 
 Join MineAcademy to learn Java and plugin development and get a 25€ discount!--->
 
-## IMPORTANT: This plugin is now officially discontinued. For more information/reasoning, please see this [here](https://www.spigotmc.org/resources/ultracolor-deprecated.85332/update?update=472752).
+## IMPORTANT: This plugin is now officially at end of life. For more information/reasoning, please see this [here](https://www.spigotmc.org/resources/ultracolor-deprecated.85332/update?update=472752).
 
 # UltraColor
 
