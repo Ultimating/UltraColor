@@ -13,7 +13,6 @@ import org.mineacademy.fo.command.SimpleCommand;
 import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.Remain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HexColorCommand extends SimpleCommand {
@@ -31,140 +30,14 @@ public class HexColorCommand extends SimpleCommand {
 		checkConsole();
 		final String hexCode = args[1];
 		final Player player = getPlayer();
-		final PlayerCache pCache = PlayerCache.fromPlayer(player);
 		final String hexColor = hexCode.length() == 6 ? "#" + hexCode : hexCode;
-		final AllowedHexesData data = AllowedHexesData.getInstance();
 
-		if (hexCode.length() == 6 || hexCode.length() == 7 && Remain.hasHexColors()) {
-			if (args[0].equals("chat") && Settings.Color_Settings.CHAT_HEX_COLORS) {
-				if (Settings.Color_Settings.ALLOW_ONLY_CERTAIN_HEX_COLORS) {
-					if (data.findAllowedHex(hexColor) != null) {
-						final String permission = data.findAllowedHex(hexColor).getPermission();
-						final String type = data.findAllowedHex(hexColor).getType();
-
-						if (type.equalsIgnoreCase("chat") || type.equalsIgnoreCase("both")) {
-							if (player.hasPermission("ultracolor.bypass.hexlimits") || permission.equalsIgnoreCase("None")
-									|| player.hasPermission(permission)) {
-								setHexColor(args[0], hexColor, pCache);
-
-								if (args.length < 3)
-									Messenger.success(player, Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace(
-											"%hex_color%", pCache.getChatColor() + "this"));
-								else {
-									final String format = args[2];
-									pCache.setChatFormat(UltraColorUtil.getFormatToCompChatColor(format));
-									Messenger.success(player, Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace(
-											"%hex_color%", pCache.getChatColor() + UltraColorUtil.chatFormatToString
-													(pCache.getChatFormat()) + "this"));
-								}
-							} else
-								tellError(Localization.Other.NO_PERMISSION.replace("{permission}", permission));
-						}
-					} else if (data.getAllowedHexes().isEmpty())
-						tellError(Localization.Hex_Colors.HEX_COLOR_WHITELIST_EMPTY);
-					else
-						tellError(Localization.Hex_Colors.HEX_COLOR_NOT_ALLOWED_MESSAGE);
-				} else {
-					setHexColor(args[0], hexColor, pCache);
-
-					if (args.length < 3)
-						Messenger.success(player, Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace(
-								"%hex_color%", pCache.getChatColor() + "this"));
-					else {
-						final String format = args[2];
-						pCache.setChatFormat(UltraColorUtil.getFormatToCompChatColor(format));
-						Messenger.success(player, Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace("%hex_color%",
-								pCache.getChatColor() + UltraColorUtil.chatFormatToString(pCache.getChatFormat()) + "this"));
-					}
-				}
-
-				return;
-			} else if (args[0].equalsIgnoreCase("chat") && !Settings.Color_Settings.CHAT_HEX_COLORS) {
-				tellError(Localization.Hex_Colors.DISABLED_TYPE_MESSAGE);
-				return;
-			}
-
-			if (args[0].equals("name") && Settings.Color_Settings.NAME_HEX_COLORS) {
-				if (Settings.Color_Settings.ALLOW_ONLY_CERTAIN_HEX_COLORS) {
-					if (data.findAllowedHex(hexColor) != null) {
-						final String permission = data.findAllowedHex(hexColor).getPermission();
-						final String type = data.findAllowedHex(hexColor).getType();
-
-						if (type.equalsIgnoreCase("name") || type.equalsIgnoreCase("both")) {
-							if (player.hasPermission("ultracolor.bypass.hexlimits") || permission.equalsIgnoreCase("None")
-									|| player.hasPermission(permission)) {
-								setHexColor(args[0], hexColor, pCache);
-
-								if (args.length < 3) {
-									if (!pCache.getNickName().equalsIgnoreCase("none"))
-										player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor()) + pCache.getNickName());
-									else
-										player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor()) + player.getName());
-
-									pCache.setColoredNickName(player.getDisplayName());
-									Messenger.success(player, Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace(
-											"%hex_color%", pCache.getNameColor() + "this"));
-								} else {
-									final String format = args[2];
-									pCache.setNameFormat(UltraColorUtil.getNameFormatToChatColor(format));
-
-									if (!pCache.getNickName().equalsIgnoreCase("none"))
-										player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor())
-												+ UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + pCache.getNickName());
-									else
-										player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor())
-												+ UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + player.getName());
-
-									pCache.setColoredNickName(player.getDisplayName());
-									Messenger.success(player, Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace("%hex_color%",
-											pCache.getNameColor() + UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + "this"));
-								}
-							} else
-								tellError(Localization.Other.NO_PERMISSION.replace("{permission}", permission));
-						}
-					} else if (data.getAllowedHexes().isEmpty())
-						tellError(Localization.Hex_Colors.HEX_COLOR_WHITELIST_EMPTY);
-					else
-						tellError(Localization.Hex_Colors.HEX_COLOR_NOT_ALLOWED_MESSAGE);
-				} else {
-					setHexColor(args[0], hexColor, pCache);
-
-					if (args.length < 3) {
-						if (!pCache.getNickName().equalsIgnoreCase("none"))
-							player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor()) + pCache.getNickName());
-						else
-							player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor()) + player.getName());
-
-						pCache.setColoredNickName(player.getDisplayName());
-						Messenger.success(player, Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace(
-								"%hex_color%", pCache.getNameColor() + "this"));
-					} else {
-						final String format = args[2];
-						pCache.setNameFormat(UltraColorUtil.getNameFormatToChatColor(format));
-
-						if (!pCache.getNickName().equalsIgnoreCase("none"))
-							player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor())
-									+ UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + pCache.getNickName());
-						else
-							player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor())
-									+ UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + player.getName());
-
-						pCache.setColoredNickName(player.getDisplayName());
-						Messenger.success(player, Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace("%hex_color%",
-								pCache.getNameColor() + UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + "this"));
-					}
-				}
-
-				return;
-			} else if (args[0].equalsIgnoreCase("name") && !Settings.Color_Settings.NAME_HEX_COLORS) {
-				tellError(Localization.Hex_Colors.DISABLED_TYPE_MESSAGE);
-				return;
-			}
-		}
+		if (hexCode.length() == 6 || hexCode.length() == 7 && Remain.hasHexColors())
+			setColors(player, hexColor);
 
 		if (!Remain.hasHexColors())
 			Messenger.error(player, Localization.Hex_Colors.HEX_COLOR_UNSUPPORTED_VERSION_MESSAGE);
-		if (hexCode.length() != 6 && Remain.hasHexColors())
+		if (!UltraColorUtil.isHexValid(hexColor) && Remain.hasHexColors())
 			Messenger.error(player, Localization.Hex_Colors.HEX_COLOR_ERROR_MESSAGE);
 	}
 
@@ -183,7 +56,42 @@ public class HexColorCommand extends SimpleCommand {
 		if (args.length == 3)
 			return completeLastWord(ColorId.FormatId.getFormatIds());
 
-		return new ArrayList<>();
+		return NO_COMPLETE;
+	}
+
+	private void setColors(final Player player, final String hexColor) {
+		final AllowedHexesData data = AllowedHexesData.getInstance();
+		final PlayerCache pCache = PlayerCache.fromPlayer(player);
+		final String enteredType = args[0];
+		boolean hexTypeEnabled = Settings.Color_Settings.CHAT_HEX_COLORS;
+
+		if (enteredType.equalsIgnoreCase("name"))
+			hexTypeEnabled = Settings.Color_Settings.NAME_HEX_COLORS;
+
+		if (hexTypeEnabled) {
+			if (Settings.Color_Settings.ALLOW_ONLY_CERTAIN_HEX_COLORS) {
+				if (data.findAllowedHex(hexColor) != null) {
+					final String permission = data.findAllowedHex(hexColor).getPermission();
+					final String type = data.findAllowedHex(hexColor).getType();
+
+					if (type.equalsIgnoreCase(enteredType) || type.equalsIgnoreCase("both")) {
+						if (player.hasPermission("ultracolor.bypass.hexlimits") || permission.equalsIgnoreCase("None")
+								|| player.hasPermission(permission)) {
+							setHexColor(enteredType, hexColor, pCache);
+							setFormat(player, pCache, enteredType);
+						} else
+							tellError(Localization.Other.NO_PERMISSION.replace("{permission}", permission));
+					}
+				} else if (data.getAllowedHexes().isEmpty())
+					tellError(Localization.Hex_Colors.HEX_COLOR_WHITELIST_EMPTY);
+				else
+					tellError(Localization.Hex_Colors.HEX_COLOR_NOT_ALLOWED_MESSAGE);
+			} else {
+				setHexColor(args[0], hexColor, pCache);
+				setFormat(player, pCache, args[0]);
+			}
+		} else
+			tellError(Localization.Hex_Colors.DISABLED_TYPE_MESSAGE);
 	}
 
 	private void setHexColor(final String type, final String hexColor, final PlayerCache pCache) {
@@ -198,5 +106,54 @@ public class HexColorCommand extends SimpleCommand {
 		}
 
 		pCache.clearGradients(type);
+	}
+
+	private void setFormat(final Player player, final PlayerCache pCache, final String type) {
+		final String successMessage;
+
+		if (args.length < 3) {
+			if (type.equalsIgnoreCase("name")) {
+				successMessage = Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace("%hex_color%",
+						pCache.getNameColor() + "this");
+
+				if (!pCache.getNickName().equalsIgnoreCase("none"))
+					player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor()) + pCache.getNickName());
+				else
+					player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor()) + player.getName());
+
+				pCache.setColoredNickName(player.getDisplayName());
+			} else {
+				successMessage = Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace("%hex_color%",
+						pCache.getChatColor() + "this");
+			}
+		} else {
+			final String format = args[2];
+
+			if (!UltraColorUtil.isFormatSelectedAbleToBeSet(type, format, player)) {
+				tellError(Localization.Other.UNABLE_TO_SELECT_FORMAT_MESSAGE);
+				return;
+			}
+
+			if (type.equalsIgnoreCase("name")) {
+				pCache.setNameFormat(UltraColorUtil.getNameFormatToChatColor(format));
+
+				if (!pCache.getNickName().equalsIgnoreCase("none"))
+					player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor())
+							+ UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + pCache.getNickName());
+				else
+					player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor())
+							+ UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + player.getName());
+
+				pCache.setColoredNickName(player.getDisplayName());
+				successMessage = Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace("%hex_color%",
+						pCache.getNameColor() + UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + "this");
+			} else {
+				pCache.setChatFormat(UltraColorUtil.getFormatToCompChatColor(format));
+				successMessage = Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace("%hex_color%",
+						pCache.getChatColor() + UltraColorUtil.chatFormatToString(pCache.getChatFormat()) + "this");
+			}
+		}
+
+		Messenger.success(player, successMessage);
 	}
 }

@@ -108,25 +108,31 @@ public class HexColorPrompt extends SimpleConversation {
 
 	public static class FormatSelect extends SimplePrompt {
 		private final String type;
+		private final String options;
 
 		private FormatSelect(final String type) {
 			this.type = type;
+			this.options = this.type.equalsIgnoreCase("name") ? getAvailableNameOptions() : getAvailableChatOptions();
 		}
 
 		@Override
 		protected String getPrompt(ConversationContext conversationContext) {
-			final String options = this.type.equalsIgnoreCase("name") ? getAvailableNameOptions() : getAvailableChatOptions();
 			return Localization.Hex_Colors.FORMAT_PROMPT.replace("{format_options}", options);
 		}
 
 		@Override
 		protected boolean isInputValid(ConversationContext context, String input) {
+			if (type.equalsIgnoreCase("chat") && !UltraColorUtil.isChatFormatEnabled(input))
+				return false;
+			else if (type.equalsIgnoreCase("name") && !UltraColorUtil.isNameFormatEnabled(input))
+				return false;
+			
 			return ColorId.FormatId.getFormatIds().contains(input.toLowerCase()) || input.equalsIgnoreCase("none");
 		}
 
 		@Override
 		protected String getFailedValidationText(ConversationContext context, String invalidInput) {
-			return "&cPlease type either &ebold, italic, underline, strikethrough, magic, or none&c.";
+			return "&cPlease type either: &e" + options;
 		}
 
 		@Nullable

@@ -32,14 +32,13 @@ public final class PlayerListener implements Listener {
 
 		if (Settings.NOTIFY_UPDATES && updater.isNewVersionAvailable())
 			if (player.isOp() || player.hasPermission(UltraColorPermissions.NOTIFY_UPDATE))
-				Common.runLaterAsync(() -> Common.tell(player, updater.getNotifyMessage()));
+				Common.tell(player, updater.getNotifyMessage());
 
-		if (!Settings.Database.ENABLED) {
-			// Runs this asynchronously for performance reasons.
-			Common.runLaterAsync(() -> player.setDisplayName(UltraColorUtil.getPlayerNameInColor(player)));
-		} else {
+		if (!Settings.Database.ENABLED)
+			player.setDisplayName(UltraColorUtil.getPlayerNameInColor(player));
+		else {
 			// Runs this loading later to allow player connecting to finish.
-			Common.runLaterAsync(25, () -> player.setDisplayName(UltraColorUtil.getPlayerNameInColor(player)));
+			Common.runLater(25, () -> player.setDisplayName(UltraColorUtil.getPlayerNameInColor(player)));
 		}
 
 		// Purge the player's nickname if nicknames are disabled, purging is enabled, and if they have one.
@@ -47,7 +46,7 @@ public final class PlayerListener implements Listener {
 			if (Settings.Other.PURGE_NICKNAMES) {
 				pCache.setNickName("none");
 				pCache.setColoredNickName("none");
-				Common.runLaterAsync(10, () -> player.setDisplayName(UltraColorUtil.getPlayerNameInColor(player)));
+				player.setDisplayName(UltraColorUtil.getPlayerNameInColor(player));
 			}
 		}
 	}

@@ -85,7 +85,11 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 			gradientOne = pCache.getChatCustomGradientOne();
 			gradientTwo = pCache.getChatCustomGradientTwo();
 			color = pCache.getChatColor();
-			format = UltraColorUtil.getNameFormatToChatColor(pCache.getChatFormat().getName());
+
+			if (pCache.getChatFormat() != null)
+				format = UltraColorUtil.getNameFormatToChatColor(pCache.getChatFormat().getName());
+			else
+				format = null;
 		} else {
 			gradientOne = pCache.getCustomGradientOne();
 			gradientTwo = pCache.getCustomGradientTwo();
@@ -93,7 +97,12 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 			format = pCache.getNameFormat();
 		}
 
-		if (gradientOne != null && gradientTwo != null) return gradientOne.toString() + gradientTwo;
+		if (gradientOne != null && gradientTwo != null) {
+			if (format == null)
+				return gradientOne.toString() + gradientTwo;
+			else
+				return gradientOne.toString() + gradientTwo + format;
+		}
 
 		if (color != null || format != null) {
 			if (color != null && format == null)

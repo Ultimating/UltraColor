@@ -98,12 +98,13 @@ public class GradientPrompt extends SimpleConversation {
 
 		@Override
 		protected boolean isInputValid(ConversationContext context, String input) {
+			if (!UltraColorUtil.isNameFormatEnabled(input) && !input.equalsIgnoreCase("none")) return false;
 			return ColorId.FormatId.getFormatIds().contains(input.toLowerCase()) || input.equalsIgnoreCase("none");
 		}
 
 		@Override
 		protected String getFailedValidationText(ConversationContext context, String invalidInput) {
-			return "&cPlease type either &ebold, italic, underline, strikethrough, magic, or none&c.";
+			return "&cPlease type either: &e" + getAvailableOptions();
 		}
 
 		@Nullable

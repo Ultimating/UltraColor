@@ -6,6 +6,7 @@ import lombok.Getter;
  * A pre-gradient is a pre-made gradient that admins can create for players to use in either chat, name, or both!
  * These gradients only work for those 1.16+
  */
+@Getter
 public class PreDefinedGradient {
 	/**
 	 * The name of the gradient.
@@ -15,7 +16,6 @@ public class PreDefinedGradient {
 	/**
 	 * The settings file this gradient belongs to.
 	 */
-	@Getter
 	private final PreDefinedGradientSettings settings;
 
 	public PreDefinedGradient(final String name) {
@@ -25,9 +25,5 @@ public class PreDefinedGradient {
 
 	protected PreDefinedGradientSettings createSettings() {
 		return new PreDefinedGradientSettings(this);
-	}
-
-	public String getName() {
-		return name;
 	}
 }

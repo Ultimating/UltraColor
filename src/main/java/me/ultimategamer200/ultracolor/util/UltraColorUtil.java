@@ -341,13 +341,13 @@ public class UltraColorUtil {
 		if (type.equalsIgnoreCase("name")) permissionStarter = UltraColorPermissions.Color.NAME_FORMAT;
 		else permissionStarter = UltraColorPermissions.Color.CHAT_FORMAT;
 
-		if (player.hasPermission(permissionStarter + ".*") || format.equalsIgnoreCase("none"))
-			return true;
-
 		if (type.equalsIgnoreCase("name")) {
 			if (!isNameFormatEnabled(format)) return false;
 		} else if (type.equalsIgnoreCase("chat"))
 			if (!isChatFormatEnabled(format)) return false;
+
+		if (player.hasPermission(permissionStarter + ".*") || format.equalsIgnoreCase("none"))
+			return true;
 
 		return player.hasPermission(permissionStarter + "." + getFormatToCompChatColor(format).getCode());
 	}
@@ -402,7 +402,7 @@ public class UltraColorUtil {
 			return Settings.Color_Settings_Name_Formats.BOLD_FORMAT;
 		else if (format.equalsIgnoreCase(ColorId.FormatId.ITALIC.getId()))
 			return Settings.Color_Settings_Name_Formats.ITALIC_FORMAT;
-		else if (format.equalsIgnoreCase(ColorId.FormatId.MAGIC.getId()))
+		else if (format.equalsIgnoreCase(ColorId.FormatId.MAGIC.getId()) || format.equalsIgnoreCase(CompChatColor.MAGIC.getName()))
 			return Settings.Color_Settings_Name_Formats.MAGIC_FORMAT;
 		else if (format.equalsIgnoreCase(ColorId.FormatId.STRIKETHROUGH.getId()))
 			return Settings.Color_Settings_Name_Formats.STRIKETHROUGH_FORMAT;
@@ -419,7 +419,7 @@ public class UltraColorUtil {
 			return Settings.Color_Settings_Chat_Formats.BOLD_FORMAT;
 		else if (format.equalsIgnoreCase(ColorId.FormatId.ITALIC.getId()))
 			return Settings.Color_Settings_Chat_Formats.ITALIC_FORMAT;
-		else if (format.equalsIgnoreCase(ColorId.FormatId.MAGIC.getId()))
+		else if (format.equalsIgnoreCase(ColorId.FormatId.MAGIC.getId()) || format.equalsIgnoreCase(CompChatColor.MAGIC.getName()))
 			return Settings.Color_Settings_Chat_Formats.MAGIC_FORMAT;
 		else if (format.equalsIgnoreCase(ColorId.FormatId.STRIKETHROUGH.getId()))
 			return Settings.Color_Settings_Chat_Formats.STRIKETHROUGH_FORMAT;
@@ -483,6 +483,8 @@ public class UltraColorUtil {
 	 * Is the specified hex valid?
 	 */
 	public boolean isHexValid(final String hex) {
+		if (hex.length() == 6 && hex.startsWith("#")) return true;
+
 		return hex.startsWith("#") && hex.length() == 7;
 	}
 
@@ -523,12 +525,8 @@ public class UltraColorUtil {
 			final CompChatColor gradientTwo = pCache.getCustomGradientTwo();
 
 			if (gradientOne != null && gradientTwo != null) {
-				if (nameFormat != null) {
-					return ChatUtil.generateGradient(nameFormatToString(nameFormat) + playerName,
-							gradientOne, gradientTwo);
-				}
-
-				return ChatUtil.generateGradient(playerName, gradientOne, gradientTwo);
+				return ChatUtil.generateGradient(nameFormat != null ? nameFormatToString(nameFormat) + playerName : playerName,
+						gradientOne, gradientTwo);
 			}
 
 			if (nameFormat != null) return nameFormatToString(nameFormat) + playerName;

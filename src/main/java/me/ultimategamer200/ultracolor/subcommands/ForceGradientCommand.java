@@ -68,23 +68,23 @@ public class ForceGradientCommand extends SimpleSubCommand {
 
 	private void applyForcedGradient(final OfflinePlayer player, final String type, final CompChatColor hex1, final CompChatColor hex2) {
 		final PlayerCache pCache = PlayerCache.fromOfflinePlayer(player);
+		boolean gradientEnabled = Settings.Color_Settings.NAME_GRADIENT_COLORS;
+
+		if (type.equalsIgnoreCase("chat"))
+			gradientEnabled = Settings.Color_Settings.CHAT_GRADIENT_COLORS;
+
+		if (!gradientEnabled) {
+			tellError(Localization.Gradient_Color_Selection.DISABLED_MESSAGE.replace("%type%", "Name"));
+			return;
+		}
 
 		if (type.equalsIgnoreCase("name")) {
-			if (!Settings.Color_Settings.NAME_GRADIENT_COLORS) {
-				tellError(Localization.Gradient_Color_Selection.DISABLED_MESSAGE.replace("%type%", "Name"));
-				return;
-			}
-
 			pCache.setNameColor(null);
 			pCache.setNameRainbowColors(false);
+			pCache.setNameFormat(null);
 			pCache.setCustomGradientOne(hex1);
 			pCache.setCustomGradientTwo(hex2);
 		} else {
-			if (!Settings.Color_Settings.CHAT_GRADIENT_COLORS) {
-				tellError(Localization.Gradient_Color_Selection.DISABLED_MESSAGE.replace("%type%", "Chat"));
-				return;
-			}
-
 			pCache.setChatColor(null);
 			pCache.setChatFormat(null);
 			pCache.setChatRainbowColors(false);
@@ -110,10 +110,21 @@ public class ForceGradientCommand extends SimpleSubCommand {
 			}
 
 			if (ColorId.FormatId.getFormatIds().contains(format)) {
-				if (type.equalsIgnoreCase("name"))
-					pCache.setNameFormat(UltraColorUtil.getNameFormatToChatColor(format));
-				else
-					pCache.setChatFormat(UltraColorUtil.getFormatToCompChatColor(format));
+				if (type.equalsIgnoreCase("name")) {
+					if (UltraColorUtil.isNameFormatEnabled(format))
+						pCache.setNameFormat(UltraColorUtil.getNameFormatToChatColor(format));
+					else {
+						tellError(Localization.Other.UNABLE_TO_SELECT_FORMAT_MESSAGE);
+						return;
+					}
+				} else {
+					if (UltraColorUtil.isChatFormatEnabled(format))
+						pCache.setChatFormat(UltraColorUtil.getFormatToCompChatColor(format));
+					else {
+						tellError(Localization.Other.UNABLE_TO_SELECT_FORMAT_MESSAGE);
+						return;
+					}
+				}
 			}
 		}
 

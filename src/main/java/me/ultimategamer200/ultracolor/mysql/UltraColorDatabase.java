@@ -6,7 +6,6 @@ import me.ultimategamer200.ultracolor.PlayerCache;
 import me.ultimategamer200.ultracolor.settings.Settings;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
-import org.mineacademy.fo.Common;
 import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.database.SimpleFlatDatabase;
 import org.mineacademy.fo.remain.CompChatColor;
@@ -50,25 +49,21 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 		final Boolean chatRainbowColors = map.getBoolean(DataField.CHAT_RAINBOW_COLORS.getIdentifier(), false);
 		final Boolean nameRainbowColors = map.getBoolean(DataField.NAME_RAINBOW_COLORS.getIdentifier(), false);
 
-		if (chatColor != null) Common.runLater(() -> data.setChatColor(chatColor));
-		if (chatFormat != null) Common.runLater(() -> data.setChatFormat(chatFormat));
-		if (nameColor != null) Common.runLater(() -> data.setNameColor(nameColor));
-		if (nameFormat != null) Common.runLater(() -> data.setNameFormat(nameFormat));
+		if (chatColor != null) data.setChatColor(chatColor);
+		if (chatFormat != null) data.setChatFormat(chatFormat);
+		if (nameColor != null) data.setNameColor(nameColor);
+		if (nameFormat != null) data.setNameFormat(nameFormat);
 
-		if (firstCustomGradient != null) Common.runLater(() -> data.setCustomGradientOne(firstCustomGradient));
-		if (secondCustomGradient != null) Common.runLater(() -> data.setCustomGradientTwo(secondCustomGradient));
+		if (firstCustomGradient != null) data.setCustomGradientOne(firstCustomGradient);
+		if (secondCustomGradient != null) data.setCustomGradientTwo(secondCustomGradient);
 
-		if (firstChatCustomGradient != null)
-			Common.runLater(() -> data.setChatCustomGradientOne(firstChatCustomGradient));
-		if (secondChatCustomGradient != null)
-			Common.runLater(() -> data.setChatCustomGradientTwo(secondChatCustomGradient));
+		if (firstChatCustomGradient != null) data.setChatCustomGradientOne(firstChatCustomGradient);
+		if (secondChatCustomGradient != null) data.setChatCustomGradientTwo(secondChatCustomGradient);
 
-		Common.runLater(() -> {
-			data.setChatRainbowColors(chatRainbowColors);
-			data.setNameRainbowColors(nameRainbowColors);
-			data.setNickName(nickName);
-			data.setColoredNickName(coloredNickname);
-		});
+		data.setChatRainbowColors(chatRainbowColors);
+		data.setNameRainbowColors(nameRainbowColors);
+		data.setNickName(nickName);
+		data.setColoredNickName(coloredNickname);
 	}
 
 	/**
@@ -124,8 +119,7 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 	 * @throws SQLException
 	 */
 	public OfflinePlayer getStoredPlayerByUUID(final UUID uuid) throws SQLException {
-		if (!isPlayerStored(uuid))
-			return null;
+		if (!isPlayerStored(uuid)) return null;
 
 		ResultSet resultSet = selectUser(uuid);
 		resultSet.next();
@@ -137,9 +131,7 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 	 */
 	public String getStoredNick(final OfflinePlayer player) throws SQLException {
 		final UUID uuid = player.getUniqueId();
-
-		if (getStoredPlayerByUUID(uuid) == null)
-			return "";
+		if (getStoredPlayerByUUID(uuid) == null) return "";
 
 		ResultSet resultSet = selectUser(uuid);
 		String dataRaw = resultSet.next() ? resultSet.getString("Data") : "{}";

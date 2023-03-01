@@ -51,11 +51,6 @@ public class SetGradientCommand extends SimpleSubCommand {
 
 							if (args.length == 3) {
 								if (ColorId.FormatId.getFormatIds().contains(args[2])) {
-									if (!UltraColorUtil.isChatFormatEnabled(args[2])) {
-										tellError("The chat format you selected is disabled or doesn't exist! Notify an admin if this is an error.");
-										return;
-									}
-
 									if (!UltraColorUtil.isFormatSelectedAbleToBeSet("chat", args[2], getPlayer())) {
 										tellError(Localization.Other.UNABLE_TO_SELECT_FORMAT_MESSAGE);
 										return;
@@ -103,11 +98,6 @@ public class SetGradientCommand extends SimpleSubCommand {
 								|| player.hasPermission("ultracolor.namegradient.*")) {
 							if (args.length == 3) {
 								if (ColorId.FormatId.getFormatIds().contains(args[2])) {
-									if (!UltraColorUtil.isNameFormatEnabled(args[2])) {
-										tellError("The name format you selected is disabled or doesn't exist! Notify an admin if this is an error.");
-										return;
-									}
-
 									if (!UltraColorUtil.isFormatSelectedAbleToBeSet("name", args[2], getPlayer())) {
 										tellError(Localization.Other.UNABLE_TO_SELECT_FORMAT_MESSAGE);
 										return;
@@ -178,10 +168,8 @@ public class SetGradientCommand extends SimpleSubCommand {
 		colors.add("custom");
 		colors.add("reset");
 
-		if (args.length == 1)
-			return completeLastWord("chat", "name");
-		if (args.length == 2)
-			return completeLastWord(colors);
+		if (args.length == 1) return completeLastWord("chat", "name");
+		if (args.length == 2) return completeLastWord(colors);
 
 		return null;
 	}

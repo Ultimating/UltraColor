@@ -9,12 +9,10 @@ import me.ultimategamer200.ultracolor.util.UltraColorUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.mineacademy.fo.Common;
 import org.mineacademy.fo.command.SimpleSubCommand;
 import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.Remain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -67,13 +65,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 
 		if (colorType.equalsIgnoreCase("chat")) {
 			if (color.equalsIgnoreCase(ColorId.RAINBOW.getId()) && Settings.Color_Settings.CHAT_RAINBOW_COLORS) {
-				if (args.length >= 4)
-					pCache.setChatFormat(format);
-				else
-					pCache.setChatFormat(null);
-
-				final boolean isFormatSelected = pCache.getChatFormat() != null;
-				applyForcedRainbow(player, colorType, isFormatSelected);
+				applyForcedRainbow(player, colorType, format != null, format);
 			} else if (color.equalsIgnoreCase("none")) {
 				applyForcedColor(colorType, null, format, player);
 			} else if (color.equalsIgnoreCase("reset")) {
@@ -87,7 +79,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 				tellError("Rainbow colors are disabled in the settings.yml file!");
 		} else if (colorType.equalsIgnoreCase("name")) {
 			if (color.equalsIgnoreCase(ColorId.RAINBOW.getId()) && Settings.Color_Settings.NAME_RAINBOW_COLORS) {
-				applyForcedRainbow(player, colorType, format != null);
+				applyForcedRainbow(player, colorType, format != null, format);
 			} else if (color.equalsIgnoreCase("none")) {
 				applyForcedColor(colorType, null, format, player);
 			} else if (color.equalsIgnoreCase("reset")) {
@@ -119,7 +111,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 		if (args.length == 4)
 			return completeLastWord(ColorId.FormatId.getFormatIds());
 
-		return new ArrayList<>();
+		return NO_COMPLETE;
 	}
 
 	private void applyForcedColor(final String type, final CompChatColor color, final CompChatColor format, final OfflinePlayer player) {
@@ -128,20 +120,35 @@ public class ForceColorCommand extends SimpleSubCommand {
 
 		if (type.equalsIgnoreCase("chat")) {
 			pCache.setChatColor(color);
-			pCache.setChatFormat(format);
+
+			if (format != null) {
+				if (UltraColorUtil.isChatFormatEnabled(format.getName()))
+					pCache.setChatFormat(format);
+				else {
+					tellError(Localization.Other.UNABLE_TO_SELECT_FORMAT_MESSAGE);
+					return;
+				}
+			} else
+				pCache.setChatFormat(null);
+
 			pCache.setChatRainbowColors(false);
 			pCache.clearGradients("chat");
 
 			final String successMessage = Localization.Other.ADMIN_SET_FORCE_CHAT_COLOR_SUCCESS_MESSAGE
 					.replace("%new_chat_color%", pCache.getChatColor() + "this")
 					.replace("%player%", Objects.requireNonNull(player.getName()));
-			Common.runLaterAsync(10, () -> tellSuccess(successMessage));
+			tellSuccess(successMessage);
 		} else {
 			pCache.setNameColor(color);
 
-			if (format != null)
-				pCache.setNameFormat(UltraColorUtil.getNameFormatToChatColor(format.getName()));
-			else
+			if (format != null) {
+				if (UltraColorUtil.isNameFormatEnabled(format.getName()))
+					pCache.setNameFormat(UltraColorUtil.getNameFormatToChatColor(format.getName()));
+				else {
+					tellError(Localization.Other.UNABLE_TO_SELECT_FORMAT_MESSAGE);
+					return;
+				}
+			} else
 				pCache.setNameFormat(null);
 
 			pCache.setNameRainbowColors(false);
@@ -178,45 +185,62 @@ public class ForceColorCommand extends SimpleSubCommand {
 			if (color != null) {
 				successMessage = Localization.Other.ADMIN_SET_FORCE_NAME_COLOR_SUCCESS_MESSAGE.replace("%new_name_color%",
 						pCache.getNameColor() + "this").replace("%player%", Objects.requireNonNull(player.getName()));
-				Common.runLaterAsync(10, () -> tellSuccess(successMessage));
 			} else {
 				successMessage = Localization.Other.ADMIN_SET_FORCE_NAME_COLOR_SUCCESS_MESSAGE.replace("%new_name_color%", "none")
 						.replace("%player%", Objects.requireNonNull(player.getName()));
 			}
 
-			Common.runLaterAsync(10, () -> tellSuccess(successMessage));
+			tellSuccess(successMessage);
 
 			if (format != null) {
 				final String formatSuccessMessage = Localization.Other.ADMIN_SET_FORCE_NAME_FORMAT_SUCCESS_MESSAGE.replace("%new_name_format%",
 								pCache.getNameFormat() != null ? pCache.getNameFormat() + "this" : "none")
 						.replace("%player%", Objects.requireNonNull(player.getName()));
-
-				Common.runLaterAsync(10, () -> tellSuccess(formatSuccessMessage));
+				tellSuccess(formatSuccessMessage);
 			}
 		}
 	}
 
-	public void applyForcedRainbow(final OfflinePlayer player, final String type, final boolean isFormatEnabled) {
+	public void applyForcedRainbow(final OfflinePlayer player, final String type, final boolean isFormatSelected, final CompChatColor format) {
 		final PlayerCache pCache = PlayerCache.fromOfflinePlayer(player);
 
 		if (type.equalsIgnoreCase("name")) {
+			if (isFormatSelected) {
+				if (!UltraColorUtil.isNameFormatEnabled(pCache.getNameFormat().name())) {
+					tellError(Localization.Other.UNABLE_TO_SELECT_FORMAT_MESSAGE);
+					return;
+				}
+
+				pCache.setNameFormat(UltraColorUtil.getNameFormatToChatColor(format.getName()));
+			} else
+				pCache.setNameFormat(null);
+
 			Player onlinePlayer;
 
 			if (player.isOnline()) {
 				onlinePlayer = (Player) player;
-				UltraColorUtil.convertNameToRainbow(onlinePlayer, isFormatEnabled, isFormatEnabled
+				UltraColorUtil.convertNameToRainbow(onlinePlayer, isFormatSelected, isFormatSelected
 						? pCache.getNameFormat().name() : "");
 			}
 
 			tellSuccess(Localization.Other.ADMIN_SET_FORCE_NAME_COLOR_SUCCESS_MESSAGE.replace("%new_name_color%", UltraColorUtil.convertStringToRainbow(
-							"this", isFormatEnabled, isFormatEnabled ? pCache.getNameFormat().name() : ""))
+							"this", isFormatSelected, isFormatSelected ? pCache.getNameFormat().name() : ""))
 					.replace("%player%", Objects.requireNonNull(player.getName())));
 		} else {
 			pCache.setChatColor(null);
 			pCache.setChatRainbowColors(true);
 
+			if (isFormatSelected) {
+				if (!UltraColorUtil.isChatFormatEnabled(pCache.getChatFormat().getName())) {
+					tellError(Localization.Other.UNABLE_TO_SELECT_FORMAT_MESSAGE);
+					return;
+				}
+				pCache.setChatFormat(format);
+			} else
+				pCache.setChatFormat(null);
+
 			tellSuccess(Localization.Other.ADMIN_SET_FORCE_CHAT_COLOR_SUCCESS_MESSAGE.replace("%new_chat_color%",
-					UltraColorUtil.convertStringToRainbow("this", isFormatEnabled, isFormatEnabled
+					UltraColorUtil.convertStringToRainbow("this", isFormatSelected, isFormatSelected
 							? pCache.getChatFormat().getName() : "")).replace("%player%", Objects.requireNonNull(player.getName())));
 		}
 	}
