@@ -7,14 +7,14 @@
     <groupId>me.ultimategamer200.ultracolor</groupId>
     <artifactId>ultracolor</artifactId>
     <name>UltraColor</name>
-    <version>1.6.2</version>
+    <version>1.6.3</version>
 
     <properties>
         <!-- The full path to your plugin's main class, so that Spigot can find and load it -->
         <main.class>me.ultimategamer200.ultracolor.UltraColorPlugin</main.class>
 
         <!-- Find latest version here: https://github.com/kangarko/Foundation/releases -->
-        <foundation.version>6.3.0</foundation.version>
+        <foundation.version>6.3.3</foundation.version>
         <foundation.path>com.github.kangarko</foundation.path>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
