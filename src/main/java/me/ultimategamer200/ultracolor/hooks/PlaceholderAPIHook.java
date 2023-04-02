@@ -30,26 +30,21 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 
 	@Override
 	public String onRequest(OfflinePlayer player, @NotNull String identifier) {
-		if (player == null)
-			return "";
+		if (player == null) return "";
 
 		final PlayerCache pCache = PlayerCache.fromOfflinePlayer(player);
 		final String playerName = player.getName();
 		final ChatColor nameFormat = pCache.getNameFormat();
 		final String format = nameFormat != null ? nameFormat.name() : "";
 
-		if (identifier.equals("chat_color"))
-			return colorizeColorPlaceholder(pCache, "chat");
-		if (identifier.equals("name_color"))
-			return colorizeColorPlaceholder(pCache, "name");
-		if (identifier.equals("chat_color_name"))
-			return colorizeColorNamePlaceholder(pCache, "chat");
-		if (identifier.equals("name_color_name"))
-			return colorizeColorNamePlaceholder(pCache, "name");
+		if (identifier.equals("chat_color")) return colorizeColorPlaceholder(pCache, "chat");
+		if (identifier.equals("name_color")) return colorizeColorPlaceholder(pCache, "name");
+		if (identifier.equals("chat_color_name")) return colorizeColorNamePlaceholder(pCache, "chat");
+		if (identifier.equals("name_color_name")) return colorizeColorNamePlaceholder(pCache, "name");
 
 		if (identifier.equals("nickname")) {
 			if (!pCache.getNickName().equalsIgnoreCase("none")) return pCache.getNickName();
-			else return "None";
+			else return playerName;
 		}
 
 		if (identifier.equals("colored_nickname")) {
