@@ -126,7 +126,7 @@ public class HexColorPrompt extends SimpleConversation {
 				return false;
 			else if (type.equalsIgnoreCase("name") && !UltraColorUtil.isNameFormatEnabled(input))
 				return false;
-			
+
 			return ColorId.FormatId.getFormatIds().contains(input.toLowerCase()) || input.equalsIgnoreCase("none");
 		}
 
@@ -177,8 +177,8 @@ public class HexColorPrompt extends SimpleConversation {
 				getPlayer(conversationContext).setDisplayName(UltraColorUtil.getPlayerNameInColor(getPlayer(conversationContext)));
 			}
 
-			String hexDisplay = hexColor + "this";
-			if (addFormat) hexDisplay = hexColor + UltraColorUtil.nameFormatToString(format) + "this";
+			String hexDisplay = hexColor.getName();
+			if (addFormat) hexDisplay = UltraColorUtil.nameFormatToString(format) + hexColor.getName();
 
 			Messenger.success(getPlayer(conversationContext), Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace(
 					"%hex_color%", hexDisplay));

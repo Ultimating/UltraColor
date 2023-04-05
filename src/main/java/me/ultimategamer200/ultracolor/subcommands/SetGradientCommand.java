@@ -107,7 +107,7 @@ public class SetGradientCommand extends SimpleSubCommand {
 									pCache.setNameFormat(format);
 
 									tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace(
-											"{color}", UltraColorUtil.nameFormatToString(format) + "this"));
+											"{color}", ChatUtil.capitalizeFirst(format.name())));
 								} else
 									tellError(INVALID_FORMAT_MESSAGE);
 							} else

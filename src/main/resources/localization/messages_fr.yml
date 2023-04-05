@@ -44,7 +44,7 @@ Main_GUI_Customization:
     # La taille du menu GUI (la valeur maximale est 54).
     Size: 54
     Slot: 10
-    Success_Message: "Choisi {color}!"
+    Success_Message: "Choisi {color} &rDiscuter!"
     # Les joueurs de message verront s'ils n'ont pas la permission pour une couleur / un format de chat spécifique.
     Error_Message: "&cPermission insuffisante. Veuillez informer un administrateur!"
     # Le message que les joueurs verront lorsqu'ils survoleront le bouton d'information dans le menu.
@@ -61,7 +61,7 @@ Main_GUI_Customization:
     # La taille du menu GUI (la valeur maximale est 54).
     Size: 54
     Slot: 16
-    Success_Message: "Choisi {color}!"
+    Success_Message: "Choisi {color} &rNom!"
     # Les joueurs de message verront s'ils n'ont pas la permission pour une couleur / un format de chat spécifique.
     Error_Message: "&cPermission insuffisante. Veuillez informer un administrateur!"
     # Die Nachricht, die Spieler sehen, wenn sie auf der Info-Schaltfläche im Menü schweben.

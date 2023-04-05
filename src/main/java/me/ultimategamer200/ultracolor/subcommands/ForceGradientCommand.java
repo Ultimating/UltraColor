@@ -154,8 +154,8 @@ public class ForceGradientCommand extends SimpleSubCommand {
 			}
 
 			Messenger.info(onlinePlayer, Localization.Other.ADMIN_SET_GRADIENT_COLOR_SUCCESS_MESSAGE.replace("%new_gradient%",
-							ChatUtil.generateGradient(pCache.getNameFormat() != null ? pCache.getNameFormat() + "this" : "this", hex1, hex2))
-					.replace("%gradient_type%", type));
+					ChatUtil.generateGradient(pCache.getNameFormat() != null ? ChatUtil.capitalizeFirst(pCache.getNameFormat().name())
+							: "this", hex1, hex2)).replace("%gradient_type%", type));
 		}
 
 		tellSuccess(Localization.Gradient_Color_Selection_Custom.SUCCESS_MESSAGE);

@@ -93,17 +93,13 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 		}
 
 		if (gradientOne != null && gradientTwo != null) {
-			if (format == null)
-				return gradientOne.toString() + gradientTwo;
-			else
-				return gradientOne.toString() + gradientTwo + format;
+			if (format == null) return gradientOne.toString() + gradientTwo;
+			else return gradientOne.toString() + gradientTwo + format;
 		}
 
 		if (color != null || format != null) {
-			if (color != null && format == null)
-				return color.toString();
-			else if (color != null)
-				return color + format.toString();
+			if (color != null && format == null) return color.toString();
+			else if (color != null) return color + format.toString();
 		}
 
 		return "";
@@ -141,8 +137,8 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 
 		if (color != null) {
 			if (color.isHex()) {
-				if (format != null) return color + UltraColorUtil.nameFormatToString(format) + "this";
-				return color + "this";
+				if (format != null) return UltraColorUtil.nameFormatToString(format) + color.getName();
+				return color.getName();
 			}
 
 			if (format != null) return UltraColorUtil.nameFormatToString(format) + color.getName();

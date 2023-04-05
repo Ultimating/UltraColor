@@ -44,7 +44,7 @@ Main_GUI_Customization:
     # Die Größe des GUI-Menüs (Maximalwert ist 54).
     Size: 54
     Slot: 10
-    Success_Message: "Ausgewählt {color}!"
+    Success_Message: "Ausgewählt {color} &rPlaudern!"
     # Die Nachrichtenspieler sehen, ob sie keine Berechtigung für eine bestimmte Chatfarbe / ein bestimmtes Chatformat haben.
     Error_Message: "&cUnzureichende Erlaubnis. Bitte benachrichtigen Sie einen Administrator!!"
     # Die Nachricht, die Spieler sehen, wenn sie auf der Info-Schaltfläche im Menü schweben.
@@ -61,7 +61,7 @@ Main_GUI_Customization:
     # Die Größe des GUI-Menüs (Maximalwert ist 54).
     Size: 54
     Slot: 16
-    Success_Message: "Ausgewählt {color}!"
+    Success_Message: "Ausgewählt {color} &rname!"
     # Die Nachrichtenspieler sehen, ob sie keine Berechtigung für eine bestimmte Namensfarbe / ein bestimmtes Format haben.
     Error_Message: "&cUnzureichende Erlaubnis. Bitte benachrichtigen Sie einen Administrator!!"
     # Die Nachricht, die Spieler sehen, wenn sie auf der Info-Schaltfläche im Menü schweben.

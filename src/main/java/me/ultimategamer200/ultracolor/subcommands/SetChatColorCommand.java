@@ -6,6 +6,7 @@ import me.ultimategamer200.ultracolor.util.ColorId;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
 import me.ultimategamer200.ultracolor.util.UltraColorUtil;
 import org.bukkit.OfflinePlayer;
+import org.mineacademy.fo.ChatUtil;
 import org.mineacademy.fo.command.SimpleSubCommand;
 
 import java.util.List;
@@ -55,10 +56,8 @@ public class SetChatColorCommand extends SimpleSubCommand {
 
 	@Override
 	protected List<String> tabComplete() {
-		if (args.length == 1)
-			return completeLastWord(ColorId.getColorIds());
-		if (args.length == 2)
-			return completeLastWord(ColorId.FormatId.getFormatIds());
+		if (args.length == 1) return completeLastWord(ColorId.getColorIds());
+		if (args.length == 2) return completeLastWord(ColorId.FormatId.getFormatIds());
 		return super.tabComplete();
 	}
 
@@ -73,12 +72,15 @@ public class SetChatColorCommand extends SimpleSubCommand {
 					break;
 				}
 			}
+
+			tellSuccess(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
+					ChatUtil.capitalizeFirst(color)));
 		} else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId())) {
 			pCache.setChatRainbowColors(true);
 			pCache.clearGradients("chat");
 
 			tellSuccess(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					UltraColorUtil.convertStringToRainbow("this", false, "")));
+					ChatUtil.capitalizeFirst(color)));
 		} else {
 			pCache.setChatColor(null);
 			pCache.setChatRainbowColors(false);
@@ -98,12 +100,15 @@ public class SetChatColorCommand extends SimpleSubCommand {
 					break;
 				}
 			}
+
+			tellSuccess(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
+					ChatUtil.capitalizeFirst(format)));
 		} else if (color.equalsIgnoreCase("none")) {
-			tellSuccess("Format set to {format}!");
+			tellSuccess("Format set to none!");
 		} else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId())) {
 			pCache.setChatRainbowColors(true);
 			tellSuccess(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					UltraColorUtil.convertStringToRainbow("this", true, format)));
+					ChatUtil.capitalizeFirst(format)));
 		} else {
 			pCache.setChatColor(null);
 			pCache.setChatFormat(null);

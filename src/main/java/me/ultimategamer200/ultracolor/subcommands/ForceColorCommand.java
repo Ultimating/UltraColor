@@ -9,6 +9,7 @@ import me.ultimategamer200.ultracolor.util.UltraColorUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.mineacademy.fo.ChatUtil;
 import org.mineacademy.fo.command.SimpleSubCommand;
 import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.Remain;
@@ -135,7 +136,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 			pCache.clearGradients("chat");
 
 			final String successMessage = Localization.Other.ADMIN_SET_FORCE_CHAT_COLOR_SUCCESS_MESSAGE
-					.replace("%new_chat_color%", pCache.getChatColor() + "this")
+					.replace("%new_chat_color%", pCache.getChatColor().getName())
 					.replace("%player%", Objects.requireNonNull(player.getName()));
 			tellSuccess(successMessage);
 		} else {
@@ -184,7 +185,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 
 			if (color != null) {
 				successMessage = Localization.Other.ADMIN_SET_FORCE_NAME_COLOR_SUCCESS_MESSAGE.replace("%new_name_color%",
-						pCache.getNameColor() + "this").replace("%player%", Objects.requireNonNull(player.getName()));
+						ChatUtil.capitalizeFirst(pCache.getNameColor().getName())).replace("%player%", Objects.requireNonNull(player.getName()));
 			} else {
 				successMessage = Localization.Other.ADMIN_SET_FORCE_NAME_COLOR_SUCCESS_MESSAGE.replace("%new_name_color%", "none")
 						.replace("%player%", Objects.requireNonNull(player.getName()));
@@ -194,7 +195,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 
 			if (format != null) {
 				final String formatSuccessMessage = Localization.Other.ADMIN_SET_FORCE_NAME_FORMAT_SUCCESS_MESSAGE.replace("%new_name_format%",
-								pCache.getNameFormat() != null ? pCache.getNameFormat() + "this" : "none")
+								pCache.getNameFormat() != null ? ChatUtil.capitalizeFirst(pCache.getNameFormat().name()) : "none")
 						.replace("%player%", Objects.requireNonNull(player.getName()));
 				tellSuccess(formatSuccessMessage);
 			}
@@ -205,6 +206,8 @@ public class ForceColorCommand extends SimpleSubCommand {
 		final PlayerCache pCache = PlayerCache.fromOfflinePlayer(player);
 
 		if (type.equalsIgnoreCase("name")) {
+			pCache.setNameRainbowColors(true);
+
 			if (isFormatSelected) {
 				if (!UltraColorUtil.isNameFormatEnabled(pCache.getNameFormat().name())) {
 					tellError(Localization.Other.UNABLE_TO_SELECT_FORMAT_MESSAGE);
@@ -223,9 +226,8 @@ public class ForceColorCommand extends SimpleSubCommand {
 						? pCache.getNameFormat().name() : "");
 			}
 
-			tellSuccess(Localization.Other.ADMIN_SET_FORCE_NAME_COLOR_SUCCESS_MESSAGE.replace("%new_name_color%", UltraColorUtil.convertStringToRainbow(
-							"this", isFormatSelected, isFormatSelected ? pCache.getNameFormat().name() : ""))
-					.replace("%player%", Objects.requireNonNull(player.getName())));
+			tellSuccess(Localization.Other.ADMIN_SET_FORCE_NAME_COLOR_SUCCESS_MESSAGE.replace("%new_name_color%",
+					ChatUtil.capitalizeFirst("rainbow")).replace("%player%", Objects.requireNonNull(player.getName())));
 		} else {
 			pCache.setChatColor(null);
 			pCache.setChatRainbowColors(true);
@@ -240,8 +242,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 				pCache.setChatFormat(null);
 
 			tellSuccess(Localization.Other.ADMIN_SET_FORCE_CHAT_COLOR_SUCCESS_MESSAGE.replace("%new_chat_color%",
-					UltraColorUtil.convertStringToRainbow("this", isFormatSelected, isFormatSelected
-							? pCache.getChatFormat().getName() : "")).replace("%player%", Objects.requireNonNull(player.getName())));
+					ChatUtil.capitalizeFirst("rainbow")).replace("%player%", Objects.requireNonNull(player.getName())));
 		}
 	}
 }

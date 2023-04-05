@@ -6,6 +6,7 @@ import me.ultimategamer200.ultracolor.util.ColorId;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
 import me.ultimategamer200.ultracolor.util.UltraColorUtil;
 import org.bukkit.entity.Player;
+import org.mineacademy.fo.ChatUtil;
 import org.mineacademy.fo.command.SimpleSubCommand;
 
 import java.util.List;
@@ -74,10 +75,13 @@ public class SetNameColorCommand extends SimpleSubCommand {
 					break;
 				}
 			}
+
+			tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
+					ChatUtil.capitalizeFirst(color)));
 		} else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId())) {
 			UltraColorUtil.convertNameToRainbow(player, false, "");
 			tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					UltraColorUtil.convertStringToRainbow("this", false, "")));
+					ChatUtil.capitalizeFirst(color)));
 		} else {
 			pCache.setNameColor(null);
 			pCache.setNameRainbowColors(false);
@@ -96,13 +100,16 @@ public class SetNameColorCommand extends SimpleSubCommand {
 					break;
 				}
 			}
+
+			tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
+					ChatUtil.capitalizeFirst(color)));
 		} else if (color.equalsIgnoreCase("none")) {
 			tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					UltraColorUtil.nameFormatToString(UltraColorUtil.getNameFormatToChatColor(format)) + "this"));
+					ChatUtil.capitalizeFirst(color)));
 		} else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId())) {
 			UltraColorUtil.convertNameToRainbow(player, true, format);
 			tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					UltraColorUtil.convertStringToRainbow("this", true, format)));
+					ChatUtil.capitalizeFirst(color)));
 		} else {
 			pCache.setNameColor(null);
 			pCache.setNameFormat(null);

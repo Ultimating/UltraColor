@@ -44,7 +44,7 @@ Main_GUI_Customization:
     # El tamaño del menú GUI (el valor máximo es 54).
     Size: 54
     Slot: 10
-    Success_Message: "Seleccionado {color}!"
+    Success_Message: "Seleccionado {color} &rCharlar!"
     # Los jugadores de mensajes verán si no tienen permiso para un color / formato de chat específico.
     Error_Message: "&cPermiso insuficiente. ¡Notifique a un administrador!"
     # El mensaje que los jugadores verán cuando pasen el cursor sobre la estrella inferior del menú.
@@ -61,7 +61,7 @@ Main_GUI_Customization:
     # El tamaño del menú GUI (el valor máximo es 54).
     Size: 54
     Slot: 16
-    Success_Message: "Seleccionado {color}!"
+    Success_Message: "Seleccionado {color} &rNombre!"
     # Los reproductores de mensajes verán si no tienen permiso para un color / formato de nombre específico.
     Error_Message: "&cPermiso insuficiente. ¡Notifique a un administrador!"
     # El mensaje que los jugadores verán cuando pasen el cursor sobre la estrella inferior del menú.

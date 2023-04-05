@@ -114,7 +114,7 @@ public class HexColorCommand extends SimpleCommand {
 		if (args.length < 3) {
 			if (type.equalsIgnoreCase("name")) {
 				successMessage = Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace("%hex_color%",
-						pCache.getNameColor() + "this");
+						pCache.getNameColor().getName());
 
 				if (!pCache.getNickName().equalsIgnoreCase("none"))
 					player.setDisplayName(UltraColorUtil.nameAndChatColorToString(pCache.getNameColor()) + pCache.getNickName());
@@ -124,7 +124,7 @@ public class HexColorCommand extends SimpleCommand {
 				pCache.setColoredNickName(player.getDisplayName());
 			} else {
 				successMessage = Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace("%hex_color%",
-						pCache.getChatColor() + "this");
+						pCache.getChatColor().getName());
 			}
 		} else {
 			final String format = args[2];
@@ -146,11 +146,11 @@ public class HexColorCommand extends SimpleCommand {
 
 				pCache.setColoredNickName(player.getDisplayName());
 				successMessage = Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace("%hex_color%",
-						pCache.getNameColor() + UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + "this");
+						UltraColorUtil.nameFormatToString(pCache.getNameFormat()) + pCache.getNameColor().getName());
 			} else {
 				pCache.setChatFormat(UltraColorUtil.getFormatToCompChatColor(format));
 				successMessage = Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace("%hex_color%",
-						pCache.getChatColor() + UltraColorUtil.chatFormatToString(pCache.getChatFormat()) + "this");
+						UltraColorUtil.chatFormatToString(pCache.getChatFormat()) + pCache.getChatFormat().getName());
 			}
 		}
 
