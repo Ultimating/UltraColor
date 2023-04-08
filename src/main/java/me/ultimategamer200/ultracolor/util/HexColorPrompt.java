@@ -122,12 +122,14 @@ public class HexColorPrompt extends SimpleConversation {
 
 		@Override
 		protected boolean isInputValid(ConversationContext context, String input) {
+			if (input.equalsIgnoreCase("none")) return true;
+
 			if (type.equalsIgnoreCase("chat") && !UltraColorUtil.isChatFormatEnabled(input))
 				return false;
 			else if (type.equalsIgnoreCase("name") && !UltraColorUtil.isNameFormatEnabled(input))
 				return false;
 
-			return ColorId.FormatId.getFormatIds().contains(input.toLowerCase()) || input.equalsIgnoreCase("none");
+			return ColorId.FormatId.getFormatIds().contains(input.toLowerCase());
 		}
 
 		@Override
@@ -177,9 +179,8 @@ public class HexColorPrompt extends SimpleConversation {
 				getPlayer(conversationContext).setDisplayName(UltraColorUtil.getPlayerNameInColor(getPlayer(conversationContext)));
 			}
 
-			String hexDisplay = hexColor.getName();
-			if (addFormat) hexDisplay = UltraColorUtil.nameFormatToString(format) + hexColor.getName();
-
+			String hexDisplay = hexColor + "this";
+			if (addFormat) hexDisplay = UltraColorUtil.nameFormatToString(format) + hexColor + "this";
 			Messenger.success(getPlayer(conversationContext), Localization.Hex_Colors.HEX_COLOR_SUCCESS_MESSAGE.replace(
 					"%hex_color%", hexDisplay));
 			return Prompt.END_OF_CONVERSATION;

@@ -110,8 +110,9 @@ public class ChatGradientPrompt extends SimpleConversation {
 
 		@Override
 		protected boolean isInputValid(ConversationContext context, String input) {
+			if (input.equalsIgnoreCase("none")) return true;
 			if (!UltraColorUtil.isChatFormatEnabled(input) && !input.equalsIgnoreCase("none")) return false;
-			return ColorId.FormatId.getFormatIds().contains(input.toLowerCase()) || input.equalsIgnoreCase("none");
+			return ColorId.FormatId.getFormatIds().contains(input.toLowerCase());
 		}
 
 		@Override

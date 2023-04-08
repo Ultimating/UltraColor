@@ -141,8 +141,8 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 
 		if (color != null) {
 			if (color.isHex()) {
-				if (format != null) return UltraColorUtil.nameFormatToString(format) + color.getName();
-				return color.getName();
+				if (format != null) return UltraColorUtil.nameFormatToString(format) + color + "this";
+				return color + "this";
 			}
 
 			if (format != null) return UltraColorUtil.nameFormatToString(format) + color.getName();
