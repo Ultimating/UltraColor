@@ -3,6 +3,7 @@ package me.ultimategamer200.ultracolor.menu;
 import me.ultimategamer200.ultracolor.PlayerCache;
 import me.ultimategamer200.ultracolor.settings.Localization;
 import me.ultimategamer200.ultracolor.settings.Settings;
+import me.ultimategamer200.ultracolor.util.ColorId;
 import me.ultimategamer200.ultracolor.util.HexColorPrompt;
 import me.ultimategamer200.ultracolor.util.UltraColorPermissions;
 import me.ultimategamer200.ultracolor.util.UltraColorUtil;
@@ -15,6 +16,7 @@ import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.menu.Menu;
 import org.mineacademy.fo.menu.button.Button;
 import org.mineacademy.fo.menu.model.ItemCreator;
+import org.mineacademy.fo.model.Replacer;
 import org.mineacademy.fo.remain.CompChatColor;
 import org.mineacademy.fo.remain.CompMaterial;
 import org.mineacademy.fo.remain.Remain;
@@ -546,8 +548,8 @@ public class ColorSelectionMenu extends Menu {
 						if (pCache.getChatCustomGradientOne() != null || pCache.getChatCustomGradientTwo() != null)
 							pCache.clearGradients("chat");
 
-						Messenger.success(player, Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-								ChatUtil.capitalizeFirst("rainbow")));
+						Messenger.success(player, Replacer.replaceArray(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE,
+								"color", ChatUtil.capitalizeFirst(ColorId.RAINBOW.getId()), "type", "color"));
 					} else
 						Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
 					player.closeInventory();
@@ -605,8 +607,8 @@ public class ColorSelectionMenu extends Menu {
 			if (player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", String.valueOf(color.getCode())))
 					|| player.hasPermission(UltraColorPermissions.Color.CHAT_COLOR.replace("{color}", "*"))) {
 				UltraColorUtil.applyChatColor(player, color);
-				Messenger.success(player, Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace(
-						"{color}", ChatUtil.capitalizeFirst(color.getName())));
+				Messenger.success(player, Replacer.replaceArray(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE,
+						"color", ColorId.bountifyCompChatColor(color), "type", "color"));
 			} else
 				Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
 			player.closeInventory();
@@ -616,8 +618,8 @@ public class ColorSelectionMenu extends Menu {
 			if (player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", String.valueOf(format.getCode())))
 					|| player.hasPermission(UltraColorPermissions.Color.CHAT_FORMAT.replace("{format}", "*"))) {
 				UltraColorUtil.applyChatFormat(player, format);
-				Messenger.success(player, Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace(
-						"{color}", ChatUtil.capitalizeFirst(format.getName())));
+				Messenger.success(player, Replacer.replaceArray(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE,
+						"color", ColorId.bountifyCompChatColor(format), "type", "format"));
 			} else
 				Messenger.error(player, Localization.Main_GUI_Customization_Chat_Color_Selection.ERROR_MESSAGE);
 			player.closeInventory();
@@ -1079,8 +1081,8 @@ public class ColorSelectionMenu extends Menu {
 						UltraColorUtil.convertNameToRainbow(player, pCache.getNameFormat() != null,
 								pCache.getNameFormat() != null ? pCache.getNameFormat().name() : "");
 
-						Messenger.success(player, Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-								ChatUtil.capitalizeFirst("rainbow")));
+						Messenger.success(player, Replacer.replaceArray(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE,
+								"color", ChatUtil.capitalizeFirst("rainbow"), "type", "color"));
 					} else
 						Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
 					player.closeInventory();
@@ -1147,8 +1149,8 @@ public class ColorSelectionMenu extends Menu {
 					|| player.hasPermission(UltraColorPermissions.Color.NAME_COLOR.replace("{color}", "*"))) {
 				UltraColorUtil.applyNameColor(player, color, null);
 				PlayerCache.fromPlayer(player).setNameRainbowColors(false);
-				Messenger.success(player, Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace(
-						"{color}", ChatUtil.capitalizeFirst(color.getName())));
+				Messenger.success(player, Replacer.replaceArray(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE,
+						"color", ColorId.bountifyCompChatColor(color), "type", "color"));
 			} else
 				Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
 			player.closeInventory();
@@ -1163,8 +1165,8 @@ public class ColorSelectionMenu extends Menu {
 				if (pCache.isNameRainbowColors())
 					UltraColorUtil.convertNameToRainbow(player, true, format.name());
 
-				Messenger.success(player, Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace(
-						"{color}", ChatUtil.capitalizeFirst(format.name())));
+				Messenger.success(player, Replacer.replaceArray(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE,
+						"color", ColorId.bountifyChatColor(format), "type", "format"));
 			} else
 				Messenger.error(player, Localization.Main_GUI_Customization_Name_Color_Selection.ERROR_MESSAGE);
 			player.closeInventory();

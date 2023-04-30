@@ -2,6 +2,7 @@ package me.ultimategamer200.ultracolor.hooks;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.ultimategamer200.ultracolor.PlayerCache;
+import me.ultimategamer200.ultracolor.util.ColorId;
 import me.ultimategamer200.ultracolor.util.UltraColorUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -145,9 +146,8 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 				return color + "this";
 			}
 
-			if (format != null) return UltraColorUtil.nameFormatToString(format) + color.getName();
-			return color.getName();
-		} else if (format != null) return format.name();
+			return ColorId.bountifyCompChatColor(color);
+		} else if (format != null) return ColorId.bountifyChatColor(format);
 
 		return "";
 	}

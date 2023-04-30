@@ -44,7 +44,7 @@ Main_GUI_Customization:
     # The size of the GUI menu (max value is 54).
     Size: 54
     Slot: 10
-    Success_Message: "Selected {color} &rchat!"
+    Success_Message: "Selected {color} &rchat {type}!"
     # The message players will see if they don't have permission for a specific chat color/format.
     Error_Message: "&cInsufficient permission. Please notify an admin!"
     # The message that players will see when they hover on the info button in the menu.
@@ -61,7 +61,7 @@ Main_GUI_Customization:
     # The size of the GUI menu (max value is 54).
     Size: 54
     Slot: 16
-    Success_Message: "Selected {color} &rname!"
+    Success_Message: "Selected {color} &rname {type}!"
     # The message players will see if they don't have permission for a specific name color/format.
     Error_Message: "&cInsufficient permission. Please notify an admin!"
     # The message that players will see when they hover on the info button in the menu.

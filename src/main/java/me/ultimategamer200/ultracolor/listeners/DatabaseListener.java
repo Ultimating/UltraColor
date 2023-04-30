@@ -3,12 +3,14 @@ package me.ultimategamer200.ultracolor.listeners;
 import me.ultimategamer200.ultracolor.PlayerCache;
 import me.ultimategamer200.ultracolor.mysql.UltraColorDatabase;
 import me.ultimategamer200.ultracolor.settings.Settings;
+import me.ultimategamer200.ultracolor.util.UltraColorUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.mineacademy.fo.Common;
 
 /**
  * This listener only runs if the MySQL database feature is enabled.
@@ -22,8 +24,10 @@ public class DatabaseListener implements Listener {
 		final Player player = event.getPlayer();
 
 		if (Settings.Database.ENABLED) {
-			if (UltraColorDatabase.getInstance().isLoaded())
-				UltraColorDatabase.getInstance().load(player.getUniqueId(), PlayerCache.fromPlayer(player));
+			if (UltraColorDatabase.getInstance().isLoaded()) {
+				Common.runLater(25, () -> UltraColorDatabase.getInstance().load(player.getUniqueId(), PlayerCache.fromPlayer(player),
+						() -> player.setDisplayName(UltraColorUtil.getPlayerNameInColor(player))));
+			}
 		}
 	}
 

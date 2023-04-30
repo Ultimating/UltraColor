@@ -8,6 +8,7 @@ import me.ultimategamer200.ultracolor.util.UltraColorUtil;
 import org.bukkit.entity.Player;
 import org.mineacademy.fo.ChatUtil;
 import org.mineacademy.fo.command.SimpleSubCommand;
+import org.mineacademy.fo.model.Replacer;
 
 import java.util.List;
 
@@ -57,31 +58,31 @@ public class SetNameColorCommand extends SimpleSubCommand {
 
 	@Override
 	protected List<String> tabComplete() {
-		if (args.length == 1)
-			return completeLastWord(ColorId.getColorIds());
-		if (args.length == 2)
-			return completeLastWord(ColorId.FormatId.getFormatIds());
+		if (args.length == 1) return completeLastWord(ColorId.getColorIds());
+		if (args.length == 2) return completeLastWord(ColorId.FormatId.getFormatIds());
 
 		return NO_COMPLETE;
 	}
 
 	private void applyNameColor(final String color, final Player player) {
 		final PlayerCache pCache = PlayerCache.fromPlayer(player);
+		ColorId foundColorId = ColorId.RAINBOW;
 
 		if (!color.equalsIgnoreCase(ColorId.RAINBOW.getId()) && !color.equalsIgnoreCase("reset")) {
 			for (final ColorId colorId : ColorId.values()) {
 				if (color.equalsIgnoreCase(colorId.getId())) {
 					UltraColorUtil.applyNameColor(player, colorId.getColor(), null);
+					foundColorId = colorId;
 					break;
 				}
 			}
 
-			tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					ChatUtil.capitalizeFirst(color)));
+			tellSuccess(Replacer.replaceArray(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE,
+					"color", ColorId.bountifyCompChatColor(foundColorId.getColor()), "type", "color"));
 		} else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId())) {
 			UltraColorUtil.convertNameToRainbow(player, false, "");
-			tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					ChatUtil.capitalizeFirst(color)));
+			tellSuccess(Replacer.replaceArray(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE,
+					"color", ChatUtil.capitalizeFirst(color), "type", "color"));
 		} else {
 			pCache.setNameColor(null);
 			pCache.setNameRainbowColors(false);
@@ -91,25 +92,29 @@ public class SetNameColorCommand extends SimpleSubCommand {
 
 	private void applyNameFormat(final String color, final String format, final Player player) {
 		final PlayerCache pCache = PlayerCache.fromPlayer(player);
+		ColorId foundColor = ColorId.RAINBOW;
 
 		if (!color.equalsIgnoreCase("none") && !color.equalsIgnoreCase(ColorId.RAINBOW.getId())
 				&& !color.equalsIgnoreCase("reset")) {
 			for (final ColorId colorId : ColorId.values()) {
 				if (color.equalsIgnoreCase(colorId.getId())) {
+					foundColor = colorId;
 					UltraColorUtil.applyNameColor(player, colorId.getColor(), UltraColorUtil.getNameFormatToChatColor(format));
 					break;
 				}
 			}
 
-			tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					ChatUtil.capitalizeFirst(color)));
+			tellSuccess(Replacer.replaceArray(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE,
+					"color", UltraColorUtil.nameAndChatColorToString(foundColor.getColor())
+							+ ColorId.bountifyChatColor(UltraColorUtil.getNameFormatToChatColor(format)), "type", "format"));
 		} else if (color.equalsIgnoreCase("none")) {
-			tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					ChatUtil.capitalizeFirst(color)));
+			tellSuccess(Replacer.replaceArray(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE,
+					"color", ChatUtil.capitalizeFirst(color), "type", "format"));
 		} else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId())) {
 			UltraColorUtil.convertNameToRainbow(player, true, format);
-			tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					ChatUtil.capitalizeFirst(color)));
+			tellSuccess(Replacer.replaceArray(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE,
+					"color", UltraColorUtil.convertStringToRainbow(ColorId.bountifyChatColor(UltraColorUtil.getNameFormatToChatColor(format)),
+							true, format), "type", "format"));
 		} else {
 			pCache.setNameColor(null);
 			pCache.setNameFormat(null);

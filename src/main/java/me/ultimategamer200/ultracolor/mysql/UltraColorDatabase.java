@@ -6,6 +6,7 @@ import me.ultimategamer200.ultracolor.PlayerCache;
 import me.ultimategamer200.ultracolor.settings.Settings;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
+import org.mineacademy.fo.Common;
 import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.database.SimpleFlatDatabase;
 import org.mineacademy.fo.remain.CompChatColor;
@@ -64,6 +65,7 @@ public final class UltraColorDatabase extends SimpleFlatDatabase<PlayerCache> {
 		data.setNameRainbowColors(nameRainbowColors);
 		data.setNickName(nickName);
 		data.setColoredNickName(coloredNickname);
+		Common.log("Database data loaded.");
 	}
 
 	/**

@@ -44,7 +44,7 @@ Main_GUI_Customization:
     # La dimensione del menu della GUI (il valore massimo è 54).
     Size: 54
     Slot: 10
-    Success_Message: "Selezionato {color} &rChiacchierata!"
+    Success_Message: "Selezionato {color} &rChiacchierata {type}!"
     # I giocatori del messaggio vedranno se non hanno l'autorizzazione per un colore / formato di chat specifico.
     Error_Message: "&cAutorizzazione insufficiente. Si prega di avvisare un amministratore!"
     # Il messaggio che i giocatori vedranno quando passano il mouse sulla stella inferiore nel menu.
@@ -61,7 +61,7 @@ Main_GUI_Customization:
     # La dimensione del menu della GUI (il valore massimo è 54).
     Size: 54
     Slot: 16
-    Success_Message: "Selezionato {color} &rNome!"
+    Success_Message: "Selezionato {color} &rNome {type}!"
     # I lettori di messaggi vedranno se non hanno l'autorizzazione per un colore / formato di nome specifico.
     Error_Message: "&cAutorizzazione insufficiente. Si prega di avvisare un amministratore!"
     # Il messaggio che i giocatori vedranno quando passano il mouse sulla stella inferiore nel menu.

@@ -44,7 +44,7 @@ Main_GUI_Customization:
     # De grootte van het GUI-menu (max. waarde is 54).
     Size: 54
     Slot: 10
-    Success_Message: "Geselecteerd {color} &rChatten!"
+    Success_Message: "Geselecteerd {color} &rChatten {type}!"
     # Het bericht spelers zullen zien als ze geen toestemming hebben voor een specifieke chatkleur/-indeling.
     Error_Message: "&cOnvoldoende toestemming. Breng een administratief medewerker op de hoogte!"
     # Het bericht dat spelers te zien krijgen als ze met de muis over de infoknop in het menu gaan.
@@ -61,7 +61,7 @@ Main_GUI_Customization:
     # De grootte van het GUI-menu (max. waarde is 54).
     Size: 54
     Slot: 16
-    Success_Message: "Geselecteerd {color} &rNaam!"
+    Success_Message: "Geselecteerd {color} &rNaam {type}!"
     # Het bericht spelers zullen zien of ze geen toestemming hebben voor een specifieke naamkleur/-indeling.
     Error_Message: "&cOnvoldoende toestemming. Breng een administratief medewerker op de hoogte!"
     # Het bericht dat spelers te zien krijgen als ze met de muis over de infoknop in het menu gaan.

@@ -8,6 +8,7 @@ import me.ultimategamer200.ultracolor.util.UltraColorUtil;
 import org.bukkit.OfflinePlayer;
 import org.mineacademy.fo.ChatUtil;
 import org.mineacademy.fo.command.SimpleSubCommand;
+import org.mineacademy.fo.model.Replacer;
 
 import java.util.List;
 
@@ -63,24 +64,26 @@ public class SetChatColorCommand extends SimpleSubCommand {
 
 	private void applyChatColor(final String color, final OfflinePlayer player) {
 		final PlayerCache pCache = PlayerCache.fromOfflinePlayer(player);
+		ColorId foundColorId = ColorId.RAINBOW;
 		pCache.setChatFormat(null);
 
 		if (!color.equalsIgnoreCase(ColorId.RAINBOW.getId()) && !color.equalsIgnoreCase("reset")) {
 			for (final ColorId colorId : ColorId.values()) {
 				if (color.equalsIgnoreCase(colorId.getId())) {
 					UltraColorUtil.applyChatColor(player, colorId.getColor());
+					foundColorId = colorId;
 					break;
 				}
 			}
 
-			tellSuccess(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					ChatUtil.capitalizeFirst(color)));
+			tellSuccess(Replacer.replaceArray(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE,
+					"color", ColorId.bountifyCompChatColor(foundColorId.getColor()), "type", "color"));
 		} else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId())) {
 			pCache.setChatRainbowColors(true);
 			pCache.clearGradients("chat");
 
-			tellSuccess(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					ChatUtil.capitalizeFirst(color)));
+			tellSuccess(Replacer.replaceArray(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE,
+					"color", ChatUtil.capitalizeFirst(color), "type", "color"));
 		} else {
 			pCache.setChatColor(null);
 			pCache.setChatRainbowColors(false);
@@ -90,25 +93,29 @@ public class SetChatColorCommand extends SimpleSubCommand {
 
 	private void applyChatFormat(final String color, final String format, final OfflinePlayer player) {
 		final PlayerCache pCache = PlayerCache.fromOfflinePlayer(player);
+		ColorId foundColorId = ColorId.RAINBOW;
 		pCache.setChatFormat(UltraColorUtil.getFormatToCompChatColor(format));
 
 		if (!color.equalsIgnoreCase("none") && !color.equalsIgnoreCase(ColorId.RAINBOW.getId())
 				&& !color.equalsIgnoreCase("reset")) {
 			for (final ColorId colorId : ColorId.values()) {
 				if (color.equalsIgnoreCase(colorId.getId())) {
-					UltraColorUtil.applyChatFormat(player, colorId.getColor());
+					foundColorId = colorId;
+					UltraColorUtil.applyChatFormat(player, pCache.getChatFormat());
 					break;
 				}
 			}
 
-			tellSuccess(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					ChatUtil.capitalizeFirst(format)));
+			tellSuccess(Replacer.replaceArray(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE,
+					"color", UltraColorUtil.nameAndChatColorToString(foundColorId.getColor())
+							+ ColorId.bountifyChatColor(UltraColorUtil.getNameFormatToChatColor(format)), "type", "format"));
 		} else if (color.equalsIgnoreCase("none")) {
 			tellSuccess("Format set to none!");
 		} else if (color.equalsIgnoreCase(ColorId.RAINBOW.getId())) {
 			pCache.setChatRainbowColors(true);
-			tellSuccess(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE.replace("{color}",
-					ChatUtil.capitalizeFirst(format)));
+			tellSuccess(Replacer.replaceArray(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE,
+					"color", UltraColorUtil.convertStringToRainbow(ColorId.bountifyChatColor(UltraColorUtil.getNameFormatToChatColor(format)),
+							true, format), "type", "format"));
 		} else {
 			pCache.setChatColor(null);
 			pCache.setChatFormat(null);

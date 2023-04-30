@@ -12,12 +12,15 @@ import org.mineacademy.fo.ChatUtil;
 import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.Valid;
 import org.mineacademy.fo.command.SimpleSubCommand;
+import org.mineacademy.fo.model.Replacer;
 import org.mineacademy.fo.remain.CompChatColor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SetGradientCommand extends SimpleSubCommand {
+	final String INVALID_FORMAT_MESSAGE = "Invalid format.";
+
 	protected SetGradientCommand() {
 		super("setgradient|sg");
 		setUsage("<chat|name> <color> [format]");
@@ -25,8 +28,6 @@ public class SetGradientCommand extends SimpleSubCommand {
 		setDescription("Set your gradient color!");
 		setPermission(UltraColorPermissions.Command.SET_GRADIENT);
 	}
-
-	final String INVALID_FORMAT_MESSAGE = "Invalid format.";
 
 	@Override
 	protected void onCommand() {
@@ -57,7 +58,8 @@ public class SetGradientCommand extends SimpleSubCommand {
 									}
 
 									pCache.setChatFormat(UltraColorUtil.getFormatToCompChatColor(args[2]));
-									tellSuccess(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE);
+									tellSuccess(Replacer.replaceArray(Localization.Main_GUI_Customization_Chat_Color_Selection.SUCCESS_MESSAGE,
+											"color", ColorId.bountifyChatColor(UltraColorUtil.getNameFormatToChatColor(args[2])), "type", "format"));
 								} else
 									tellError(INVALID_FORMAT_MESSAGE);
 							} else
@@ -106,8 +108,8 @@ public class SetGradientCommand extends SimpleSubCommand {
 									final ChatColor format = UltraColorUtil.getNameFormatToChatColor(args[2]);
 									pCache.setNameFormat(format);
 
-									tellSuccess(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE.replace(
-											"{color}", ChatUtil.capitalizeFirst(format.name())));
+									tellSuccess(Replacer.replaceArray(Localization.Main_GUI_Customization_Name_Color_Selection.SUCCESS_MESSAGE,
+											"color", ColorId.bountifyChatColor(format), "type", "format"));
 								} else
 									tellError(INVALID_FORMAT_MESSAGE);
 							} else

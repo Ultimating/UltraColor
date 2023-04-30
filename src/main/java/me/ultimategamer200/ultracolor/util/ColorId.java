@@ -2,6 +2,8 @@ package me.ultimategamer200.ultracolor.util;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.bukkit.ChatColor;
+import org.mineacademy.fo.ChatUtil;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.remain.CompChatColor;
 
@@ -31,6 +33,20 @@ public enum ColorId {
 
 	private final String id;
 	private final CompChatColor color;
+
+	public static String bountifyCompChatColor(final CompChatColor color) {
+		if (color.getName().contains("_"))
+			return ChatUtil.capitalizeFully(color.getName().replace("_", " "));
+
+		return ChatUtil.capitalizeFirst(color.getName());
+	}
+
+	public static String bountifyChatColor(final ChatColor color) {
+		if (color.name().contains("_"))
+			return ChatUtil.capitalizeFully(color.name().toLowerCase().replace("_", " "));
+
+		return ChatUtil.capitalizeFirst(color.name().toLowerCase());
+	}
 
 	public static List<String> getColorIds() {
 		final List<String> colorIds = Common.convert(ColorId.values(), ColorId::getId);

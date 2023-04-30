@@ -185,7 +185,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 
 			if (color != null) {
 				successMessage = Localization.Other.ADMIN_SET_FORCE_NAME_COLOR_SUCCESS_MESSAGE.replace("%new_name_color%",
-						ChatUtil.capitalizeFirst(pCache.getNameColor().getName())).replace("%player%", Objects.requireNonNull(player.getName()));
+						ColorId.bountifyCompChatColor(color)).replace("%player%", Objects.requireNonNull(player.getName()));
 			} else {
 				successMessage = Localization.Other.ADMIN_SET_FORCE_NAME_COLOR_SUCCESS_MESSAGE.replace("%new_name_color%", "none")
 						.replace("%player%", Objects.requireNonNull(player.getName()));
@@ -195,7 +195,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 
 			if (format != null) {
 				final String formatSuccessMessage = Localization.Other.ADMIN_SET_FORCE_NAME_FORMAT_SUCCESS_MESSAGE.replace("%new_name_format%",
-								pCache.getNameFormat() != null ? ChatUtil.capitalizeFirst(pCache.getNameFormat().name()) : "none")
+								pCache.getNameFormat() != null ? ColorId.bountifyCompChatColor(format) : "none")
 						.replace("%player%", Objects.requireNonNull(player.getName()));
 				tellSuccess(formatSuccessMessage);
 			}
