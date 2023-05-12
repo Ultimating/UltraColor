@@ -9,6 +9,16 @@ import org.mineacademy.fo.settings.SimpleSettings;
  */
 public class Settings extends SimpleSettings {
 
+	public static Boolean NOTIFY_UPDATES;
+	public static EventPriority CHAT_LISTENER_PRIORITY;
+
+	private static void init() {
+		setPathPrefix(null);
+
+		NOTIFY_UPDATES = getBoolean("Notify_Updates");
+		CHAT_LISTENER_PRIORITY = get("Chat_Listener_Priority", EventPriority.class);
+	}
+
 	@Override
 	protected int getConfigVersion() {
 		return 1;
@@ -308,6 +318,7 @@ public class Settings extends SimpleSettings {
 		public static String PASS;
 		public static Boolean ENABLED;
 		public static Integer EXPIRY_DAYS;
+		public static Integer LOAD_AFTER_TICKS;
 
 		private static void init() {
 			setPathPrefix("Database");
@@ -319,6 +330,7 @@ public class Settings extends SimpleSettings {
 			USER = getString("User");
 			PASS = getString("Pass");
 			EXPIRY_DAYS = getInteger("Expiry_Days");
+			LOAD_AFTER_TICKS = getInteger("Load_After_Ticks");
 		}
 	}
 
@@ -356,15 +368,5 @@ public class Settings extends SimpleSettings {
 			SUCCESS_PREFIX = getString("Success_Prefix");
 			ERROR_PREFIX = getString("Error_Prefix");
 		}
-	}
-
-	public static Boolean NOTIFY_UPDATES;
-	public static EventPriority CHAT_LISTENER_PRIORITY;
-
-	private static void init() {
-		setPathPrefix(null);
-
-		NOTIFY_UPDATES = getBoolean("Notify_Updates");
-		CHAT_LISTENER_PRIORITY = get("Chat_Listener_Priority", EventPriority.class);
 	}
 }

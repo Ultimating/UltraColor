@@ -187,6 +187,10 @@ Database:
   # When a player goes inactive, how many days do we wait since their data was last updated before we purge it?
   Expiry_Days: 120
 
+  # Load a player's data from the database after the specified ticks of them joining. This is here to help give enough
+  # time for the saving of the player from the server they are coming from.
+  Load_After_Ticks: 30
+
 Other_Prefixes:
   Success_Prefix: "&8&l[&2&l✔&8&l]&7 "
   Error_Prefix: "&8&l[&4&l✕&8&l]&c "

@@ -25,8 +25,9 @@ public class DatabaseListener implements Listener {
 
 		if (Settings.Database.ENABLED) {
 			if (UltraColorDatabase.getInstance().isLoaded()) {
-				Common.runLater(25, () -> UltraColorDatabase.getInstance().load(player.getUniqueId(), PlayerCache.fromPlayer(player),
-						() -> player.setDisplayName(UltraColorUtil.getPlayerNameInColor(player))));
+				Common.runLater(Settings.Database.LOAD_AFTER_TICKS, () ->
+						UltraColorDatabase.getInstance().load(player.getUniqueId(), PlayerCache.fromPlayer(player),
+								() -> player.setDisplayName(UltraColorUtil.getPlayerNameInColor(player))));
 			}
 		}
 	}
@@ -37,7 +38,6 @@ public class DatabaseListener implements Listener {
 	@EventHandler
 	public void onQuit(final PlayerQuitEvent event) {
 		final Player player = event.getPlayer();
-		final PlayerCache cache = PlayerCache.fromPlayer(player);
-		UltraColorDatabase.getInstance().save(player.getName(), player.getUniqueId(), cache);
+		UltraColorDatabase.getInstance().save(player.getName(), player.getUniqueId(), PlayerCache.fromPlayer(player));
 	}
 }
