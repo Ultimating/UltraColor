@@ -42,7 +42,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 				returnInvalidArgs();
 		}
 
-		Player onlinePlayer;
+		final Player onlinePlayer;
 
 		if (ColorId.getColorIds().contains(color) || color.startsWith("#")) {
 			if (color.startsWith("#") && Remain.hasHexColors()) {
@@ -86,8 +86,9 @@ public class ForceColorCommand extends SimpleSubCommand {
 			} else if (color.equalsIgnoreCase("reset")) {
 				pCache.setNameColor(null);
 				pCache.setNameFormat(null);
-				pCache.clearGradients("name");
-				pCache.setNameRainbowColors(false);
+				if (pCache.getCustomGradientOne() != null && pCache.getCustomGradientTwo() != null)
+					pCache.clearGradients("name");
+				if (pCache.isNameRainbowColors()) pCache.setNameRainbowColors(false);
 
 				if (player.isOnline()) {
 					onlinePlayer = (Player) player;
@@ -103,14 +104,10 @@ public class ForceColorCommand extends SimpleSubCommand {
 
 	@Override
 	protected List<String> tabComplete() {
-		if (args.length == 1)
-			return completeLastWord("name", "chat");
-		if (args.length == 2)
-			return completeLastWordPlayerNames();
-		if (args.length == 3)
-			return completeLastWord(ColorId.getColorIds());
-		if (args.length == 4)
-			return completeLastWord(ColorId.FormatId.getFormatIds());
+		if (args.length == 1) return completeLastWord("name", "chat");
+		if (args.length == 2) return completeLastWordPlayerNames();
+		if (args.length == 3) return completeLastWord(ColorId.getColorIds());
+		if (args.length == 4) return completeLastWord(ColorId.FormatId.getFormatIds());
 
 		return NO_COMPLETE;
 	}
@@ -132,13 +129,13 @@ public class ForceColorCommand extends SimpleSubCommand {
 			} else
 				pCache.setChatFormat(null);
 
-			pCache.setChatRainbowColors(false);
-			pCache.clearGradients("chat");
+			if (pCache.isChatRainbowColors()) pCache.setChatRainbowColors(false);
+			if (pCache.getChatCustomGradientOne() != null && pCache.getChatCustomGradientTwo() != null)
+				pCache.clearGradients("chat");
 
-			final String successMessage = Localization.Other.ADMIN_SET_FORCE_CHAT_COLOR_SUCCESS_MESSAGE
-					.replace("%new_chat_color%", pCache.getChatColor().getName())
-					.replace("%player%", Objects.requireNonNull(player.getName()));
-			tellSuccess(successMessage);
+			tellSuccess(Localization.Other.ADMIN_SET_FORCE_CHAT_COLOR_SUCCESS_MESSAGE
+					.replace("%new_chat_color%", color != null ? ColorId.bountifyCompChatColor(color) : ChatUtil.capitalizeFirst("none"))
+					.replace("%player%", Objects.requireNonNull(player.getName())));
 		} else {
 			pCache.setNameColor(color);
 
@@ -169,7 +166,7 @@ public class ForceColorCommand extends SimpleSubCommand {
 			} else {
 				if (pCache.getNameColor() != null || pCache.getNameFormat() != null) {
 					if (pCache.getNameFormat() != null)
-						newName = UltraColorUtil.nameAndChatColorToString(pCache.getNameColor()) + UltraColorUtil.nameFormatToString(pCache.getNameFormat())
+						newName = UltraColorUtil.nameAndChatColorToString(color) + UltraColorUtil.nameFormatToString(pCache.getNameFormat())
 								+ player.getName();
 					else
 						newName = UltraColorUtil.nameAndChatColorToString(pCache.getNameColor()) + player.getName();

@@ -56,12 +56,9 @@ public class ForceGradientCommand extends SimpleSubCommand {
 
 	@Override
 	protected List<String> tabComplete() {
-		if (args.length == 1)
-			return completeLastWord("name", "chat");
-		if (args.length == 2)
-			return completeLastWordPlayerNames();
-		if (args.length == 5)
-			return completeLastWord(ColorId.FormatId.getFormatIds());
+		if (args.length == 1) return completeLastWord("name", "chat");
+		if (args.length == 2) return completeLastWordPlayerNames();
+		if (args.length == 5) return completeLastWord(ColorId.FormatId.getFormatIds());
 
 		return null;
 	}
@@ -93,10 +90,8 @@ public class ForceGradientCommand extends SimpleSubCommand {
 		}
 
 		if (args.length < 5) {
-			if (type.equalsIgnoreCase("name"))
-				pCache.setNameFormat(null);
-			else
-				pCache.setChatFormat(null);
+			if (type.equalsIgnoreCase("name")) pCache.setNameFormat(null);
+			else pCache.setChatFormat(null);
 		} else {
 			final String format = args[4];
 
