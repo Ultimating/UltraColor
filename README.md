@@ -9,7 +9,7 @@
 
 Join MineAcademy to learn Java and plugin development and get a 25€ discount!--->
 
-## IMPORTANT: This plugin is now officially at end of life and will not recieve any updates nor support. For more information/reasoning, please see this [here](https://www.spigotmc.org/resources/ultracolor-end-of-life.85332/update?update=501054).
+## IMPORTANT: This plugin is now officially at end of life and will not recieve any updates nor support.
 
 # UltraColor
 
