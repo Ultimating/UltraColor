@@ -108,7 +108,7 @@ public class UltraColorPlugin extends SimplePlugin {
 				}
 			}
 		}
-		
+
 		Common.log(Common.consoleLineSmooth());
 	}
 
@@ -207,6 +207,6 @@ public class UltraColorPlugin extends SimplePlugin {
 	 */
 	@Override
 	public MinecraftVersion.V getMaximumVersion() {
-		return MinecraftVersion.V.v1_19;
+		return MinecraftVersion.V.v1_20;
 	}
 }
